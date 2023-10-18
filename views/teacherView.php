@@ -61,7 +61,8 @@ include "./partials/nav.html";
     }
 
     .btn:hover {
-      background-color: rgba(255, 255, 255, 0.12);
+      background-color: #8d1020;
+      opacity: 0.5;
     }
 
     .cards {
@@ -132,13 +133,13 @@ include "./partials/nav.html";
 <body>
 
   <div class="main">
-    <h1>Responsive Card Grid Layout</h1>
+    <h1>Teacher View</h1>
     <ul class="cards">
       <li class="cards_item">
         <div class="card">
           <div class="card_image"><img src="https://picsum.photos/500/300/?image=10"></div>
           <div class="card_content">
-            <h2 class="card_title">Card Grid Layout</h2>
+            <h2 class="card_title">CLass 1</h2>
             <p class="card_text">Demo of pixel perfect pure CSS simple responsive card grid layout</p>
             <button class="btn card_btn" <?php ?>><a href="innerTeacherView.php">Read More</a></button>
 
@@ -149,7 +150,7 @@ include "./partials/nav.html";
         <div class="card">
           <div class="card_image"><img src="https://picsum.photos/500/300/?image=5"></div>
           <div class="card_content">
-            <h2 class="card_title">Card Grid Layout</h2>
+            <h2 class="card_title">CLass 2</h2>
             <p class="card_text">Demo of pixel perfect pure CSS simple responsive card grid layout</p>
             <button class="btn card_btn">Read More</button>
           </div>
@@ -159,7 +160,7 @@ include "./partials/nav.html";
         <div class="card">
           <div class="card_image"><img src="https://picsum.photos/500/300/?image=11"></div>
           <div class="card_content">
-            <h2 class="card_title">Card Grid Layout</h2>
+            <h2 class="card_title">CLass 3</h2>
             <p class="card_text">Demo of pixel perfect pure CSS simple responsive card grid layout</p>
             <button class="btn card_btn">Read More</button>
           </div>
@@ -169,7 +170,7 @@ include "./partials/nav.html";
         <div class="card">
           <div class="card_image"><img src="https://picsum.photos/500/300/?image=14"></div>
           <div class="card_content">
-            <h2 class="card_title">Card Grid Layout</h2>
+            <h2 class="card_title">CLass 4</h2>
             <p class="card_text">Demo of pixel perfect pure CSS simple responsive card grid layout</p>
             <button class="btn card_btn">Read More</button>
           </div>
@@ -179,7 +180,7 @@ include "./partials/nav.html";
         <div class="card">
           <div class="card_image"><img src="https://picsum.photos/500/300/?image=17"></div>
           <div class="card_content">
-            <h2 class="card_title">Card Grid Layout</h2>
+            <h2 class="card_title">CLass 5</h2>
             <p class="card_text">Demo of pixel perfect pure CSS simple responsive card grid layout</p>
             <button class="btn card_btn">Read More</button>
           </div>
@@ -189,7 +190,7 @@ include "./partials/nav.html";
         <div class="card">
           <div class="card_image"><img src="https://picsum.photos/500/300/?image=2"></div>
           <div class="card_content">
-            <h2 class="card_title">Card Grid Layout</h2>
+            <h2 class="card_title">CLass 6</h2>
             <p class="card_text">Demo of pixel perfect pure CSS simple responsive card grid layout</p>
             <button class="btn card_btn">Read More</button>
           </div>
