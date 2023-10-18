@@ -15,7 +15,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 20px 80px;
-    background-color: #000000;
+    background-color: #0c0b34;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
     z-index: 999;
     position: sticky;
@@ -23,7 +23,11 @@
     left: 0;
 
 }
-
+#header img{
+    width: 80px;
+    padding: 0;
+    margin: 0;
+}
 #header .logo {
     text-decoration: none;
     font-size: 16px;
@@ -60,7 +64,7 @@
     content: "";
     width: 30%;
     height: 2px;
-    background-color: #eb9e10;
+    background-color: #8d1020;
     position: absolute;
     bottom: -4px;
     left: 20px;
@@ -80,15 +84,14 @@ li.name {
 
 <body>
     <section id="header">
-        <a class="logo" href="Home">LionSoul</a>
+        <a class="logo" href="Home"><img src="..\img\niscl-new-logo.png" alt="logo"></a>
 
         <div>
             <ul id="navbar">
             
         <div>
             <ul id="navbar">
-                <li><a class="home" href="#">Home</a></li>
-                <li><a href="#">Shop</a></li>
+                <li><a class="home" href="teacherView.php" >Home</a></li>
                     <li> <a href='#'>Admin</a></li>
                         <li><a href="#">Contact</a></li>    
                             <li> <a href='/user/Login2'>Login</a></li>
