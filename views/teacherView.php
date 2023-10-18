@@ -1,5 +1,5 @@
 <?php
-include "./partials/nav.html";
+include "./partials/nav.php";
 ?>
 
 <head>
