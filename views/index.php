@@ -10550,9 +10550,9 @@ font-weight: 500;
 					<ul class="slideshow"><!--here slideshow-->
 						<li><span style="background-image: url('../Public/imgs/2.webp');"></span></li>
 						<li><span style="background-image: url('../Public/imgs/1.webp');"></span></li>
-						<li><span style="background-image: url('https://www.westminster.org.uk/wp-content/uploads/2023/02/GWL_7701-scaled-e1673878389823-1.jpeg');"></span></li>
-						<li><span style="background-image: url('https://www.westminster.org.uk/wp-content/uploads/2023/02/Front-Page-04-scaled-e1673878364157.jpeg');"></span></li>
-						<li><span style="background-image: url('https://www.westminster.org.uk/wp-content/uploads/2023/02/Front-Page-05-scaled-e1673878350719.jpeg');"></span></li>
+						<li><span style="background-image: url('../Public/imgs/3.webp');"></span></li>
+						<li><span style="background-image: url('../Public/imgs/4.png');"></span></li>
+						<li><span style="background-image: url('../Public/imgs/5.png');"></span></li>
 						<li><span style="background-image: url('https://www.westminster.org.uk/wp-content/uploads/2023/02/Front-Page-06-scaled-e1673877578318.jpeg');"></span></li>
 						<li><span style="background-image: url('https://www.westminster.org.uk/wp-content/uploads/2023/02/Front-Page-07-scaled-e1673877438530.jpeg');"></span></li>
 						<li><span style="background-image: url('https://www.westminster.org.uk/wp-content/uploads/2023/02/Front-Page-08-scaled-e1673877685635.jpeg');"></span></li>
