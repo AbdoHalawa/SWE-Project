@@ -10520,7 +10520,7 @@ font-weight: 500;
 		<header class="ast-custom-header" itemscope="itemscope" itemtype="https://schema.org/WPHeader">
 			<div class="astra-advanced-hook-38855 ">
 				<div class="logo-image">
-					<a href="/"><img src="../public/imgs/nefertari-logo.webp" width="200px" height="500px"> </a>
+					<a href="#	"><img src="../public/imgs/nefertari-logo.webp" width="200px" height="500px"> </a>
 				</div>
 
 				<div class="astra-advanced-hook-38859 ">
@@ -10619,7 +10619,8 @@ font-weight: 500;
 
 					<div class="astra-advanced-hook-33781 ">
 						<div class="homepage-section-one-heading">
-							A progressive school on an ancient site in the heart of the world's most vibrant city
+							25 Years Graduating
+							Generations of Pioneers 
 						</div>
 
 						<div class="homepage-section-one">
@@ -10647,8 +10648,8 @@ font-weight: 500;
 
 							<section id="homepage-slider">
 								<div class="header">
-									<h2 class="h2-page-heading vertline">Discover Westminster</h2>
-									<p>Latest news and events from life at Westminster School. <a class="homepage-news-archive-link" target="_blank" href="/news-archive/">News Archive &rarr;</a></p>
+									<h2 class="h2-page-heading vertline">Discover Nefertari</h2>
+									<p>Latest news and events from life at Nefertari School. <a class="homepage-news-archive-link" target="_blank" href="/news-archive/">News Archive &rarr;</a></p>
 								</div>
 
 								<div class="owl-carousel owl-theme">
