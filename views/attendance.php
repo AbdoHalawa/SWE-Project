@@ -118,10 +118,12 @@
 
 <body>
     <div class="container1">
-        <h1>
-            <?php
-            echo date("l, F j, Y") . "<br>";
-            ?>
+        <h1><u>
+                <?php
+                echo date("l, F j, Y") . "<br>";
+                ?>
+            </u>
+            <br>
         </h1>
         <form>
             <div class="form-group">
