@@ -92,7 +92,7 @@
 
         /* Form animation */
         .form-group {
-            animation: fadeIn 1s ease-in-out;
+            animation: fadeIn 2s ease-in-out;
         }
 
         @keyframes fadeIn {
