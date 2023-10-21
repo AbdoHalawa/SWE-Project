@@ -1,5 +1,5 @@
 <?php
-include "./partials/nav.html"
+include "./partials/nav.php"
 ?>
 
 
@@ -138,17 +138,17 @@ img {
         <ul class="cards">
             <li class="cards_item">
                 <div class="card">
-                    <div class="card_image"><img src="../Public/img/checklist-check-list-marker.jpg"></div>
+                    <div class="card_image"><img src="../public/imgs/checklist-check-list-marker.jpg"></div>
                     <div class="card_content">
                         <h2 class="card_title">Attendance</h2>
                         <p class="card_text">Demo of pixel perfect pure CSS simple responsive card grid layout</p>
-                        <button class="btn card_btn">Read More</button>
+                        <button class="btn card_btn"><a href="./attendance.php" > More</a></button>
           </div>
         </div>
     </li>
     <li class="cards_item">
         <div class="card">
-            <div class="card_image"><img src="../Public/img/checklist-check-list-marker.jpg"></div>
+            <div class="card_image"><img src="../public/imgs/checklist-check-list-marker.jpg"></div>
             <div class="card_content">
                 <h2 class="card_title">Material</h2>
                 <p class="card_text">Demo of pixel perfect pure CSS simple responsive card grid layout</p>
@@ -158,7 +158,7 @@ img {
     </li>
     <li class="cards_item">
         <div class="card">
-            <div class="card_image"><img src="../Public/img/checklist-check-list-marker.jpg"></div>
+            <div class="card_image"><img src="../public/imgs/checklist-check-list-marker.jpg"></div>
             <div class="card_content">
                 <h2 class="card_title">Asssignments</h2>
                 <p class="card_text">Demo of pixel perfect pure CSS simple responsive card grid layout</p>
@@ -169,7 +169,7 @@ img {
     
     <li class="cards_item">
         <div class="card">
-            <div class="card_image"><img src="../Public/img/checklist-check-list-marker.jpg"></div>
+            <div class="card_image"><img src="../public/imgs/checklist-check-list-marker.jpg"></div>
             <div class="card_content">
                 <h2 class="card_title">Card Grid Layout</h2>
                 <p class="card_text">Demo of pixel perfect pure CSS simple responsive card grid layout</p>
