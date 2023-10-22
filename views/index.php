@@ -10818,12 +10818,7 @@ font-weight: 500;
 										<h5>Discover More</h5>
 										Find out about life at Westminster School, both inside and outside the classroom
 									</div>
-
 									<div class="home-featured-pages">
-
-
-
-
 
 										<div class="featured-page">
 
@@ -10966,90 +10961,7 @@ font-weight: 500;
 					</main><!-- #main -->
 
 					<div class="astra-advanced-hook-19757 ">
-						<!--
-<div class="wgs-grid-layout-container-content-width">
-												
-<div class="NewsSporttab">
-  <button class="NewsSporttablinks" onclick="openCity(event, 'News')" id="defaultOpen">News</button>
-  <button class="NewsSporttablinks" onclick="openCity(event, 'Sport')">Sport</button>
-</div>
-
-<div id="News" class="NewsSporttabcontent">
-
-	
-
-<div class="GenTableContainer">
-	
-<section class="wgs-blog_posts">
-    </section>
-	
-	
-
-<div class="archive-link"><a href="https://www.westminster.org.uk/category/news/"><button class="news-archive">News Archive &rarr;</button></a><a href="https://www.westminster.org.uk/category/news/covid-19/"><button class="news-alert">Covid-19 Updates &rarr;</button></a>
-	
-<div style="clear: both;"></div>
-	
-</div>
-
-
-</div>
-	
-</div>
-
-<!--END NEWS TAB-->
-
-
-						<!-- BEGIN SPORTS TAB-->
-
-						<!--
-
-<div id="Sport" class="NewsSporttabcontent">
-
-<div class="GenTableContainer">
-	
-<section class="wgs-blog_posts">
-    </section>
-	
-	
-
-<div class="archive-link"><a href="https://www.westminster.org.uk/category/sport/match-reports/"><button class="news-archive">Match Reports Archive &rarr;</button></a>
-
-<div style="clear: both;"></div>
-
-</div>
-</div>
-	
-</div>
-	
-	
-	
-</div>
--->
-
-					</div>
-					<div class="astra-advanced-hook-18390 ">
-
-						<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-
-						<script>
-							if (jQuery(".toggle-message .toggle-message-title").hasClass('active')) {
-								jQuery(".toggle-message .toggle-message-title.active").closest('.toggle-message').find('.toggle-message-inner').show();
-							}
-							jQuery(".toggle-message .toggle-message-title").click(function() {
-								if (jQuery(this).hasClass('active')) {
-									jQuery(this).removeClass("active").closest('.toggle-message').find('.toggle-message-inner').slideUp(200);
-								} else {
-									jQuery(this).addClass("active").closest('.toggle-message').find('.toggle-message-inner').slideDown(200);
-								}
-							});
-						</script>
-
-					</div>
-
-				</div><!-- #primary -->
-
-
-			</div> <!-- ast-container -->
+						
 		</div><!-- #content -->
 		<div class="astra-advanced-hook-22971 ">
 			<div class="search-filter">
