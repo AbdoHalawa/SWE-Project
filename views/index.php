@@ -23,7 +23,7 @@ include './partials/nav.php';
 	<meta property="article:modified_time" content="2023-10-15T15:54:05+00:00" />
 	<meta name="twitter:card" content="summary_large_image" />
 
-	<link rel='stylesheet' id='astra-theme-css-css' href='../public/external-css/astra-style.min.css' media='all' />
+	<link rel='stylesheet' id='astra-theme-css-css' href='../Public/external-css/astra-style.min.css' media='all' />
 	<style id='astra-theme-css-inline-css'>
 		.ast-no-sidebar .entry-content .alignfull {
 			margin-left: calc(-50vw + 50%);
@@ -10510,9 +10510,6 @@ font-weight: 500;
 </head>
 
 <body itemtype='https://schema.org/WebPage' itemscope='itemscope' class="home page-template-default page page-id-33778 ast-desktop ast-page-builder-template ast-no-sidebar astra-4.3.1 ast-header-custom-item-inside ast-full-width-primary-header group-blog ast-single-post ast-mobile-inherit-site-logo ast-inherit-site-logo-transparent ast-above-mobile-menu-align-inline ast-default-menu-enable ast-flyout-above-menu-enable ast-flyout-above-left-side ast-default-below-menu-enable ast-full-width-layout ast-full-width-header ast-inherit-site-logo-sticky ast-normal-title-enabled astra-addon-4.3.3">
-	<!-- Google Tag Manager (noscript) -->
-	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T7Q5GX8" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-	<!-- End Google Tag Manager (noscript) -->
 	<a class="skip-link screen-reader-text" href="#content" role="link" title="Skip to content">
 		Skip to content</a>
 
@@ -10553,11 +10550,11 @@ font-weight: 500;
 						<li><span style="background-image: url('../Public/imgs/3.webp');"></span></li>
 						<li><span style="background-image: url('../Public/imgs/4.png');"></span></li>
 						<li><span style="background-image: url('../Public/imgs/5.png');"></span></li>
-						<li><span style="background-image: url('https://www.westminster.org.uk/wp-content/uploads/2023/02/Front-Page-06-scaled-e1673877578318.jpeg');"></span></li>
-						<li><span style="background-image: url('https://www.westminster.org.uk/wp-content/uploads/2023/02/Front-Page-07-scaled-e1673877438530.jpeg');"></span></li>
-						<li><span style="background-image: url('https://www.westminster.org.uk/wp-content/uploads/2023/02/Front-Page-08-scaled-e1673877685635.jpeg');"></span></li>
-						<li><span style="background-image: url('https://www.westminster.org.uk/wp-content/uploads/2023/10/Front-Page-09-scaled.jpg');"></span></li>
-						<li><span style="background-image: url('https://www.westminster.org.uk/wp-content/uploads/2023/02/WestminsterSchoolSep2021.-36-scaled-1.jpg');"></span></li>
+						<li><span style="background-image: url('../Public/imgs/2.webp');"></span></li>
+						<li><span style="background-image: url('../Public/imgs/1.webp');"></span></li>
+						<li><span style="background-image: url('../Public/imgs/3.webp');"></span></li>
+						<li><span style="background-image: url('../Public/imgs/4.png');"></span></li>
+						<li><span style="background-image: url(''../Public/imgs/5.png');"></span></li>
 					</ul>
 
 
@@ -10631,7 +10628,7 @@ font-weight: 500;
 									Nefertari School’s reputation as one of the world’s foremost centres of academic excellence is built upon our pupils’ genuine enjoyment of open-minded enquiry, rigorous discussion and the search for explanation well beyond any examination syllabus. Westminster is a safe, stimulating and supportive environment: pupils enhance their intellectual, physical, spiritual and social development by taking full advantage of the many opportunities available to them in art, drama, music, sport and volunteering in the community.</p>
 
 								<p>
-									<a class="homepage-text-button" href="https://www.westminster.org.uk/about/">Read More →</a>
+									<a class="homepage-text-button" href="#">Read More →</a>
 								</p>
 							</div>
 
@@ -10640,11 +10637,6 @@ font-weight: 500;
 
 						<div class="homepage-section-two">
 
-							<!---<a href="https://www.oldwestminster.org.uk/ow-profiles/">
-	<div class="homepage-ow-profiles">
-		Find out what our recent leavers are doing now
-	</div>
-  </a>-->
 
 							<section id="homepage-slider">
 								<div class="header">
@@ -10654,32 +10646,11 @@ font-weight: 500;
 
 								<div class="owl-carousel owl-theme">
 
-
-
-
-									<div class="item">
-
-
-										<img width="2560" height="1707" src="https://www.westminster.org.uk/wp-content/uploads/2023/05/Coronation-Day-25-scaled.jpg" class="featured-page-img wp-post-image" alt="" decoding="async" fetchpriority="high" srcset="https://www.westminster.org.uk/wp-content/uploads/2023/05/Coronation-Day-25-scaled.jpg 2560w, https://www.westminster.org.uk/wp-content/uploads/2023/05/Coronation-Day-25-768x512.jpg 768w, https://www.westminster.org.uk/wp-content/uploads/2023/05/Coronation-Day-25-1536x1024.jpg 1536w, https://www.westminster.org.uk/wp-content/uploads/2023/05/Coronation-Day-25-2048x1366.jpg 2048w" sizes="(max-width: 2560px) 100vw, 2560px" />
-										<a href="https://www.westminster.org.uk/school-life/media/">
-											<div class="overlay">
-												<span>Social</span>
-												<div class="item-caption">
-													Westminster Stories </div>
-											</div>
-										</a>
-									</div>
-
-
-
-
-
-
 									<div class="item">
 
 
 										<img width="2560" height="1707" src="https://www.westminster.org.uk/wp-content/uploads/2023/04/WestminsterSchoolDay2Sep2021.-294-Copy-scaled.jpg" class="featured-page-img wp-post-image" alt="" decoding="async" srcset="https://www.westminster.org.uk/wp-content/uploads/2023/04/WestminsterSchoolDay2Sep2021.-294-Copy-scaled.jpg 2560w, https://www.westminster.org.uk/wp-content/uploads/2023/04/WestminsterSchoolDay2Sep2021.-294-Copy-768x512.jpg 768w, https://www.westminster.org.uk/wp-content/uploads/2023/04/WestminsterSchoolDay2Sep2021.-294-Copy-1536x1024.jpg 1536w, https://www.westminster.org.uk/wp-content/uploads/2023/04/WestminsterSchoolDay2Sep2021.-294-Copy-2048x1365.jpg 2048w" sizes="(max-width: 2560px) 100vw, 2560px" />
-										<a href="https://www.westminster.org.uk/co-curriculum/sport/">
+										<a href="#">
 											<div class="overlay">
 												<span>Co-Curriculum</span>
 												<div class="item-caption">
@@ -10687,64 +10658,18 @@ font-weight: 500;
 											</div>
 										</a>
 									</div>
-
-
-
-
-
-
-									<div class="item">
-
-
-										<img width="2560" height="1706" src="https://www.westminster.org.uk/wp-content/uploads/2023/08/OW-profiles-scaled.jpeg" class="featured-page-img wp-post-image" alt="" decoding="async" srcset="https://www.westminster.org.uk/wp-content/uploads/2023/08/OW-profiles-scaled.jpeg 2560w, https://www.westminster.org.uk/wp-content/uploads/2023/08/OW-profiles-768x512.jpeg 768w, https://www.westminster.org.uk/wp-content/uploads/2023/08/OW-profiles-1536x1024.jpeg 1536w, https://www.westminster.org.uk/wp-content/uploads/2023/08/OW-profiles-2048x1365.jpeg 2048w" sizes="(max-width: 2560px) 100vw, 2560px" />
-										<a href="https://www.westminster.org.uk/oww-profiles/">
-											<div class="overlay">
-												<span>Old Westminsters</span>
-												<div class="item-caption">
-													Former Pupil Profiles </div>
-											</div>
-										</a>
-									</div>
-
-
-
-
-
-
 									<div class="item">
 
 
 										<img width="2560" height="1709" src="https://www.westminster.org.uk/wp-content/uploads/2022/02/Oliver-2022-01-scaled.jpg" class="featured-page-img wp-post-image" alt="" decoding="async" srcset="https://www.westminster.org.uk/wp-content/uploads/2022/02/Oliver-2022-01-scaled.jpg 2560w, https://www.westminster.org.uk/wp-content/uploads/2022/02/Oliver-2022-01-scaled-768x513.jpg 768w, https://www.westminster.org.uk/wp-content/uploads/2022/02/Oliver-2022-01-scaled-1536x1025.jpg 1536w, https://www.westminster.org.uk/wp-content/uploads/2022/02/Oliver-2022-01-scaled-2048x1367.jpg 2048w" sizes="(max-width: 2560px) 100vw, 2560px" />
-										<a href="https://www.westminster.org.uk/school-life/watch-westminster/">
+										<a href="#">
 											<div class="overlay">
 												<span>School Life</span>
 												<div class="item-caption">
-													Watch Westminster </div>
+													Watch Nefertari </div>
 											</div>
 										</a>
 									</div>
-
-
-
-
-
-
-									<div class="item">
-
-
-										<img width="2278" height="1516" src="https://www.westminster.org.uk/wp-content/uploads/2022/05/4-1-scaled-e1652799152553.jpg" class="featured-page-img wp-post-image" alt="" decoding="async" srcset="https://www.westminster.org.uk/wp-content/uploads/2022/05/4-1-scaled-e1652799152553.jpg 2278w, https://www.westminster.org.uk/wp-content/uploads/2022/05/4-1-scaled-e1652799152553-768x511.jpg 768w, https://www.westminster.org.uk/wp-content/uploads/2022/05/4-1-scaled-e1652799152553-1536x1022.jpg 1536w, https://www.westminster.org.uk/wp-content/uploads/2022/05/4-1-scaled-e1652799152553-2048x1363.jpg 2048w" sizes="(max-width: 2278px) 100vw, 2278px" />
-										<a href="https://www.westminster.org.uk/admissions/13-entry/">
-											<div class="overlay">
-												<span>Admissions</span>
-												<div class="item-caption">
-													13+ Entry </div>
-											</div>
-										</a>
-									</div>
-
-
-
-
 
 
 									<div class="item">
@@ -10762,50 +10687,11 @@ font-weight: 500;
 
 
 
-
 								</div>
 
 							</section>
 
-							<div class="astra-advanced-hook-34271 ">
-								<section class="homepage-feature-outer-container">
-
-									<div class="main-featured-post-wrapper">
-
-
-
-										<div class="featured-post-content-wrapper">
-											<div class="featured-post-content">
-
-												<div class="featured-post-image" style="background-image: url('https://www.westminster.org.uk/wp-content/uploads/2023/10/DSC01306_edited-scaled.jpg')">
-
-													<div class="image-triangle"><span class="image-triangle-text">Latest<br>News</span></div>
-
-												</div>
-											</div>
-
-											<div class="featured-post-text">
-
-												<h2 class="h2-page-heading vertline">Latest News</h2>
-												<span class="news-date">
-													13 October 2023 </span>
-												<p>“Our voices were heard” — Year 10 students graduate from Westminster Platform+</p>
-												<div class="button-wrapper-frontpage-news">
-													<a href="https://www.westminster.org.uk/platform-plus-graduation/"><button class="pink-outline" style="width:200px;">Read News Item →</button></a>
-													<a href="/about/news/"><button class="pink-outline" style="width:200px;">View All News →</button></a>
-												</div>
-
-											</div>
-										</div>
-
-
-
-
-
-									</div>
-
-								</section>
-							</div>
+							
 							<!--Latest News Strip-->
 
 						</div>
@@ -10825,11 +10711,10 @@ font-weight: 500;
 											<img width="2355" height="1568" src="https://www.westminster.org.uk/wp-content/uploads/2022/10/GWL_4210_gwl-scaled-e1666018527542.jpg" class="home-featured-page-img wp-post-image" alt="" decoding="async" srcset="https://www.westminster.org.uk/wp-content/uploads/2022/10/GWL_4210_gwl-scaled-e1666018527542.jpg 2355w, https://www.westminster.org.uk/wp-content/uploads/2022/10/GWL_4210_gwl-scaled-e1666018527542-768x511.jpg 768w, https://www.westminster.org.uk/wp-content/uploads/2022/10/GWL_4210_gwl-scaled-e1666018527542-1536x1023.jpg 1536w, https://www.westminster.org.uk/wp-content/uploads/2022/10/GWL_4210_gwl-scaled-e1666018527542-2048x1364.jpg 2048w" sizes="(max-width: 2355px) 100vw, 2355px" /><a href="https://www.westminster.org.uk/about/">
 
 												<span class="home-featured-page-caption-b">
-													About Westminster</span>
+													About Nefertari</span>
 
 											</a>
 										</div>
-
 
 
 
@@ -10845,9 +10730,6 @@ font-weight: 500;
 										</div>
 
 
-
-
-
 										<div class="featured-page">
 
 											<img width="2560" height="1707" src="https://www.westminster.org.uk/wp-content/uploads/2023/06/WestminsterSchoolSep2021.-268-scaled.jpg" class="home-featured-page-img wp-post-image" alt="" decoding="async" srcset="https://www.westminster.org.uk/wp-content/uploads/2023/06/WestminsterSchoolSep2021.-268-scaled.jpg 2560w, https://www.westminster.org.uk/wp-content/uploads/2023/06/WestminsterSchoolSep2021.-268-768x512.jpg 768w, https://www.westminster.org.uk/wp-content/uploads/2023/06/WestminsterSchoolSep2021.-268-1536x1024.jpg 1536w, https://www.westminster.org.uk/wp-content/uploads/2023/06/WestminsterSchoolSep2021.-268-2048x1366.jpg 2048w" sizes="(max-width: 2560px) 100vw, 2560px" /><a href="https://www.westminster.org.uk/academic-life/">
@@ -10858,50 +10740,15 @@ font-weight: 500;
 											</a>
 										</div>
 
-
-
-
-
-										<div class="featured-page">
-
-											<img width="1900" height="1267" src="https://www.westminster.org.uk/wp-content/uploads/2022/07/IMG_0055-scaled-e1659215238612.jpg" class="home-featured-page-img wp-post-image" alt="" decoding="async" srcset="https://www.westminster.org.uk/wp-content/uploads/2022/07/IMG_0055-scaled-e1659215238612.jpg 1900w, https://www.westminster.org.uk/wp-content/uploads/2022/07/IMG_0055-scaled-e1659215238612-768x512.jpg 768w, https://www.westminster.org.uk/wp-content/uploads/2022/07/IMG_0055-scaled-e1659215238612-1536x1024.jpg 1536w" sizes="(max-width: 1900px) 100vw, 1900px" /><a href="https://www.westminster.org.uk/school-life/">
-
-												<span class="home-featured-page-caption">
-													School Life</span>
-
-											</a>
-										</div>
-
-
-
-
-
 										<div class="featured-page">
 
 											<img width="2560" height="1703" src="https://www.westminster.org.uk/wp-content/uploads/2023/04/WS-21-03-23-415-scaled.jpg" class="home-featured-page-img wp-post-image" alt="" decoding="async" srcset="https://www.westminster.org.uk/wp-content/uploads/2023/04/WS-21-03-23-415-scaled.jpg 2560w, https://www.westminster.org.uk/wp-content/uploads/2023/04/WS-21-03-23-415-scaled-768x511.jpg 768w, https://www.westminster.org.uk/wp-content/uploads/2023/04/WS-21-03-23-415-scaled-1536x1022.jpg 1536w, https://www.westminster.org.uk/wp-content/uploads/2023/04/WS-21-03-23-415-scaled-2048x1362.jpg 2048w" sizes="(max-width: 2560px) 100vw, 2560px" /><a href="https://www.westminster.org.uk/co-curriculum/">
 
 												<span class="home-featured-page-caption-b">
-													Co-Curriculum</span>
+													Curriculum</span>
 
 											</a>
 										</div>
-
-
-
-
-
-										<div class="featured-page">
-
-											<img width="1520" height="1012" src="https://www.westminster.org.uk/wp-content/uploads/2023/06/01-2-scaled-e1686339655155.jpg" class="home-featured-page-img wp-post-image" alt="" decoding="async" srcset="https://www.westminster.org.uk/wp-content/uploads/2023/06/01-2-scaled-e1686339655155.jpg 1520w, https://www.westminster.org.uk/wp-content/uploads/2023/06/01-2-scaled-e1686339655155-768x511.jpg 768w" sizes="(max-width: 1520px) 100vw, 1520px" /><a href="https://www.westminster.org.uk/partnerships/">
-
-												<span class="home-featured-page-caption">
-													Partnerships</span>
-
-											</a>
-										</div>
-
-
-
 
 									</div>
 								</section>
@@ -10913,7 +10760,6 @@ font-weight: 500;
 
 						<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 						<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-
 						<script>
 							$(".owl-carousel").owlCarousel({
 								loop: true,
@@ -10963,31 +10809,7 @@ font-weight: 500;
 					<div class="astra-advanced-hook-19757 ">
 						
 		</div><!-- #content -->
-		<div class="astra-advanced-hook-22971 ">
-			<div class="search-filter">
-
-
-				<form action="" method="post" class="searchandfilter">
-					<div>
-						<ul>
-							<li><select name='ofcategory' id='ofcategory' class='postform'>
-									<option value='0' selected='selected'>Select News Stories</option>
-									<option class="level-0" value="413">About&nbsp;&nbsp;(13)</option>
-									<option class="level-0" value="397">Academic Life&nbsp;&nbsp;(38)</option>
-									<option class="level-0" value="426">Admissions&nbsp;&nbsp;(3)</option>
-									<option class="level-0" value="396">Co-Curriculum&nbsp;&nbsp;(70)</option>
-									<option class="level-0" value="403">Partnerships&nbsp;&nbsp;(8)</option>
-									<option class="level-0" value="315">School Life&nbsp;&nbsp;(31)</option>
-									<option class="level-0" value="1">Uncategorised&nbsp;&nbsp;(0)</option>
-								</select>
-								<input type="hidden" name="ofcategory_operator" value="and" />
-							</li>
-							<li><input type="hidden" name="ofempty_search_url" value="/news-archive/" /><input type="hidden" name="ofsubmitted" value="1"><input type="submit" value="Apply Filter"></li>
-						</ul>
-					</div>
-				</form>
-			</div>
-		</div>
+		
 		<div class="astra-advanced-hook-19201 ">
 		</div>
 		<div class="astra-advanced-hook-18182 ">
@@ -11135,23 +10957,7 @@ font-weight: 500;
 
 
 		</footer><!-- #colophon -->
-		<div class="ast-search-box full-screen" id="ast-seach-full-screen-form">
-			<span id="close" class="close"><span class="ast-icon icon-close"></span></span>
-			<div class="ast-search-wrapper">
-				<div class="ast-container">
-					<h3 class="large-search-text">Start typing and press enter to search</h3>
-					<form class="search-form" action="https://www.westminster.org.uk/" method="get">
-						<fieldset>
-							<span class="text">
-								<label for="search-field" class="screen-reader-text">Search &hellip;</label>
-								<input id="search-field" name="s" class="search-field" autocomplete="off" type="text" value="" placeholder="Search &hellip;">
-							</span>
-							<button aria-label="Search" class="button search-submit"><i class="astra-search-icon"> <span class="ast-icon icon-search"></span> </i></button>
-						</fieldset>
-					</form>
-				</div>
-			</div>
-		</div>
+		
 	</div><!-- #page -->
 	<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 	<script>
