@@ -9891,7 +9891,7 @@ font-weight: 500;
 						</div>
 
 						<div class="mobile-links-group">
-							<a href="#">
+							<a href="./StudentView/studentView.php">
 								News</a>
 						</div>
 					</div>
