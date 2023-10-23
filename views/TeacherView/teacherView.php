@@ -12796,7 +12796,7 @@ include "../partials/nav.php"
 			<div class="featured-pages">
 				<div class="featured-page">
 
-					<img width="2560" height="1709" src="../../Public/imgs/clasPic.jpeg" class="featured-page-img wp-post-image" alt="" decoding="async" loading="lazy" sizes="(max-width: 2560px) 100vw, 2560px" /><a href="./innerTeacherView2.php">
+					<img width="2560" height="1709" src="../../Public/imgs/clasPic.jpeg" class="featured-page-img wp-post-image" alt="" decoding="async" loading="lazy" sizes="(max-width: 2560px) 100vw, 2560px" /><a href="./innerTeacherView.php">
 						<div class="featured-page-caption">
 							Class 1
 						</div>

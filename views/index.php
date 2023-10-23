@@ -9881,7 +9881,7 @@ font-weight: 500;
 					<div class="mobile-links">
 
 						<div class="mobile-links-group">
-							<a href="./TeacherView/teacherView2.php">
+							<a href="./TeacherView/teacherView.php">
 								Admissions</a>
 						</div>
 
