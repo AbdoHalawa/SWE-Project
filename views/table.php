@@ -3,19 +3,19 @@
 <head>
       <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Free Bootstrap Admin Template : Binary Admin</title>
+    <title>Admin control panel</title>
 	<!-- BOOTSTRAP STYLES-->
-    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <link href="..\Public/CSS/bootstrap.css" rel="stylesheet" />
      <!-- FONTAWESOME STYLES-->
-    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+    <link href="..\Public/CSS/font-awesome.css" rel="stylesheet" />
      <!-- MORRIS CHART STYLES-->
-   
+    <link href="..\Public/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
         <!-- CUSTOM STYLES-->
-    <link href="assets/css/custom.css" rel="stylesheet" />
+    <link href="..\Public\CSS\custom.css" rel="stylesheet" />
      <!-- GOOGLE FONTS-->
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-     <!-- TABLE STYLES-->
-    <link href="assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+   <link rel="stylesheet" href="../public/css/nav.css">
+   <script src="https://kit.fontawesome.com/f17a435b32.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div id="wrapper">
@@ -35,25 +35,26 @@ float: right;
 font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-danger square-btn-adjust">Logout</a> </div>
         </nav>   
             <!-- /. NAV TOP  -->
-        <nav class="navbar-default navbar-side" role="navigation">
+           <!-- /. NAV TOP  -->
+           <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
                     <li class="text-center">
-                        <img src="assets/img/find_user.png" class="user-image img-responsive" />
+                    <img src="..\Public\imgs\find_user(admin).png" class="user-image img-responsive" />
                     </li>
                     <li>
-                        <a href="admiNindex.html"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
+                        <a href="admiNindex.php"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
                     </li>
                     
               
                     <li>
-                        <a class="active-menu" href="chart.html"><i class="fa fa-bar-chart-o fa-3x"></i> Academic Performance</a>
+                        <a class="active-menu" href="chart.php"><i class="fa fa-bar-chart-o fa-3x"></i> Academic Performance</a>
                     </li>
                     <li>
-                        <a href="table.html"><i class="fa fa-table fa-3x"></i>Tables</a>
+                        <a href="table.php"><i class="fa fa-table fa-3x"></i>Tables</a>
                     </li>
                     <li>
-                        <a href="form.html"><i class="fa fa-edit fa-3x"></i> Forms </a>
+                        <a href="form.php"><i class="fa fa-edit fa-3x"></i> Forms </a>
                     </li>
                    
                 </ul>
@@ -264,14 +265,21 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
      <!-- /. WRAPPER  -->
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
     <!-- JQUERY SCRIPTS -->
-    <script src="assets/js/jquery-1.10.2.js"></script>
-      <!-- BOOTSTRAP SCRIPTS -->
-    <script src="assets/js/bootstrap.min.js"></script>
+    
+    <!-- JQUERY SCRIPTS -->
+    <script src="..\Public\js\jquery-1.10.2.js"></script>
+    <!-- BOOTSTRAP SCRIPTS -->
+    <script src="..\Public\js\bootstrap.min.js"></script>
     <!-- METISMENU SCRIPTS -->
-    <script src="assets/js/jquery.metisMenu.js"></script>
+    <script src="..\Public\js\jquery.metisMenu.js"></script>
+    <!-- MORRIS CHART SCRIPTS -->
+    <script src="..\Public\js\morris\raphael-2.1.0.min.js"></script>
+    <script src="..\Public\js\morris\morris.js"></script>
+    <!-- CUSTOM SCRIPTS -->
+    
      <!-- DATA TABLE SCRIPTS -->
-    <script src="assets/js/dataTables/jquery.dataTables.js"></script>
-    <script src="assets/js/dataTables/dataTables.bootstrap.js"></script>
+    <script src="..\Public\js\dataTables\jquery.dataTables.js"></script>
+    <script src="..\Public\js\dataTables\dataTables.bootstrap.js"></script>
         <script>
             $(document).ready(function () {
                 $('#dataTables-example').dataTable();
@@ -279,9 +287,7 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
                 $('#medicalStudentsTable').DataTable();
             });
     </script>
-         <!-- CUSTOM SCRIPTS -->
-    <script src="assets/js/custom.js"></script>
-    
+    <script src="..\Public\js\custom.js"></script>
    
 </body>
 </html>
