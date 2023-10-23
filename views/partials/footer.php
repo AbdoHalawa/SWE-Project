@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="../Public/CSS/footer.css">
+<script src="https://kit.fontawesome.com/cd800095c4.js" crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/11298abef4.js" crossorigin="anonymous"></script>
+
+
 <div class="astra-advanced-hook-19201 ">
 		</div>
 		<div class="astra-advanced-hook-18182 ">

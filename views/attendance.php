@@ -172,5 +172,5 @@
 
 </html>
 <?php
-include "./partials/footer.html"
+include "./partials/footer.php"
 ?>
