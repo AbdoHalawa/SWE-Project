@@ -22,7 +22,7 @@ include './partials/nav.php';
 	<meta property="og:site_name" content="Nefertari" />
 	<meta property="article:modified_time" content="2023-10-15T15:54:05+00:00" />
 	<meta name="twitter:card" content="summary_large_image" />
-	<link rel="stylesheet" href="../Public/CSS/footerNour.css">
+<link rel="stylesheet" href="../Public/CSS/footerNour.css">
 	<link rel='stylesheet' id='astra-theme-css-css' href='../Public/external-css/astra-style.min.css' media='all' />
 	<style id='astra-theme-css-inline-css'>
 		.ast-no-sidebar .entry-content .alignfull {
@@ -131,12 +131,12 @@ include './partials/nav.php';
 
 		a,
 		.page-title {
-			color: #f77e9d;
+			color:  #8d1020;
 		}
 
 		a:hover,
 		a:focus {
-			color: #f77e9d;
+			color:  #8d1020;
 		}
 
 		body,
@@ -271,285 +271,18 @@ include './partials/nav.php';
 		.entry-content h6 {
 			color: #4e5768;
 		}
-
-		.tagcloud a:hover,
-		.tagcloud a:focus,
-		.tagcloud a.current-item {
-			color: #000000;
-			border-color: #f77e9d;
-			background-color: #f77e9d;
-		}
-
-		input:focus,
-		input[type="text"]:focus,
-		input[type="email"]:focus,
-		input[type="url"]:focus,
-		input[type="password"]:focus,
-		input[type="reset"]:focus,
-		input[type="search"]:focus,
-		textarea:focus {
-			border-color: #f77e9d;
-		}
-
-		input[type="radio"]:checked,
-		input[type=reset],
-		input[type="checkbox"]:checked,
-		input[type="checkbox"]:hover:checked,
-		input[type="checkbox"]:focus:checked,
-		input[type=range]::-webkit-slider-thumb {
-			border-color: #f77e9d;
-			background-color: #f77e9d;
-			box-shadow: none;
-		}
-
-		.site-footer a:hover+.post-count,
-		.site-footer a:focus+.post-count {
-			background: #f77e9d;
-			border-color: #f77e9d;
-		}
-
-		.single .nav-links .nav-previous,
-		.single .nav-links .nav-next {
-			color: #f77e9d;
-		}
-
-		.entry-meta,
-		.entry-meta * {
-			line-height: 1.45;
-			color: #f77e9d;
-		}
-
-		.entry-meta a:hover,
-		.entry-meta a:hover *,
-		.entry-meta a:focus,
-		.entry-meta a:focus *,
-		.page-links>.page-link,
-		.page-links .page-link:hover,
-		.post-navigation a:hover {
-			color: #f77e9d;
-		}
-
-		#cat option,
-		.secondary .calendar_wrap thead a,
-		.secondary .calendar_wrap thead a:visited {
-			color: #f77e9d;
-		}
-
-		.secondary .calendar_wrap #today,
-		.ast-progress-val span {
-			background: #f77e9d;
-		}
-
-		.secondary a:hover+.post-count,
-		.secondary a:focus+.post-count {
-			background: #f77e9d;
-			border-color: #f77e9d;
-		}
-
-		.calendar_wrap #today>a {
-			color: #000000;
-		}
-
-		.page-links .page-link,
-		.single .post-navigation a {
-			color: #f77e9d;
-		}
-
-		.widget-title,
-		.widget .wp-block-heading {
-			font-size: 21px;
-			font-size: 1.4rem;
-			color: #4e5768;
-		}
-
-		.single .ast-author-details .author-title {
-			color: #f77e9d;
-		}
-
-		a:focus-visible,
-		.ast-menu-toggle:focus-visible,
-		.site .skip-link:focus-visible,
-		.wp-block-loginout input:focus-visible,
-		.wp-block-search.wp-block-search__button-inside .wp-block-search__inside-wrapper,
-		.ast-header-navigation-arrow:focus-visible,
-		.woocommerce .wc-proceed-to-checkout>.checkout-button:focus-visible,
-		.woocommerce .woocommerce-MyAccount-navigation ul li a:focus-visible,
-		.ast-orders-table__row .ast-orders-table__cell:focus-visible,
-		.woocommerce .woocommerce-order-details .order-again>.button:focus-visible,
-		.woocommerce .woocommerce-message a.button.wc-forward:focus-visible,
-		.woocommerce #minus_qty:focus-visible,
-		.woocommerce #plus_qty:focus-visible,
-		a#ast-apply-coupon:focus-visible,
-		.woocommerce .woocommerce-info a:focus-visible,
-		.woocommerce .astra-shop-summary-wrap a:focus-visible,
-		.woocommerce a.wc-forward:focus-visible,
-		#ast-apply-coupon:focus-visible,
-		.woocommerce-js .woocommerce-mini-cart-item a.remove:focus-visible {
-			outline-style: dotted;
-			outline-color: inherit;
-			outline-width: thin;
-			border-color: transparent;
-		}
-
-		input:focus,
-		input[type="text"]:focus,
-		input[type="email"]:focus,
-		input[type="url"]:focus,
-		input[type="password"]:focus,
-		input[type="reset"]:focus,
-		input[type="search"]:focus,
-		input[type="number"]:focus,
-		textarea:focus,
-		.wp-block-search__input:focus,
-		[data-section="section-header-mobile-trigger"] .ast-button-wrap .ast-mobile-menu-trigger-minimal:focus,
-		.ast-mobile-popup-drawer.active .menu-toggle-close:focus,
-		.woocommerce-ordering select.orderby:focus,
-		#ast-scroll-top:focus,
-		#coupon_code:focus,
-		.woocommerce-page #comment:focus,
-		.woocommerce #reviews #respond input#submit:focus,
-		.woocommerce a.add_to_cart_button:focus,
-		.woocommerce .button.single_add_to_cart_button:focus,
-		.woocommerce .woocommerce-cart-form button:focus,
-		.woocommerce .woocommerce-cart-form__cart-item .quantity .qty:focus,
-		.woocommerce .woocommerce-billing-fields .woocommerce-billing-fields__field-wrapper .woocommerce-input-wrapper>.input-text:focus,
-		.woocommerce #order_comments:focus,
-		.woocommerce #place_order:focus,
-		.woocommerce .woocommerce-address-fields .woocommerce-address-fields__field-wrapper .woocommerce-input-wrapper>.input-text:focus,
-		.woocommerce .woocommerce-MyAccount-content form button:focus,
-		.woocommerce .woocommerce-MyAccount-content .woocommerce-EditAccountForm .woocommerce-form-row .woocommerce-Input.input-text:focus,
-		.woocommerce .ast-woocommerce-container .woocommerce-pagination ul.page-numbers li a:focus,
-		body #content .woocommerce form .form-row .select2-container--default .select2-selection--single:focus,
-		#ast-coupon-code:focus,
-		.woocommerce.woocommerce-js .quantity input[type=number]:focus,
-		.woocommerce-js .woocommerce-mini-cart-item .quantity input[type=number]:focus,
-		.woocommerce p#ast-coupon-trigger:focus {
-			border-style: dotted;
-			border-color: inherit;
-			border-width: thin;
-			outline-color: transparent;
-		}
-
-		.main-header-menu .menu-link,
-		.ast-header-custom-item a {
-			color: #4e5768;
-		}
-
-		.main-header-menu .menu-item:hover>.menu-link,
-		.main-header-menu .menu-item:hover>.ast-menu-toggle,
-		.main-header-menu .ast-masthead-custom-menu-items a:hover,
-		.main-header-menu .menu-item.focus>.menu-link,
-		.main-header-menu .menu-item.focus>.ast-menu-toggle,
-		.main-header-menu .current-menu-item>.menu-link,
-		.main-header-menu .current-menu-ancestor>.menu-link,
-		.main-header-menu .current-menu-item>.ast-menu-toggle,
-		.main-header-menu .current-menu-ancestor>.ast-menu-toggle {
-			color: #f77e9d;
-		}
-
-		.header-main-layout-3 .ast-main-header-bar-alignment {
-			margin-right: auto;
-		}
-
-		.header-main-layout-2 .site-header-section-left .ast-site-identity {
-			text-align: left;
-		}
-
-		.ast-header-break-point .ast-mobile-menu-buttons-minimal.menu-toggle {
-			background: transparent;
-			color: #ffffff;
-		}
-
-		.ast-header-break-point .ast-mobile-menu-buttons-outline.menu-toggle {
-			background: transparent;
-			border: 1px solid #ffffff;
-			color: #ffffff;
-		}
-
-		.ast-header-break-point .ast-mobile-menu-buttons-fill.menu-toggle {
-			background: #ffffff;
-			color: #000000;
-		}
-
-		.ast-page-builder-template .hentry {
-			margin: 0;
-		}
-
-		.ast-page-builder-template .site-content>.ast-container {
-			max-width: 100%;
-			padding: 0;
-		}
-
-		.ast-page-builder-template .site-content #primary {
-			padding: 0;
-			margin: 0;
-		}
-
-		.ast-page-builder-template .no-results {
-			text-align: center;
-			margin: 4em auto;
-		}
-
-		.ast-page-builder-template .ast-pagination {
-			padding: 2em;
-		}
-
-		.ast-page-builder-template .entry-header.ast-no-title.ast-no-thumbnail {
-			margin-top: 0;
-		}
-
-		.ast-page-builder-template .entry-header.ast-header-without-markup {
-			margin-top: 0;
-			margin-bottom: 0;
-		}
-
-		.ast-page-builder-template .entry-header.ast-no-title.ast-no-meta {
-			margin-bottom: 0;
-		}
-
-		.ast-page-builder-template.single .post-navigation {
-			padding-bottom: 2em;
-		}
-
-		.ast-page-builder-template.single-post .site-content>.ast-container {
-			max-width: 100%;
-		}
-
-		.ast-page-builder-template .entry-header {
-			margin-top: 4em;
-			margin-left: auto;
-			margin-right: auto;
-			padding-left: 20px;
-			padding-right: 20px;
-		}
-
-		.single.ast-page-builder-template .entry-header {
-			padding-left: 20px;
-			padding-right: 20px;
-		}
-
-		.ast-page-builder-template .ast-archive-description {
-			margin: 4em auto 0;
-			padding-left: 20px;
-			padding-right: 20px;
-		}
-
-		.ast-page-builder-template.ast-no-sidebar .entry-content .alignwide {
-			margin-left: 0;
-			margin-right: 0;
-		}
-
-		.ast-small-footer {
+		
+     	.ast-small-footer {
 			color: #222329;
 		}
 
 		.ast-small-footer>.ast-footer-overlay {
-			background-color: #f77e9d;
-			;
+			background-color:  #8d1020;
+			
 		}
 
 		.ast-small-footer a {
-			color: #f77e9d;
+			color: #8d1020;
 		}
 
 		.ast-small-footer a:hover {
@@ -562,18 +295,18 @@ include './partials/nav.php';
 		}
 
 		.footer-adv a {
-			color: #f77e9d;
+			color:  #8d1020;
 		}
 
 		.footer-adv .tagcloud a:hover,
 		.footer-adv .tagcloud a.current-item {
-			border-color: #f77e9d;
-			background-color: #f77e9d;
+			border-color: #8d1020;
+			background-color: #8d1020;
 		}
 
 		.footer-adv .calendar_wrap #today,
 		.footer-adv a:hover+.post-count {
-			background-color: #f77e9d;
+			background-color:  #8d1020;
 		}
 
 		.footer-adv-overlay {
