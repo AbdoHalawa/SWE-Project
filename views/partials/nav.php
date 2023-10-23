@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <link rel="stylesheet" href="../Public/CSS/nav.css">
+
+
+
+
+
+
 <nav class="wus-menu">
 
     <div class="wus-menu__button">
@@ -14,6 +20,7 @@
     </div>
 
     <div class="wus-menu__close"></div>
+
 
 
     <div class="wus-menu__content">
@@ -53,7 +60,7 @@
                     <span class="wus-nav-item__title">Curriculum</span>
 
                 </li>
-                
+
                 <a target="_blank" href="https://www.facebook.com/WestminsterSchoolUK/">
                     <i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a>
                 <a target="_blank" href="https://twitter.com/wschool">
@@ -62,7 +69,7 @@
                     <i class="fab fa-instagram fa-lg" aria-hidden="true"></i></a>
                 <a target="_blank" href="https://www.linkedin.com/company/westminster-school-london">
                     <i class="fab fa-linkedin-in fa-lg" aria-hidden="true"></i></a>
-                
+
 
             </ul>
 

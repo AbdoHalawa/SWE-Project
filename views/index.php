@@ -22,7 +22,7 @@ include './partials/nav.php';
 	<meta property="og:site_name" content="Nefertari" />
 	<meta property="article:modified_time" content="2023-10-15T15:54:05+00:00" />
 	<meta name="twitter:card" content="summary_large_image" />
-<link rel="stylesheet" href="../Public/CSS/footerNour.css">
+	<link rel="stylesheet" href="../Public/CSS/footerNour.css">
 	<link rel='stylesheet' id='astra-theme-css-css' href='../Public/external-css/astra-style.min.css' media='all' />
 	<style id='astra-theme-css-inline-css'>
 		.ast-no-sidebar .entry-content .alignfull {
@@ -131,12 +131,12 @@ include './partials/nav.php';
 
 		a,
 		.page-title {
-			color:  #8d1020;
+			color: #8d1020;
 		}
 
 		a:hover,
 		a:focus {
-			color:  #8d1020;
+			color: #8d1020;
 		}
 
 		body,
@@ -271,14 +271,14 @@ include './partials/nav.php';
 		.entry-content h6 {
 			color: #4e5768;
 		}
-		
-     	.ast-small-footer {
+
+		.ast-small-footer {
 			color: #222329;
 		}
 
 		.ast-small-footer>.ast-footer-overlay {
-			background-color:  #8d1020;
-			
+			background-color: #8d1020;
+
 		}
 
 		.ast-small-footer a {
@@ -295,7 +295,7 @@ include './partials/nav.php';
 		}
 
 		.footer-adv a {
-			color:  #8d1020;
+			color: #8d1020;
 		}
 
 		.footer-adv .tagcloud a:hover,
@@ -306,7 +306,7 @@ include './partials/nav.php';
 
 		.footer-adv .calendar_wrap #today,
 		.footer-adv a:hover+.post-count {
-			background-color:  #8d1020;
+			background-color: #8d1020;
 		}
 
 		.footer-adv-overlay {
@@ -9658,7 +9658,7 @@ font-weight: 500;
 			opacity: 0.8 !important;
 		}
 	</style>
-	
+
 	<style>
 		#link-back-bottom {
 			width: 100%;
@@ -9881,12 +9881,12 @@ font-weight: 500;
 					<div class="mobile-links">
 
 						<div class="mobile-links-group">
-							<a href="#">
+							<a href="../views/teacherView2.php">
 								Admissions</a>
 						</div>
 
 						<div class="mobile-links-group">
-							<a href="#">
+							<a href="../views/admiNindex.php">
 								School Life</a>
 						</div>
 
@@ -9907,11 +9907,9 @@ font-weight: 500;
 						<li><span style="background-image: url('../Public/imgs/3.webp');"></span></li>
 						<li><span style="background-image: url('../Public/imgs/4.png');"></span></li>
 						<li><span style="background-image: url('../Public/imgs/5.png');"></span></li>
-						<li><span style="background-image: url('../Public/imgs/2.webp');"></span></li>
-						<li><span style="background-image: url('../Public/imgs/1.webp');"></span></li>
+						<li><span style="background-image: url('../Public/imgs/7.webp');"></span></li>
 						<li><span style="background-image: url('../Public/imgs/3.webp');"></span></li>
 						<li><span style="background-image: url('../Public/imgs/4.png');"></span></li>
-						<li><span style="background-image: url(''../Public/imgs/5.png');"></span></li>
 					</ul>
 
 
@@ -9936,10 +9934,7 @@ font-weight: 500;
 
 				<!--Homepage Alert Text-->
 				<div class="astra-advanced-hook-38861 ">
-
-
 					<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-
 					<script>
 						wusmenu: {
 							$('.wus-menu__button:not(.no-js)').on('click', function() {
@@ -9950,8 +9945,6 @@ font-weight: 500;
 							});
 						}
 					</script>
-
-
 					<script>
 						$('body').delegate('.wus-nav-item', 'click', function() {
 							$('.wus-nav-item').removeClass('wus-nav-item--active');
@@ -9974,7 +9967,7 @@ font-weight: 500;
 					<div class="astra-advanced-hook-33781 ">
 						<div class="homepage-section-one-heading">
 							25 Years Graduating
-							Generations of Pioneers 
+							Generations of Pioneers
 						</div>
 
 						<div class="homepage-section-one">
@@ -10048,7 +10041,7 @@ font-weight: 500;
 
 							</section>
 
-							
+
 							<!--Latest News Strip-->
 
 						</div>
@@ -10137,105 +10130,105 @@ font-weight: 500;
 						</script>
 
 					</div>
-				
-		
-		<?php
-      include './partials/footer.php';
-         ?>
-	<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-	<script>
-		AOS.init();
-	</script>
-	<script type="text/javascript">
-		function fetch() {
 
-			jQuery.ajax({
-				url: 'https://www.westminster.org.uk/wp-admin/admin-ajax.php',
-				type: 'post',
-				data: {
-					action: 'data_fetch',
-					keyword: jQuery('#keyword').val()
-				},
-				success: function(data) {
-					jQuery('#datafetch').html(data);
-				}
-			});
 
-		}
-	</script>
+					<?php
+					include './partials/footer.php';
+					?>
+					<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+					<script>
+						AOS.init();
+					</script>
+					<script type="text/javascript">
+						function fetch() {
 
-	<script id='astra-theme-js-js-extra'>
-		var astra = {
-			"break_point": "1150",
-			"isRtl": "",
-			"is_scroll_to_id": "",
-			"is_scroll_to_top": "",
-			"is_header_footer_builder_active": "",
-			"edit_post_url": "https:\/\/www.westminster.org.uk\/wp-admin\/post.php?post={{id}}&action=edit",
-			"ajax_url": "https:\/\/www.westminster.org.uk\/wp-admin\/admin-ajax.php",
-			"infinite_count": "2",
-			"infinite_total": "0",
-			"pagination": "number",
-			"infinite_scroll_event": "scroll",
-			"no_more_post_message": "No more posts to show.",
-			"grid_layout": "2",
-			"site_url": "https:\/\/www.westminster.org.uk",
-			"show_comments": "Show Comments",
-			"masonryEnabled": "",
-			"blogMasonryBreakPoint": "768"
-		};
-	</script>
-	<script src='https://www.westminster.org.uk/wp-content/themes/astra/assets/js/minified/style.min.js?ver=4.3.1' id='astra-theme-js-js'></script>
-	<script src='https://www.westminster.org.uk/wp-content/plugins/velocity/core/js/velocity.min.js?ver=1.2.1' id='velocity-js'></script>
-	<script src='https://www.westminster.org.uk/wp-content/plugins/wp-media-folder/assets/js/display-gallery/jquery.magnific-popup.min.js?ver=0.9.9' id='wpmf-gallery-popup-js'></script>
-	<script src='https://www.westminster.org.uk/wp-content/themes/westminster-child/js/jquery.mCustomScrollbar.concat.min.js?ver=_S_VERSION' id='maxx-scrollbar-js'></script>
-	<script src='https://www.westminster.org.uk/wp-content/themes/westminster-child/js/moment-with-locales.js?ver=_S_VERSION' id='maxx-moment-js'></script>
-	<script src='https://www.westminster.org.uk/wp-content/themes/westminster-child/js/core.js?ver=_S_VERSION' id='maxx-core-js'></script>
-	<script id='astra-addon-js-js-extra'>
-		var astraAddon = {
-			"sticky_active": "1",
-			"svgIconClose": "<span class=\"ast-icon icon-close\"><\/span>",
-			"hook_sticky_header": "",
-			"hook_shrink_header": "",
-			"hook_sticky_header_on_devices": "desktop",
-			"hook_custom_header_break_point": "921",
-			"header_main_stick": "",
-			"header_above_stick": "1",
-			"header_below_stick": "",
-			"stick_header_meta": "",
-			"header_main_stick_meta": "",
-			"header_above_stick_meta": "",
-			"header_below_stick_meta": "",
-			"sticky_header_on_devices": "both",
-			"sticky_header_style": "fade",
-			"sticky_hide_on_scroll": "",
-			"break_point": "1150",
-			"tablet_break_point": "768",
-			"mobile_break_point": "544",
-			"header_main_shrink": "",
-			"header_logo_width": "",
-			"responsive_header_logo_width": {
-				"desktop": "250",
-				"tablet": "200",
-				"mobile": 120
-			},
-			"stick_origin_position": "",
-			"site_layout": "ast-full-width-layout",
-			"site_content_width": "1240",
-			"site_layout_padded_width": "1200",
-			"site_layout_box_width": "1200",
-			"header_builder_active": "",
-			"component_limit": "10",
-			"is_header_builder_active": ""
-		};
-	</script>
-	<script src='https://www.westminster.org.uk/wp-content/uploads/astra-addon/astra-addon-6515c7a5964590-00885884.js?ver=4.3.3' id='astra-addon-js-js'></script>
-	<script>
-		/(trident|msie)/i.test(navigator.userAgent) && document.getElementById && window.addEventListener && window.addEventListener("hashchange", function() {
-			var t, e = location.hash.substring(1);
-			/^[A-z0-9_-]+$/.test(e) && (t = document.getElementById(e)) && (/^(?:a|select|input|button|textarea)$/i.test(t.tagName) || (t.tabIndex = -1), t.focus())
-		}, !1);
-	</script>
+							jQuery.ajax({
+								url: 'https://www.westminster.org.uk/wp-admin/admin-ajax.php',
+								type: 'post',
+								data: {
+									action: 'data_fetch',
+									keyword: jQuery('#keyword').val()
+								},
+								success: function(data) {
+									jQuery('#datafetch').html(data);
+								}
+							});
+
+						}
+					</script>
+
+					<script id='astra-theme-js-js-extra'>
+						var astra = {
+							"break_point": "1150",
+							"isRtl": "",
+							"is_scroll_to_id": "",
+							"is_scroll_to_top": "",
+							"is_header_footer_builder_active": "",
+							"edit_post_url": "https:\/\/www.westminster.org.uk\/wp-admin\/post.php?post={{id}}&action=edit",
+							"ajax_url": "https:\/\/www.westminster.org.uk\/wp-admin\/admin-ajax.php",
+							"infinite_count": "2",
+							"infinite_total": "0",
+							"pagination": "number",
+							"infinite_scroll_event": "scroll",
+							"no_more_post_message": "No more posts to show.",
+							"grid_layout": "2",
+							"site_url": "https:\/\/www.westminster.org.uk",
+							"show_comments": "Show Comments",
+							"masonryEnabled": "",
+							"blogMasonryBreakPoint": "768"
+						};
+					</script>
+					<script src='https://www.westminster.org.uk/wp-content/themes/astra/assets/js/minified/style.min.js?ver=4.3.1' id='astra-theme-js-js'></script>
+					<script src='https://www.westminster.org.uk/wp-content/plugins/velocity/core/js/velocity.min.js?ver=1.2.1' id='velocity-js'></script>
+					<script src='https://www.westminster.org.uk/wp-content/plugins/wp-media-folder/assets/js/display-gallery/jquery.magnific-popup.min.js?ver=0.9.9' id='wpmf-gallery-popup-js'></script>
+					<script src='https://www.westminster.org.uk/wp-content/themes/westminster-child/js/jquery.mCustomScrollbar.concat.min.js?ver=_S_VERSION' id='maxx-scrollbar-js'></script>
+					<script src='https://www.westminster.org.uk/wp-content/themes/westminster-child/js/moment-with-locales.js?ver=_S_VERSION' id='maxx-moment-js'></script>
+					<script src='https://www.westminster.org.uk/wp-content/themes/westminster-child/js/core.js?ver=_S_VERSION' id='maxx-core-js'></script>
+					<script id='astra-addon-js-js-extra'>
+						var astraAddon = {
+							"sticky_active": "1",
+							"svgIconClose": "<span class=\"ast-icon icon-close\"><\/span>",
+							"hook_sticky_header": "",
+							"hook_shrink_header": "",
+							"hook_sticky_header_on_devices": "desktop",
+							"hook_custom_header_break_point": "921",
+							"header_main_stick": "",
+							"header_above_stick": "1",
+							"header_below_stick": "",
+							"stick_header_meta": "",
+							"header_main_stick_meta": "",
+							"header_above_stick_meta": "",
+							"header_below_stick_meta": "",
+							"sticky_header_on_devices": "both",
+							"sticky_header_style": "fade",
+							"sticky_hide_on_scroll": "",
+							"break_point": "1150",
+							"tablet_break_point": "768",
+							"mobile_break_point": "544",
+							"header_main_shrink": "",
+							"header_logo_width": "",
+							"responsive_header_logo_width": {
+								"desktop": "250",
+								"tablet": "200",
+								"mobile": 120
+							},
+							"stick_origin_position": "",
+							"site_layout": "ast-full-width-layout",
+							"site_content_width": "1240",
+							"site_layout_padded_width": "1200",
+							"site_layout_box_width": "1200",
+							"header_builder_active": "",
+							"component_limit": "10",
+							"is_header_builder_active": ""
+						};
+					</script>
+					<script src='https://www.westminster.org.uk/wp-content/uploads/astra-addon/astra-addon-6515c7a5964590-00885884.js?ver=4.3.3' id='astra-addon-js-js'></script>
+					<script>
+						/(trident|msie)/i.test(navigator.userAgent) && document.getElementById && window.addEventListener && window.addEventListener("hashchange", function() {
+							var t, e = location.hash.substring(1);
+							/^[A-z0-9_-]+$/.test(e) && (t = document.getElementById(e)) && (/^(?:a|select|input|button|textarea)$/i.test(t.tagName) || (t.tabIndex = -1), t.focus())
+						}, !1);
+					</script>
 </body>
 
 </html>
