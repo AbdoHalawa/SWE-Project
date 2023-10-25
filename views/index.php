@@ -9882,7 +9882,7 @@ font-weight: 500;
 
 						<div class="mobile-links-group">
 							<a href="./loggin1.php">
-								Loggin</a>
+								Log in</a>
 						</div>
 
 						<!-- <div class="mobile-links-group">
