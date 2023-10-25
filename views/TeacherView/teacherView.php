@@ -2650,6 +2650,164 @@
 			object-fit: cover;
 		}
 	</style>
+
+	<style>
+		@media screen and (max-width: 768px) {
+			.mobile-links {
+				position: absolute;
+				z-index: 3;
+				border: none;
+				top: 128px;
+				right: 20px;
+				width: 120px;
+			}
+		}
+
+		@media screen and (min-width: 768px) {
+			.mobile-links {
+				position: absolute;
+				z-index: 3;
+				border: none;
+				top: 272.5px;
+				right: 32px;
+				width: 180px;
+			}
+		}
+
+		.mobile-links .mobile-links-group a {
+			background-color: hsla(345, 88.3%, 73.1%, .7);
+			margin-bottom: 5px;
+			color: #fff;
+			font-weight: 500;
+			font-size: 0.9em;
+			display: -ms-flexbox;
+			display: flex;
+			min-height: 30px;
+			padding: 8px;
+			-ms-flex-align: center;
+			align-items: center;
+			text-decoration: none;
+			position: relative;
+			text-align: left;
+		}
+
+		.mobile-links .mobile-links-group a:after {
+			position: absolute;
+			font-family: FontAwesome;
+			content: "";
+			right: 8px;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 26px;
+			content: "\f105";
+			border: 1px solid #fff;
+			color: #fff;
+			display: -ms-flexbox;
+			display: flex;
+			-ms-flex-pack: center;
+			justify-content: center;
+			-ms-flex-align: center;
+			align-items: center;
+			transition: all .3s ease-out
+		}
+
+		.mobile-links .mobile-links-group a:hover {
+			background: rgba(0, 0, 0, 0.5);
+		}
+
+		.mobile-links .mobile-links-group a:after {
+			color: #fff;
+			background: transparent;
+			border: 1px solid #fff;
+		}
+
+		@media screen and (max-width: 768px) {
+			.mobile-links .mobile-links-group a:after {
+				display: none;
+			}
+		}
+
+
+		@media screen and (min-width: 768px) {
+			.logo-image {
+				right: 32px;
+				width: 180px;
+				padding: 35px 22px 25px 22px;
+			}
+		}
+
+		@media screen and (min-width: 992px) {
+			.logo-image {
+				right: 32px;
+				width: 180px;
+				padding: 35px 22px 25px 22px;
+			}
+		}
+
+		.flyout-menu-top {
+			margin: 3rem 0 0 2rem;
+			line-height: 2.5em;
+			font-size: 0.85rem;
+			font-weight: 500;
+			text-transform: uppercase;
+			letter-spacing: 4px;
+		}
+
+		#wgs-header-wrapper {
+			overflow: hidden;
+		}
+
+		@media (max-width: 800px) {
+			#wgs-header-wrapper-mobile {
+				display: none;
+			}
+		}
+
+		@media (min-width: 800px) {
+			#wgs-header-wrapper-desktop {
+				display: none;
+			}
+		}
+
+		.masthead-links {
+			position: absolute;
+			z-index: 1;
+			right: 2rem;
+			bottom: 2rem;
+		}
+
+		@media (max-width: 600px) {
+			.masthead-links {
+				right: 0.5rem;
+				bottom: 2rem;
+			}
+		}
+
+		.masthead-links-button {
+			background: rgb(0, 0, 0, 0.55);
+			padding: 1.2rem;
+			border: #ffffff solid 1px;
+			text-transform: uppercase;
+			text-align: center;
+			color: #ffffff;
+			letter-spacing: 3px;
+			font-size: 0.9rem;
+			cursor: pointer;
+		}
+
+		.masthead-links-button:hover {
+			background: transparent;
+			color: #ffffff;
+		}
+
+		@media (max-width: 600px) {
+			.masthead-links-button {
+				padding: 0.5rem 0.8rem;
+				letter-spacing: 2px;
+				font-size: 0.8rem;
+			}
+		}
+	</style>
 	
 	
 </head>
@@ -2666,10 +2824,24 @@ include "../partials/nav.php"
 				<div class="logo-image">
 					<a href="/"><img src="../../Public/imgs/nefertari-logo.webp"> </a>
 				</div>
+
+				<div class="astra-advanced-hook-38859 ">
+					<div class="mobile-links">
+
+						<div class="mobile-links-group">
+							<a href="../index.php">
+								Log Out</a>
+						</div>
+
+					</div>
+				</div>
+
+
+
 				<div class="astra-advanced-hook-39600 ">
 					<div class="page-title-strip">
 						<div class="page-title-text">
-							My Classes </div>
+							Class 1  </div>
 					</div>
 				</div>
 				<!--Page Title Strip-->
@@ -2754,37 +2926,12 @@ include "../partials/nav.php"
 		</div>
 	</div>
 
-	</div>
-	</div>
-	</div>
-
-	</div>
-	</div>
-	</div>
-
-	</div>
-
-
-	</div>
-
 	<main id="main" class="site-main">
 		<article class="post-72 page type-page status-publish has-post-thumbnail ast-article-single remove-featured-img-padding" id="post-72" itemtype="https://schema.org/CreativeWork" itemscope="itemscope">
-
-
 			<header class="entry-header ast-no-thumbnail ast-no-title ast-header-without-markup">
 			</header> <!-- .entry-header -->
-
-
 			<div class="entry-content clear" itemprop="text">
-
-
-
-
-
 			</div><!-- .entry-content .clear -->
-
-
-
 		</article><!-- #post-## -->
 
 	</main><!-- #main -->
@@ -2865,109 +3012,10 @@ include "../partials/nav.php"
 
 	</div>
 
-	</div><!-- #primary -->
-
 			<!--------------------- footer-------------------------- -->
 			<?php
 			include "../partials/footer.php"
 			?>
-
-	<!-- #colophon -->
-	</div><!-- #page -->
-	<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-	<script>
-		AOS.init();
-	</script>
-	<script type="text/javascript">
-		function fetch() {
-
-			jQuery.ajax({
-				url: 'https://www.westminster.org.uk/wp-admin/admin-ajax.php',
-				type: 'post',
-				data: {
-					action: 'data_fetch',
-					keyword: jQuery('#keyword').val()
-				},
-				success: function(data) {
-					jQuery('#datafetch').html(data);
-				}
-			});
-
-		}
-	</script>
-
-	<script id='astra-theme-js-js-extra'>
-		var astra = {
-			"break_point": "1150",
-			"isRtl": "",
-			"is_scroll_to_id": "",
-			"is_scroll_to_top": "",
-			"is_header_footer_builder_active": "",
-			"edit_post_url": "https:\/\/www.westminster.org.uk\/wp-admin\/post.php?post={{id}}&action=edit",
-			"ajax_url": "https:\/\/www.westminster.org.uk\/wp-admin\/admin-ajax.php",
-			"infinite_count": "2",
-			"infinite_total": "0",
-			"pagination": "number",
-			"infinite_scroll_event": "scroll",
-			"no_more_post_message": "No more posts to show.",
-			"grid_layout": "2",
-			"site_url": "https:\/\/www.westminster.org.uk",
-			"show_comments": "Show Comments",
-			"masonryEnabled": "",
-			"blogMasonryBreakPoint": "768"
-		};
-	</script>
-	<script src='https://www.westminster.org.uk/wp-content/themes/astra/assets/js/minified/style.min.js?ver=4.3.1' id='astra-theme-js-js'></script>
-	<script src='https://www.westminster.org.uk/wp-content/plugins/velocity/core/js/velocity.min.js?ver=1.2.1' id='velocity-js'></script>
-	<script src='https://www.westminster.org.uk/wp-content/plugins/wp-media-folder/assets/js/display-gallery/jquery.magnific-popup.min.js?ver=0.9.9' id='wpmf-gallery-popup-js'></script>
-	<script src='https://www.westminster.org.uk/wp-content/themes/westminster-child/js/jquery.mCustomScrollbar.concat.min.js?ver=_S_VERSION' id='maxx-scrollbar-js'></script>
-	<script src='https://www.westminster.org.uk/wp-content/themes/westminster-child/js/moment-with-locales.js?ver=_S_VERSION' id='maxx-moment-js'></script>
-	<script src='https://www.westminster.org.uk/wp-content/themes/westminster-child/js/core.js?ver=_S_VERSION' id='maxx-core-js'></script>
-	<script id='astra-addon-js-js-extra'>
-		var astraAddon = {
-			"sticky_active": "1",
-			"svgIconClose": "<span class=\"ast-icon icon-close\"><\/span>",
-			"hook_sticky_header": "",
-			"hook_shrink_header": "",
-			"hook_sticky_header_on_devices": "desktop",
-			"hook_custom_header_break_point": "921",
-			"header_main_stick": "",
-			"header_above_stick": "1",
-			"header_below_stick": "",
-			"stick_header_meta": "",
-			"header_main_stick_meta": "",
-			"header_above_stick_meta": "",
-			"header_below_stick_meta": "",
-			"sticky_header_on_devices": "both",
-			"sticky_header_style": "fade",
-			"sticky_hide_on_scroll": "",
-			"break_point": "1150",
-			"tablet_break_point": "768",
-			"mobile_break_point": "544",
-			"header_main_shrink": "",
-			"header_logo_width": "",
-			"responsive_header_logo_width": {
-				"desktop": "250",
-				"tablet": "200",
-				"mobile": 120
-			},
-			"stick_origin_position": "",
-			"site_layout": "ast-full-width-layout",
-			"site_content_width": "1240",
-			"site_layout_padded_width": "1200",
-			"site_layout_box_width": "1200",
-			"header_builder_active": "",
-			"component_limit": "10",
-			"is_header_builder_active": ""
-		};
-	</script>
-	<script src='https://www.westminster.org.uk/wp-content/uploads/astra-addon/astra-addon-6515c7a5964590-00885884.js?ver=4.3.3' id='astra-addon-js-js'></script>
-	<script>
-		/(trident|msie)/i.test(navigator.userAgent) && document.getElementById && window.addEventListener && window.addEventListener("hashchange", function() {
-			var t, e = location.hash.substring(1);
-			/^[A-z0-9_-]+$/.test(e) && (t = document.getElementById(e)) && (/^(?:a|select|input|button|textarea)$/i.test(t.tagName) || (t.tabIndex = -1), t.focus())
-		}, !1);
-	</script>
 </body>
 
 </html>

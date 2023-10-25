@@ -2651,8 +2651,167 @@
 		}
 	</style>
 	
-	
+	<style>
+		@media screen and (max-width: 768px) {
+			.mobile-links {
+				position: absolute;
+				z-index: 3;
+				border: none;
+				top: 128px;
+				right: 20px;
+				width: 120px;
+			}
+		}
+
+		@media screen and (min-width: 768px) {
+			.mobile-links {
+				position: absolute;
+				z-index: 3;
+				border: none;
+				top: 272.5px;
+				right: 32px;
+				width: 180px;
+			}
+		}
+
+		.mobile-links .mobile-links-group a {
+			background-color: hsla(345, 88.3%, 73.1%, .7);
+			margin-bottom: 5px;
+			color: #fff;
+			font-weight: 500;
+			font-size: 0.9em;
+			display: -ms-flexbox;
+			display: flex;
+			min-height: 30px;
+			padding: 8px;
+			-ms-flex-align: center;
+			align-items: center;
+			text-decoration: none;
+			position: relative;
+			text-align: left;
+		}
+
+		.mobile-links .mobile-links-group a:after {
+			position: absolute;
+			font-family: FontAwesome;
+			content: "";
+			right: 8px;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 26px;
+			content: "\f105";
+			border: 1px solid #fff;
+			color: #fff;
+			display: -ms-flexbox;
+			display: flex;
+			-ms-flex-pack: center;
+			justify-content: center;
+			-ms-flex-align: center;
+			align-items: center;
+			transition: all .3s ease-out
+		}
+
+		.mobile-links .mobile-links-group a:hover {
+			background: rgba(0, 0, 0, 0.5);
+		}
+
+		.mobile-links .mobile-links-group a:after {
+			color: #fff;
+			background: transparent;
+			border: 1px solid #fff;
+		}
+
+		@media screen and (max-width: 768px) {
+			.mobile-links .mobile-links-group a:after {
+				display: none;
+			}
+		}
+
+
+		@media screen and (min-width: 768px) {
+			.logo-image {
+				right: 32px;
+				width: 180px;
+				padding: 35px 22px 25px 22px;
+			}
+		}
+
+		@media screen and (min-width: 992px) {
+			.logo-image {
+				right: 32px;
+				width: 180px;
+				padding: 35px 22px 25px 22px;
+			}
+		}
+
+		.flyout-menu-top {
+			margin: 3rem 0 0 2rem;
+			line-height: 2.5em;
+			font-size: 0.85rem;
+			font-weight: 500;
+			text-transform: uppercase;
+			letter-spacing: 4px;
+		}
+
+		#wgs-header-wrapper {
+			overflow: hidden;
+		}
+
+		@media (max-width: 800px) {
+			#wgs-header-wrapper-mobile {
+				display: none;
+			}
+		}
+
+		@media (min-width: 800px) {
+			#wgs-header-wrapper-desktop {
+				display: none;
+			}
+		}
+
+		.masthead-links {
+			position: absolute;
+			z-index: 1;
+			right: 2rem;
+			bottom: 2rem;
+		}
+
+		@media (max-width: 600px) {
+			.masthead-links {
+				right: 0.5rem;
+				bottom: 2rem;
+			}
+		}
+
+		.masthead-links-button {
+			background: rgb(0, 0, 0, 0.55);
+			padding: 1.2rem;
+			border: #ffffff solid 1px;
+			text-transform: uppercase;
+			text-align: center;
+			color: #ffffff;
+			letter-spacing: 3px;
+			font-size: 0.9rem;
+			cursor: pointer;
+		}
+
+		.masthead-links-button:hover {
+			background: transparent;
+			color: #ffffff;
+		}
+
+		@media (max-width: 600px) {
+			.masthead-links-button {
+				padding: 0.5rem 0.8rem;
+				letter-spacing: 2px;
+				font-size: 0.8rem;
+			}
+		}
+	</style>
+
 </head>
+
+
 <?php
 include "../partials/nav.php"
 ?>
@@ -2666,6 +2825,18 @@ include "../partials/nav.php"
 				<div class="logo-image">
 					<a href="/"><img src="../../Public/imgs/nefertari-logo.webp"> </a>
 				</div>
+
+				<div class="astra-advanced-hook-38859 ">
+					<div class="mobile-links">
+
+						<div class="mobile-links-group">
+							<a href="../index.php">
+								Log Out</a>
+						</div>
+
+					</div>
+				</div>
+
 				<div class="astra-advanced-hook-39600 ">
 					<div class="page-title-strip">
 						<div class="page-title-text">
