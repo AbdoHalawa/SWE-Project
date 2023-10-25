@@ -34,7 +34,7 @@
             border: 1px solid #ccc;
             border-radius: 3px;
         }
-        input[type="checkbox"] {
+        input[type="radio"] {
             margin-right: 5px;
         }
         input[type="submit"] {
@@ -64,11 +64,11 @@
             <input type="password" id="password" name="password" required>
 
             <label>Occupation:</label>
-            <input type="checkbox" id="student" name="occupation" value="student">
+            <input type="radio" id="student" name="occupation" value="student">
             <label for="student">Student</label>
-            <input type="checkbox" id="parent" name="occupation" value="parent">
+            <input type="radio" id="parent" name="occupation" value="parent">
             <label for="parent">Parent</label>
-            <input type="checkbox" id="teacher" name="occupation" value="teacher">
+            <input type="radio" id="teacher" name="occupation" value="teacher">
             <label for="teacher">Teacher</label>
 
             <input type="submit" value="Register">
