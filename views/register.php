@@ -1,12 +1,13 @@
 <?php
 // Database connection parameters
-$servername = "your_database_server";
-$username = "your_database_username";
-$password = "your_database_password";
-$database = "your_database_name";
 
-// Create a database connection
-$conn = new mysqli($servername, $username, $password, $database);
+$servername = "localhost";
+$username = "root";
+$password = "";
+$DB = "swe-project";
+
+$conn = mysqli_connect($servername,$username,$password,$DB);
+
 
 // Check connection
 if ($conn->connect_error) {
@@ -20,13 +21,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST["password"];
     $occupation = $_POST["occupation"];
 
-    // Hash the password (you should use a more secure method)
-    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+   
 
     // Insert data into the database
-    $sql = "INSERT INTO users (username, email, password, occupation) VALUES (?, ?, ?, ?)";
+    $sql = "INSERT INTO users (username, email,  occupation, password) VALUES (?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssss", $username, $email, $hashed_password, $occupation);
+    $stmt->bind_param("ssss", $username, $email, $occupation, $password);
 
     if ($stmt->execute()) {
         echo "Registration successful!";
