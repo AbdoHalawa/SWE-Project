@@ -1,6 +1,8 @@
 <?php
 include './partials/nav.php';
 ?>
+
+<!-- Nourrrrr ahahahaah -->
 <!DOCTYPE html>
 
 <html lang="en-GB">
