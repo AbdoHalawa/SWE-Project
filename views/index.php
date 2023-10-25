@@ -9881,11 +9881,11 @@ font-weight: 500;
 					<div class="mobile-links">
 
 						<div class="mobile-links-group">
-							<a href="./TeacherView/teacherView.php">
-								Admissions</a>
+							<a href="./loggin1.php">
+								Loggin</a>
 						</div>
 
-						<div class="mobile-links-group">
+						<!-- <div class="mobile-links-group">
 							<a href="../views/admiNindex.php">
 								School Life</a>
 						</div>
@@ -9893,7 +9893,7 @@ font-weight: 500;
 						<div class="mobile-links-group">
 							<a href="./StudentView/studentView.php">
 								News</a>
-						</div>
+						</div> -->
 					</div>
 				</div>
 				<!--Homepage Below Crest Links Mobile -->
