@@ -9885,15 +9885,16 @@ font-weight: 500;
 								Log in</a>
 						</div>
 
-						<!-- <div class="mobile-links-group">
-							<a href="../views/admiNindex.php">
-								School Life</a>
+						 <div class="mobile-links-group">
+							<a href="../views/add.php">
+								Add User </a>
 						</div>
 
-						<div class="mobile-links-group">
+						<!-- <div class="mobile-links-group">
 							<a href="./StudentView/studentView.php">
 								News</a>
-						</div> -->
+						</div>  -->
+
 					</div>
 				</div>
 				<!--Homepage Below Crest Links Mobile -->
