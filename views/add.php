@@ -53,7 +53,7 @@
 <body>
     <div class="container">
         <h2>User Registration</h2>
-        <form>
+        <form action="register.php" method="POST">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
 
