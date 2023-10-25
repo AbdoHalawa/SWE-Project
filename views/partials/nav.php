@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<link rel="stylesheet" href="../Public/CSS/nav.css">
 
 <style>
 		.wus-menu {
@@ -77,7 +76,7 @@
 
 		.wus-menu p {
 			color: white;
-			font-size: 19px;
+			font-size: 109px;
 		}
 
 		.wus-menu.is-open {
@@ -88,7 +87,7 @@
 
 		.wus-menu.is-open::after {
 			content: "";
-			background: url(https://www.westminster.org.uk/wp-content/uploads/2022/09/Crest-blackwhite-600dpi.png);
+			background: url(/Public/imgs/nefertari-logo.webp);
 			background-repeat: no-repeat;
 			background-position: 50% 50%;
 			background-attachment: scroll;
@@ -434,11 +433,11 @@
             <ul class="wus-nav">
 
                 <li class="wus-nav-item">
-                    <span class="wus-nav-item__title"><a class="wus-nav-item__title-link" href="/">Home</a></span>
+                    <span class="wus-nav-item__title"><a class="wus-nav-item__title-link" href="/index.php">Home</a></span>
                 </li>
 
                 <li class="wus-nav-item">
-                    <span class="wus-nav-item__title">About</span>
+                    <span class="wus-nav-item__title"><a class="wus-nav-item__title-link" href="../views/ParentsView/parentsView.php"> About</a></span>
 
                 </li>
                 <li class="wus-nav-item">
