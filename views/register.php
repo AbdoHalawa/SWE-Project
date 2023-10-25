@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("ssss", $username, $email, $occupation, $password);
 
     if ($stmt->execute()) {
-        echo "Registration successful!";
+        header("Location: index.php");
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
