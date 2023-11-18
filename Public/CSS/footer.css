@@ -342,8 +342,8 @@
 }
 .site-footer a:hover + .post-count,
 .site-footer a:focus + .post-count {
-  background: #f77e9d;
-  border-color: #f77e9d;
+  background:#8d1020;
+  border-color: #8d1020;
 }
 
 /*  */
@@ -352,11 +352,11 @@
 }
 
 .ast-small-footer > .ast-footer-overlay {
-  background-color: #f77e9d;
+  background-color: #8d1020;
 }
 
 .ast-small-footer a {
-  color: #f77e9d;
+  color: #8d1020;
 }
 
 .ast-small-footer a:hover {
@@ -383,7 +383,7 @@
 }
 
 .ast-small-footer a {
-  color: #f77e9d;
+  color: #8d1020;
 }
 
 .ast-small-footer a:hover {

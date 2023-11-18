@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<link rel="stylesheet" href="../Public/CSS/nav.css">
 
 <nav class="wus-menu">
 
@@ -23,9 +22,7 @@
         <div class="wus-nav-container">
 
             <div class="quick-links">
-                <a target="_blank" href="/about/term-dates/"><button style="width:145px" class="white-outline">Term Dates &rarr;</button></a>
-                <!--  <a target="_blank" href="/school-life/media/"><button style="width:130px"class="white-outline">Stories &rarr;</button></a>-->
-                <a target="_blank" href="https://intranet.westminster.org.uk/security/external/index.asp"><button style="width:145px" class="white-outline">Intranets &rarr;</button></a>
+                
             </div>
 
 

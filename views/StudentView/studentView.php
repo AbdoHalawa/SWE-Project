@@ -116,12 +116,12 @@
 
 		a,
 		.page-title {
-			color: #f77e9d;
+			color: #8d1020;
 		}
 
 		a:hover,
 		a:focus {
-			color: #f77e9d;
+			color: #8d1020;
 		}
 
 		body,
@@ -261,8 +261,8 @@
 		.tagcloud a:focus,
 		.tagcloud a.current-item {
 			color: #000000;
-			border-color: #f77e9d;
-			background-color: #f77e9d;
+			border-color: #8d1020;
+			background-color: #8d1020;
 		}
 
 		input:focus,
@@ -273,7 +273,7 @@
 		input[type="reset"]:focus,
 		input[type="search"]:focus,
 		textarea:focus {
-			border-color: #f77e9d;
+			border-color: #8d1020;
 		}
 
 		input[type="radio"]:checked,
@@ -282,26 +282,26 @@
 		input[type="checkbox"]:hover:checked,
 		input[type="checkbox"]:focus:checked,
 		input[type=range]::-webkit-slider-thumb {
-			border-color: #f77e9d;
-			background-color: #f77e9d;
+			border-color: #8d1020;
+			background-color: #8d1020;
 			box-shadow: none;
 		}
 
 		.site-footer a:hover+.post-count,
 		.site-footer a:focus+.post-count {
-			background: #f77e9d;
-			border-color: #f77e9d;
+			background: #8d1020;
+			border-color: #8d1020;
 		}
 
 		.single .nav-links .nav-previous,
 		.single .nav-links .nav-next {
-			color: #f77e9d;
+			color: #8d1020;
 		}
 
 		.entry-meta,
 		.entry-meta * {
 			line-height: 1.45;
-			color: #f77e9d;
+			color: #8d1020;
 		}
 
 		.entry-meta a:hover,
@@ -311,24 +311,24 @@
 		.page-links>.page-link,
 		.page-links .page-link:hover,
 		.post-navigation a:hover {
-			color: #f77e9d;
+			color: #8d1020;
 		}
 
 		#cat option,
 		.secondary .calendar_wrap thead a,
 		.secondary .calendar_wrap thead a:visited {
-			color: #f77e9d;
+			color: #8d1020;
 		}
 
 		.secondary .calendar_wrap #today,
 		.ast-progress-val span {
-			background: #f77e9d;
+			background: #8d1020;
 		}
 
 		.secondary a:hover+.post-count,
 		.secondary a:focus+.post-count {
-			background: #f77e9d;
-			border-color: #f77e9d;
+			background: #8d1020;
+			border-color: #8d1020;
 		}
 
 		.calendar_wrap #today>a {
@@ -337,7 +337,7 @@
 
 		.page-links .page-link,
 		.single .post-navigation a {
-			color: #f77e9d;
+			color: #8d1020;
 		}
 
 		.widget-title,
@@ -348,7 +348,7 @@
 		}
 
 		.single .ast-author-details .author-title {
-			color: #f77e9d;
+			color: #8d1020;
 		}
 
 		a:focus-visible,
@@ -429,7 +429,7 @@
 		.main-header-menu .current-menu-ancestor>.menu-link,
 		.main-header-menu .current-menu-item>.ast-menu-toggle,
 		.main-header-menu .current-menu-ancestor>.ast-menu-toggle {
-			color: #f77e9d;
+			color: #8d1020;
 		}
 
 		.header-main-layout-3 .ast-main-header-bar-alignment {
@@ -529,12 +529,12 @@
 		}
 
 		.ast-small-footer>.ast-footer-overlay {
-			background-color: #f77e9d;
+			background-color: #8d1020;
 			;
 		}
 
 		.ast-small-footer a {
-			color: #f77e9d;
+			color: #8d1020;
 		}
 
 		.ast-small-footer a:hover {
@@ -547,18 +547,18 @@
 		}
 
 		.footer-adv a {
-			color: #f77e9d;
+			color: #8d1020;
 		}
 
 		.footer-adv .tagcloud a:hover,
 		.footer-adv .tagcloud a.current-item {
-			border-color: #f77e9d;
-			background-color: #f77e9d;
+			border-color: #8d1020;
+			background-color: #8d1020;
 		}
 
 		.footer-adv .calendar_wrap #today,
 		.footer-adv a:hover+.post-count {
-			background-color: #f77e9d;
+			background-color: #8d1020;
 		}
 
 		.footer-adv-overlay {
@@ -2398,7 +2398,7 @@
 		}
 
 		.alert-message a:hover {
-			color: #f77e9d;
+			color: #8d1020;
 		}
 	</style>
 
