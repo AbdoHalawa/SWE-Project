@@ -29,7 +29,7 @@
             <ul class="wus-nav">
 
                 <li class="wus-nav-item">
-                    <span class="wus-nav-item__title"><a class="wus-nav-item__title-link" href="/index.php">Home</a></span>
+                    <span class="wus-nav-item__title"><a class="wus-nav-item__title-link" href="../index.php">Home</a></span>
                 </li>
 
                 <li class="wus-nav-item">
