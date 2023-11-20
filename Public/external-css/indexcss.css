@@ -5340,19 +5340,19 @@ h5.strip-header {
 		position : absolute;
 		z-index : 3;
 		border: none;
-		top : 128px;
+		top : 183.5px;
 		right: 20px;
 		width: 120px;
 	}
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 768px){
 	.mobile-links {
-		position : absolute;
-		z-index : 3;
-		border: none;
-		top : 188px;
-		right: 32px;
-		width: 180px;
+    	position: absolute;
+    	z-index: 3;
+    	border: none;
+    	top: 270px;
+    	right: 32px;
+    	width: 180px;
 	}
 }
 .mobile-links .mobile-links-group a {
