@@ -1,15 +1,41 @@
 <!DOCTYPE html>
-<!-- Coding By CodingNepal - codingnepalweb.com -->
 <html lang="en" dir="ltr">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sign Up </title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../Public/CSS/nav.css">
+
 </head>
 
 <body>
+<div class="astra-advanced-hook-38861 ">
+					<?php
+					include('./partials/nav.php')
+					?>
+
+					<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+					<script>
+						wusmenu: {
+							$('.wus-menu__button:not(.no-js)').on('click', function() {
+								$('.wus-menu').toggleClass('is-open');
+							});
+							$('.wus-menu__close').on('click', function() {
+								$('.wus-menu').removeClass('is-open');
+							});
+						}
+					</script>
+
+
+					<script>
+						$('body').delegate('.wus-nav-item', 'click', function() {
+							$('.wus-nav-item').removeClass('wus-nav-item--active');
+							$(this).addClass('wus-nav-item--active');
+						});
+					</script>
+				</div>
   <div class="wrapper">
     <h2>Registration</h2>
     <form action="process-signup.php" method="post" novalidate>
@@ -25,9 +51,6 @@
       </div>
       <div class="input-box button">
         <input type="Submit" value="Register Now">
-      </div>
-      <div class="text">
-        <h3>Already have an account? <a href="#">Login now</a></h3>
       </div>
     </form>
   </div>
@@ -50,7 +73,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #4070f4;
+    background: rgba(141,16,3,0.6);
   }
 
   .wrapper {
@@ -60,14 +83,14 @@
     background: #fff;
     padding: 34px;
     border-radius: 6px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 10px #8d1020;
   }
 
   .wrapper h2 {
     position: relative;
     font-size: 22px;
     font-weight: 600;
-    color: #333;
+    color: #8d1020;
   }
 
   .wrapper h2::before {
@@ -78,7 +101,7 @@
     height: 3px;
     width: 28px;
     border-radius: 12px;
-    background: #4070f4;
+    background: #8d1020;
   }
 
   .wrapper form {
@@ -106,7 +129,7 @@
 
   .input-box input:focus,
   .input-box input:valid {
-    border-color: #4070f4;
+    border-color: #8d1020;
   }
 
   form .policy {
@@ -115,7 +138,7 @@
   }
 
   form h3 {
-    color: #707070;
+    color: #8d1020;
     font-size: 14px;
     font-weight: 500;
     margin-left: 10px;
@@ -125,22 +148,22 @@
     color: #fff;
     letter-spacing: 1px;
     border: none;
-    background: #4070f4;
+    background: #8d1020;
     cursor: pointer;
   }
 
   .input-box.button input:hover {
-    background: #0e4bf1;
+    background: rgba(141,16,3,0.6);
   }
 
   form .text h3 {
-    color: #333;
+    color: #8d1020;
     width: 100%;
     text-align: center;
   }
 
   form .text h3 a {
-    color: #4070f4;
+    color: rgba(141,16,3,0.6);
     text-decoration: none;
   }
 

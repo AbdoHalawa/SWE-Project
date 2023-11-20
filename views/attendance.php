@@ -2,11 +2,15 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Styled Form</title>
+    
+	<link rel='stylesheet' id='astra-theme-css-css' href='https://www.westminster.org.uk/wp-content/themes/astra/assets/css/minified/style.min.css?ver=4.3.1' media='all' />
+	<link rel='stylesheet' href="../public/external-css/global-styles.css">
+	<link rel='stylesheet' href="../public/external-css/astra-addon.css">
+	<link rel='stylesheet' href="../public/external-css/indexcss.css">
+	<link rel="stylesheet" href="../Public/CSS/nav.css">
+
     <?php
-    include "./partials/nav.php"
+    include "../views/partials/nav.php"
     ?>
     <style>
         /* Reset some default browser styles */
@@ -126,24 +130,24 @@
             <br>
         </h1>
         <div class="astra-advanced-hook-38861 ">
-					<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-					<script>
-						wusmenu: {
-							$('.wus-menu__button:not(.no-js)').on('click', function() {
-								$('.wus-menu').toggleClass('is-open');
-							});
-							$('.wus-menu__close').on('click', function() {
-								$('.wus-menu').removeClass('is-open');
-							});
-						}
-					</script>
-					<script>
-						$('body').delegate('.wus-nav-item', 'click', function() {
-							$('.wus-nav-item').removeClass('wus-nav-item--active');
-							$(this).addClass('wus-nav-item--active');
-						});
-					</script>
-				</div>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+            <script>
+                wusmenu: {
+                    $('.wus-menu__button:not(.no-js)').on('click', function() {
+                        $('.wus-menu').toggleClass('is-open');
+                    });
+                    $('.wus-menu__close').on('click', function() {
+                        $('.wus-menu').removeClass('is-open');
+                    });
+                }
+            </script>
+            <script>
+                $('body').delegate('.wus-nav-item', 'click', function() {
+                    $('.wus-nav-item').removeClass('wus-nav-item--active');
+                    $(this).addClass('wus-nav-item--active');
+                });
+            </script>
+        </div>
         <form>
             <div class="form-group">
                 <label for="name" style="color: red;" class="label-left">Name</label>

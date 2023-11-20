@@ -37,11 +37,11 @@
 
                 </li>
                 <li class="wus-nav-item">
-                    <span class="wus-nav-item__title">Admissions</span>
+                    <span class="wus-nav-item__title"><a class="wus-nav-item__title-link" href="../views/StudentView/studentView.php">Admissions</a></span>
 
                 </li>
                 <li class="wus-nav-item">
-                    <span class="wus-nav-item__title">Academic Life</span>
+                    <span class="wus-nav-item__title"><a class="wus-nav-item__title-link" href="../views/TeacherView/teacherView.php">Academic Life</a></span>
 
                 </li>
                 <li class="wus-nav-item">

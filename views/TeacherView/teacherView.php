@@ -7,7 +7,11 @@
 	
 
 	
-	
+	<link rel='stylesheet' id='astra-theme-css-css' href='https://www.westminster.org.uk/wp-content/themes/astra/assets/css/minified/style.min.css?ver=4.3.1' media='all' />
+	<link rel='stylesheet' href="../../public/external-css/global-styles.css">
+<link rel='stylesheet' href="../../public/external-css/astra-addon.css">
+<link rel='stylesheet' href="../../public/external-css/indexcss.css">
+<link rel="stylesheet" href="../../Public/CSS/nav.css">
 	<link rel='stylesheet' id='astra-theme-css-css' href='https://www.westminster.org.uk/wp-content/themes/astra/assets/css/minified/style.min.css?ver=4.3.1' media='all' />
 	<style id='astra-theme-css-inline-css'>
 		.ast-no-sidebar .entry-content .alignfull {

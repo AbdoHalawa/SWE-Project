@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 
-<head>
-	
-	<title>School Life | Westminster School</title>
-	
+<link rel='stylesheet' id='astra-theme-css-css' href='https://www.westminster.org.uk/wp-content/themes/astra/assets/css/minified/style.min.css?ver=4.3.1' media='all' />
+<link rel='stylesheet' href="../../public/external-css/global-styles.css">
+<link rel='stylesheet' href="../../public/external-css/astra-addon.css">
+<link rel='stylesheet' href="../../public/external-css/indexcss.css">
+<link rel="stylesheet" href="../../Public/CSS/nav.css">
 
-	
-	
+<head>
+
+	<title>School Life | Westminster School</title>
+
+
+
+
 	<link rel='stylesheet' id='astra-theme-css-css' href='https://www.westminster.org.uk/wp-content/themes/astra/assets/css/minified/style.min.css?ver=4.3.1' media='all' />
 	<style id='astra-theme-css-inline-css'>
 		.ast-no-sidebar .entry-content .alignfull {
@@ -2234,10 +2240,10 @@
 			display: flex
 		}
 	</style>
-	
-	
 
-<!-- Logo and back Pic -->
+
+
+	<!-- Logo and back Pic -->
 	<style>
 		.logo-image {
 			width: 120px;
@@ -2265,7 +2271,7 @@
 			}
 		}
 
-		
+
 		.wgs-header-image .image {
 			background-size: cover;
 			background-position: center;
@@ -2275,13 +2281,11 @@
 			width: 100%;
 			margin: 0;
 		}
-		
-		
 	</style>
 
 
 
-<!-- The main Titel css -->
+	<!-- The main Titel css -->
 	<style>
 		.page-title-strip {
 			border-top-right-radius: 10px;
@@ -2402,10 +2406,10 @@
 		}
 	</style>
 
-    
 
-<!-- Fade in animation -->
-	<style>    
+
+	<!-- Fade in animation -->
+	<style>
 		body {
 			animation: fadeInAnimation ease 3s;
 			animation-iteration-count: 1;
@@ -2422,10 +2426,10 @@
 			}
 		}
 	</style>
-	
 
 
-	
+
+
 
 	<style>
 		.featured-pages-strip {
@@ -2650,8 +2654,8 @@
 			object-fit: cover;
 		}
 	</style>
-	
-	
+
+
 </head>
 <?php
 include "../partials/nav.php"
@@ -2684,25 +2688,25 @@ include "../partials/nav.php"
 
 
 					<!--END HEADER -->
-                    <div class="astra-advanced-hook-38861 ">
-					<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-					<script>
-						wusmenu: {
-							$('.wus-menu__button:not(.no-js)').on('click', function() {
-								$('.wus-menu').toggleClass('is-open');
+					<div class="astra-advanced-hook-38861 ">
+						<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+						<script>
+							wusmenu: {
+								$('.wus-menu__button:not(.no-js)').on('click', function() {
+									$('.wus-menu').toggleClass('is-open');
+								});
+								$('.wus-menu__close').on('click', function() {
+									$('.wus-menu').removeClass('is-open');
+								});
+							}
+						</script>
+						<script>
+							$('body').delegate('.wus-nav-item', 'click', function() {
+								$('.wus-nav-item').removeClass('wus-nav-item--active');
+								$(this).addClass('wus-nav-item--active');
 							});
-							$('.wus-menu__close').on('click', function() {
-								$('.wus-menu').removeClass('is-open');
-							});
-						}
-					</script>
-					<script>
-						$('body').delegate('.wus-nav-item', 'click', function() {
-							$('.wus-nav-item').removeClass('wus-nav-item--active');
-							$(this).addClass('wus-nav-item--active');
-						});
-					</script>
-				</div>
+						</script>
+					</div>
 					<!-- NavBar -->
 
 				</div>
@@ -2799,7 +2803,7 @@ include "../partials/nav.php"
 
 					<img width="2560" height="1709" src="../../Public/imgs/checklist-check-list-marker.jpg" class="featured-page-img wp-post-image" alt="" decoding="async" loading="lazy" sizes="(max-width: 2560px) 100vw, 2560px" /><a href="../attendance.php">
 						<div class="featured-page-caption">
-							 Attendance
+							Attendance
 						</div>
 					</a>
 				</div>
@@ -2819,7 +2823,7 @@ include "../partials/nav.php"
 						</div>
 					</a>
 				</div>
-				
+
 		</section>
 	</div>
 	<div class="astra-advanced-hook-18390 ">
@@ -2846,11 +2850,11 @@ include "../partials/nav.php"
 
 	</div> <!-- ast-container -->
 	</div><!-- #content -->
-	
+
 	</div><!-- #page -->
 
 
-	<?php include "../partials/footer.php"?>
+	<?php include "../partials/footer.php" ?>
 
 
 	<script src="https://unpkg.com/aos@next/dist/aos.js"></script>

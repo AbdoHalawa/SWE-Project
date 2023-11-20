@@ -2,12 +2,16 @@
 <html lang="en-GB">
 
 <head>
-	
-	<title>School Life | Westminster School</title>
-	
 
-	
-	
+	<title>School Life | Westminster School</title>
+
+
+
+	<link rel='stylesheet' id='astra-theme-css-css' href='https://www.westminster.org.uk/wp-content/themes/astra/assets/css/minified/style.min.css?ver=4.3.1' media='all' />
+	<link rel='stylesheet' href="../../public/external-css/global-styles.css">
+	<link rel='stylesheet' href="../../public/external-css/astra-addon.css">
+	<link rel='stylesheet' href="../../public/external-css/indexcss.css">
+	<link rel="stylesheet" href="../../Public/CSS/nav.css">
 	<link rel='stylesheet' id='astra-theme-css-css' href='https://www.westminster.org.uk/wp-content/themes/astra/assets/css/minified/style.min.css?ver=4.3.1' media='all' />
 	<style id='astra-theme-css-inline-css'>
 		.ast-no-sidebar .entry-content .alignfull {
@@ -2234,10 +2238,10 @@
 			display: flex
 		}
 	</style>
-	
-	
 
-<!-- Logo and back Pic -->
+
+
+	<!-- Logo and back Pic -->
 	<style>
 		.logo-image {
 			width: 120px;
@@ -2265,7 +2269,7 @@
 			}
 		}
 
-		
+
 		.wgs-header-image .image {
 			background-size: cover;
 			background-position: center;
@@ -2275,13 +2279,11 @@
 			width: 100%;
 			margin: 0;
 		}
-		
-		
 	</style>
 
 
 
-<!-- The main Titel css -->
+	<!-- The main Titel css -->
 	<style>
 		.page-title-strip {
 			border-top-right-radius: 10px;
@@ -2402,10 +2404,10 @@
 		}
 	</style>
 
-    
 
-<!-- Fade in animation -->
-	<style>    
+
+	<!-- Fade in animation -->
+	<style>
 		body {
 			animation: fadeInAnimation ease 3s;
 			animation-iteration-count: 1;
@@ -2422,10 +2424,10 @@
 			}
 		}
 	</style>
-	
 
 
-	
+
+
 
 	<style>
 		.featured-pages-strip {
@@ -2650,7 +2652,7 @@
 			object-fit: cover;
 		}
 	</style>
-	
+
 	<style>
 		@media screen and (max-width: 768px) {
 			.mobile-links {
@@ -2855,23 +2857,23 @@ include "../partials/nav.php"
 
 					<!-- The nav Bar Function -->
 					<div class="astra-advanced-hook-38861 ">
-					<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-					<script>
-						wusmenu: {
-							$('.wus-menu__button:not(.no-js)').on('click', function() {
-								$('.wus-menu').toggleClass('is-open');
+						<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+						<script>
+							wusmenu: {
+								$('.wus-menu__button:not(.no-js)').on('click', function() {
+									$('.wus-menu').toggleClass('is-open');
+								});
+								$('.wus-menu__close').on('click', function() {
+									$('.wus-menu').removeClass('is-open');
+								});
+							}
+						</script>
+						<script>
+							$('body').delegate('.wus-nav-item', 'click', function() {
+								$('.wus-nav-item').removeClass('wus-nav-item--active');
+								$(this).addClass('wus-nav-item--active');
 							});
-							$('.wus-menu__close').on('click', function() {
-								$('.wus-menu').removeClass('is-open');
-							});
-						}
-					</script>
-					<script>
-						$('body').delegate('.wus-nav-item', 'click', function() {
-							$('.wus-nav-item').removeClass('wus-nav-item--active');
-							$(this).addClass('wus-nav-item--active');
-						});
-					</script>
+						</script>
 		</header>
 	</div>
 	<div class="astra-advanced-hook-30270 ">
@@ -2928,16 +2930,16 @@ include "../partials/nav.php"
 			</div>
 		</section>
 	</div>
-			<!--------------------- footer-------------------------- -->
-			<?php
-			include "../partials/footer.php"
-			?>
+	<!--------------------- footer-------------------------- -->
+	<?php
+	include "../partials/footer.php"
+	?>
 
-	
 
-	
-	
-	
+
+
+
+
 
 </body>
 
