@@ -132,7 +132,7 @@
 					<div class="mobile-links">
 
 						<div class="mobile-links-group">
-							<a href="./loggin1.php">
+							<a href="./login.php">
 								Login</a>
 						</div>
 

@@ -6,38 +6,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sign Up </title>
   <link rel="stylesheet" href="../Public/CSS/nav.css">
-
+  <link rel="icon" href="..\Public\imgs\nefertari-logo.webp" sizes="32x32" />
+  <link rel="icon" href="..\Public\imgs\nefertari-logo.webp" sizes="192x192" />
 </head>
 
 <body>
 <div class="astra-advanced-hook-38861 ">
-					<?php
-					include('./partials/nav.php')
-					?>
+          <?php
+          include('./partials/nav.php')
+            ?>
 
-					<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 
-					<script>
-						wusmenu: {
-							$('.wus-menu__button:not(.no-js)').on('click', function() {
-								$('.wus-menu').toggleClass('is-open');
-							});
-							$('.wus-menu__close').on('click', function() {
-								$('.wus-menu').removeClass('is-open');
-							});
-						}
-					</script>
+          <script>
+            wusmenu: {
+              $('.wus-menu__button:not(.no-js)').on('click', function() {
+                $('.wus-menu').toggleClass('is-open');
+              });
+              $('.wus-menu__close').on('click', function() {
+                $('.wus-menu').removeClass('is-open');
+              });
+            }
+          </script>
 
 
-					<script>
-						$('body').delegate('.wus-nav-item', 'click', function() {
-							$('.wus-nav-item').removeClass('wus-nav-item--active');
-							$(this).addClass('wus-nav-item--active');
-						});
-					</script>
-				</div>
+          <script>
+            $('body').delegate('.wus-nav-item', 'click', function() {
+              $('.wus-nav-item').removeClass('wus-nav-item--active');
+              $(this).addClass('wus-nav-item--active');
+            });
+          </script>
+        </div>
   <div class="wrapper">
-    <h2>Registration</h2>
+    <h2>Login</h2>
     <form action="process-signup.php" method="post" novalidate>
       <div class="input-box">
         <input type="text" placeholder="Enter your email" name="email">
@@ -50,7 +51,7 @@
         <h3>I accept all terms & condition</h3>
       </div>
       <div class="input-box button">
-        <input type="Submit" value="Register Now">
+        <input type="Submit" value="Login">
       </div>
     </form>
   </div>

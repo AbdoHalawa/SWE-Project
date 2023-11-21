@@ -2406,7 +2406,7 @@
 		}
 	</style>
 
-    
+	
 
 <!-- Fade in animation -->
 	<style>    
@@ -2817,7 +2817,7 @@
 </head>
 <?php
 include "../partials/nav.php"
-?>
+	?>
 
 <body itemtype='https://schema.org/WebPage' itemscope='itemscope' class="page-template-default page page-id-72 page-parent ast-desktop ast-page-builder-template ast-no-sidebar astra-4.3.1 ast-header-custom-item-inside ast-full-width-primary-header group-blog ast-single-post ast-mobile-inherit-site-logo ast-inherit-site-logo-transparent ast-above-mobile-menu-align-inline ast-default-menu-enable ast-flyout-above-menu-enable ast-flyout-above-left-side ast-default-below-menu-enable ast-full-width-layout ast-full-width-header ast-inherit-site-logo-sticky ast-normal-title-enabled astra-addon-4.3.3">
 	<div class="hfeed site" id="page">
@@ -3019,7 +3019,7 @@ include "../partials/nav.php"
 			<!--------------------- footer-------------------------- -->
 			<?php
 			include "../partials/footer.php"
-			?>
+				?>
 </body>
 
 </html>
