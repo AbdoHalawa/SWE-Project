@@ -919,7 +919,111 @@ html {
 
 </style>
 
+<style>
+        /* Reset some default browser styles */
+        body,
+        h1,
+        p,
+        form,
+        button {
+            margin: 0;
+            padding: 0;
+        }
 
+        /* Global styles */
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+
+        .Attendance-section .container1 {
+            max-width: 90rem;
+            margin: 0 auto;
+            margin-top: 100px;
+            margin-bottom: 115px;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #e1e1e1;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .Attendance-section h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .Attendance-section form {
+            text-align: left;
+        }
+
+        .Attendance-section .form-group {
+            margin-bottom: 20px;
+        }
+
+        .Attendance-section label {
+            display: block;
+            font-weight: 600;
+        }
+
+        .Attendance-section .form-group {
+            display: flex;
+            align-items: center;
+        }
+
+        .Attendance-section .label-left,
+        .Attendance-section .label-right {
+            display: inline;
+            margin: 0;
+            padding: 0;
+        }
+
+        .Attendance-section .label-left {
+            margin-right: 305px;
+            /* Adjust this margin to control the space between labels */
+        }
+
+        .Attendance-section button {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-left: 175px;
+        }
+
+
+        .Attendance-section button:hover {
+            background-color: #2980b9;
+        }
+
+        /* Form animation */
+        .Attendance-section .form-group {
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .Attendance-section .label-text {
+            margin: 0;
+            padding: 0;
+            width: 350px;
+            /* Set the width of the label */
+        }
+    </style>
 
 
 <meta name="msapplication-TileImage" content="https://www.westminster.org.uk/wp-content/uploads/2018/07/Westminster-Favicon.png" />
@@ -956,7 +1060,7 @@ class="hfeed site" id="page">
 </div>
 
 <div class="page-title-text">
-        Class 1		</div>
+        Attendance	</div>
     
 </div>
 
@@ -1061,41 +1165,65 @@ $('body').delegate('.wus-nav-item', 'click', function () {
     
             <!-- Classes section -->
                             <div class="astra-advanced-hook-30270 ">
-                <section class="featured-pages-strip">
+                <section class="Attendance-section">
     
 <!-- <div class="featured-pages-heading">                               optional header
     <h5>Discover More</h5>
  Find out more about Academic Life at Westminster	</div> -->
     
     
-<div class="featured-pages">
 
-<div class="featured-pages">
-                <div class="featured-page">
-
-                    <img width="2560" height="1709" src="../../Public/imgs/checklist-check-list-marker.jpg" class="featured-page-img wp-post-image" alt="" decoding="async" loading="lazy" sizes="(max-width: 2560px) 100vw, 2560px" /><a href="./attendance.php">
-                        <div class="featured-page-caption">
-                            Attendance
-                        </div>
-                    </a>
-                </div>
-                <div class="featured-page">
-
-                    <img width="2560" height="1709" src="../../Public/imgs/checklist-check-list-marker.jpg" class="featured-page-img wp-post-image" alt="" decoding="async" loading="lazy" sizes="(max-width: 2560px) 100vw, 2560px" /><a href="#">
-                        <div class="featured-page-caption">
-                            Material
-                        </div>
-                    </a>
-                </div>
-                <div class="featured-page">
-
-                    <img width="2560" height="1709" src="../../Public/imgs/checklist-check-list-marker.jpg" class="featured-page-img wp-post-image" alt="" decoding="async" loading="lazy" sizes="(max-width: 2560px) 100vw, 2560px" /><a href="#">
-                        <div class="featured-page-caption">
-                            Assignments
-                        </div>
-                    </a>
-                </div>
+<div class="container1">
+        <h1><u>
+                <?php
+                echo date("l, F j, Y") . "<br>";
+                ?>
+            </u>
+            <br>
+        </h1>
+        <div class="astra-advanced-hook-38861 ">
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+            <script>
+                wusmenu: {
+                    $('.wus-menu__button:not(.no-js)').on('click', function() {
+                        $('.wus-menu').toggleClass('is-open');
+                    });
+                    $('.wus-menu__close').on('click', function() {
+                        $('.wus-menu').removeClass('is-open');
+                    });
+                }
+            </script>
+            <script>
+                $('body').delegate('.wus-nav-item', 'click', function() {
+                    $('.wus-nav-item').removeClass('wus-nav-item--active');
+                    $(this).addClass('wus-nav-item--active');
+                });
+            </script>
+        </div>
+        <form>
+            <div class="form-group">
+                <label for="name" style="color: red;" class="label-left">Name</label>
+                <label id="name" style="color: red;" class="label-right" name="name">Attendance</label>
             </div>
+            <div class="form-group">
+                <label for="subscribe" class="label-text">Karen Ossama</label>
+                <input type="checkbox" id="subscribe" name="subscribe" checked>
+            </div>
+            <div class="form-group">
+                <label for="subscribe" class="label-text">Nour Hesham</label>
+                <input type="checkbox" id="subscribe" name="subscribe" checked>
+            </div>
+            <div class="form-group">
+                <label for="subscribe" class="label-text">Farah Mohamed</label>
+                <input type="checkbox" id="subscribe" name="subscribe" checked>
+            </div>
+            <div class="form-group">
+                <label for="subscribe" class="label-text">Abdo Halawa</label>
+                <input type="checkbox" id="subscribe" name="subscribe" checked>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
 
 
 </section>					
