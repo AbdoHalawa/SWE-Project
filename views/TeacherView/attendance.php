@@ -107,16 +107,20 @@ include "../partials/nav.php"
                 </div>
                 <!--Page Title Strip-->
 
-                <div class="astra-advanced-hook-38859 ">
-					<div class="mobile-links">
-
-						<div class="mobile-links-group">
-							<a href="../index.php">
-								Log Out</a>
-						</div>
-
-					</div>
-				</div>
+                <div id="wgs-header-wrapper">
+                    <div class="astra-advanced-hook-39611 ">
+                        <!--BEGIN DEPT header links wrapper-->
+                        <div class="header-links" id="divcontent">
+                            <div class="featured_box_content">
+                                <div class="box-content">
+                                    <div class="links-group">
+                                        <a href="../index.php">Logout</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END DEPT header links wrapper -->
+                    </div>
                     <!--Academic & Dept Links-->
 
                     <div class="wgs-header-image">
