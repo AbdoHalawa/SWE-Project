@@ -23,7 +23,7 @@
             margin-bottom: 115px;
             padding: 20px;
             background-color: #fff;
-            border: 10px solid rgba(141,16,3,0.6);
+            border: 5px solid (141,16,3,0.6);
             border-radius: 10px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             text-align: center;
@@ -41,6 +41,9 @@
         .form-group {
             margin-bottom: 20px;
         }
+        .form-group1 {
+            margin-bottom: 20px;
+        }
 
         label {
             display: block;
@@ -53,7 +56,12 @@
         }
          .form-group:hover{
           background-color: rgba(141,16,3,0.6);
-         }
+        }
+        .form-group1 {
+            display: flex;
+            align-items: center;
+        }
+
 
         .label-left,
         .label-right {
@@ -85,6 +93,9 @@
 
         /* Form animation */
         .form-group {
+            animation: fadeIn 1s ease-in-out;
+        }
+        .form-group1 {
             animation: fadeIn 1s ease-in-out;
         }
 
