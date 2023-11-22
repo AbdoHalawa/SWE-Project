@@ -107,26 +107,16 @@ include "../partials/nav.php"
                 </div>
                 <!--Page Title Strip-->
 
-                <div id="wgs-header-wrapper">
+                <div class="astra-advanced-hook-38859 ">
+					<div class="mobile-links">
 
-                    <div class="astra-advanced-hook-39611 ">
-                        <!--BEGIN DEPT header links wrapper-->
+						<div class="mobile-links-group">
+							<a href="../index.php">
+								Log Out</a>
+						</div>
 
-                        <div class="header-links" id="divcontent">
-
-                            <div class="featured_box_content">
-                                <div class="box-content">
-                                    <div class="links-group">
-                                        <a href="#">Logout</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
-
-                        <!-- END DEPT header links wrapper -->
-                    </div>
+					</div>
+				</div>
                     <!--Academic & Dept Links-->
 
                     <div class="wgs-header-image">
@@ -197,7 +187,7 @@ include "../partials/nav.php"
                 <center>
 
                     <div class="breadcrumb-header">
-                        <span><span><a href="https://www.westminster.org.uk/">Home</a></span> · <span class="breadcrumb_last" aria-current="page">Class 1</span></span>
+                        <span><span><a href="../TeacherView/teacherView.php">Home</a></span> · <span class="breadcrumb_last" aria-current="page"><a href="../TeacherView/innerTeacherView.php"> Class 1</a></span></span>
                     </div>
 
                 </center>
@@ -208,13 +198,6 @@ include "../partials/nav.php"
                 <!-- Classes section -->
                 <div class="astra-advanced-hook-30270 ">
                     <section class="Attendance-section">
-
-                        <!-- <div class="featured-pages-heading">                               optional header
-    <h5>Discover More</h5>
- Find out more about Academic Life at Westminster	</div> -->
-
-
-
                         <div class="container1">
                             <h1><u>
                                     <?php
@@ -243,10 +226,11 @@ include "../partials/nav.php"
                                 </script>
                             </div>
                             <form>
-                                <div class="form-group">
+                                <div class="form-group1">
                                     <label for="name" style="color: red;" class="label-left">Name</label>
                                     <label id="name" style="color: red;" class="label-right" name="name">Attendance</label>
                                 </div>
+                                <br>
                                 <div class="form-group">
                                     <label for="subscribe" class="label-text">Karen Ossama</label>
                                     <input type="checkbox" id="subscribe" name="subscribe" checked>
@@ -261,6 +245,10 @@ include "../partials/nav.php"
                                 </div>
                                 <div class="form-group">
                                     <label for="subscribe" class="label-text">Abdo Halawa</label>
+                                    <input type="checkbox" id="subscribe" name="subscribe" checked>
+                                </div>
+                                <div class="form-group">
+                                    <label for="subscribe" class="label-text"> Ragy Sameh</label>
                                     <input type="checkbox" id="subscribe" name="subscribe" checked>
                                 </div>
                                 <button type="submit">Submit</button>

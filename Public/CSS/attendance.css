@@ -51,6 +51,9 @@
             display: flex;
             align-items: center;
         }
+         .form-group:hover{
+          background-color: rgba(141,16,3,0.6);
+         }
 
         .label-left,
         .label-right {
@@ -82,7 +85,7 @@
 
         /* Form animation */
         .form-group {
-            animation: fadeIn 2s ease-in-out;
+            animation: fadeIn 1s ease-in-out;
         }
 
         @keyframes fadeIn {
