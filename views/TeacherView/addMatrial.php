@@ -11,7 +11,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Class 1 | Nefertari International School</title>
+	<title>Teacher | Nefertari International School</title>
 	<meta property="og:locale" content="en_GB" />
 	<meta property="og:type" content="article" />
 	<meta property="og:title" content="Academic Life" />
@@ -25,6 +25,9 @@
 	<meta name="twitter:card" content="summary_large_image" />
 
 
+
+
+
 	<link rel='dns-prefetch' href='//cdnjs.cloudflare.com' />
 	<link rel='dns-prefetch' href='//use.typekit.net' />
 	<link rel="alternate" type="application/rss+xml" title="Westminster School &raquo; Feed" href="https://www.westminster.org.uk/feed/" />
@@ -34,8 +37,8 @@
 	<link rel='stylesheet' id='wp-block-library-css' href='https://www.westminster.org.uk/wp-includes/css/dist/block-library/style.min.css?ver=6.4.1' media='all' />
 	<link rel='stylesheet' id='astra-theme-css-css' href='https://www.westminster.org.uk/wp-content/themes/astra/assets/css/minified/style.min.css?ver=4.4.1' media='all' />
 
-	<link rel='stylesheet' id='astra-google-fonts-css' href='https://www.westminster.org.uk/wp-content/astra-local-fonts/astra-local-fonts.css?ver=4.4.1' media='all' />
 
+	<link rel='stylesheet' id='astra-google-fonts-css' href='https://www.westminster.org.uk/wp-content/astra-local-fonts/astra-local-fonts.css?ver=4.4.1' media='all' />
 
 	<link rel='stylesheet' id='searchandfilter-css' href='https://www.westminster.org.uk/wp-content/plugins/search-filter/style.css?ver=1' media='all' />
 	<link rel='stylesheet' id='wpmf-singleimage-popup-style-css' href='https://www.westminster.org.uk/wp-content/plugins/wp-media-folder/assets/css/display-gallery/magnific-popup.css?ver=0.9.9' media='all' />
@@ -44,7 +47,12 @@
 
 	<link rel='stylesheet' id='age-checker-css' href='https://www.westminster.org.uk/wp-content/themes/westminster-child/age-checker.css' media='' />
 	<link rel='stylesheet' id='westminster-school-theme-css-css' href='https://www.westminster.org.uk/wp-content/themes/westminster-child/style.css?ver=1.0.0' media='all' />
-
+	<!--[if IE]>
+<script src="https://www.westminster.org.uk/wp-content/themes/astra/assets/js/minified/flexibility.min.js?ver=4.4.1" id="astra-flexibility-js"></script>
+<script id="astra-flexibility-js-after">
+flexibility(document.documentElement);
+</script>
+<![endif]-->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js?ver=6.4.1" id="jquery-js"></script>
 	<script src="https://www.westminster.org.uk/wp-content/plugins/wp-media-folder/assets/js/single_image_lightbox/single_image_lightbox.js?ver=5.7.1" id="wpmf-singleimage-lightbox-js"></script>
 	<script src="https://use.typekit.net/edp8drj.js?ver=6.4.1" id="typekit-js"></script>
@@ -58,16 +66,19 @@
 		document.documentElement.className += " js";
 	</script>
 
+	<!-- stylesheets -->
+	<link rel='stylesheet' href="../../public/external-css/Teacher/external.css">
+	<link rel='stylesheet' href="../../public/external-css/indexcss.css">
+	<link rel="stylesheet" href="../../Public/CSS/nav.css">
+	<link rel='stylesheet' href="../../public/CSS/teacherView.css">
+	<link rel='stylesheet' href="../../public/CSS/material.css">
 
 
 
 
 
 	<meta name="msapplication-TileImage" content="https://www.westminster.org.uk/wp-content/uploads/2018/07/Westminster-Favicon.png" />
-	<link rel='stylesheet' href="../../public/external-css/Teacher/external.css">
-	<link rel='stylesheet' href="../../public/external-css/indexcss.css">
-	<link rel="stylesheet" href="../../Public/CSS/nav.css">
-	<link rel='stylesheet' href="../../public/CSS/innerTeacherView.css">
+
 </head>
 <?php
 include "../partials/nav.php"
@@ -96,7 +107,7 @@ include "../partials/nav.php"
 						</div>
 
 						<div class="page-title-text">
-							Class 1 </div>
+							Add Material </div>
 
 					</div>
 
@@ -104,6 +115,8 @@ include "../partials/nav.php"
 
 				</div>
 				<!--Page Title Strip-->
+
+				<div id="wgs-header-wrapper">
 
 				<div class="astra-advanced-hook-38859 ">
 					<div class="mobile-links">
@@ -185,7 +198,7 @@ include "../partials/nav.php"
 				<center>
 
 					<div class="breadcrumb-header">
-						<span><span><a href="#">Home</a></span> · <span class="breadcrumb_last" aria-current="page">Class 1</span></span>
+						<span><span><a href="https://www.westminster.org.uk/">Home</a></span> · <span class="breadcrumb_last" aria-current="page">Add Material</span></span>
 					</div>
 
 				</center>
@@ -196,36 +209,22 @@ include "../partials/nav.php"
 				<!-- Classes section -->
 				<div class="astra-advanced-hook-30270 ">
 					<section class="featured-pages-strip">
-						<div class="featured-pages">
 
-							<div class="featured-pages">
-								<div class="featured-page">
+                <form>
+                      <label for="title">Title:</label>
+                      <input type="text" id="title" name="title" required>
 
-									<img width="2560" height="1709" src="../../Public/imgs/checklist-check-list-marker.jpg" class="featured-page-img wp-post-image" alt="" decoding="async" loading="lazy" sizes="(max-width: 2560px) 100vw, 2560px" /><a href="./attendance.php">
-										<div class="featured-page-caption">
-											Attendance
-										</div>
-									</a>
-								</div>
-								<div class="featured-page">
+                       <label for="subject">Subject Name</label>
+                       <input type="text" id="subject" name="subject" required>
 
-									<img width="2560" height="1709" src="../../Public/imgs/checklist-check-list-marker.jpg" class="featured-page-img wp-post-image" alt="" decoding="async" loading="lazy" sizes="(max-width: 2560px) 100vw, 2560px" /><a href="./addMatrial.php">
-										<div class="featured-page-caption">
-											Material
-										</div>
-									</a>
-								</div>
-								<div class="featured-page">
+                          <label for="content">Content</label>
+                        <textarea id="Content" name="content" rows="4" required></textarea>
 
-									<img width="2560" height="1709" src="../../Public/imgs/checklist-check-list-marker.jpg" class="featured-page-img wp-post-image" alt="" decoding="async" loading="lazy" sizes="(max-width: 2560px) 100vw, 2560px" /><a href="#">
-										<div class="featured-page-caption">
-											Assignments
-										</div>
-									</a>
-								</div>
-							</div>
+                     <label for="file">Upload Material:</label>
+                     <input type="file" id="file" name="file" accept=".pdf, .doc, .docx" required>
 
-
+                        <button type="submit">Add Material</button>
+             </form>
 					</section>
 				</div>
 				<!-- end Classes section -->
