@@ -72,6 +72,7 @@ flexibility(document.documentElement);
     <link rel="stylesheet" href="../../Public/CSS/nav.css">
     <link rel='stylesheet' href="../../public/CSS/teacherView.css">
     <link rel='stylesheet' href="../../public/CSS/submission2.css">
+    <link rel='stylesheet' href="../../public/CSS/submission.css">
 
 
 
@@ -281,7 +282,7 @@ include "../partials/nav.php"
                                         <div class="row">
                                             <div class="col-xs-6 mr-3">
                                                 <div class="singlebutton">
-                                                    <form method="get" action="https://moodle1.miuegypt.edu.eg/mod/assign/view.php">
+                                                    <form method="get" action="../StudentView/studentView.php">
                                                         <input type="hidden" name="id" value="1998">
                                                         <input type="file" id="file" name="file" accept=".pdf, .doc, .docx" required>
                                                         <button type="submit" class="btn btn-secondary" id="single_button655f8c6d5378633" fdprocessedid="ztp5">Add submission</button>
