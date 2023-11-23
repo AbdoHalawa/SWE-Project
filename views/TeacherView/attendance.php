@@ -203,32 +203,9 @@ include "../partials/nav.php"
                 <div class="astra-advanced-hook-30270 ">
                     <section class="Attendance-section">
                         <div class="container1">
-                            <h1><u>
-                                    <?php
-                                    echo date("l, F j, Y") . "<br>";
-                                    ?>
                                 </u>
                                 <br>
                             </h1>
-                            <div class="astra-advanced-hook-38861 ">
-                                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-                                <script>
-                                    wusmenu: {
-                                        $('.wus-menu__button:not(.no-js)').on('click', function() {
-                                            $('.wus-menu').toggleClass('is-open');
-                                        });
-                                        $('.wus-menu__close').on('click', function() {
-                                            $('.wus-menu').removeClass('is-open');
-                                        });
-                                    }
-                                </script>
-                                <script>
-                                    $('body').delegate('.wus-nav-item', 'click', function() {
-                                        $('.wus-nav-item').removeClass('wus-nav-item--active');
-                                        $(this).addClass('wus-nav-item--active');
-                                    });
-                                </script>
-                            </div>
                             <form>
                                 <div class="form-group1">
                                     <label for="name" style="color: red;" class="label-left">Name</label>
