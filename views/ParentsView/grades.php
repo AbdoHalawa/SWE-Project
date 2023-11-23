@@ -71,6 +71,8 @@ flexibility(document.documentElement);
 	<link rel='stylesheet' href="../../public/external-css/indexcss.css">
 	<link rel="stylesheet" href="../../Public/CSS/nav.css">
 	<link rel='stylesheet' href="../../public/CSS/teacherView.css">
+    <link rel='stylesheet' href="../../public/CSS/grades.css">
+
 
 
 
@@ -210,31 +212,41 @@ include "../partials/nav.php"
 				<!-- Classes section -->
 				<div class="astra-advanced-hook-30270 ">
 					<section class="featured-pages-strip">
+                    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Grades</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
-						<!-- <div class="featured-pages-heading">                               optional header
-	<h5>Discover More</h5>
- Find out more about Academic Life at Westminster	</div> -->
+    <div class="grade-container">
+        <h1 class="s">School Grades</h1>
 
+        <div class="subject">
+            <h2>Mathematics</h2>
+            <p>Grade: A</p>
+        </div>
 
-						<div class="featured-pages">
-							<div class="featured-page">
+        <div class="subject">
+            <h2>Science</h2>
+            <p>Grade: B</p>
+        </div>
 
-								<img width="2560" height="1709" src="../../Public/imgs/Wboard.jpg" class="featured-page-img wp-post-image" alt="" decoding="async" loading="lazy" sizes="(max-width: 2560px) 100vw, 2560px" /><a href="../ParentsView/grades.php">
-									<div class="featured-page-caption">
-										Grades
-									</div>
-								</a>
-							</div>
-							<div class="featured-page">
+        <div class="subject">
+            <h2>English</h2>
+            <p>Grade: C</p>
+        </div>
 
-								<img width="2560" height="1709" src="../../Public/imgs/Wboard.jpg" class="featured-page-img wp-post-image" alt="" decoding="async" loading="lazy" sizes="(max-width: 2560px) 100vw, 2560px" /><a href="../ParentsView/fees.php">
-									<div class="featured-page-caption">
-										Fees
-									</div>
-								</a>
-							</div>
-						</div>
-						<!-- classes -->
+        <!-- Add more subjects as needed -->
+
+    </div>
+
+</body>
+</html>
+
 					</section>
 				</div>
 				<!-- end Classes section -->
@@ -244,5 +256,6 @@ include "../partials/nav.php"
 				include "../partials/footer.php"
 				?>
 </body>
+
 
 </html>

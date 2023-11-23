@@ -1,119 +1,100 @@
+/* Reset some default browser styles */
+body, h1, p, form, button {
+    margin: 0;
+    padding: 0;
+}
 
-        /* Reset some default browser styles */
-        body,
-        h1,
-        p,
-        form,
-        button {
-            margin: 0;
-            padding: 0;
-        }
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
 
-        /* Global styles */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-        }
+.container1 {
+    max-width: 90%; /* Adjusted for responsiveness */
+    margin: 0 auto;
+    margin-top: 50px; /* Adjusted for responsiveness */
+    margin-bottom: 50px; /* Adjusted for responsiveness */
+    padding: 20px;
+    background-color: #fff;
+    border: 5px solid rgba(141, 16, 3, 0.6); /* Adjusted border color */
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
 
-        .container1 {
-            max-width: 500px;
-            margin: 0 auto;
-            margin-top: 100px;
-            margin-bottom: 115px;
-            padding: 20px;
-            background-color: #fff;
-            border: 5px solid (141,16,3,0.6);
-            border-radius: 10px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
 
-        h1 {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
+form {
+    text-align: left;
+}
 
-        form {
-            text-align: left;
-        }
+.form-group,
+.form-group1 {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
 
-        .form-group {
-            margin-bottom: 20px;
-        }
-        .form-group1 {
-            margin-bottom: 20px;
-        }
+.form-group:hover,
+.form-group1:hover {
+    background-color: rgba(141, 16, 3, 0.6);
+}
 
-        label {
-            display: block;
-            font-weight: 600;
-        }
+.label-left,
+.label-right {
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
 
-        .form-group {
-            display: flex;
-            align-items: center;
-        }
-         .form-group:hover{
-          background-color: rgba(141,16,3,0.6);
-        }
-        .form-group1 {
-            display: flex;
-            align-items: center;
-        }
+.label-left {
+    margin-right: 5%; /* Adjusted margin for responsiveness */
+}
 
+.button-container {
+    text-align: center; /* Centering button for responsiveness */
+}
 
-        .label-left,
-        .label-right {
-            display: inline;
-            margin: 0;
-            padding: 0;
-        }
+button {
+    background-color: #8d1020;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
 
-        .label-left {
-            margin-right: 305px;
-            /* Adjust this margin to control the space between labels */
-        }
+button:hover {
+    background-color: rgba(141, 16, 3, 0.6);
+}
 
-        button {
-            background-color: #8d1020;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            padding: 10px 20px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            margin-left: 175px;
-        }
+/* Form animation */
+.form-group,
+.form-group1 {
+    animation: fadeIn 1s ease-in-out;
+}
 
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
 
-        button:hover {
-            background-color:  rgba(141,16,3,0.6);
-        }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
-        /* Form animation */
-        .form-group {
-            animation: fadeIn 1s ease-in-out;
-        }
-        .form-group1 {
-            animation: fadeIn 1s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .label-text {
-            margin: 0;
-            padding: 0;
-            width: 350px;
-            /* Set the width of the label */
-        }
+.label-text {
+    margin: 0;
+    padding: 0;
+    width: 80%; /* Adjusted width for responsiveness */
+}
+s
