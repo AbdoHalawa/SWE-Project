@@ -1,0 +1,92 @@
+  /* Reset some default styles */
+  body,
+  h1,
+  h2,
+  p,
+  ul {
+      margin: 0;
+      padding: 0;
+  }
+
+  body {
+      font-family: Arial, sans-serif;
+  }
+
+  /* Big Box Styles */
+  .big-box {
+      border: 1px solid #ccc;
+      padding: 1rem;
+      margin: 1rem auto;
+      max-width: 800px;
+      /* Adjust the maximum width as needed */
+  }
+
+  /* General Styles */
+  .container-fluid {
+      margin-bottom: 4rem;
+  }
+
+  /* Header Styles */
+  #region-main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .activity-name {
+      font-size: 1.5em;
+      margin-bottom: 1rem;
+  }
+
+  .activity-dates {
+      margin-top: 1rem;
+  }
+
+  /* Assignment Description Styles */
+  .box {
+      border: 1px solid #ccc;
+      padding: 1rem;
+      margin: 1rem auto;
+      max-width: 600px;
+      /* Adjust the maximum width as needed */
+  }
+
+  .fileuploadsubmission img {
+      max-width: 24px;
+      max-height: 24px;
+      margin-right: 0.5rem;
+  }
+
+  /* Submission Buttons Styles */
+  .singlebutton {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1rem;
+  }
+
+  .singlebutton form {
+      margin-bottom: 1rem;
+  }
+
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+      .big-box {
+          max-width: 100%;
+          padding: 0.5rem;
+      }
+
+      .singlebutton {
+          flex-direction: column;
+          align-items: center;
+      }
+
+      .col-xs-6 {
+          width: 100%;
+          margin-bottom: 1rem;
+      }
+
+      .box {
+          padding: 0.5rem;
+          max-width: 100%;
+      }
+  }
