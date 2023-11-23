@@ -71,7 +71,7 @@ flexibility(document.documentElement);
 	<link rel='stylesheet' href="../../public/external-css/indexcss.css">
 	<link rel="stylesheet" href="../../Public/CSS/nav.css">
 	<link rel='stylesheet' href="../../public/CSS/teacherView.css">
-	<link rel='stylesheet' href="../../public/CSS/material.css">
+	<link rel='stylesheet' href="../../public/CSS/assignments.css">
 
 
 
@@ -107,7 +107,7 @@ include "../partials/nav.php"
 						</div>
 
 						<div class="page-title-text">
-							Add Material </div>
+							Add Assignment </div>
 
 					</div>
 
@@ -117,19 +117,17 @@ include "../partials/nav.php"
 				<!--Page Title Strip-->
 
 				<div id="wgs-header-wrapper">
-                    <div class="astra-advanced-hook-39611 ">
-                        <!--BEGIN DEPT header links wrapper-->
-                        <div class="header-links" id="divcontent">
-                            <div class="featured_box_content">
-                                <div class="box-content">
-                                    <div class="links-group">
-                                        <a href="../index.php">Logout</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- END DEPT header links wrapper -->
-                    </div>
+
+				<div class="astra-advanced-hook-38859 ">
+					<div class="mobile-links">
+
+						<div class="mobile-links-group">
+							<a href="../index.php">
+								Log Out</a>
+						</div>
+
+					</div>
+				</div>
 					<!--Academic & Dept Links-->
 
 					<div class="wgs-header-image">
@@ -200,7 +198,7 @@ include "../partials/nav.php"
 				<center>
 
 					<div class="breadcrumb-header">
-						<span><span><a href="https://www.westminster.org.uk/">Home</a></span> · <span class="breadcrumb_last" aria-current="page">Add Material,.</span></span>
+						<span><span><a href="https://www.westminster.org.uk/">Home</a></span> · <span class="breadcrumb_last" aria-current="page">Add Assignment,.</span></span>
 					</div>
 
 				</center>
@@ -222,10 +220,10 @@ include "../partials/nav.php"
                           <label for="content">Content</label>
                         <textarea id="Content" name="content" rows="4" required></textarea>
 
-                     <label for="file">Upload Material:</label>
+                     <label for="file">Upload Assignment:</label>
                      <input type="file" id="file" name="file" accept=".pdf, .doc, .docx" required>
 
-                        <button type="submit">Add Material</button>
+                        <button type="submit">Add Assignment</button>
              </form>
 					</section>
 				</div>
