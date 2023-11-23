@@ -226,7 +226,7 @@ include "../partials/nav.php"
                                                 </div>
                                                 <div class="media-body align-self-center">
                                                     <div class="activityname">
-                                                        <a href="../StudentView//submission2.php" class=" aalink stretched-link" onclick=""> <span class="instancename">Lab Assignment 1 </span> </a>
+                                                        <a href="../StudentView/submission2.php" class=" aalink stretched-link" onclick=""> <span class="instancename">Lab Assignment 1 </span> </a>
 
                                                     </div>
                                                 </div>
