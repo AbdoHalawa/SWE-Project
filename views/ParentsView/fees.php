@@ -11,7 +11,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Class 1 | Nefertari International School</title>
+    <title>Student | Nefertari International School</title>
     <meta property="og:locale" content="en_GB" />
     <meta property="og:type" content="article" />
     <meta property="og:title" content="Academic Life" />
@@ -25,6 +25,9 @@
     <meta name="twitter:card" content="summary_large_image" />
 
 
+
+
+
     <link rel='dns-prefetch' href='//cdnjs.cloudflare.com' />
     <link rel='dns-prefetch' href='//use.typekit.net' />
     <link rel="alternate" type="application/rss+xml" title="Westminster School &raquo; Feed" href="https://www.westminster.org.uk/feed/" />
@@ -34,8 +37,8 @@
     <link rel='stylesheet' id='wp-block-library-css' href='https://www.westminster.org.uk/wp-includes/css/dist/block-library/style.min.css?ver=6.4.1' media='all' />
     <link rel='stylesheet' id='astra-theme-css-css' href='https://www.westminster.org.uk/wp-content/themes/astra/assets/css/minified/style.min.css?ver=4.4.1' media='all' />
 
-    <link rel='stylesheet' id='astra-google-fonts-css' href='https://www.westminster.org.uk/wp-content/astra-local-fonts/astra-local-fonts.css?ver=4.4.1' media='all' />
 
+    <link rel='stylesheet' id='astra-google-fonts-css' href='https://www.westminster.org.uk/wp-content/astra-local-fonts/astra-local-fonts.css?ver=4.4.1' media='all' />
 
     <link rel='stylesheet' id='searchandfilter-css' href='https://www.westminster.org.uk/wp-content/plugins/search-filter/style.css?ver=1' media='all' />
     <link rel='stylesheet' id='wpmf-singleimage-popup-style-css' href='https://www.westminster.org.uk/wp-content/plugins/wp-media-folder/assets/css/display-gallery/magnific-popup.css?ver=0.9.9' media='all' />
@@ -63,13 +66,20 @@ flexibility(document.documentElement);
         document.documentElement.className += " js";
     </script>
 
-
-    <meta name="msapplication-TileImage" content="https://www.westminster.org.uk/wp-content/uploads/2018/07/Westminster-Favicon.png" />
+    <!-- stylesheets -->
     <link rel='stylesheet' href="../../public/external-css/Teacher/external.css">
     <link rel='stylesheet' href="../../public/external-css/indexcss.css">
     <link rel="stylesheet" href="../../Public/CSS/nav.css">
-    <link rel='stylesheet' href="../../public/CSS/innerTeacherView.css">
-    <link rel='stylesheet' href="../../public/CSS/attendance.css">
+    <link rel='stylesheet' href="../../public/CSS/teacherView.css">
+    <link rel='stylesheet' href="../../public/CSS/fees.css">
+
+
+
+
+
+
+    <meta name="msapplication-TileImage" content="https://www.westminster.org.uk/wp-content/uploads/2018/07/Westminster-Favicon.png" />
+
 </head>
 <?php
 include "../partials/nav.php"
@@ -98,7 +108,7 @@ include "../partials/nav.php"
                         </div>
 
                         <div class="page-title-text">
-                            Attendance </div>
+                            Parents </div>
 
                     </div>
 
@@ -125,7 +135,7 @@ include "../partials/nav.php"
 
                     <div class="wgs-header-image">
 
-                        <div class="image" style="background-image: url('../../Public/imgs/3.webp');"></div>
+                        <div class="image" style="background-image: url('../../Public/imgs/parents.jpg');"></div>
 
 
                         <div class="wgs-header-image-overlay"></div>
@@ -191,7 +201,7 @@ include "../partials/nav.php"
                 <center>
 
                     <div class="breadcrumb-header">
-                        <span><span><a href="../TeacherView/teacherView.php">Home</a></span> · <span class="breadcrumb_last" aria-current="page"><a href="../TeacherView/innerTeacherView.php"> Class 1</a></span></span>
+                        <span><span><a href="https://www.westminster.org.uk/">Home</a></span> · <span class="breadcrumb_last" aria-current="page">Parents</span></span>
                     </div>
 
                 </center>
@@ -199,52 +209,118 @@ include "../partials/nav.php"
 
 
 
-                <!-- Classes section -->
-                <div class="astra-advanced-hook-30270 ">
-                    <section class="Attendance-section">
-                        <div class="container1">
-                                </u>
-                                <br>
-                            </h1>
-                            <form>
-                                <div class="form-group1">
-                                    <label for="name" style="color: red;" class="label-left">Name</label>
-                                    <label id="name" style="color: red;" class="label-right" name="name">Attendance</label>
+                <div ng-show="Screen.ShowRight">
+                    <div class="portlet light portlet-fit portlet-datatable bordered" ng-app="myApp">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="fa fa-money font-green"></i>
+                                <span class="caption-subject font-green sbold uppercase">Print Bank Deposit</span>
+                            </div>
+                            <div class="tools">
+                            </div>
+                        </div>
+                        <br>
+                        <!-- Current Due -->
+
+                        <div class="portlet-body">
+
+                            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                <thead>
+                                    <tr>
+                                        <th>Part</th>
+                                        <th>Due</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- ngRepeat: oldDue in Screen.CurrentDues -->
+                                    <tr class="odd gradeX ng-scope" ng-repeat="oldDue in Screen.CurrentDues" style="">
+                                        <td class="ng-binding">9665</td>
+                                        <td class="ng-binding">2023-12-20</td>
+                                        <td>
+                                            <input type="checkbox" name="install_1" value="install_1" id="installment_1" ng-checked="oldDue.IsChecked" ng-disabled="oldDue.IsDisabled" ng-model="oldDue.IsChecked" ng-change="CaclulateAmount();" class="ng-pristine ng-untouched ng-valid" disabled="disabled">
+                                        </td>
+
+                                    </tr><!-- end ngRepeat: oldDue in Screen.CurrentDues -->
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!--Other-->
+                        <!-- ngIf: Screen.hasOtherFees -->
+
+                        <div class="portlet-title">
+                            <div class="caption">
+                                Administration Fees
+                            </div>
+                            <div class="actions">
+                                <div style="text-align:center">
+
                                 </div>
-                                <br>
-                                <div class="form-group">
-                                    <label for="subscribe" class="label-text">Karen Ossama</label>
-                                    <input type="checkbox" id="subscribe" name="subscribe" checked>
-                                </div>
-                                <div class="form-group">
-                                    <label for="subscribe" class="label-text">Nour Hesham</label>
-                                    <input type="checkbox" id="subscribe" name="subscribe" checked>
-                                </div>
-                                <div class="form-group">
-                                    <label for="subscribe" class="label-text">Farah Mohamed</label>
-                                    <input type="checkbox" id="subscribe" name="subscribe" checked>
-                                </div>
-                                <div class="form-group">
-                                    <label for="subscribe" class="label-text">Abdo Halawa</label>
-                                    <input type="checkbox" id="subscribe" name="subscribe" checked>
-                                </div>
-                                <div class="form-group">
-                                    <label for="subscribe" class="label-text"> Ragy Sameh</label>
-                                    <input type="checkbox" id="subscribe" name="subscribe" checked>
-                                </div>
-                                <button type="submit">Submit</button>
-                            </form>
+                            </div>
+                        </div>
+                        <div class="portlet-body">
+                            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                <thead>
+                                    <tr>
+                                        <th>Part</th>
+                                        <th>Due</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- ngRepeat: admindDue in Screen.AdministrationFeesDue -->
+                                    <tr class="odd gradeX ng-scope" ng-repeat="admindDue in Screen.AdministrationFeesDue">
+                                        <td class="ng-binding">0</td>
+                                        <td class="ng-binding">2023-10-03</td>
+                                        <td>
+                                            <input type="checkbox" name="adminInstall_1" value="adminInstall_1" id="adminInstallment_1" ng-checked="admindDue.IsChecked" ng-disabled="admindDue.IsDisabled" ng-model="admindDue.IsChecked" ng-change="CaclulateAmount();" class="ng-pristine ng-untouched ng-valid" disabled="disabled">
+                                        </td>
+
+                                    </tr><!-- end ngRepeat: admindDue in Screen.AdministrationFeesDue -->
+                                    <tr class="odd gradeX ng-scope" ng-repeat="admindDue in Screen.AdministrationFeesDue">
+                                        <td class="ng-binding">5500</td>
+                                        <td class="ng-binding">2024-02-01</td>
+                                        <td>
+                                            <input type="checkbox" name="adminInstall_2" value="adminInstall_2" id="adminInstallment_2" ng-checked="admindDue.IsChecked" ng-disabled="admindDue.IsDisabled" ng-model="admindDue.IsChecked" ng-change="CaclulateAmount();" class="ng-valid ng-dirty ng-valid-parse ng-touched" style="">
+                                        </td>
+
+                                    </tr><!-- end ngRepeat: admindDue in Screen.AdministrationFeesDue -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div><!-- end ngIf: Screen.hasOtherFees -->
+
+
+                <div style="clear:both">
+                    <div style="padding-top:1%;"></div>
+                    <div class="portlet box red">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                Amount to be paid
+                            </div>
+                        </div>
+                        <div class="portlet-body ng-binding">
+                            <button ng-click="CaclulateAmount();" class="btn btn-primary" fdprocessedid="3he2hp">
+                                <i class="fa fa-print"></i> Calculate Amount
+                            </button>
+                            15165 EG
                         </div>
 
 
-                    </section>
-                </div>
-                <!-- end Classes section -->
+                    </div>
 
-                <!--------------------- footer-------------------------- -->
-                <?php
-                include "../partials/footer.php"
-                ?>
 </body>
+
+
+<!-- end Classes section -->
+
+<!--------------------- footer-------------------------- -->
+<?php
+include "../partials/footer.php"
+?>
+</body>
+
 
 </html>
