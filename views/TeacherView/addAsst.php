@@ -71,7 +71,7 @@ flexibility(document.documentElement);
 	<link rel='stylesheet' href="../../public/external-css/indexcss.css">
 	<link rel="stylesheet" href="../../Public/CSS/nav.css">
 	<link rel='stylesheet' href="../../public/CSS/teacherView.css">
-	<link rel='stylesheet' href="../../public/CSS/material.css">
+	<link rel='stylesheet' href="../../public/CSS/assignments.css">
 
 
 
@@ -107,7 +107,7 @@ include "../partials/nav.php"
 						</div>
 
 						<div class="page-title-text">
-							Add Material </div>
+							Add Assignment </div>
 
 					</div>
 
@@ -198,7 +198,7 @@ include "../partials/nav.php"
 				<center>
 
 					<div class="breadcrumb-header">
-						<span><span><a href="https://www.westminster.org.uk/">Home</a></span> · <span class="breadcrumb_last" aria-current="page">Add Material,.</span></span>
+						<span><span><a href="https://www.westminster.org.uk/">Home</a></span> · <span class="breadcrumb_last" aria-current="page">Add Assignment,.</span></span>
 					</div>
 
 				</center>
@@ -220,10 +220,10 @@ include "../partials/nav.php"
                           <label for="content">Content</label>
                         <textarea id="Content" name="content" rows="4" required></textarea>
 
-                     <label for="file">Upload Material:</label>
+                     <label for="file">Upload Assignment:</label>
                      <input type="file" id="file" name="file" accept=".pdf, .doc, .docx" required>
 
-                        <button type="submit">Add Material</button>
+                        <button type="submit">Add Assignment</button>
              </form>
 					</section>
 				</div>
