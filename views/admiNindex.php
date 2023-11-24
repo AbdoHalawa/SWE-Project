@@ -16,60 +16,13 @@
      <!-- GOOGLE FONTS-->
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
-<body>
-    <div id="wrapper">
-        <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">Binary admin</a> 
-            </div>
-  <div style="color: white;
-padding: 15px 50px 5px 50px;
-float: right;
-font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-danger square-btn-adjust">Logout</a> </div>
-        </nav>   
-           <!-- /. NAV TOP  -->
-           <nav class="navbar-default navbar-side" role="navigation">
-            <div class="sidebar-collapse">
-                <ul class="nav" id="main-menu">
-                    <li class="text-center">
-                        <img src="..\Public\imgs\find_user(admin).png" class="user-image img-responsive" />
-                    </li>
-                    <li>
+<?php
+include "../views/partials/adminNav.php";
+?>
 
-                        <a href="admiNindex.php"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
-                    </li>
-                    
-              
-                    <li>
-                        <a class="active-menu" href="chart.php"><i class="fa fa-bar-chart-o fa-3x"></i> Academic Performance</a>
-                    </li>
-                    <li>
-                        <a href="table.php"><i class="fa fa-table fa-3x"></i>Tables</a>
-                    </li>
-                    <li>
-                        <a href="form.php"><i class="fa fa-edit fa-3x"></i> Forms </a>
-                    </li>
-                   
-                </ul>
-            </div>
-        </nav>
-        <!-- /. NAV SIDE  -->
-        <div id="page-wrapper" >
-            <div id="page-inner">
-                <div class="row">
-                    <div class="col-md-12">
-                     <h2>Admin Dashboard</h2>   
-                        <h5>Welcome Jhon Deo , Love to see you back. </h5>
-                    </div>
-                </div>              
-              <!-- /. ROW  -->
-<hr />
+<body>
+  
+<br>
 <div class="row">
     <div class="col-md-3 col-sm-6 col-xs-6">
         <div class="panel panel-back noti-box">
@@ -158,26 +111,23 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
                 </div>
             </div>
         </div>
-        <div class="panel panel-back noti-box">
-            <span class="icon-box bg-color-green set-icon">
-                <i class="fa fa-calendar"></i>
-            </span>
-            <div class="text-box">
-                <p class="main-text">Events</p>
-                <p class="text-muted">Upcoming</p>
-            </div>
-        </div>
+        
     </div>
 </div>
 <!-- /. ROW  -->
+
+<!-- /. ROW  -->
 <div class="row">
-    <div class="col-md-9 col-sm-12 col-xs-12">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                Student Enrollment Statistics
-            </div>
+    <div class="col-md-3 col-sm-12 col-xs-12">
+        <div class="panel panel-primary text-center no-boder bg-color-green">
             <div class="panel-body">
-                <div id="morris-bar-chart"></div>
+                <i class="fa fa-comments-o fa-5x"></i>
+                <h4>200 New Comments</h4>
+                <h4>See All Comments</h4>
+            </div>
+            <div class="panel-footer back-footer-green">
+                <i class="fa fa-rocket fa-5x"></i>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </div>
         </div>
     </div>
@@ -201,75 +151,6 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
             </div>
         </div>
     </div>
-</div>
-<!-- /. ROW  -->
-<div class="row">
-    <div class="col-md-3 col-sm-12 col-xs-12">
-        <div class="panel panel-primary text-center no-boder bg-color-green">
-            <div class="panel-body">
-                <i class="fa fa-comments-o fa-5x"></i>
-                <h4>200 New Comments</h4>
-                <h4>See All Comments</h4>
-            </div>
-            <div class="panel-footer back-footer-green">
-                <i class="fa fa-rocket fa-5x"></i>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </div>
-        </div>
-    </div>
-    <div class="col-md-9 col-sm-12 col-xs-12">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                Teacher Performance
-            </div>
-            <div class="panel-body">
-                <div class="table-responsive">
-                    <table class="table table-striped table-bordered table-hover">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Teacher Name</th>
-                                <th>Subject Taught</th>
-                                <th>Class</th>
-                                <th>Performance Rating</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Lisa Anderson</td>
-                                <td>Mathematics</td>
-                                <td>Class 8</td>
-                                <td>Excellent</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>John Smith</td>
-                                <td>Science</td>
-                                <td>Class 7</td>
-                                <td>Good</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Mary Johnson</td>
-                                <td>English</td>
-                                <td>Class 9</td>
-                                <td>Excellent</td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>David Wilson</td>
-                                <td>History</td>
-                                <td>Class 10</td>
-                                <td>Very Good</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 <!-- /. ROW -->
 <div class="row">
     <div class="col-md-6 col-sm-12 col-xs-12">
@@ -355,42 +236,7 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
             </div>
         </div>
     </div>
-    <div class="col-md-6 col-sm-12 col-xs-12">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                Upcoming Events
-            </div>
-            <div class="panel-body">
-                <div class="table-responsive">
-                    <table class="table table-striped table-bordered table-hover">
-                        <thead>
-                            <tr>
-                                <th>Date</th>
-                                <th>Event Name</th>
-                                <th>Location</th>
-                                <th>Details</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>2023-11-15</td>
-                                <td>Parent-Teacher Conference</td>
-                                <td>Conference Hall</td>
-                                <td>Discuss student progress</td>
-                            </tr>
-                            <tr>
-                                <td>2023-12-05</td>
-                                <td>School Open House</td>
-                                <td>Campus Auditorium</td>
-                                <td>Welcome prospective students</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+   
 <!-- /. ROW -->
     
     </div>

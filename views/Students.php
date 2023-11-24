@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
       <meta charset="utf-8" />
@@ -17,68 +17,50 @@
    <link rel="stylesheet" href="../public/css/nav.css">
    <script src="https://kit.fontawesome.com/f17a435b32.js" crossorigin="anonymous"></script>
 </head>
+<?php
+include "../views/partials/adminNav.php";
+?>
+
 <body>
-    <div id="wrapper">
-        <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">Binary admin</a> 
+<style>
+        .btn-container {
+            margin-bottom: 10px;
+        }
+
+        .toggle-form {
+            display: none;
+        }
+
+        .btn-toggle {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-toggle:hover {
+            background-color: #45a049;
+        }
+    </style>
+
+<div class="row">
+    <div class="col-md-9 col-sm-12 col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Student Enrollment Statistics
             </div>
-  <div style="color: white;
-padding: 15px 50px 5px 50px;
-float: right;
-font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-danger square-btn-adjust">Logout</a> </div>
-        </nav>   
-            <!-- /. NAV TOP  -->
-           <!-- /. NAV TOP  -->
-           <nav class="navbar-default navbar-side" role="navigation">
-            <div class="sidebar-collapse">
-                <ul class="nav" id="main-menu">
-                    <li class="text-center">
-                    <img src="..\Public\imgs\find_user(admin).png" class="user-image img-responsive" />
-                    </li>
-                    <li>
-                        <a href="admiNindex.php"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
-                    </li>
-                    
-              
-                    <li>
-                        <a class="active-menu" href="chart.php"><i class="fa fa-bar-chart-o fa-3x"></i> Academic Performance</a>
-                    </li>
-                    <li>
-                        <a href="table.php"><i class="fa fa-table fa-3x"></i>Tables</a>
-                    </li>
-                    <li>
-                        <a href="form.php"><i class="fa fa-edit fa-3x"></i> Forms </a>
-                    </li>
-                   
-                </ul>
+            <div class="panel-body">
+                <div id="morris-bar-chart"></div>
             </div>
-        </nav>
-        <!-- /. NAV SIDE  -->
-        <div id="page-wrapper" >
-            <div id="page-inner">
-                <div class="row">
-                    <div class="col-md-12">
-                     <h2>Table Examples</h2>   
-                        <h5>Welcome Jhon Deo , Love to see you back. </h5>
-                       
-                    </div>
-                </div>
-                 <!-- /. ROW  -->
-                 <hr />
-               
-            <div class="row">
-                <div class="col-md-12">
-                    <!-- Advanced Tables -->
-                    <div class="panel panel-default">
+        </div>
+    </div>
+   
+<div class="panel panel-default">
                         <div class="panel-heading">
-                             Students Table
+                           
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
@@ -140,58 +122,7 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
             <div class="row">
                 <div class="col-md-12">
                     <!-- Advanced Tables -->
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                             Teahers Table
-                        </div>
-                        <div class="panel-body">
-                            <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover" id="dataTables-example2">
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Email</th>
-                                            <th>Subjects</th>
-                                            <th>Coordinator</th>
-                                            <th>Class Teacher</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <!-- Sample Teacher Data -->
-                                        <tr class="odd gradeX">
-                                            <td>1</td>
-                                            <td>teacher1@nefertari.teach.eg</td>
-                                            <td>Math, Science</td>
-                                            <td>Coordinator A</td>
-                                            <td>Yes</td>
-                                        </tr>
-                                        <tr class="even gradeC">
-                                            <td>2</td>
-                                            <td>teacher2@nefertari.teach.eg</td>
-                                            <td>English, History</td>
-                                            <td>Coordinator B</td>
-                                            <td>No</td>
-                                        </tr>
-                                        <tr class="odd gradeX">
-                                            <td>3</td>
-                                            <td>teacher3@nefertari.teach.eg</td>
-                                            <td>Art, Music</td>
-                                            <td>Coordinator A</td>
-                                            <td>Yes</td>
-                                        </tr>
-                                        <tr class="even gradeC">
-                                            <td>4</td>
-                                            <td>teacher4@nefertari.teach.eg</td>
-                                            <td>Physics, Chemistry</td>
-                                            <td>Coordinator C</td>
-                                            <td>Yes</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            
-                        </div>
-                    </div>
+                   
                     <!--End Advanced Tables -->
                 </div>
                 <div class="col-md-12">
@@ -252,19 +183,144 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
                             </div>
                         </div>
                     </div>
-                    <!-- End Advanced Tables (Students with Medical Issues) -->
-                </div>
-                
-            </div>
-                
-               
+                    <div id="page-inner">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Admin Panel</h2>
+        </div>
     </div>
-             <!-- /. PAGE INNER  -->
-            </div>
-         <!-- /. PAGE WRAPPER  -->
-     <!-- /. WRAPPER  -->
-    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-    <!-- JQUERY SCRIPTS -->
+    <hr />
+
+    <!-- Add/Edit/Delete Buttons -->
+    <div class="btn-container">
+        <button class="btn-toggle" onclick="toggleForm('editForm')">Edit Student</button>
+        <button class="btn-toggle" onclick="toggleForm('addForm')">Add Student</button>
+        <button class="btn-toggle" onclick="toggleForm('deleteForm')">Delete Student</button>
+    </div>
+    <div class="row toggle-form" id="editForm">
+        <div class="col-md-6">
+    
+        <div class="row">
+                        <div class="col-md-6">
+                            <h3>Edit Student</h3>
+                            <form role="form" action="edit_student.php" method="post">
+                                <div class="form-group">
+                                    <label>Select Student to Edit</label>
+                                    <select name="student" class="form-control">
+                                        <option>John Doe</option>
+                                        <option>Jane Smith</option>
+                                        <!-- Add more students here -->
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Edit Email</label>
+                                    <input type="text" name="email" class="form-control" placeholder="New Email" />
+                                </div>
+                                <div class "form-group">
+                                    <label>Edit Class</label>
+                                    <select name="class" class="form-control">
+                                        <option>Class 5A</option>
+                                        <option>Class 4B</option>
+                                        <!-- Add more classes here -->
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Edit Class Teacher</label>
+                                    <select name="class_teacher" class="form-control">
+                                        <option>Teacher A</option>
+                                        <option>Teacher B</option>
+                                        <!-- Add more teachers here as class teachers -->
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Edit Current Grade</label>
+                                    <input type="text" name="current_grade" class="form-control" placeholder="New Current Grade" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Edit Next Year's Class</label>
+                                    <input type="text" name="next_year_class" class="form-control" placeholder="New Next Year's Class" />
+                                </div>
+                                <button type="submit" class="btn btn-default">Update Student</button>
+                            </form>
+                        </div>
+                    </div>
+
+
+        <div class="row toggle-form" id="addForm">
+        <div class="col-md-6">
+            <h3>Add Teacher</h3>
+            <div class="row">
+                        <div class="col-md-6">
+                        <div class="row">
+                        <div class="col-md-6">
+                            <h3>Add Student</h3>
+                            <form role="form" action="add_student.php" method="post">
+                                <div class="form-group">
+                                    <label>Student Name</label>
+                                    <input type="text" name="student_name" class="form-control" placeholder="Student's Name" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Class</label>
+                                    <select name="class" class="form-control">
+                                        <option>Class 5A</option>
+                                        <option>Class 4B</option>
+                                        <!-- Add more classes here -->
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Class Teacher</label>
+                                    <select name="class_teacher" class="form-control">
+                                        <option>Teacher A</option>
+                                        <option>Teacher B</option>
+                                        <!-- Add more teachers here as class teachers -->
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Current Grade</label>
+                                    <input type="text" name="current_grade" class="form-control" placeholder="Current Grade" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Next Year's Class</label>
+                                    <input type="text" name="next_year_class" class="form-control" placeholder="Next Year's Class" />
+                                </div>
+                                <!-- Add more fields for student information -->
+                                <button type="submit" class="btn btn-default">Add Student</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="row toggle-form" id="deleteForm">
+        <div class="col-md-6">
+    
+        <div class="row">
+                        <div class="col-md-6">
+                        <div class="row">
+                        <div class="col-md-6">
+                            <h3>Delete Student</h3>
+                            <form role="form" action="delete_student.php" method="post">
+                                <div class="form-group">
+                                    <label>Select Student to Delete</label>
+                                    <select name="student" class="form-control">
+                                        <option>John Doe</option>
+                                        <option>Jane Smith</option>
+                                        <!-- Add more students here -->
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-danger">Delete Student</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>  
+                </div>  
+                    <script>
+        function toggleForm(formId) {
+            var forms = document.querySelectorAll('.toggle-form');
+            forms.forEach(function(form) {
+                form.style.display = (form.id === formId) ? 'block' : 'none';
+            });
+        }
+    </script>
+
     
     <!-- JQUERY SCRIPTS -->
     <script src="..\Public\js\jquery-1.10.2.js"></script>
@@ -288,6 +344,5 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
             });
     </script>
     <script src="..\Public\js\custom.js"></script>
-   
+
 </body>
-</html>
