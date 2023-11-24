@@ -11,7 +11,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Student | Nefertari International School</title>
+	<title>Parents | Nefertari International School</title>
 	<meta property="og:locale" content="en_GB" />
 	<meta property="og:type" content="article" />
 	<meta property="og:title" content="Academic Life" />

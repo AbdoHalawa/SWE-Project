@@ -11,7 +11,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Student | Nefertari International School</title>
+	<title>Parent | Nefertari International School</title>
 	<meta property="og:locale" content="en_GB" />
 	<meta property="og:type" content="article" />
 	<meta property="og:title" content="Academic Life" />
@@ -104,11 +104,11 @@ include "../partials/nav.php"
 				<div class="astra-advanced-hook-39600 ">
 					<div class="page-title-strip">
 						<div class="breadcrumb-strip">
-							<span><span><a href="#">Home</a></span> <!--Yoast Breadcrumb setting > Snippets-->
+							<span><span><a href="../ParentsView/parentsView.php">Home</a></span> <!--Yoast Breadcrumb setting > Snippets-->
 						</div>
 
 						<div class="page-title-text">
-							Parents </div>
+							Grades </div>
 
 					</div>
 
@@ -201,7 +201,7 @@ include "../partials/nav.php"
 				<center>
 
 					<div class="breadcrumb-header">
-						<span><span><a href="https://www.westminster.org.uk/">Home</a></span> · <span class="breadcrumb_last" aria-current="page">Parents</span></span>
+						<span><span><a href="parentsView.php">Home</a></span> · <span class="breadcrumb_last" aria-current="page">Grades</span></span>
 					</div>
 
 				</center>

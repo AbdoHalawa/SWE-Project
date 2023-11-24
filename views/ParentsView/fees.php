@@ -11,7 +11,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Student | Nefertari International School</title>
+    <title>Parents | Nefertari International School</title>
+    
     <meta property="og:locale" content="en_GB" />
     <meta property="og:type" content="article" />
     <meta property="og:title" content="Academic Life" />
@@ -104,11 +105,11 @@ include "../partials/nav.php"
                 <div class="astra-advanced-hook-39600 ">
                     <div class="page-title-strip">
                         <div class="breadcrumb-strip">
-                            <span><span><a href="#">Home</a></span> <!--Yoast Breadcrumb setting > Snippets-->
+                            <span><span><a href="../ParentsView/parentsView.php">Home</a></span> <!--Yoast Breadcrumb setting > Snippets-->
                         </div>
 
                         <div class="page-title-text">
-                            Parents </div>
+                            Fees </div>
 
                     </div>
 
@@ -201,7 +202,7 @@ include "../partials/nav.php"
                 <center>
 
                     <div class="breadcrumb-header">
-                        <span><span><a href="https://www.westminster.org.uk/">Home</a></span> · <span class="breadcrumb_last" aria-current="page">Parents</span></span>
+                        <span><span><a href="parentsView.php">Home</a></span> · <span class="breadcrumb_last" aria-current="page">Fees</span></span>
                     </div>
 
                 </center>
@@ -238,7 +239,7 @@ include "../partials/nav.php"
                                         <td class="ng-binding">9665</td>
                                         <td class="ng-binding">2023-12-20</td>
                                         <td>
-                                            <input type="checkbox" name="install_1" value="install_1" id="installment_1" ng-checked="oldDue.IsChecked" ng-disabled="oldDue.IsDisabled" ng-model="oldDue.IsChecked" ng-change="CaclulateAmount();" class="ng-pristine ng-untouched ng-valid" disabled="disabled">
+                                            <input type="checkbox" name="install_1" value="install_1" id="installment_1" ng-checked="oldDue.IsChecked" ng-disabled="oldDue.IsDisabled" ng-model="oldDue.IsChecked" ng-change="CaclulateAmount();" class="ng-valid ng-dirty ng-valid-parse ng-touched" style="">
                                         </td>
 
                                     </tr><!-- end ngRepeat: oldDue in Screen.CurrentDues -->
@@ -274,7 +275,7 @@ include "../partials/nav.php"
                                         <td class="ng-binding">0</td>
                                         <td class="ng-binding">2023-10-03</td>
                                         <td>
-                                            <input type="checkbox" name="adminInstall_1" value="adminInstall_1" id="adminInstallment_1" ng-checked="admindDue.IsChecked" ng-disabled="admindDue.IsDisabled" ng-model="admindDue.IsChecked" ng-change="CaclulateAmount();" class="ng-pristine ng-untouched ng-valid" disabled="disabled">
+                                            <input type="checkbox" name="adminInstall_1" value="adminInstall_1" id="adminInstallment_1" ng-checked="admindDue.IsChecked" ng-disabled="admindDue.IsDisabled" ng-model="admindDue.IsChecked" ng-change="CaclulateAmount();" class="ng-valid ng-dirty ng-valid-parse ng-touched" style="">
                                         </td>
 
                                     </tr><!-- end ngRepeat: admindDue in Screen.AdministrationFeesDue -->
