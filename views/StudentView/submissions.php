@@ -104,11 +104,11 @@ include "../partials/nav.php"
                 <div class="astra-advanced-hook-39600 ">
                     <div class="page-title-strip">
                         <div class="breadcrumb-strip">
-                            <span><span><a href="#">Home</a></span> <!--Yoast Breadcrumb setting > Snippets-->
+                            <span><span><a href="studentView.php">Home</a></span> <!--Yoast Breadcrumb setting > Snippets-->
                         </div>
 
                         <div class="page-title-text">
-                            Student </div>
+                            Submissions </div>
 
                     </div>
 
@@ -201,7 +201,7 @@ include "../partials/nav.php"
                 <center>
 
                     <div class="breadcrumb-header">
-                        <span><span><a href="https://www.westminster.org.uk/">Home</a></span> · <span class="breadcrumb_last" aria-current="page">Parents</span></span>
+                    <span><span><a href="studentView.php">Home</a></span> · <a href="innerStudentView.php"><span class="breadcrumb_last" aria-current="page">Math</a></span> · <span class="breadcrumb_last" aria-current="page">Submissions</span>
                     </div>
 
                 </center>

@@ -202,7 +202,7 @@ include "../partials/nav.php"
                 <center>
 
                     <div class="breadcrumb-header">
-                        <span><span><a href="https://www.westminster.org.uk/">Home</a></span> · <span class="breadcrumb_last" aria-current="page">Parents</span></span>
+                    <span><span><a href="studentView.php">Home</a></span> · <a href="innerStudentView.php"><span class="breadcrumb_last" aria-current="page">Math</a></span> · <a href="submissions.php"><span class="breadcrumb_last" aria-current="page">Submissions</a></span> . <span>Main-Submissions</span></span>
                     </div>
 
                 </center>
