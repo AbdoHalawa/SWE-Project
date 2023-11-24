@@ -191,7 +191,7 @@ include "../partials/nav.php"
                 <center>
 
                     <div class="breadcrumb-header">
-                        <span><span><a href="../TeacherView/teacherView.php">Home</a></span> · <span class="breadcrumb_last" aria-current="page"><a href="../TeacherView/innerTeacherView.php"> Class 1</a></span></span>
+                        <span><span><a href="../TeacherView/teacherView.php">Home</a></span> · <span class="breadcrumb_last" aria-current="page"><a href="../TeacherView/innerTeacherView.php"> Class 1</a></span>· <span class="breadcrumb_last" aria-current="page">Attendance</span></span>
                     </div>
 
                 </center>

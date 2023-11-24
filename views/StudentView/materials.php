@@ -205,7 +205,7 @@ include "../partials/nav.php"
                 <center>
 
                     <div class="breadcrumb-header">
-                        <span><span><a href="studentView.php">Home</a></span> · <a href="innerStudentView.php"><span class="breadcrumb_last" aria-current="page">Math<a></span></span> · <span class="breadcrumb_last" aria-current="page">Materials</span>
+                        <span><span><a href="studentView.php">Home</a></span> · <a href="innerStudentView.php"><span class="breadcrumb_last" aria-current="page">Math <a></span> · <span class="breadcrumb_last" aria-current="page">Materials</span></span>
                     </div>
 
                 </center>

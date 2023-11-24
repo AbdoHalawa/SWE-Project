@@ -92,7 +92,7 @@ include "../partials/nav.php"
 				<div class="astra-advanced-hook-39600 ">
 					<div class="page-title-strip">
 						<div class="breadcrumb-strip">
-							<span><span><a href="#">Home</a></span> <!--Yoast Breadcrumb setting > Snippets-->
+							<span><span><a href="teacherView.php">Home</a></span> <!--Yoast Breadcrumb setting > Snippets-->
 						</div>
 
 						<div class="page-title-text">
@@ -189,7 +189,7 @@ include "../partials/nav.php"
 				<center>
 
 					<div class="breadcrumb-header">
-						<span><span><a href="#">Home</a></span> · <span class="breadcrumb_last" aria-current="page">Class 1</span></span>
+						<span><span><a href="teacherView.php">Home</a></span> · <span class="breadcrumb_last" aria-current="page">Class 1</span></span>
 					</div>
 
 				</center>
