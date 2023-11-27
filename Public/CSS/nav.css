@@ -73,7 +73,7 @@
 }
 .wus-menu.is-open::after {
 	content: "";
-	background: url(https://www.westminster.org.uk/wp-content/uploads/2022/09/Crest-blackwhite-600dpi.png);
+	background: url("../imgs/nefertari-logo.webp");
 	background-repeat: no-repeat;
 	background-position: 50% 50%;
 	background-attachment: scroll;

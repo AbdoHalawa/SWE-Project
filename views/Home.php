@@ -49,8 +49,6 @@
 	<meta property="article:modified_time" content="2023-10-24T19:53:13+00:00" />
 	<meta name="twitter:card" content="summary_large_image" />
 
-	<link rel='stylesheet' id='formidable-css' href='https://www.westminster.org.uk/wp-content/plugins/formidable/css/formidableforms.css?ver=119830' media='all' />
-	<link rel='stylesheet' id='wp-block-library-css' href='https://www.westminster.org.uk/wp-includes/css/dist/block-library/style.min.css?ver=6.4.1' media='all' />
 	<link rel='stylesheet' id='astra-theme-css-css' href='https://www.westminster.org.uk/wp-content/themes/astra/assets/css/minified/style.min.css?ver=4.4.1' media='all' />
 	<link rel='stylesheet' href="../public/external-css/astra-style.min.css">
 	<link rel='stylesheet' href="../public/external-css/global-styles.css">
@@ -593,105 +591,10 @@
 	</div>
 
 
-	<div class="westfooter">
-		<div class="contain">
-			<div class="westcol">
-				<h1>About</h1>
-
-				<ul>
-					<div class="menu-footer-about-container">
-						<ul id="menu-footer-about" class="menu">
-							<li id="menu-item-34349" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-34349"><a href="https://www.westminster.org.uk/about/" class="menu-link">About Westminster</a></li>
-							<li id="menu-item-18215" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-18215"><a href="https://www.westminster.org.uk/about/policies-and-reports/" class="menu-link">Policies and Reports</a></li>
-							<li id="menu-item-18398" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-18398"><a href="https://www.westminster.org.uk/about/employment/" class="menu-link">Job Vacancies</a></li>
-							<li id="menu-item-41278" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-41278"><a href="https://www.westminster.org.uk/news-archive/" class="menu-link">News Archive</a></li>
-						</ul>
-					</div>
-				</ul>
-			</div>
-			<div class="westcol">
-				<h1>Admissions</h1>
-				<ul>
-					<ul>
-						<div class="menu-footer-admissions-container">
-							<ul id="menu-footer-admissions" class="menu">
-								<li id="menu-item-34345" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-34345"><a href="https://www.westminster.org.uk/admissions/13-entry/" class="menu-link">13+ Entry</a></li>
-								<li id="menu-item-34346" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-34346"><a href="https://www.westminster.org.uk/admissions/16-entry/" class="menu-link">16+ Entry</a></li>
-								<li id="menu-item-34347" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-34347"><a href="https://www.westminster.org.uk/admissions/fees/" class="menu-link">School Fees</a></li>
-								<li id="menu-item-38948" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-38948"><a href="https://www.westminster.org.uk/admissions/international-applications/" class="menu-link">International Applicants</a></li>
-							</ul>
-						</div>
-					</ul>
-				</ul>
-			</div>
-			<div class="westcol">
-				<h1>School Life</h1>
-				<ul>
-					<div class="menu-footer-school-life-container">
-						<ul id="menu-footer-school-life" class="menu">
-							<li id="menu-item-36100" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-36100"><a href="https://www.westminster.org.uk/academic-life/curriculum/" class="menu-link">The Curriculum</a></li>
-							<li id="menu-item-36101" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-36101"><a href="https://www.westminster.org.uk/co-curriculum/" class="menu-link">The Co-Curriculum</a></li>
-							<li id="menu-item-36099" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-36099"><a href="https://www.westminster.org.uk/academic-life/exam-results-he/" class="menu-link">Exam Results and HE</a></li>
-							<li id="menu-item-18223" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-18223"><a href="https://www.westminster.org.uk/school-life/watch-westminster/" class="menu-link">Watch Westminster</a></li>
-						</ul>
-					</div>
-				</ul>
-			</div>
-
-
-			<div class="westcol social">
-				<h1>Social</h1>
-				<a target="_blank" href="https://www.facebook.com/Nefertari.International.school/"><i class="fab fa-facebook fa-lg"></i></a>
-				<a target="_blank" href="https://twitter.com/nefertarischool?lang=en"><i class="fab fa-x-twitter fa-lg"></i></a>
-				<a target="_blank" href="https://www.instagram.com/nis.cairo/"><i class="fab fa-instagram fa-lg"></i></a>
-				<a target="_blank" href="https://www.linkedin.com/company/nefertari-international-school-cairo/"><i class="fab fa-linkedin-in fa-lg"></i></a>
-			</div>
-			<div class="clearfix"></div>
-		</div>
-	</div>
-
-	</div>
-
-	<footer class="site-footer" id="colophon" itemtype="https://schema.org/WPFooter" itemscope="itemscope" itemid="#colophon">
-
-
-
-		<div class="ast-small-footer footer-sml-layout-1">
-			<div class="ast-footer-overlay">
-				<div class="ast-container">
-					<div class="ast-small-footer-wrap">
-						<div class="ast-small-footer-section ast-small-footer-section-1">
-							Copyright © 2023 <span class="ast-footer-site-title">Westminster School</span><br>
-							Registered Charity No 312728 </div>
-
-
-					</div><!-- .ast-row .ast-small-footer-wrap -->
-				</div><!-- .ast-container -->
-			</div><!-- .ast-footer-overlay -->
-		</div><!-- .ast-small-footer-->
-
-
-	</footer><!-- #colophon -->
-	<div class="ast-search-box full-screen ast-full-search-style--dark" id="ast-seach-full-screen-form">
-		<span id="close" class="close"><span class="ast-icon icon-close"></span></span>
-		<div class="ast-search-wrapper">
-			<div class="ast-container">
-				<h3 class="large-search-text">Start typing and press enter to search</h3>
-				<form class="search-form" action="https://www.westminster.org.uk/" method="get">
-					<fieldset>
-						<span class="text">
-							<label for="search-field" class="screen-reader-text">Search...</label>
-							<input id="search-field" name="s" class="search-field" autocomplete="off" type="text" value="" placeholder="Search...">
-						</span>
-						<button aria-label="Search" class="button search-submit"><i class="astra-search-icon"> <span class="ast-icon icon-search"></span> </i></button>
-					</fieldset>
-				</form>
-			</div>
-		</div>
-	</div>
-	</div><!-- #page -->
-
-
+	<?php
+				include "./partials/footer.php"
+				?>
+	
 	<script id="astra-theme-js-js-extra">
 		var astra = {
 			"break_point": "1150",
