@@ -1,263 +1,405 @@
 ﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
+
 <head>
-      <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin control panel</title>
-	<!-- BOOTSTRAP STYLES-->
-    <link href="..\Public\CSS\bootstrap.css" rel="stylesheet" />
-     <!-- FONTAWESOME STYLES-->
-    <link href="..\Public\CSS\font-awesome.css" rel="stylesheet" />
-     <!-- MORRIS CHART STYLES-->
-    <link href="..\Public\js\morris\morris-0.4.3.min.css" rel="stylesheet" />
-        <!-- CUSTOM STYLES-->
-    <link href="..\Public\CSS\custom.css" rel="stylesheet" />
-    <script src="https://kit.fontawesome.com/f17a435b32.js" crossorigin="anonymous"></script>
-     <!-- GOOGLE FONTS-->
-   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>Admin Dashboard</title>
+    <link rel="shortcut icon" href="..\views\AdminView\assets\img\favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700&display=swap"rel="stylesheet">
+    <link rel="stylesheet" href="assets\plugins\bootstrap\css\bootstrap.min.css">
+    <link rel="stylesheet" href="assets\plugins\feather\feather.css">
+    <link rel="stylesheet" href="assets\plugins\icons\flags\flags.css">
+    <link rel="stylesheet" href="assets\plugins\fontawesome\css\fontawesome.min.css">
+    <link rel="stylesheet" href="assets\plugins\fontawesome\css\all.min.css">
+    <link rel="stylesheet" href="assets\css\style.css">
+    
 </head>
-<?php
-include "../views/partials/adminNav.php";
-?>
 
 <body>
-  
-<br>
-<div class="row">
-    <div class="col-md-3 col-sm-6 col-xs-6">
-        <div class="panel panel-back noti-box">
-            <span class="icon-box bg-color-red set-icon">
-                <i class="fa fa-users"></i>
-            </span>
-            <div class="text-box">
-                <p class="main-text">120 Students</p>
-                <p class="text-muted">Enrolled</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3 col-sm-6 col-xs-6">
-        <div class="panel panel-back noti-box">
-            <span class="icon-box bg-color-green set-icon">
-                <i class="fa fa-chalkboard-teacher"></i>
-            </span>
-            <div class="text-box">
-                <p class="main-text">30 Teachers</p>
-                <p class="text-muted">Teaching</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3 col-sm-6 col-xs-6">
-        <div class="panel panel-back noti-box">
-            <span class="icon-box bg-color-blue set-icon">
-                <i class="fa fa-book"></i>
-            </span>
-            <div class="text-box">
-                <p class="main-text">240 Courses</p>
-                <p class="text-muted">Offered</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3 col-sm-6 col-xs-6">
-        <div class="panel panel-back noti-box">
-            <span class="icon-box bg-color-brown set-icon">
-                <i class="fa fa-tasks"></i>
-            </span>
-            <div class "text-box">
-                <p class="main-text">3 Pending</p>
-                <p class="text-muted">Approvals</p>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- /. ROW  -->
-<hr />
-<div class="row">
-    <div class="col-md-6 col-sm-12 col-xs-12">
-        <div class="panel panel-back noti-box">
-            <span class="icon-box bg-color-blue">
-                <i class="fa fa-exclamation-triangle"></i>
-            </span>
-            <div class="text-box">
-                <p class="main-text">52 Issues to Resolve</p>
-                <p class="text-muted">Urgent</p>
-                <p class="text-muted">Remaining Time: 30 mins</p>
-                <hr />
-                <p class="text-muted">
-                    <span class="text-muted color-bottom-txt">
-                        <i class="fa fa-edit"></i>
-                        Please address these issues to ensure smooth operation.
-                    </span>
-                </p>
-            </div>
-        </div>
-    </div>
 
-    <div class="col-md-3 col-sm-12 col-xs-12">
-        <div class="panel back-dash">
-            <i class="fa fa-dashboard fa-3x"></i><strong> &nbsp; Performance</strong>
-            <p class="text-muted">Review and optimize school performance for the best results.</p>
-        </div>
-    </div>
-    <div class="col-md-3 col-sm-12 col-xs-12">
-        <div class="panel">
-            <div class="main-temp-back">
-                <div class="panel-body">
+<?php
+include "adminNav.php";
+?>
+
+        <div class="page-wrapper">
+            <div class="content container-fluid">
+
+                <div class="page-header">
                     <div class="row">
-                        <div class="col-xs-6"> <i class="fa fa-cloud fa-3x"></i> Weather Forecast </div>
-                        <div class="col-xs-6">
-                            <div class="text-temp"> 20°C </div>
+                        <div class="col-sm-12">
+                            <div class="page-sub-header">
+                                <h3 class="page-title">Welcome Admin!</h3>
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                    <li class="breadcrumb-item active">Admin</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-xl-3 col-sm-6 col-12 d-flex">
+                        <div class="card bg-comman w-100">
+                            <div class="card-body">
+                                <div class="db-widgets d-flex justify-content-between align-items-center">
+                                    <div class="db-info">
+                                        <h6>Students</h6>
+                                        <h3>50055</h3>
+                                    </div>
+                                    <div class="db-icon">
+                                        <img src="assets/img/icons/dash-icon-01.svg" alt="Dashboard Icon">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6 col-12 d-flex">
+                        <div class="card bg-comman w-100">
+                            <div class="card-body">
+                                <div class="db-widgets d-flex justify-content-between align-items-center">
+                                    <div class="db-info">
+                                        <h6>Awards</h6>
+                                        <h3>50+</h3>
+                                    </div>
+                                    <div class="db-icon">
+                                        <img src="assets/img/icons/dash-icon-02.svg" alt="Dashboard Icon">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6 col-12 d-flex">
+                        <div class="card bg-comman w-100">
+                            <div class="card-body">
+                                <div class="db-widgets d-flex justify-content-between align-items-center">
+                                    <div class="db-info">
+                                        <h6>Department</h6>
+                                        <h3>30+</h3>
+                                    </div>
+                                    <div class="db-icon">
+                                        <img src="assets/img/icons/dash-icon-03.svg" alt="Dashboard Icon">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6 col-12 d-flex">
+                        <div class="card bg-comman w-100">
+                            <div class="card-body">
+                                <div class="db-widgets d-flex justify-content-between align-items-center">
+                                    <div class="db-info">
+                                        <h6>Revenue</h6>
+                                        <h3>$505</h3>
+                                    </div>
+                                    <div class="db-icon">
+                                        <img src="assets/img/icons/dash-icon-04.svg" alt="Dashboard Icon">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 col-lg-6">
+
+                        <div class="card card-chart">
+                            <div class="card-header">
+                                <div class="row align-items-center">
+                                    <div class="col-6">
+                                        <h5 class="card-title">Overview</h5>
+                                    </div>
+                                    <div class="col-6">
+                                        <ul class="chart-list-out">
+                                            <li><span class="circle-blue"></span>Teacher</li>
+                                            <li><span class="circle-green"></span>Student</li>
+                                            <li class="star-menus"><a href="javascript:;"><i
+                                                        class="fas fa-ellipsis-v"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div id="apexcharts-area"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-12 col-lg-6">
+
+                        <div class="card card-chart">
+                            <div class="card-header">
+                                <div class="row align-items-center">
+                                    <div class="col-6">
+                                        <h5 class="card-title">Number of Students</h5>
+                                    </div>
+                                    <div class="col-6">
+                                        <ul class="chart-list-out">
+                                            <li><span class="circle-blue"></span>Girls</li>
+                                            <li><span class="circle-green"></span>Boys</li>
+                                            <li class="star-menus"><a href="javascript:;"><i
+                                                        class="fas fa-ellipsis-v"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div id="bar"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-6 d-flex">
+
+                        <div class="card flex-fill student-space comman-shadow">
+                            <div class="card-header d-flex align-items-center">
+                                <h5 class="card-title">Star Students</h5>
+                                <ul class="chart-list-out student-ellips">
+                                    <li class="star-menus"><a href="javascript:;"><i class="fas fa-ellipsis-v"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table
+                                        class="table star-student table-hover table-center table-borderless table-striped">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Name</th>
+                                                <th class="text-center">Marks</th>
+                                                <th class="text-center">Percentage</th>
+                                                <th class="text-end">Year</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-nowrap">
+                                                    <div>PRE2209</div>
+                                                </td>
+                                                <td class="text-nowrap">
+                                                    <a href="profile.html">
+                                                        <img class="rounded-circle"
+                                                            src="assets/img/profiles/avatar-02.jpg" width="25"
+                                                            alt="Star Students">
+                                                        John Smith
+                                                    </a>
+                                                </td>
+                                                <td class="text-center">1185</td>
+                                                <td class="text-center">98%</td>
+                                                <td class="text-end">
+                                                    <div>2019</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-nowrap">
+                                                    <div>PRE1245</div>
+                                                </td>
+                                                <td class="text-nowrap">
+                                                    <a href="profile.html">
+                                                        <img class="rounded-circle"
+                                                            src="assets\img\profiles\avatar-01.jpg" width="25"
+                                                            alt="Star Students">
+                                                        Jolie Hoskins
+                                                    </a>
+                                                </td>
+                                                <td class="text-center">1195</td>
+                                                <td class="text-center">99.5%</td>
+                                                <td class="text-end">
+                                                    <div>2018</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-nowrap">
+                                                    <div>PRE1625</div>
+                                                </td>
+                                                <td class="text-nowrap">
+                                                    <a href="profile.html">
+                                                        <img class="rounded-circle"
+                                                            src="assets\img\profiles\avatar-03.jpg" width="25"
+                                                            alt="Star Students">
+                                                        Pennington Joy
+                                                    </a>
+                                                </td>
+                                                <td class="text-center">1196</td>
+                                                <td class="text-center">99.6%</td>
+                                                <td class="text-end">
+                                                    <div>2017</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-nowrap">
+                                                    <div>PRE2516</div>
+                                                </td>
+                                                <td class="text-nowrap">
+                                                    <a href="profile.html">
+                                                        <img class="rounded-circle"
+                                                            src="assets\img\profiles\avatar-04.jpg" width="25"
+                                                            alt="Star Students">
+                                                        Millie Marsden
+                                                    </a>
+                                                </td>
+                                                <td class="text-center">1187</td>
+                                                <td class="text-center">98.2%</td>
+                                                <td class="text-end">
+                                                    <div>2016</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-nowrap">
+                                                    <div>PRE2209</div>
+                                                </td>
+                                                <td class="text-nowrap">
+                                                    <a href="profile.html">
+                                                        <img class="rounded-circle"
+                                                            src="assets\img\profiles\avatar-05.jpg" width="25"
+                                                            alt="Star Students">
+                                                        John Smith
+                                                    </a>
+                                                </td>
+                                                <td class="text-center">1185</td>
+                                                <td class="text-center">98%</td>
+                                                <td class="text-end">
+                                                    <div>2015</div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-xl-6 d-flex">
+
+                        <div class="card flex-fill comman-shadow">
+                            <div class="card-header d-flex align-items-center">
+                                <h5 class="card-title ">Student Activity </h5>
+                                <ul class="chart-list-out student-ellips">
+                                    <li class="star-menus"><a href="javascript:;"><i class="fas fa-ellipsis-v"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-body">
+                                <div class="activity-groups">
+                                    <div class="activity-awards">
+                                        <div class="award-boxs">
+                                            <img src="assets\img\icons\award-icon-01.svg" alt="Award">
+                                        </div>
+                                        <div class="award-list-outs">
+                                            <h4>1st place in "Chess”</h4>
+                                            <h5>John Doe won 1st place in "Chess"</h5>
+                                        </div>
+                                        <div class="award-time-list">
+                                            <span>1 Day ago</span>
+                                        </div>
+                                    </div>
+                                    <div class="activity-awards">
+                                        <div class="award-boxs">
+                                            <img src="assets\img\icons\award-icon-02.svg" alt="Award">
+                                        </div>
+                                        <div class="award-list-outs">
+                                            <h4>Participated in "Carrom"</h4>
+                                            <h5>Justin Lee participated in "Carrom"</h5>
+                                        </div>
+                                        <div class="award-time-list">
+                                            <span>2 hours ago</span>
+                                        </div>
+                                    </div>
+                                    <div class="activity-awards">
+                                        <div class="award-boxs">
+                                            <img src="assets\img\icons\award-icon-03.svg" alt="Award">
+                                        </div>
+                                        <div class="award-list-outs">
+                                            <h4>Internation conference in "St.John School"</h4>
+                                            <h5>Justin Leeattended internation conference in "St.John School"</h5>
+                                        </div>
+                                        <div class="award-time-list">
+                                            <span>2 Week ago</span>
+                                        </div>
+                                    </div>
+                                    <div class="activity-awards mb-0">
+                                        <div class="award-boxs">
+                                            <img src="assets\img\icons\award-icon-04.svg" alt="Award">
+                                        </div>
+                                        <div class="award-list-outs">
+                                            <h4>Won 1st place in "Chess"</h4>
+                                            <h5>John Doe won 1st place in "Chess"</h5>
+                                        </div>
+                                        <div class="award-time-list">
+                                            <span>3 Day ago</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xl-3 col-sm-6 col-12">
+                        <div class="card flex-fill fb sm-box">
+                            <div class="social-likes">
+                                <p>Like us on facebook</p>
+                                <h6>50,095</h6>
+                            </div>
+                            <div class="social-boxs">
+                                <img src="assets\img\icons\social-icon-01.svg" alt="Social Icon">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6 col-12">
+                        <div class="card flex-fill twitter sm-box">
+                            <div class="social-likes">
+                                <p>Follow us on twitter</p>
+                                <h6>48,596</h6>
+                            </div>
+                            <div class="social-boxs">
+                                <img src="assets\img\icons\social-icon-02.svg" alt="Social Icon">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6 col-12">
+                        <div class="card flex-fill insta sm-box">
+                            <div class="social-likes">
+                                <p>Follow us on instagram</p>
+                                <h6>52,085</h6>
+                            </div>
+                            <div class="social-boxs">
+                                <img src="assets\img\icons\social-icon-03.svg" alt="Social Icon">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6 col-12">
+                        <div class="card flex-fill linkedin sm-box">
+                            <div class="social-likes">
+                                <p>Follow us on linkedin</p>
+                                <h6>69,050</h6>
+                            </div>
+                            <div class="social-boxs">
+                                <img src="assets\img\icons\social-icon-04.svg" alt="Social Icon">
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            
         </div>
-        
     </div>
-</div>
-<!-- /. ROW  -->
 
-<!-- /. ROW  -->
-<div class="row">
-    <div class="col-md-3 col-sm-12 col-xs-12">
-        <div class="panel panel-primary text-center no-boder bg-color-green">
-            <div class="panel-body">
-                <i class="fa fa-comments-o fa-5x"></i>
-                <h4>200 New Comments</h4>
-                <h4>See All Comments</h4>
-            </div>
-            <div class="panel-footer back-footer-green">
-                <i class="fa fa-rocket fa-5x"></i>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3 col-sm-12 col-xs-12">
-        <div class="panel panel-primary text-center no-boder bg-color-green">
-            <div class="panel-body">
-                <i class="fa fa-hdd-o fa-5x"></i>
-                <h3>120 GB Free</h3>
-            </div>
-            <div class="panel-footer back-footer-green">
-                Disk Space Available
-            </div>
-        </div>
-        <div class="panel panel-primary text-center no-boder bg-color-red">
-            <div class="panel-body">
-                <i class="fa fa-list fa-5x"></i>
-                <h3>20,000+</h3>
-            </div>
-            <div class="panel-footer back-footer-red">
-                Pending Tasks
-            </div>
-        </div>
-    </div>
-<!-- /. ROW -->
-<div class="row">
-    <div class="col-md-6 col-sm-12 col-xs-12">
-        <div class="chat-panel panel panel-default chat-boder chat-panel-head">
-            <div class="panel-heading">
-                <i class="fa fa-comments fa-fw"></i>
-                School Chat
-                <div class="btn-group pull-right">
-                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-chevron-down"></i>
-                    </button>
-                    <ul class="dropdown-menu slidedown">
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-refresh fa-fw"></i>Refresh
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-check-circle fa-fw"></i>Available
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-times fa-fw"></i>Busy
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-clock-o fa-fw"></i>Away
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-sign-out fa-fw"></i>Sign Out
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="panel-body">
-                <ul class="chat-box">
-                    <li class="left clearfix">
-                        <span class="chat-img pull-left">
-                            <img src="assets/img/user1.png" alt="User" class="img-circle" />
-                        </span>
-                        <div class="chat-body">
-                            <strong>Principal Smith</strong>
-                            <small class="pull-right text-muted">
-                                <i class="fa fa-clock-o fa-fw"></i>12 mins ago
-                            </small>
-                            <p>
-                                Welcome to the international school admin dashboard!
-                            </p>
-                        </div>
-                    </li>
-                    <li class="right clearfix">
-                        <span class="chat-img pull-right">
-                            <img src="assets/img/user2.png" alt="User" class="img-circle" />
-                        </span>
-                        <div class="chat-body clearfix">
-                            <small class=" text-muted">
-                                <i class="fa fa-clock-o fa-fw"></i>13 mins ago
-                            </small>
-                            <strong class="pull-right">You</strong>
-                            <p>
-                                Thank you! We're excited to get started.
-                            </p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div class="panel-footer">
-                <div class="input-group">
-                    <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message to send..." />
-                    <span class="input-group-btn">
-                        <button class="btn btn-warning btn-sm" id="btn-chat">
-                            Send
-                        </button>
-                    </span>
-                </div>
-            </div>
-        </div>
-    </div>
-   
-<!-- /. ROW -->
-    
-    </div>
-             <!-- /. PAGE INNER  -->
-            </div>
-         <!-- /. PAGE WRAPPER  -->
-        </div>
-     <!-- /. WRAPPER  -->
-    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-    
-    <!-- JQUERY SCRIPTS -->
-    <script src="..\Public\js\jquery-1.10.2.js"></script>
-    <!-- BOOTSTRAP SCRIPTS -->
-    <script src="..\Public\js\bootstrap.min.js"></script>
-    <!-- METISMENU SCRIPTS -->
-    <script src="..\Public\js\jquery.metisMenu.js"></script>
-    <!-- MORRIS CHART SCRIPTS -->
-    <script src="..\Public\js\morris\raphael-2.1.0.min.js"></script>
-    <script src="..\Public\js\morris\morris.js"></script>
-    <!-- CUSTOM SCRIPTS -->
-    <script src="..\Public\js\custom.js"></script>
-   
+    <script src="assets\js\jquery-3.6.0.min.js"></script>
+    <script src="assets\plugins\bootstrap\js\bootstrap.bundle.min.js"></script>
+    <script src="assets\js\feather.min.js"></script>
+    <script src="assets\plugins\slimscroll\jquery.slimscroll.min.js"></script>
+    <script src="assets\plugins\apexchart\apexcharts.min.js"></script>
+    <script src="assets\plugins\apexchart\chart-data.js"></script>
+    <script src="assets\js\script.js"></script>
 </body>
+
 </html>

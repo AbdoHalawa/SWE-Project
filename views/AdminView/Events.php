@@ -1,68 +1,125 @@
 
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
+
 <head>
-      <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin control panel</title>
-	<!-- BOOTSTRAP STYLES-->
-    <link href="..\Public\CSS\bootstrap.css" rel="stylesheet" />
-     <!-- FONTAWESOME STYLES-->
-    <link href="..\Public\CSS\font-awesome.css" rel="stylesheet" />
-     <!-- MORRIS CHART STYLES-->
-    <link href="..\Public\js\morris\morris-0.4.3.min.css" rel="stylesheet" />
-        <!-- CUSTOM STYLES-->
-    <link href="..\Public\CSS\custom.css" rel="stylesheet" />
-    <script src="https://kit.fontawesome.com/f17a435b32.js" crossorigin="anonymous"></script>
-     <!-- GOOGLE FONTS-->
-   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>Admin Dashboard</title>
+    <link rel="shortcut icon" href="..\views\AdminView\assets\img\favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700&display=swap"rel="stylesheet">
+    <link rel="stylesheet" href="assets\plugins\bootstrap\css\bootstrap.min.css">
+    <link rel="stylesheet" href="assets\plugins\feather\feather.css">
+    <link rel="stylesheet" href="assets\plugins\icons\flags\flags.css">
+    <link rel="stylesheet" href="assets\plugins\fontawesome\css\fontawesome.min.css">
+    <link rel="stylesheet" href="assets\plugins\fontawesome\css\all.min.css">
+    <link rel="stylesheet" href="assets\css\style.css">
+    <link rel="shortcut icon" href="assets/img/favicon.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="assets/plugins/feather/feather.css">
+
+<link rel="stylesheet" href="assets/plugins/icons/flags/flags.css">
+
+<link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
+<link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+
+<link rel="stylesheet" href="assets/css/bootstrap-datetimepicker.min.css">
+
+<link rel="stylesheet" href="assets/plugins/fullcalendar/fullcalendar.min.css">
+
+
 </head>
-<?php
-include "../views/partials/adminNav.php";
-?>
 <body>
-<div class="panel panel-back noti-box">
-            <span class="icon-box bg-color-green set-icon">
-                <i class="fa fa-calendar"></i>
-            </span>
-            <div class="text-box">
-                <p class="main-text">Events</p>
-                <p class="text-muted">Upcoming</p>
-            </div>
-        </div> <div class="col-md-6 col-sm-12 col-xs-12">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                Upcoming Events
-            </div>
-            <div class="panel-body">
-                <div class="table-responsive">
-                    <table class="table table-striped table-bordered table-hover">
-                        <thead>
-                            <tr>
-                                <th>Date</th>
-                                <th>Event Name</th>
-                                <th>Location</th>
-                                <th>Details</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>2023-11-15</td>
-                                <td>Parent-Teacher Conference</td>
-                                <td>Conference Hall</td>
-                                <td>Discuss student progress</td>
-                            </tr>
-                            <tr>
-                                <td>2023-12-05</td>
-                                <td>School Open House</td>
-                                <td>Campus Auditorium</td>
-                                <td>Welcome prospective students</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
+
+    
+</head>
+
+<body>
+
+<?php
+include "adminNav.php";
+?>
+
+
+<div class="page-wrapper">
+<div class="content container-fluid">
+
+<div class="page-header">
+<div class="row align-items-center">
+<div class="col">
+<h3 class="page-title">Events</h3>
+<ul class="breadcrumb">
+<li class="breadcrumb-item"><a href="adminindex.php">Dashboard</a></li>
+<li class="breadcrumb-item active">Events</li>
+</ul>
 </div>
+</div>
+</div>
+<div class="page-header">
+<div class="row align-items-center">
+<div class="col"></div>
+<div class="col-auto text-end float-end ms-auto">
+<a href="add-events.html" class="btn btn-primary"><i class="fas fa-plus"></i></a>
+</div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-lg-12 col-md-12">
+<div class="card">
+<div class="card-body">
+<div id="calendar"></div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="modal fade none-border" id="my_event">
+<div class="modal-dialog modal-dialog-centered">
+<div class="modal-content">
+<div class="modal-header">
+<h4 class="modal-title">Add Event</h4>
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+</div>
+<div class="modal-body"></div>
+<div class="modal-footer justify-content-center">
+<button type="button" class="btn btn-success save-event submit-btn">Create event</button>
+<button type="button" class="btn btn-danger delete-event submit-btn" data-dismiss="modal">Delete</button>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+<footer>
+<p>Copyright © 2022 Dreamguys.</p>
+</footer>
+
+</div>
+
+</div>
+
+
+<script src="assets/js/jquery-3.6.0.min.js"></script>
+
+<script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<script src="assets/js/feather.min.js"></script>
+
+<script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<script src="assets/js/moment.min.js"></script>
+<script src="assets/js/bootstrap-datetimepicker.min.js"></script>
+
+<script src="assets/js/jquery-ui.min.js"></script>
+<script src="assets/plugins/fullcalendar/fullcalendar.min.js"></script>
+<script src="assets/plugins/fullcalendar/jquery.fullcalendar.js"></script>
+
+<script src="assets/js/script.js"></script>
 </body>
+</html>
