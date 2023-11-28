@@ -14,7 +14,6 @@ Welcome to Nefertari School Web Application! This platform is designed to enhanc
 ---
 
 
-
 ### Installation
 
 This is a web-based application, so there is no need for installation. Simply access the application through your preferred web browser.
@@ -78,10 +77,5 @@ We welcome contributions to improve and enhance the School Web Application. Plea
 
 ---
 
-## License
-
-This project is licensed under the [MIT License](LICENSE). Feel free to modify and distribute it for non-commercial purposes.
-
----
 
 Thank you for using the School Web Application! We hope this platform enhances the educational experience for students, teachers, and parents. If you have any feedback or suggestions, please don't hesitate to reach out.
