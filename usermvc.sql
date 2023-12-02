@@ -52,7 +52,7 @@ CREATE TABLE Enrollment (
 -- Table for Parents
 CREATE TABLE Parents (
     ParentID INT PRIMARY KEY,
-    ParentName VARCHAR(50)
+    ParentName VARCHAR(50),
     Passowrd VARCHAR(255),
 
 );
