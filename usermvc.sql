@@ -8,6 +8,7 @@ CREATE TABLE Subjects (
 CREATE TABLE Teachers (
     TeacherID INT PRIMARY KEY,
     TeacherName VARCHAR(50),
+    Passowrd VARCHAR(255),
     TeacherType VARCHAR(20) -- 'Normal' or 'Head'
 );
 
@@ -33,6 +34,7 @@ CREATE TABLE Classes (
 CREATE TABLE Students (
     StudentID INT PRIMARY KEY,
     StudentName VARCHAR(50),
+    Passowrd VARCHAR(255),
     Grade INT, -- 10, 11, 12
     ClassID INT, -- Foreign key referencing Classes
     FOREIGN KEY (ClassID) REFERENCES Classes(ClassID)
@@ -51,6 +53,8 @@ CREATE TABLE Enrollment (
 CREATE TABLE Parents (
     ParentID INT PRIMARY KEY,
     ParentName VARCHAR(50)
+    Passowrd VARCHAR(255),
+
 );
 
 -- Table for Grades
