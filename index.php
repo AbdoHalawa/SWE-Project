@@ -1,5 +1,5 @@
 <?php
-
+define('__ROOT__',"../");
 // Path: index.php
 
 

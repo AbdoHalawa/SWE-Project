@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en-GB">
 
@@ -71,7 +74,7 @@ flexibility(document.documentElement);
 	<link rel='stylesheet' href="../../public/external-css/indexcss.css">
 	<link rel="stylesheet" href="../../Public/CSS/nav.css">
 	<link rel='stylesheet' href="../../public/CSS/teacherView.css">
-    <link rel='stylesheet' href="../../public/CSS/grades.css">
+	<link rel='stylesheet' href="../../public/CSS/grades.css">
 
 
 
@@ -104,7 +107,7 @@ include "../partials/nav.php"
 				<div class="astra-advanced-hook-39600 ">
 					<div class="page-title-strip">
 						<div class="breadcrumb-strip">
-							<span><span><a href="studentView.php">Home</a></span> <!--Yoast Breadcrumb setting > Snippets-->
+							<span><span><a href="studentView.php"> Welcome <?php echo $_SESSION['user_name']; ?></a></span></span>
 						</div>
 
 						<div class="page-title-text">
@@ -118,79 +121,79 @@ include "../partials/nav.php"
 				<!--Page Title Strip-->
 
 				<div id="wgs-header-wrapper">
-                    <div class="astra-advanced-hook-39611 ">
-                        <!--BEGIN DEPT header links wrapper-->
-                        <div class="header-links" id="divcontent">
-                            <div class="featured_box_content">
-                                <div class="box-content">
-                                    <div class="links-group">
-                                        <a href="../index.php">Logout</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- END DEPT header links wrapper -->
-                    </div>
-				<!--Academic & Dept Links-->
+					<div class="astra-advanced-hook-39611 ">
+						<!--BEGIN DEPT header links wrapper-->
+						<div class="header-links" id="divcontent">
+							<div class="featured_box_content">
+								<div class="box-content">
+									<div class="links-group">
+										<a href="../logout.php">Logout</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- END DEPT header links wrapper -->
+					</div>
+					<!--Academic & Dept Links-->
 
-				<div class="wgs-header-image">
+					<div class="wgs-header-image">
 
-					<div class="image" style="background-image: url('../../Public/imgs/3.webp');"></div>
+						<div class="image" style="background-image: url('../../Public/imgs/3.webp');"></div>
 
 
-					<div class="wgs-header-image-overlay"></div>
+						<div class="wgs-header-image-overlay"></div>
+
+					</div>
+
+					<div class="wgs-header-menu-mobile">
+						<button id="links" class="menu-links">SECTION MENU</button>
+					</div>
 
 				</div>
+				<!-- Function to open the section list (resposive)  -->
+				<SCRIPT>
+					let links = document.getElementById("links");
+					let divcontent = document.getElementById("divcontent");
 
-				<div class="wgs-header-menu-mobile">
-					<button id="links" class="menu-links">SECTION MENU</button>
-				</div>
+					//will use addeventlistener method and arrow function
+					links.addEventListener("click", () => {
+						//toggle method to show div
+						divcontent.classList.toggle('showdiv');
+						//will change text now using if condition
+						if (links.innerText == "SECTION MENU") {
+							links.innerText = "CLOSE MENU";
+						} else {
+							links.innerText = "SECTION MENU"
+						}
+					})
+				</SCRIPT>
 
-			</div>
-			<!-- Function to open the section list (resposive)  -->
-			<SCRIPT>
-				let links = document.getElementById("links");
-				let divcontent = document.getElementById("divcontent");
 
-				//will use addeventlistener method and arrow function
-				links.addEventListener("click", () => {
-					//toggle method to show div
-					divcontent.classList.toggle('showdiv');
-					//will change text now using if condition
-					if (links.innerText == "SECTION MENU") {
-						links.innerText = "CLOSE MENU";
-					} else {
-						links.innerText = "SECTION MENU"
+
+
+
+				<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+				<script>
+					wusmenu: {
+						$('.wus-menu__button:not(.no-js)').on('click', function() {
+							$('.wus-menu').toggleClass('is-open');
+						});
+						$('.wus-menu__close').on('click', function() {
+							$('.wus-menu').removeClass('is-open');
+						});
 					}
-				})
-			</SCRIPT>
+				</script>
 
 
-
-
-
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-
-			<script>
-				wusmenu: {
-					$('.wus-menu__button:not(.no-js)').on('click', function() {
-						$('.wus-menu').toggleClass('is-open');
+				<script>
+					$('body').delegate('.wus-nav-item', 'click', function() {
+						$('.wus-nav-item').removeClass('wus-nav-item--active');
+						$(this).addClass('wus-nav-item--active');
 					});
-					$('.wus-menu__close').on('click', function() {
-						$('.wus-menu').removeClass('is-open');
-					});
-				}
-			</script>
-
-
-			<script>
-				$('body').delegate('.wus-nav-item', 'click', function() {
-					$('.wus-nav-item').removeClass('wus-nav-item--active');
-					$(this).addClass('wus-nav-item--active');
-				});
-			</script>
-	</div>
-	<!--Nav Menu-->
+				</script>
+			</div>
+			<!--Nav Menu-->
 	</div>
 	</header>
 	<div class="astra-advanced-hook-34726 ">
@@ -201,7 +204,7 @@ include "../partials/nav.php"
 				<center>
 
 					<div class="breadcrumb-header">
-					<span><span><a href="studentView.php">Home</a></span> · <a href="innerStudentView.php"><span class="breadcrumb_last" aria-current="page">Math</a></span></span> · <span class="breadcrumb_last" aria-current="page">Grades</span>
+						<span><span><a href="studentView.php">Home</a></span> · <a href="innerStudentView.php"><span class="breadcrumb_last" aria-current="page">Math</a></span></span> · <span class="breadcrumb_last" aria-current="page">Grades</span>
 					</div>
 
 				</center>
@@ -212,40 +215,43 @@ include "../partials/nav.php"
 				<!-- Classes section -->
 				<div class="astra-advanced-hook-30270 ">
 					<section class="featured-pages-strip">
-                    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>School Grades</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+						<!DOCTYPE html>
+						<html lang="en">
 
-    <div class="grade-container">
-        <h1 class="s">School Grades</h1>
+						<head>
+							<meta charset="UTF-8">
+							<meta name="viewport" content="width=device-width, initial-scale=1.0">
+							<title>School Grades</title>
+							<link rel="stylesheet" href="styles.css">
+						</head>
 
-        <div class="subject">
-            <h2>Mathematics</h2>
-            <p>Grade: A</p>
-        </div>
+						<body>
 
-        <div class="subject">
-            <h2>Science</h2>
-            <p>Grade: B</p>
-        </div>
+							<div class="grade-container">
+								<h1 class="s">School Grades</h1>
 
-        <div class="subject">
-            <h2>English</h2>
-            <p>Grade: C</p>
-        </div>
+								<div class="subject">
+									<h2>Mathematics</h2>
+									<p>Grade: A</p>
+								</div>
 
-        <!-- Add more subjects as needed -->
+								<div class="subject">
+									<h2>Science</h2>
+									<p>Grade: B</p>
+								</div>
 
-    </div>
+								<div class="subject">
+									<h2>English</h2>
+									<p>Grade: C</p>
+								</div>
 
-</body>
-</html>
+								<!-- Add more subjects as needed -->
+
+							</div>
+
+						</body>
+
+						</html>
 
 					</section>
 				</div>

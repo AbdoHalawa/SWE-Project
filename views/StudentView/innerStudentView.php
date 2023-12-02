@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en-GB">
 
@@ -102,7 +105,7 @@ include "../partials/nav.php"
 				<div class="astra-advanced-hook-39600 ">
 					<div class="page-title-strip">
 						<div class="breadcrumb-strip">
-							<span><span><a href="studentView.php">Home</a></span> <!--Yoast Breadcrumb setting > Snippets-->
+							<span><span><a href="studentView.php"> Welcome <?php echo $_SESSION['user_name']; ?></a></span></span>
 						</div>
 
 						<div class="page-title-text">
@@ -116,19 +119,19 @@ include "../partials/nav.php"
 				<!--Page Title Strip-->
 
 				<div id="wgs-header-wrapper">
-                    <div class="astra-advanced-hook-39611 ">
-                        <!--BEGIN DEPT header links wrapper-->
-                        <div class="header-links" id="divcontent">
-                            <div class="featured_box_content">
-                                <div class="box-content">
-                                    <div class="links-group">
-                                        <a href="../index.php">Logout</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- END DEPT header links wrapper -->
-                    </div>
+					<div class="astra-advanced-hook-39611 ">
+						<!--BEGIN DEPT header links wrapper-->
+						<div class="header-links" id="divcontent">
+							<div class="featured_box_content">
+								<div class="box-content">
+									<div class="links-group">
+										<a href="../logout.php">Logout</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- END DEPT header links wrapper -->
+					</div>
 					<!--Academic & Dept Links-->
 
 					<div class="wgs-header-image">

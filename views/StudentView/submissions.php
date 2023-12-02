@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en-GB">
 
@@ -104,7 +107,7 @@ include "../partials/nav.php"
                 <div class="astra-advanced-hook-39600 ">
                     <div class="page-title-strip">
                         <div class="breadcrumb-strip">
-                            <span><span><a href="studentView.php">Home</a></span> <!--Yoast Breadcrumb setting > Snippets-->
+                            <span><span><a href="studentView.php"> Welcome <?php echo $_SESSION['user_name']; ?></a></span></span>
                         </div>
 
                         <div class="page-title-text">
@@ -124,7 +127,7 @@ include "../partials/nav.php"
                             <div class="featured_box_content">
                                 <div class="box-content">
                                     <div class="links-group">
-                                        <a href="../index.php">Logout</a>
+                                        <a href="../logout.php">Logout</a>
                                     </div>
                                 </div>
                             </div>
@@ -201,7 +204,7 @@ include "../partials/nav.php"
                 <center>
 
                     <div class="breadcrumb-header">
-                    <span><span><a href="studentView.php">Home</a></span> · <a href="innerStudentView.php"><span class="breadcrumb_last" aria-current="page">Math</a></span> · <span class="breadcrumb_last" aria-current="page">Submissions</span>
+                        <span><span><a href="studentView.php">Home</a></span> · <a href="innerStudentView.php"><span class="breadcrumb_last" aria-current="page">Math</a></span> · <span class="breadcrumb_last" aria-current="page">Submissions</span>
                     </div>
 
                 </center>
@@ -447,7 +450,7 @@ include "../partials/nav.php"
                 </body>
 
                 <style>
-                   
+
                 </style>
 
 </html>

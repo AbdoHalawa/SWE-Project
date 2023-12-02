@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -38,7 +41,7 @@
     </div>
     <div class="wrapper">
         <h2>Login</h2>
-        <form action="process-signup.php" method="post" onsubmit="return validateForm()" novalidate>
+        <form action="process-login.php" method="post"  novalidate>
             <div class="input-box">
                 <input type="text" placeholder="Enter your email" name="email" id="email">
                 <small class="error" id="emailError"></small>
