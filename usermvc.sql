@@ -53,8 +53,7 @@ CREATE TABLE Enrollment (
 CREATE TABLE Parents (
     ParentID INT PRIMARY KEY,
     ParentName VARCHAR(50),
-    Passowrd VARCHAR(255),
-
+    Passowrd VARCHAR(255)
 );
 
 -- Table for Grades
