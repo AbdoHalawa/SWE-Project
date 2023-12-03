@@ -41,7 +41,7 @@ session_start();
     </div>
     <div class="wrapper">
         <h2>Login</h2>
-        <form action="process-login.php" method="post"  novalidate>
+        <form action="../controller/login-handler.php" method="post"  novalidate>
             <div class="input-box">
                 <input type="text" placeholder="Enter your email" name="email" id="email">
                 <small class="error" id="emailError"></small>
