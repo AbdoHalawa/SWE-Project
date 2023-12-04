@@ -131,14 +131,14 @@ include "../partials/nav.php"
                     <div class="astra-advanced-hook-39611 ">
                         <!--BEGIN DEPT header links wrapper-->
                         <div class="header-links" id="divcontent">
-                            <div class="featured_box_content">
-                                <div class="box-content">
-                                    <div class="links-group">
-                                        <a href="../logout.php">Logout</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+							<div class="featured_box_content">
+								<div class="box-content">
+									<div class="links-group">
+										<a href="../../controller/logout-handler.php?action=logout">Logout</a>
+									</div>
+								</div>
+							</div>
+						</div>
                         <!-- END DEPT header links wrapper -->
                     </div>
                     <!--Academic & Dept Links-->

@@ -1,6 +1,10 @@
 <?php
 session_start();
+include('../functions.php');
+$Ssubjects = getSubjectsForStudent();
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en-GB">
 
@@ -201,10 +205,24 @@ include "../partials/nav.php"
             <!--BEGIN BREADCRUMBS & PAGE TITLE -->
             <div class="top-page-wrapper">
 
+                <?php
+                $subjectID = isset($_GET['SubjectID']) ? $_GET['SubjectID'] : null;
+                $subjectName = ($subjectID !== null) ? getSubjectNameById($subjectID) : null;
+                ?>
+
                 <center>
 
                     <div class="breadcrumb-header">
-                        <span><span><a href="studentView.php">Home</a></span> · <a href="innerStudentView.php"><span class="breadcrumb_last" aria-current="page">Math</a></span> · <span class="breadcrumb_last" aria-current="page">Submissions</span>
+                        <span><span><a href="studentView.php">Home</a></span> · <a href="../StudentView/innerStudentView.php?SubjectID=<?php echo $subjectID; ?>">
+                                <span class="breadcrumb_last" aria-current="page"><?php
+                                                                                    $subjectID = isset($_GET['SubjectID']) ? $_GET['SubjectID'] : null;
+                                                                                    if ($subjectID !== null) {
+                                                                                        $subjectName = getSubjectNameById($subjectID);
+                                                                                        echo $subjectName;
+                                                                                    } else {
+                                                                                        echo '<div class="page-title-text">Subject Not Found</div>';
+                                                                                    }
+                                                                                    ?></a></span> · <span class="breadcrumb_last" aria-current="page">Submission</span></span>
                     </div>
 
                 </center>
@@ -229,7 +247,7 @@ include "../partials/nav.php"
                                                 </div>
                                                 <div class="media-body align-self-center">
                                                     <div class="activityname">
-                                                        <a href="../StudentView/submission2.php" class=" aalink stretched-link" onclick=""> <span class="instancename">Lab Assignment 1 </span> </a>
+                                                        <a href="../StudentView/submission2.php?SubjectID=<?php echo $subjectID; ?>" class=" aalink stretched-link" onclick=""> <span class="instancename">Lab Assignment 1 </span> </a>
 
                                                     </div>
                                                 </div>

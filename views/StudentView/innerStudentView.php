@@ -135,7 +135,7 @@ include "../partials/nav.php"
 							<div class="featured_box_content">
 								<div class="box-content">
 									<div class="links-group">
-										<a href="../logout.php">Logout</a>
+										<a href="../../controller/logout-handler.php?action=logout">Logout</a>
 									</div>
 								</div>
 							</div>
@@ -236,29 +236,30 @@ include "../partials/nav.php"
 	<h5>Discover More</h5>
  Find out more about Academic Life at Westminster	</div> -->
 
- <?php
-				// innerStudentView.php
+						<?php
+						// innerStudentView.php
 
-				// Check if SubjectID is set in the URL parameters
-				if (isset($_GET['SubjectID'])) {
-					// Retrieve SubjectID from the URL
-					$subjectID = $_GET['SubjectID'];
-				}
-				?>
+						// Check if SubjectID is set in the URL parameters
+						if (isset($_GET['SubjectID'])) {
+							// Retrieve SubjectID from the URL
+							$subjectID = $_GET['SubjectID'];
+						}
+						?>
 
 
 						<div class="featured-pages">
 							<div class="featured-page">
 								<img width="2560" height="1709" src="../../Public/imgs/Wboard.jpg" class="featured-page-img wp-post-image" alt="" decoding="async" loading="lazy" sizes="(max-width: 2560px) 100vw, 2560px" />
-								<a href="../StudentView/materials.php?SubjectID=<?php echo $subjectID ; ?>">
-									F <div class="featured-page-caption">
+								<a href="../StudentView/materials.php?SubjectID=<?php echo $subjectID; ?>">
+									<div class="featured-page-caption">
 										Materials
 									</div>
 								</a>
 							</div>
 							<div class="featured-page">
 
-								<img width="2560" height="1709" src="../../Public/imgs/Wboard.jpg" class="featured-page-img wp-post-image" alt="" decoding="async" loading="lazy" sizes="(max-width: 2560px) 100vw, 2560px" /><a href="../StudentView/submissions.php">
+								<img width="2560" height="1709" src="../../Public/imgs/Wboard.jpg" class="featured-page-img wp-post-image" alt="" decoding="async" loading="lazy" sizes="(max-width: 2560px) 100vw, 2560px" />
+								<a href="../StudentView/submissions.php?SubjectID=<?php echo $subjectID; ?>">
 									<div class="featured-page-caption">
 										Submissions
 									</div>
@@ -266,7 +267,8 @@ include "../partials/nav.php"
 							</div>
 							<div class="featured-page">
 
-								<img width="2560" height="1709" src="../../Public/imgs/Wboard.jpg" class="featured-page-img wp-post-image" alt="" decoding="async" loading="lazy" sizes="(max-width: 2560px) 100vw, 2560px" /><a href="../StudentView/gradesS.php">
+								<img width="2560" height="1709" src="../../Public/imgs/Wboard.jpg" class="featured-page-img wp-post-image" alt="" decoding="async" loading="lazy" sizes="(max-width: 2560px) 100vw, 2560px" />
+								<a href="../StudentView/gradesS.php?SubjectID=<?php echo $subjectID; ?>">
 									<div class="featured-page-caption">
 										Grades
 									</div>
@@ -274,7 +276,8 @@ include "../partials/nav.php"
 							</div>
 							<div class="featured-page">
 
-								<img width="2560" height="1709" src="../../Public/imgs/Wboard.jpg" class="featured-page-img wp-post-image" alt="" decoding="async" loading="lazy" sizes="(max-width: 2560px) 100vw, 2560px" /><a href="../StudentView/innerStudentView.php">
+								<img width="2560" height="1709" src="../../Public/imgs/Wboard.jpg" class="featured-page-img wp-post-image" alt="" decoding="async" loading="lazy" sizes="(max-width: 2560px) 100vw, 2560px" />
+								<a href="../StudentView/scheduals.php?SubjectID=<?php echo $subjectID; ?>">
 									<div class="featured-page-caption">
 										Schedule
 									</div>
