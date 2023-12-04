@@ -1,5 +1,8 @@
 <?php
 session_start();
+include('../functions.php');
+
+$subjects = getSubjectsForStudent();
 ?>
 <!DOCTYPE html>
 <html lang="en-GB">
@@ -108,8 +111,15 @@ include "../partials/nav.php"
 							<span><span><a href="studentView.php"> Welcome <?php echo $_SESSION['user_name']; ?></a></span></span>
 						</div>
 
-						<div class="page-title-text">
-							Math </div>
+						<?php
+						$subjectID = isset($_GET['SubjectID']) ? $_GET['SubjectID'] : null;
+						if ($subjectID !== null) {
+							$subjectName = getSubjectNameById($subjectID);
+							echo '<div class="page-title-text">' . $subjectName . '</div>';
+						} else {
+							echo '<div class="page-title-text">Subject Not Found</div>';
+						}
+						?>
 
 					</div>
 
@@ -202,7 +212,15 @@ include "../partials/nav.php"
 				<center>
 
 					<div class="breadcrumb-header">
-						<span><span><a href="studentView.php">Home</a></span> · <span class="breadcrumb_last" aria-current="page">Math</span></span>
+						<span><span><a href="studentView.php">Home</a></span> · <span class="breadcrumb_last" aria-current="page"><?php
+																																	$subjectID = isset($_GET['SubjectID']) ? $_GET['SubjectID'] : null;
+																																	if ($subjectID !== null) {
+																																		$subjectName = getSubjectNameById($subjectID);
+																																		echo $subjectName . '</div>';
+																																	} else {
+																																		echo '<div class="page-title-text">Subject Not Found</div>';
+																																	}
+																																	?></span></span>
 					</div>
 
 				</center>
@@ -218,12 +236,22 @@ include "../partials/nav.php"
 	<h5>Discover More</h5>
  Find out more about Academic Life at Westminster	</div> -->
 
+ <?php
+				// innerStudentView.php
+
+				// Check if SubjectID is set in the URL parameters
+				if (isset($_GET['SubjectID'])) {
+					// Retrieve SubjectID from the URL
+					$subjectID = $_GET['SubjectID'];
+				}
+				?>
+
 
 						<div class="featured-pages">
 							<div class="featured-page">
-
-								<img width="2560" height="1709" src="../../Public/imgs/Wboard.jpg" class="featured-page-img wp-post-image" alt="" decoding="async" loading="lazy" sizes="(max-width: 2560px) 100vw, 2560px" /><a href="../StudentView/materials.php">
-									<div class="featured-page-caption">
+								<img width="2560" height="1709" src="../../Public/imgs/Wboard.jpg" class="featured-page-img wp-post-image" alt="" decoding="async" loading="lazy" sizes="(max-width: 2560px) 100vw, 2560px" />
+								<a href="../StudentView/materials.php?SubjectID=<?php echo $subjectID ; ?>">
+									F <div class="featured-page-caption">
 										Materials
 									</div>
 								</a>

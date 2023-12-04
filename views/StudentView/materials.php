@@ -1,5 +1,8 @@
 <?php
 session_start();
+include('../functions.php');
+$subjects = getSubjectsForStudent();
+
 ?>
 <!DOCTYPE html>
 <html lang="en-GB">
@@ -199,6 +202,15 @@ include "../partials/nav.php"
             </div>
             <!--Nav Menu-->
     </div>
+    <?php
+				// innerStudentView.php
+
+				// Check if SubjectID is set in the URL parameters
+				if (isset($_GET['SubjectID'])) {
+					// Retrieve SubjectID from the URL
+					$subjectID = $_GET['SubjectID'];
+				}
+				?>
     </header>
     <div class="astra-advanced-hook-34726 ">
         <div class="astra-advanced-hook-23065 ">
@@ -208,7 +220,16 @@ include "../partials/nav.php"
                 <center>
 
                     <div class="breadcrumb-header">
-                        <span><span><a href="studentView.php">Home</a></span> · <a href="innerStudentView.php"><span class="breadcrumb_last" aria-current="page">Math <a></span> · <span class="breadcrumb_last" aria-current="page">Materials</span></span>
+                        <span><span><a href="studentView.php">Home</a></span> · <a href="../StudentView/innerStudentView.php?SubjectID=<?php echo $subjectID ; ?>">
+                                <span class="breadcrumb_last" aria-current="page"><?php
+                                                                                    $subjectID = isset($_GET['SubjectID']) ? $_GET['SubjectID'] : null;
+                                                                                    if ($subjectID !== null) {
+                                                                                        $subjectName = getSubjectNameById($subjectID);
+                                                                                        echo $subjectName;
+                                                                                    } else {
+                                                                                        echo '<div class="page-title-text">Subject Not Found</div>';
+                                                                                    }
+                                                                                    ?></a></span> · <span class="breadcrumb_last" aria-current="page">Materials</span></span>
                     </div>
 
                 </center>
