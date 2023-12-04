@@ -1,5 +1,9 @@
 <?php
 session_start();
+include('../functions.php');
+
+// Get the list of subjects
+$subjects = getSubjectsForStudent();
 ?>
 
 <!DOCTYPE html>
@@ -216,61 +220,16 @@ include "../partials/nav.php"
 				<!-- Classes section -->
 				<div class="astra-advanced-hook-30270 ">
 					<section class="featured-pages-strip">
-
-						<!-- <div class="featured-pages-heading">                               optional header
-	<h5>Discover More</h5>
- Find out more about Academic Life at Westminster	</div> -->
-
-
 						<div class="featured-pages">
-							<div class="featured-page">
-
+							<?php foreach ($subjects as $subject) : ?>
+								<div class="featured-page">
 								<img width="2560" height="1709" src="../../Public/imgs/Wboard.jpg" class="featured-page-img wp-post-image" alt="" decoding="async" loading="lazy" sizes="(max-width: 2560px) 100vw, 2560px" /><a href="../StudentView/innerStudentView.php">
-									<div class="featured-page-caption">
-										Math
-									</div>
-								</a>
-							</div>
-							<div class="featured-page">
-
-								<img width="2560" height="1709" src="../../Public/imgs/Wboard.jpg" class="featured-page-img wp-post-image" alt="" decoding="async" loading="lazy" sizes="(max-width: 2560px) 100vw, 2560px" /><a href="../StudentView/innerStudentView.php">
-									<div class="featured-page-caption">
-										Biology
-									</div>
-								</a>
-							</div>
-							<div class="featured-page">
-
-								<img width="2560" height="1709" src="../../Public/imgs/Wboard.jpg" class="featured-page-img wp-post-image" alt="" decoding="async" loading="lazy" sizes="(max-width: 2560px) 100vw, 2560px" /><a href="../StudentView/innerStudentView.php">
-									<div class="featured-page-caption">
-										English
-									</div>
-								</a>
-							</div>
-							<div class="featured-page">
-
-								<img width="2560" height="1709" src="../../Public/imgs/Wboard.jpg" class="featured-page-img wp-post-image" alt="" decoding="async" loading="lazy" sizes="(max-width: 2560px) 100vw, 2560px" /><a href="../StudentView/innerStudentView.php">
-									<div class="featured-page-caption">
-										Arabic
-									</div>
-								</a>
-							</div>
-							<div class="featured-page">
-
-								<img width="2560" height="1709" src="../../Public/imgs/Wboard.jpg" class="featured-page-img wp-post-image" alt="" decoding="async" loading="lazy" sizes="(max-width: 2560px) 100vw, 2560px" /><a href="../StudentView/innerStudentView.php">
-									<div class="featured-page-caption">
-										French
-									</div>
-								</a>
-							</div>
-							<div class="featured-page">
-
-								<img width="2560" height="1709" src="../../Public/imgs/Wboard.jpg" class="featured-page-img wp-post-image" alt="" decoding="async" loading="lazy" sizes="(max-width: 2560px) 100vw, 2560px" /><a href="../StudentView/innerStudentView.php">
-									<div class="featured-page-caption">
-										Physics
-									</div>
-								</a>
-							</div>
+										<div class="featured-page-caption">
+											<?php echo $subject['SubjectName']; ?>
+										</div>
+									</a>
+								</div>
+							<?php endforeach; ?>
 						</div>
 						<!-- classes -->
 					</section>

@@ -52,7 +52,6 @@ class DBh{
 	public function __destruct()
     {
         if ($this->conn) {
-            $this->conn->close();
         }
     }
 }
