@@ -81,8 +81,37 @@ flexibility(document.documentElement);
 
 </head>
 <?php
+
 include "../partials/nav.php"
+
+define('__ROOT__', dirname(__DIR__) . "/");
+require_once(__ROOT__ . "controller/TeachersController.php");
+require_once(__ROOT__ . "model/addMaterialModel.php");  
+
+$servername = "localhost";  
+$username = "root";         
+$password = "";             
+$dbname = "UserMVC";
+
+$db = new mysqli($servername, $username, $password, $dbname);
+
+if ($db->connect_error) {
+    die("Connection failed: " . $db->connect_error);
+}
+
+$teachersController = new TeachersController($db);
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $title = $_POST["title"];
+    $content = $_POST["content"];
+    $subjectID = $_POST["subject"];
+    $teacherID = 1; // Assuming I have 1 default teacher for now
+
+    $teachersController->addMaterial($title, $content, $subjectID, $teacherID);
+}
 ?>
+
+
 
 <body itemtype='https://schema.org/WebPage' itemscope='itemscope' class="page-template-default page page-id-42 page-parent ast-desktop ast-page-builder-template ast-no-sidebar astra-4.4.1 ast-header-custom-item-inside ast-full-width-primary-header group-blog ast-single-post ast-mobile-inherit-site-logo ast-inherit-site-logo-transparent ast-above-mobile-menu-align-inline ast-default-menu-enable ast-flyout-above-menu-enable ast-flyout-above-left-side ast-default-below-menu-enable ast-full-width-layout ast-full-width-header ast-inherit-site-logo-sticky ast-normal-title-enabled astra-addon-4.4.0">
 	<!-- Google Tag Manager (noscript) -->
@@ -212,7 +241,7 @@ include "../partials/nav.php"
 				<div class="astra-advanced-hook-30270 ">
 					<section class="featured-pages-strip">
 
-                <form>
+					<form action="..\controller\TeachersController.php" method="POST">
                       <label for="title">Title:</label>
                       <input type="text" id="title" name="title" required>
 
