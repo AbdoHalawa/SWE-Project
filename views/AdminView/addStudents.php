@@ -79,27 +79,10 @@ include "adminNav.php";
 </div>
 <div class="col-12 col-sm-4">
 <div class="form-group local-forms">
-<label>Roll </label>
-<input class="form-control" type="text" placeholder="Enter Roll Number">
-</div>
-</div>
-<div class="col-12 col-sm-4">
-<div class="form-group local-forms">
-<label>Blood Group <span class="login-danger">*</span></label>
-<select class="form-control select">
-<option>Please Select Group </option>
-<option>B+</option>
-<option>A+</option>
-<option>O+</option>
-</select>
-</div>
-</div>
-<div class="col-12 col-sm-4">
-<div class="form-group local-forms">
 <label>Religion <span class="login-danger">*</span></label>
 <select class="form-control select">
 <option>Please Select Religion </option>
-<option>Hindu</option>
+<option>Muslim</option>
 <option>Christian</option>
 <option>Others</option>
 </select>
@@ -107,15 +90,9 @@ include "adminNav.php";
 </div>
 <div class="col-12 col-sm-4">
 <div class="form-group local-forms">
-<label>E-Mail <span class="login-danger">*</span></label>
-<input class="form-control" type="text" placeholder="Enter Email Address">
-</div>
-</div>
-<div class="col-12 col-sm-4">
-<div class="form-group local-forms">
 <label>Class <span class="login-danger">*</span></label>
 <select class="form-control select">
-<option>Please Select Class </option>
+<option>Please Select Grade </option>
 <option>12</option>
 <option>11</option>
 <option>10</option>
@@ -126,9 +103,9 @@ include "adminNav.php";
 <div class="form-group local-forms">
 <label>Section <span class="login-danger">*</span></label>
 <select class="form-control select">
-<option>Please Select Section </option>
-<option>B</option>
+<option>Please Select a Class </option>
 <option>A</option>
+<option>B</option>
 <option>C</option>
 </select>
 </div>
@@ -141,7 +118,19 @@ include "adminNav.php";
 </div>
 <div class="col-12 col-sm-4">
 <div class="form-group local-forms">
-<label>Phone </label>
+<label>Parent's Name </label>
+<input class="form-control" type="text" placeholder="Enter The Name ">
+</div>
+</div>
+<div class="col-12 col-sm-4">
+<div class="form-group local-forms">
+<label>Parent ID </label>
+<input class="form-control" type="text" placeholder="Enter Admission ID">
+</div>
+</div>
+<div class="col-12 col-sm-4">
+<div class="form-group local-forms">
+<label>Parent's Phone </label>
 <input class="form-control" type="text" placeholder="Enter Phone Number">
 </div>
 </div>
@@ -155,6 +144,33 @@ Choose File <input type="file">
 </div>
 </div>
 </div>
+<div class="col-12">
+<h5 class="form-title"><span>Login Details</span></h5>
+<div class="col-12 col-sm-4">
+<div class="form-group local-forms">
+<label>Student Email ID <span class="login-danger">*</span></label>
+<input type="email" class="form-control" placeholder="Enter Mail Id">
+</div>
+</div>
+<div class="col-12 col-sm-4">
+<div class="form-group local-forms">
+<label>Student Password <span class="login-danger">*</span></label>
+<input type="text" class="form-control" placeholder="Enter Password">
+</div>
+</div>
+<div class="col-12 col-sm-4">
+<div class="form-group local-forms">
+<label>Parent Email ID <span class="login-danger">*</span></label>
+<input type="email" class="form-control" placeholder="Enter Mail Id">
+</div>
+</div>
+<div class="col-12 col-sm-4">
+<div class="form-group local-forms">
+<label>Parent Password <span class="login-danger">*</span></label>
+<input type="text" class="form-control" placeholder="Enter Password">
+</div>
+</div>
+
 <div class="col-12">
 <div class="student-submit">
 <button type="submit" class="btn btn-primary">Submit</button>
