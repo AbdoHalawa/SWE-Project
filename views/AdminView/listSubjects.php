@@ -97,6 +97,7 @@ include "adminNav.php";
 <th>ID</th>
 <th>Name</th>
 <th>Class</th>
+<th>Teacher</th>
 <th class="text-end">Action</th>
 </tr>
 </thead>
@@ -113,7 +114,12 @@ include "adminNav.php";
 <a>Mathematics</a>
 </h2>
 </td>
-<td>5</td>
+<td>10</td>
+<td>
+<h2>
+<a>Mohamed</a>
+</h2>
+</td>
 <td class="text-end">
  <div class="actions">
 <a href="javascript:;" class="btn btn-sm bg-success-light me-2">
@@ -125,126 +131,7 @@ include "adminNav.php";
 </div>
 </td>
 </tr>
-<tr>
-<td>
-<div class="form-check check-tables">
-<input class="form-check-input" type="checkbox" value="something">
-</div>
-</td>
-<td>PRE2213</td>
-<td>
-<h2>
-<a>History</a>
-</h2>
-</td>
-<td>6</td>
-<td class="text-end">
-<div class="actions">
-<a href="javascript:;" class="btn btn-sm bg-success-light me-2">
-<i class="feather-eye"></i>
-</a>
-<a href="edit-subject.html" class="btn btn-sm bg-danger-light">
-<i class="feather-edit"></i>
-</a>
-</div>
-</td>
-</tr>
-<tr>
-<td>
-<div class="form-check check-tables">
-<input class="form-check-input" type="checkbox" value="something">
-</div>
-</td>
-<td>PRE2143</td>
-<td>
-<h2>
-<a>Science</a>
-</h2>
-</td>
-<td>3</td>
-<td class="text-end">
-<div class="actions">
-<a href="javascript:;" class="btn btn-sm bg-success-light me-2">
-<i class="feather-eye"></i>
-</a>
-<a href="edit-subject.html" class="btn btn-sm bg-danger-light">
-<i class="feather-edit"></i>
-</a>
-</div>
-</td>
-</tr>
-<tr>
-<td>
-<div class="form-check check-tables">
-<input class="form-check-input" type="checkbox" value="something">
-</div>
-</td>
-<td>PRE2431</td>
-<td>
-<h2>
-<a>Geography</a>
-</h2>
-</td>
-<td>8</td>
-<td class="text-end">
-<div class="actions">
-<a href="javascript:;" class="btn btn-sm bg-success-light me-2">
-<i class="feather-eye"></i>
-</a>
-<a href="edit-subject.html" class="btn btn-sm bg-danger-light">
-<i class="feather-edit"></i>
-</a>
-</div>
-</td>
-</tr>
-<tr>
-<td>
-<div class="form-check check-tables">
-<input class="form-check-input" type="checkbox" value="something">
-</div>
-</td>
-<td>PRE1534</td>
-<td>
-<h2>
-<a>Botony</a>
-</h2>
-</td>
-<td>9</td>
-<td class="text-end">
-<div class="actions">
-<a href="javascript:;" class="btn btn-sm bg-success-light me-2">
-<i class="feather-eye"></i>
-</a>
-<a href="edit-subject.html" class="btn btn-sm bg-danger-light">
-<i class="feather-edit"></i>
-</a>
-</div>
-</td>
-</tr>
-<tr>
-<td>
-<div class="form-check check-tables">
-<input class="form-check-input" type="checkbox" value="something">
-</div>
-</td>
-<td>PRE2153</td>
-<td>
-<h2>
-<a>English</a>
-</h2>
-</td>
-<td>4</td>
-<td class="text-end">
-<div class="actions">
-<a href="javascript:;" class="btn btn-sm bg-success-light me-2">
-<i class="feather-eye"></i>
-</a>
-<a href="edit-subject.html" class="btn btn-sm bg-danger-light">
-<i class="feather-edit"></i>
-</a>
-</div>
-</td>
-</tr>
+
 </tbody>
 </table>
 </div>

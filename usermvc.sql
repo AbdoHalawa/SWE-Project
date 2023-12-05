@@ -8,6 +8,12 @@ CREATE TABLE Subjects (
 CREATE TABLE Teachers (
     TeacherID INT PRIMARY KEY,
     TeacherName VARCHAR(50),
+    Gender VARCHAR(10),
+    DateOfBirth DATE,
+    PhoneNumber VARCHAR(15),
+    JoiningDate DATE,
+    Experience INT,
+    Email VARCHAR(100), -- Added Email field
     Password VARCHAR(255),
     TeacherType VARCHAR(20) -- 'Normal' or 'Head'
 );
@@ -33,11 +39,22 @@ CREATE TABLE Classes (
 -- Table for Students
 CREATE TABLE Students (
     StudentID INT PRIMARY KEY,
-    StudentName VARCHAR(50),
-    Password VARCHAR(255),
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    Gender VARCHAR(10),
+    DateOfBirth DATE,
+    Religion VARCHAR(50),
     Grade INT, -- 10, 11, 12
     ClassID INT, -- Foreign key referencing Classes
-    FOREIGN KEY (ClassID) REFERENCES Classes(ClassID)
+    AdmissionID INT,
+    ParentID INT, -- Foreign key referencing Parents
+    PhoneNumber VARCHAR(15),
+    Email VARCHAR(100),
+    Password VARCHAR(255),
+    FOREIGN KEY (ClassID) REFERENCES Classes(ClassID),
+    FOREIGN KEY (ParentID) REFERENCES Parents(ParentID), -- Added foreign key for ParentID
+    UNIQUE (AdmissionID),
+    CHECK (Grade IN (10, 11, 12)) -- Check constraint for valid grades
 );
 
 -- Table for Enrollment (connecting students with classes)
@@ -53,6 +70,7 @@ CREATE TABLE Enrollment (
 CREATE TABLE Parents (
     ParentID INT PRIMARY KEY,
     ParentName VARCHAR(50),
+    Email VARCHAR(100), -- Added Email field
     Password VARCHAR(255)
 );
 
