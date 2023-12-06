@@ -67,4 +67,37 @@ function getSubjectNameById($subjectID)
 
     return $row['SubjectName'];
 }
+
+function getGradesForStudent()
+{
+    require_once('../../Db/Dbh.php');
+
+    $db = new Dbh();
+    $conn = $db->connect();
+
+    $studentID = $_SESSION['user_id'];
+    $studentID = mysqli_real_escape_string($conn, $studentID);
+
+    $query = "SELECT Subjects.SubjectID, Subjects.SubjectName, Grades.Grade
+              FROM Subjects
+              INNER JOIN Grades ON Subjects.SubjectID = Grades.SubjectID
+              WHERE Grades.StudentID = $studentID";
+
+
+    $result = mysqli_query($conn, $query);
+
+    if (!$result) {
+        die("Query failed: " . mysqli_error($conn));
+    }
+
+    $grades = array();
+    while ($row = mysqli_fetch_assoc($result)) {
+        $grades[] = $row;
+    }
+
+    mysqli_close($conn);
+
+    return $grades;
+}
+
 ?>

@@ -1,5 +1,9 @@
 <?php
 session_start();
+include('../functions.php');
+
+$subjects = getSubjectsForStudent();
+$grades = getGradesForStudent();
 ?>
 <!DOCTYPE html>
 <html lang="en-GB">
@@ -127,7 +131,7 @@ include "../partials/nav.php"
 							<div class="featured_box_content">
 								<div class="box-content">
 									<div class="links-group">
-										<a href="../logout.php">Logout</a>
+										<a href="../../controller/logout-handler.php?action=logout">Logout</a>
 									</div>
 								</div>
 							</div>
@@ -201,13 +205,28 @@ include "../partials/nav.php"
 			<!--BEGIN BREADCRUMBS & PAGE TITLE -->
 			<div class="top-page-wrapper">
 
+				<?php
+				$subjectID = isset($_GET['SubjectID']) ? $_GET['SubjectID'] : null;
+				$subjectName = ($subjectID !== null) ? getSubjectNameById($subjectID) : null;
+				?>
+
 				<center>
 
 					<div class="breadcrumb-header">
-						<span><span><a href="studentView.php">Home</a></span> · <a href="innerStudentView.php"><span class="breadcrumb_last" aria-current="page">Math</a></span></span> · <span class="breadcrumb_last" aria-current="page">Grades</span>
+						<span><span><a href="studentView.php">Home</a></span> · <a href="../StudentView/innerStudentView.php?SubjectID=<?php echo $subjectID; ?>">
+								<span class="breadcrumb_last" aria-current="page"><?php
+																					$subjectID = isset($_GET['SubjectID']) ? $_GET['SubjectID'] : null;
+																					if ($subjectID !== null) {
+																						$subjectName = getSubjectNameById($subjectID);
+																						echo $subjectName;
+																					} else {
+																						echo '<div class="page-title-text">Subject Not Found</div>';
+																					}
+																					?></a></span> · <span class="breadcrumb_last" aria-current="page">Grades</span></span>
 					</div>
 
 				</center>
+
 
 
 
@@ -229,21 +248,12 @@ include "../partials/nav.php"
 
 							<div class="grade-container">
 								<h1 class="s">School Grades</h1>
-
-								<div class="subject">
-									<h2>Mathematics</h2>
-									<p>Grade: A</p>
-								</div>
-
-								<div class="subject">
-									<h2>Science</h2>
-									<p>Grade: B</p>
-								</div>
-
-								<div class="subject">
-									<h2>English</h2>
-									<p>Grade: C</p>
-								</div>
+								<?php foreach ($grades as $grade) : ?>
+									<div class="subject">
+										<h2><?php echo isset($grade['SubjectID']) ? getSubjectNameById($grade['SubjectID']) : 'Unknown Subject'; ?></h2>
+										<p>Grade: <?php echo $grade['Grade']; ?></p>
+									</div>
+								<?php endforeach; ?>
 
 								<!-- Add more subjects as needed -->
 
