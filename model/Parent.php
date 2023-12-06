@@ -1,59 +1,96 @@
 <?php
+
 require_once(__ROOT__ . "model/Model.php");
 
-class Parent extends Model {
-    private $id;
-    private $name;
+class Parent extends Model
+{
+    private $ParentName;
+    private $ParentID;
+    private $Password;
+    private $Email;
 
-    function __construct($id, $name = "") {
-        $this->id = $id;
-        $this->db = $this->connect();
+    public function __construct($id, $name = "")
+    {
+        parent::__construct(); 
+        $this->ParentID = $id;
 
         if ("" === $name) {
             $this->readParent($id);
         } else {
-            $this->name = $name;
+            $this->ParentName = $name;
         }
     }
 
-    function getName() {
-        return $this->name;
+    public function getParentName()
+    {
+        return $this->ParentName;
     }
 
-    function setName($name) {
-        return $this->name = $name;
+    public function setParentName($name)
+    {
+        $this->ParentName = $name;
     }
 
-    function getID() {
-        return $this->id;
+    public function getParentID()
+    {
+        return $this->ParentID;
     }
 
-    function readParent($id) {
-        $sql = "SELECT * FROM parents WHERE ParentID=" . $id;
-        $db = $this->connect();
-        $result = $db->query($sql);
+    public function getPassword()
+    {
+        return $this->Password;
+    }
 
-        if ($result->num_rows == 1) {
-            $row = $db->fetchRow();
-            $this->name = $row["ParentName"];
-            $_SESSION["ParentName"] = $row["ParentName"];
+    public function setEmail($email)
+    {
+        $this->Email = $email;
+    }
+
+    public function getEmail()
+    {
+        return $this->Email;
+    }
+
+    public function readParent($id)
+    {
+        $sql = "SELECT * FROM parents WHERE ParentID = :id";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+
+        if ($stmt->rowCount() == 1) {
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            $this->ParentName = $row["ParentName"];
+            $this->Email = $row["Email"];
+            $this->Password = $row["Password"];
         } else {
-            $this->name = "";
+            // Handle the case when no parent record is found
+            $this->ParentName = "";
+            $this->Email = "";
+            $this->Password = "";
         }
     }
 
-    
-    function getFees($studentId) {
-        
+    public function getFees($studentId)
+    {
+        $parentID = $this->getParentID();
+
+        $sql = "SELECT Fees.Amount, Fees.PaymentStatus
+                FROM Fees
+                INNER JOIN Students ON Fees.StudentID = Students.StudentID
+                WHERE Students.ParentID = :parentID";
+
     }
 
-    
-    function getAssignments($studentId) {
-      
+    public function getAssignments($studentId)
+    {
+        // Your implementation here
     }
 
-    function getGrades($studentId) {
-     
+    public function getGrades($studentId)
+    {
+        // Your implementation here
     }
 }
+
 ?>
