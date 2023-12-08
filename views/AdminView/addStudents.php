@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
     <title>Admin Dashboard</title>
     <link rel="shortcut icon" href="..\views\AdminView\assets\img\favicon.png">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="assets\plugins\bootstrap\css\bootstrap.min.css">
     <link rel="stylesheet" href="assets\plugins\feather\feather.css">
     <link rel="stylesheet" href="assets\plugins\icons\flags\flags.css">
@@ -17,173 +19,239 @@
 
 <body>
 
-<?php
-// Include the common header or navigation
-include "adminNav.php";
-?>
+    <?php
+    // Include the common header or navigation
+    include "adminNav.php";
+    ?>
 
-<div class="page-wrapper">
-    <div class="content container-fluid">
-        <div class="page-header">
-            <div class="row align-items-center">
+    <div class="page-wrapper">
+        <div class="content container-fluid">
+            <div class="page-header">
+                <div class="row align-items-center">
+                    <div class="col-sm-12">
+                        <div class="page-sub-header">
+                            <h3 class="page-title">Add Students</h3>
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="students.html">Student</a></li>
+                                <li class="breadcrumb-item active">Add Students</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
                 <div class="col-sm-12">
-                    <div class="page-sub-header">
-                        <h3 class="page-title">Add Students</h3>
-                        <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="students.html">Student</a></li>
-                            <li class="breadcrumb-item active">Add Students</li>
-                        </ul>
+                    <div class="card comman-shadow">
+                        <div class="card-body">
+                            <form method="post" action=""> <!-- Change the action attribute accordingly -->
+
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h5 class="form-title student-info">Student Information <span><a
+                                                    href="javascript:;"><i class="feather-more-vertical"></i></a></span>
+                                        </h5>
+                                    </div>
+                                    <div class="col-12 col-sm-4">
+                                        <div class="form-group local-forms">
+                                            <label>First Name <span class="login-danger">*</span></label>
+                                            <input class="form-control" type="text" name="first_name"
+                                                placeholder="Enter First Name">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-4">
+                                        <div class="form-group local-forms">
+                                            <label>Last Name <span class="login-danger">*</span></label>
+                                            <input class="form-control" type="text" name="last_name"
+                                                placeholder="Enter Last Name">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-4">
+                                        <div class="form-group local-forms">
+                                            <label>Gender <span class="login-danger">*</span></label>
+                                            <select class="form-control select" name="gender">
+                                                <option>Select Gender</option>
+                                                <option value="Female">Female</option>
+                                                <option value="Male">Male</option>
+                                                <option value="Others">Others</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-4">
+                                        <div class="form-group local-forms calendar-icon">
+                                            <label>Date Of Birth <span class="login-danger">*</span></label>
+                                            <input class="form-control datetimepicker" type="text" name="dob"
+                                                placeholder="DD-MM-YYYY">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-4">
+                                        <div class="form-group local-forms">
+                                            <label>Religion <span class="login-danger">*</span></label>
+                                            <select class="form-control select" name="religion">
+                                                <option>Please Select Religion</option>
+                                                <option value="Muslim">Muslim</option>
+                                                <option value="Christian">Christian</option>
+                                                <option value="Others">Others</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-4">
+                                        <div class="form-group local-forms">
+                                            <label>Class <span class="login-danger">*</span></label>
+                                            <select class="form-control select" name="grade">
+                                                <option>Please Select Grade</option>
+                                                <option value="12">12</option>
+                                                <option value="11">11</option>
+                                                <option value="10">10</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-4">
+                                        <div class="form-group local-forms">
+                                            <label>Section <span class="login-danger">*</span></label>
+                                            <select class="form-control select" name="class">
+                                                <option>Please Select a Class</option>
+                                                <option value="A">A</option>
+                                                <option value="B">B</option>
+                                                <option value="C">C</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-4">
+                                        <div class="form-group local-forms">
+                                            <label>Admission ID</label>
+                                            <input class="form-control" type="text" name="admission_id"
+                                                placeholder="Enter Admission ID">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-4">
+                                        <div class="form-group local-forms">
+                                            <label>Parent's Name</label>
+                                            <input class="form-control" type="text" name="parent_name"
+                                                placeholder="Enter The Name">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-4">
+                                        <div class="form-group local-forms">
+                                            <label>Parent ID</label>
+                                            <input class="form-control" type="text" name="parent_id"
+                                                placeholder="Enter Parent ID">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-4">
+                                        <div class="form-group local-forms">
+                                            <label>Parent's Phone</label>
+                                            <input class="form-control" type="text" name="parent_phone"
+                                                placeholder="Enter Phone Number">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <h5 class="form-title"><span>Login Details</span></h5>
+                                        <div class="col-12 col-sm-4">
+                                            <div class="form-group local-forms">
+                                                <label>Student Email ID <span class="login-danger">*</span></label>
+                                                <input type="email" class="form-control" name="email"
+                                                    placeholder="Enter Mail Id">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-4">
+                                            <div class="form-group local-forms">
+                                                <label>Student Password <span class="login-danger">*</span></label>
+                                                <input type="text" class="form-control" name="password"
+                                                    placeholder="Enter Password">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-4">
+                                            <div class="form-group local-forms">
+                                                <label>Parent Email ID <span class="login-danger">*</span></label>
+                                                <input type="email" class="form-control" name="parent_email"
+                                                    placeholder="Enter Mail Id">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-4">
+                                            <div class="form-group local-forms">
+                                                <label>Parent Password <span class="login-danger">*</span></label>
+                                                <input type="text" class="form-control" name="parent_password"
+                                                    placeholder="Enter Password">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="student-submit">
+                                            <button type="submit" name="test_insert"class="btn btn-primary">Submit</button>
+                                        </div>
+                                    </div>
+                            </form>
+                            <?php
+                            error_reporting(E_ALL);
+                            ini_set('display_errors', 1);
+
+                            $servername = "localhost";
+                            $username = "root";
+                            $password = "";
+                            $dbname = "UserMVC";
+
+                            // Create connection
+                            $conn = new mysqli($servername, $username, $password, $dbname);
+
+                            // Check connection
+                            if ($conn->connect_error) {
+                                die("Connection failed: " . $conn->connect_error);
+                            }
+
+                            // Set charset to UTF-8
+                            $conn->set_charset("utf8mb4");
+
+                            // Check if the form is submitted
+                            if (isset($_POST['test_insert'])) {
+                                // Get form data
+                                $firstName = $_POST['first_name'];
+                                $lastName = $_POST['last_name'];
+                                $gender = $_POST['gender'];
+                                $dob = $_POST['dob'];
+                                $religion = $_POST['religion'];
+                                $grade = $_POST['grade'];
+                                $classID = '1';
+                                $admissionID = $_POST['admission_id'];
+                                $parentID = '12345';
+                                $phoneNumber = $_POST['phone_number'];
+                                $email = $_POST['email'];
+                                $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+
+                                // Perform a simple insert for testing
+                                $sql = "INSERT INTO Students (FirstName, LastName, Gender, DateOfBirth, Religion, Grade, ClassID, AdmissionID, ParentID, PhoneNumber, Email, Password)
+        VALUES ('$firstName', '$lastName', '$gender', '$dob', '$religion', '$grade', '$classID', '$admissionID', '$parentID', '$phoneNumber', '$email', '$password')";
+
+                                // Execute the query (Note: This is for testing purposes only, not secure for production)
+                                $result = $conn->query($sql);
+
+                                // Check if the query was successful
+                                if ($result) {
+                                    echo '<p class="text-success">Test insert successful!</p>';
+                                } else {
+                                    // Handle the case where the query was not successful
+                                    echo '<p class="text-danger">Test insert failed: ' . ($conn ? $conn->error : "No valid connection") . '</p>';
+                                }
+                            }
+                            ?>
+                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
-
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="card comman-shadow">
-                    <div class="card-body">
-                        <form method="post" action="../../controller/StudentsController.php"> <!-- Change the action attribute accordingly -->
-                            <div class="row">
-                                <div class="col-12">
-                                    <h5 class="form-title student-info">Student Information <span><a href="javascript:;"><i class="feather-more-vertical"></i></a></span></h5>
-                                </div>
-                                <div class="col-12 col-sm-4">
-                                    <div class="form-group local-forms">
-                                        <label>First Name <span class="login-danger">*</span></label>
-                                        <input class="form-control" type="text" name="first_name" placeholder="Enter First Name">
-                                    </div>
-                                </div>
-                                <div class="col-12 col-sm-4">
-                                    <div class="form-group local-forms">
-                                        <label>Last Name <span class="login-danger">*</span></label>
-                                        <input class="form-control" type="text" name="last_name" placeholder="Enter Last Name">
-                                    </div>
-                                </div>
-                                <div class="col-12 col-sm-4">
-                                    <div class="form-group local-forms">
-                                        <label>Gender <span class="login-danger">*</span></label>
-                                        <select class="form-control select" name="gender">
-                                            <option>Select Gender</option>
-                                            <option value="Female">Female</option>
-                                            <option value="Male">Male</option>
-                                            <option value="Others">Others</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-sm-4">
-                                    <div class="form-group local-forms calendar-icon">
-                                        <label>Date Of Birth <span class="login-danger">*</span></label>
-                                        <input class="form-control datetimepicker" type="text" name="dob" placeholder="DD-MM-YYYY">
-                                    </div>
-                                </div>
-                                <div class="col-12 col-sm-4">
-                                    <div class="form-group local-forms">
-                                        <label>Religion <span class="login-danger">*</span></label>
-                                        <select class="form-control select" name="religion">
-                                            <option>Please Select Religion</option>
-                                            <option value="Muslim">Muslim</option>
-                                            <option value="Christian">Christian</option>
-                                            <option value="Others">Others</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-sm-4">
-                                    <div class="form-group local-forms">
-                                        <label>Class <span class="login-danger">*</span></label>
-                                        <select class="form-control select" name="grade">
-                                            <option>Please Select Grade</option>
-                                            <option value="12">12</option>
-                                            <option value="11">11</option>
-                                            <option value="10">10</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-sm-4">
-                                    <div class="form-group local-forms">
-                                        <label>Section <span class="login-danger">*</span></label>
-                                        <select class="form-control select" name="section">
-                                            <option>Please Select a Class</option>
-                                            <option value="A">A</option>
-                                            <option value="B">B</option>
-                                            <option value="C">C</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-sm-4">
-                                    <div class="form-group local-forms">
-                                        <label>Admission ID</label>
-                                        <input class="form-control" type="text" name="admission_id" placeholder="Enter Admission ID">
-                                    </div>
-                                </div>
-                                <div class="col-12 col-sm-4">
-                                    <div class="form-group local-forms">
-                                        <label>Parent's Name</label>
-                                        <input class="form-control" type="text" name="parent_name" placeholder="Enter The Name">
-                                    </div>
-                                </div>
-                                <div class="col-12 col-sm-4">
-                                    <div class="form-group local-forms">
-                                        <label>Parent ID</label>
-                                        <input class="form-control" type="text" name="parent_id" placeholder="Enter Parent ID">
-                                    </div>
-                                </div>
-                                <div class="col-12 col-sm-4">
-                                    <div class="form-group local-forms">
-                                        <label>Parent's Phone</label>
-                                        <input class="form-control" type="text" name="parent_phone" placeholder="Enter Phone Number">
-                                    </div>
-                                </div>
-
-                            <div class="col-12">
-                                <h5 class="form-title"><span>Login Details</span></h5>
-                                <div class="col-12 col-sm-4">
-                                    <div class="form-group local-forms">
-                                        <label>Student Email ID <span class="login-danger">*</span></label>
-                                        <input type="email" class="form-control" name="email" placeholder="Enter Mail Id">
-                                    </div>
-                                </div>
-                                <div class="col-12 col-sm-4">
-                                    <div class="form-group local-forms">
-                                        <label>Student Password <span class="login-danger">*</span></label>
-                                        <input type="text" class="form-control" name="password" placeholder="Enter Password">
-                                    </div>
-                                </div>
-                                <div class="col-12 col-sm-4">
-                                    <div class="form-group local-forms">
-                                        <label>Parent Email ID <span class="login-danger">*</span></label>
-                                        <input type="email" class="form-control" name="parent_email" placeholder="Enter Mail Id">
-                                    </div>
-                                </div>
-                                <div class="col-12 col-sm-4">
-                                    <div class="form-group local-forms">
-                                        <label>Parent Password <span class="login-danger">*</span></label>
-                                        <input type="text" class="form-control" name="parent_password" placeholder="Enter Password">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-12">
-                                <div class="student-submit">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </div>
-</div>
 
-<script src="assets/js/jquery-3.6.0.min.js"></script>
-<script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="assets/js/feather.min.js"></script>
-<script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-<script src="assets/plugins/select2/js/select2.min.js"></script>
-<script src="assets/plugins/moment/moment.min.js"></script>
-<script src="assets/js/bootstrap-datetimepicker.min.js"></script>
-<script src="assets/js/script.js"></script>
+    <script src="assets/js/jquery-3.6.0.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/feather.min.js"></script>
+    <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="assets/plugins/select2/js/select2.min.js"></script>
+    <script src="assets/plugins/moment/moment.min.js"></script>
+    <script src="assets/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="assets/js/script.js"></script>
 </body>
 
 </html>
