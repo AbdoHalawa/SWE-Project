@@ -82,7 +82,7 @@ flexibility(document.documentElement);
 </head>
 <?php
 
-include "../partials/nav.php"
+include "../partials/nav.php";
 
 define('__ROOT__', dirname(__DIR__) . "/");
 require_once(__ROOT__ . "controller/TeachersController.php");

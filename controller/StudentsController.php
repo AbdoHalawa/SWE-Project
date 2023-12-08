@@ -1,16 +1,20 @@
 <?php
-require_once(__DIR__ . "/../controller/Controller.php");
-require_once(__DIR__ . '/../model/StudentModel.php');
 
-class StudentsController extends Controller
-{
-    public function __construct(StudentModel $model)
-    {
-        parent::__construct($model);
+require_once(__DIR__ . '/../model/StudentModel.php');
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+class StudentsController {
+    private $model;
+
+    public function __construct(StudentModel $model) {
+        error_log("Constructing Studentcont with data: " . print_r($model, true));
+        $this->model = $model;
     }
 
-    public function handleFormSubmission()
-    {
+    public function handleFormSubmission() {
+        var_dump($_POST);
+
         if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
             // Validate and process user input
             $studentData = [
@@ -28,37 +32,34 @@ class StudentsController extends Controller
                 'Password' => $_POST['password'],
             ];
 
-            // Create a new Student object
-            $student = new Student($studentData);
+            // Create a new StudentModel object
+            $studentModel = new StudentModel($studentData);
 
-            // Insert the student into the database
-            $result = $this->model->insertStudent($student);
+            // Check if the model is successfully constructed
+            if ($studentModel) {
+                // Insert the student into the database
+                $result = $studentModel->insertStudent();
 
-            // Render the appropriate view based on the result
-            if ($result) {
-                // Display success message
-                $this->renderView('success_view');
+                // Render the appropriate view based on the result
+                $this->renderView($result);
             } else {
-                // Display error message
-                $this->renderView('error_view');
+                // Handle the case where the model construction failed
+                $this->renderView(false);
             }
         } else {
-            // Handle cases where the form wasn't submitted
-            // or display an error message
+            echo 'console.error("Error: Form not submitted.");';
         }
     }
 
-    private function renderView($viewName)
-    {
-        // Logic to render the view (HTML output)
-        // You can include a separate view file or use a template engine
-        include($viewName . '.php');
+    private function renderView($result) {
+        echo '<script>';
+        if ($result) {
+            echo 'console.log("Student inserted successfully.");';
+        } else {
+            echo 'console.error("Error: Unable to insert student into the database.");';
+        }
+        echo '</script>';
     }
 }
 
-// Example usage:
-$model = new StudentModel();
-$controller = new StudentsController($model);
-
-$controller->handleFormSubmission();
 ?>

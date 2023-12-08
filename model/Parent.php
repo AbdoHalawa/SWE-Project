@@ -1,7 +1,7 @@
 <?php
 
-require_once(__ROOT__ . "model/Model.php");
-require_once(__ROOT__ . "model/Student.php");
+require_once(__ROOT__ . "/Model.php");
+require_once(__ROOT__ . "/StudentModel.php");
 
 class Parent extends Model
 {
@@ -15,7 +15,7 @@ class Parent extends Model
     {
         parent::__construct();
         $this->ParentID = $id;
-        $sql = Select * from Student Where ParentID = $this->ParentID;
+        $sql = Select * from Students Where ParentID = $this->ParentID;
         $this->Student = new Student($row[0]); // Instantiated the Student object here
         $this->Student->readUser($id,true)
         if ("" === $name) {

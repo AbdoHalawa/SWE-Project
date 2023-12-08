@@ -12,7 +12,12 @@ abstract class Model
 
     public function __construct()
     {
-        $this->db = $this->connect();
+        try {
+            $this->db = $this->connect();
+        } catch (PDOException $e) {
+            // Handle the exception, you can log or display an error message
+            die("Connection failed: " . $e->getMessage());
+        }
     }
 
     public function connect()
@@ -26,8 +31,19 @@ abstract class Model
     // Common method to execute SQL queries
     protected function executeQuery($sql, $params = [])
     {
-        $stmt = $this->db->prepare($sql);
-        $stmt->execute($params);
+        $stmt = $this->db->getConn()->prepare($sql);
+
+        if (!$stmt) {
+            throw new Exception("Error preparing SQL statement: " . $this->db->getConn()->error);
+        }
+    
+        // Bind parameters if there are any
+        if (!empty($params)) {
+            $types = str_repeat('s', count($params));  // Assuming all parameters are strings, adjust accordingly
+            $stmt->bind_param($types, ...$params);
+        }
+    
+        $stmt->execute();
         return $stmt;
     }
 
@@ -46,6 +62,7 @@ abstract class Model
     // Insert a record into the database
     protected function insert($table, $data)
     {
+        
         $columns = implode(", ", array_keys($data));
         $values = ":" . implode(", :", array_keys($data));
 
