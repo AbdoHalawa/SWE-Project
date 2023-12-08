@@ -133,17 +133,6 @@ include "adminNav.php";
                                         <input class="form-control" type="text" name="parent_phone" placeholder="Enter Phone Number">
                                     </div>
                                 </div>
-                                <div class="col-12 col-sm-4">
-                                    <div class="form-group students-up-files">
-                                        <label>Upload Student Photo (150px X 150px)</label>
-                                        <div class="uplod">
-                                            <label class="file-upload image-upbtn mb-0">
-                                                Choose File <input type="file" name="student_photo">
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
                             <div class="col-12">
                                 <h5 class="form-title"><span>Login Details</span></h5>

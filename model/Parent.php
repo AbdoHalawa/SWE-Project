@@ -1,7 +1,7 @@
 <?php
 
-require_once(__ROOT__ . "model/Model.php");
-require_once(__ROOT__ . "model/Student.php");
+require_once(__ROOT__ . "/Model.php");
+require_once(__ROOT__ . "/StudentModel.php");
 
 class Parents extends Model
 {
@@ -15,10 +15,9 @@ class Parents extends Model
         $db_handle = new DBh();
         parent::__construct();
         $this->ParentID = $id;
-        $sql = "SELECT * FROM Student WHERE ParentID = " . $this->ParentID;
-        $result = mysqli_query($db_handle->conn,$sql);
-        $row = mysqli_fetch_assoc($result);
-        $this->Student = new Student($row['StudentID'], $row['StudentName'], $row['Password'], $row['Grade'], $row['ClassID'], $row['ParentID']);
+        $sql = Select * from Student Where ParentID = $this->ParentID;
+        $this->Student = new Student($row[0]); // Instantiated the Student object here
+        $this->Student->readUser($id,true)
         if ("" === $name) {
             $this->readParent($id);
         } else {
