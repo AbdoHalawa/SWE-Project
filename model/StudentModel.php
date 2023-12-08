@@ -1,6 +1,7 @@
 <?php
 require_once(__DIR__ . '/Model.php');
 
+
 class StudentModel extends Model
 {
     public function insertStudent($student)
