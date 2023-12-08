@@ -1,9 +1,10 @@
 <?php
-session_start();
-include('../functions.php');
+require_once('/xampp/htdocs/Ragy_Website/SWE_project/SWE-project/model/Student.php'); // Adjust the path if needed
 
-$subjects = getSubjectsForStudent();
-$grades = getGradesForStudent();
+$student = new Student($_SESSION['user_id']);
+
+$subjects = $student->getSubjectsForStudent();
+$grades = $student->getGradesForStudent();
 ?>
 <!DOCTYPE html>
 <html lang="en-GB">
@@ -207,7 +208,9 @@ include "../partials/nav.php"
 
 				<?php
 				$subjectID = isset($_GET['SubjectID']) ? $_GET['SubjectID'] : null;
-				$subjectName = ($subjectID !== null) ? getSubjectNameById($subjectID) : null;
+				$subjectName = ($subjectID !== null) ? $student->getSubjectNameById($subjectID) : null;
+
+
 				?>
 
 				<center>
@@ -216,13 +219,15 @@ include "../partials/nav.php"
 						<span><span><a href="studentView.php">Home</a></span> · <a href="../StudentView/innerStudentView.php?SubjectID=<?php echo $subjectID; ?>">
 								<span class="breadcrumb_last" aria-current="page"><?php
 																					$subjectID = isset($_GET['SubjectID']) ? $_GET['SubjectID'] : null;
-																					if ($subjectID !== null) {
-																						$subjectName = getSubjectNameById($subjectID);
+																					$subjectName = ($subjectID !== null) ? $student->getSubjectNameById($subjectID) : null;
+
+																					if ($subjectName !== null) {
 																						echo $subjectName;
 																					} else {
 																						echo '<div class="page-title-text">Subject Not Found</div>';
 																					}
-																					?></a></span> · <span class="breadcrumb_last" aria-current="page">Grades</span></span>
+																					?>
+							</a></span> · <span class="breadcrumb_last" aria-current="page">Grades</span></span>
 					</div>
 
 				</center>
@@ -250,14 +255,14 @@ include "../partials/nav.php"
 								<h1 class="s">School Grades</h1>
 								<?php foreach ($grades as $grade) : ?>
 									<div class="subject">
-										<h2><?php echo isset($grade['SubjectID']) ? getSubjectNameById($grade['SubjectID']) : 'Unknown Subject'; ?></h2>
+										<?php
+										$subjectID = isset($grade['SubjectID']) ? $grade['SubjectID'] : null;
+										$subjectName = ($subjectID !== null) ? $student->getSubjectNameById($subjectID) : 'Unknown Subject';
+										?>
+										<h2><?php echo $subjectName; ?></h2>
 										<p>Grade: <?php echo $grade['Grade']; ?></p>
 									</div>
 								<?php endforeach; ?>
-
-								<!-- Add more subjects as needed -->
-
-							</div>
 
 						</body>
 
@@ -265,9 +270,6 @@ include "../partials/nav.php"
 
 					</section>
 				</div>
-				<!-- end Classes section -->
-
-				<!--------------------- footer-------------------------- -->
 				<?php
 				include "../partials/footer.php"
 				?>

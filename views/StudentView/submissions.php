@@ -1,8 +1,10 @@
 <?php
-session_start();
-include('../functions.php');
-$Ssubjects = getSubjectsForStudent();
+require_once('/xampp/htdocs/Ragy_Website/SWE_project/SWE-project/model/Student.php'); // Adjust the path if needed
 
+$student = new Student($_SESSION['user_id']);
+
+$subjects = $student->getSubjectsForStudent();
+$grades = $student->getGradesForStudent();
 ?>
 
 <!DOCTYPE html>
@@ -207,7 +209,10 @@ include "../partials/nav.php"
 
                 <?php
                 $subjectID = isset($_GET['SubjectID']) ? $_GET['SubjectID'] : null;
-                $subjectName = ($subjectID !== null) ? getSubjectNameById($subjectID) : null;
+
+                if ($subjectID !== null) {
+                    $subjectName = ($student !== null) ? $student->getSubjectNameById($subjectID) : null;
+                }
                 ?>
 
                 <center>
@@ -216,13 +221,15 @@ include "../partials/nav.php"
                         <span><span><a href="studentView.php">Home</a></span> · <a href="../StudentView/innerStudentView.php?SubjectID=<?php echo $subjectID; ?>">
                                 <span class="breadcrumb_last" aria-current="page"><?php
                                                                                     $subjectID = isset($_GET['SubjectID']) ? $_GET['SubjectID'] : null;
-                                                                                    if ($subjectID !== null) {
-                                                                                        $subjectName = getSubjectNameById($subjectID);
+                                                                                    $subjectName = ($subjectID !== null) ? $student->getSubjectNameById($subjectID) : null;
+
+                                                                                    if ($subjectName !== null) {
                                                                                         echo $subjectName;
                                                                                     } else {
                                                                                         echo '<div class="page-title-text">Subject Not Found</div>';
                                                                                     }
-                                                                                    ?></a></span> · <span class="breadcrumb_last" aria-current="page">Submission</span></span>
+                                                                                    ?>
+                            </a></span> · <span class="breadcrumb_last" aria-current="page">Submission</span></span>
                     </div>
 
                 </center>

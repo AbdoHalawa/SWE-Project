@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once(__ROOT__ ."/Db/Dbh.php");
+require_once("/xampp/htdocs/Ragy_Website/SWE_project/SWE-project/Db/Dbh.php");
 abstract class Model{
     protected $db;
     protected $conn;

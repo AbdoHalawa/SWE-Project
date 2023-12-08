@@ -1,9 +1,14 @@
 <?php
-session_start();
-include('../functions.php');
-$subjects = getSubjectsForStudent();
+require_once('/xampp/htdocs/Ragy_Website/SWE_project/SWE-project/model/Student.php'); // Adjust the path if needed
 
+$student = new Student($_SESSION['user_id']);
+
+$subjects = $student->getSubjectsForStudent();
+$grades = $student->getGradesForStudent();
 ?>
+<!DOCTYPE html>
+<html lang="en-GB">
+
 <!DOCTYPE html>
 <html lang="en-GB">
 
@@ -131,14 +136,14 @@ include "../partials/nav.php"
                     <div class="astra-advanced-hook-39611 ">
                         <!--BEGIN DEPT header links wrapper-->
                         <div class="header-links" id="divcontent">
-							<div class="featured_box_content">
-								<div class="box-content">
-									<div class="links-group">
-										<a href="../../controller/logout-handler.php?action=logout">Logout</a>
-									</div>
-								</div>
-							</div>
-						</div>
+                            <div class="featured_box_content">
+                                <div class="box-content">
+                                    <div class="links-group">
+                                        <a href="../../controller/logout-handler.php?action=logout">Logout</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <!-- END DEPT header links wrapper -->
                     </div>
                     <!--Academic & Dept Links-->
@@ -203,14 +208,14 @@ include "../partials/nav.php"
             <!--Nav Menu-->
     </div>
     <?php
-				// innerStudentView.php
+    // innerStudentView.php
 
-				// Check if SubjectID is set in the URL parameters
-				if (isset($_GET['SubjectID'])) {
-					// Retrieve SubjectID from the URL
-					$subjectID = $_GET['SubjectID'];
-				}
-				?>
+    // Check if SubjectID is set in the URL parameters
+    if (isset($_GET['SubjectID'])) {
+        // Retrieve SubjectID from the URL
+        $subjectID = $_GET['SubjectID'];
+    }
+    ?>
     </header>
     <div class="astra-advanced-hook-34726 ">
         <div class="astra-advanced-hook-23065 ">
@@ -220,16 +225,18 @@ include "../partials/nav.php"
                 <center>
 
                     <div class="breadcrumb-header">
-                        <span><span><a href="studentView.php">Home</a></span> · <a href="../StudentView/innerStudentView.php?SubjectID=<?php echo $subjectID ; ?>">
+                        <span><span><a href="studentView.php">Home</a></span> · <a href="../StudentView/innerStudentView.php?SubjectID=<?php echo $subjectID; ?>">
                                 <span class="breadcrumb_last" aria-current="page"><?php
                                                                                     $subjectID = isset($_GET['SubjectID']) ? $_GET['SubjectID'] : null;
-                                                                                    if ($subjectID !== null) {
-                                                                                        $subjectName = getSubjectNameById($subjectID);
+                                                                                    $subjectName = ($subjectID !== null) ? $student->getSubjectNameById($subjectID) : null;
+
+                                                                                    if ($subjectName !== null) {
                                                                                         echo $subjectName;
                                                                                     } else {
                                                                                         echo '<div class="page-title-text">Subject Not Found</div>';
                                                                                     }
-                                                                                    ?></a></span> · <span class="breadcrumb_last" aria-current="page">Materials</span></span>
+                                                                                    ?>
+                            </a></span> · <span class="breadcrumb_last" aria-current="page">Materials</span></span>
                     </div>
 
                 </center>

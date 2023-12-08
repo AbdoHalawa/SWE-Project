@@ -1,11 +1,12 @@
+
 <?php
-session_start();
-include('../functions.php');
+require_once('/xampp/htdocs/Ragy_Website/SWE_project/SWE-project/model/Student.php'); // Adjust the path if needed
 
-// Get the list of subjects
-$subjects = getSubjectsForStudent();
+$student = new Student($_SESSION['user_id']);
+
+$subjects = $student->getSubjectsForStudent();
+$grades = $student->getGradesForStudent();
 ?>
-
 <!DOCTYPE html>
 <html lang="en-GB">
 

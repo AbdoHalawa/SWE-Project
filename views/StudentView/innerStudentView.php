@@ -1,8 +1,10 @@
 <?php
-session_start();
-include('../functions.php');
+require_once('/xampp/htdocs/Ragy_Website/SWE_project/SWE-project/model/Student.php'); // Adjust the path if needed
 
-$subjects = getSubjectsForStudent();
+$student = new Student($_SESSION['user_id']);
+
+$subjects = $student->getSubjectsForStudent();
+$grades = $student->getGradesForStudent();
 ?>
 <!DOCTYPE html>
 <html lang="en-GB">
@@ -113,8 +115,10 @@ include "../partials/nav.php"
 
 						<?php
 						$subjectID = isset($_GET['SubjectID']) ? $_GET['SubjectID'] : null;
+
 						if ($subjectID !== null) {
-							$subjectName = getSubjectNameById($subjectID);
+							// Assuming $student is an instance of the Student class
+							$subjectName = $student->getSubjectNameById($subjectID);
 							echo '<div class="page-title-text">' . $subjectName . '</div>';
 						} else {
 							echo '<div class="page-title-text">Subject Not Found</div>';
@@ -214,13 +218,16 @@ include "../partials/nav.php"
 					<div class="breadcrumb-header">
 						<span><span><a href="studentView.php">Home</a></span> · <span class="breadcrumb_last" aria-current="page"><?php
 																																	$subjectID = isset($_GET['SubjectID']) ? $_GET['SubjectID'] : null;
+
 																																	if ($subjectID !== null) {
-																																		$subjectName = getSubjectNameById($subjectID);
-																																		echo $subjectName . '</div>';
+																																		// Assuming $student is an instance of the Student class
+																																		$subjectName = $student->getSubjectNameById($subjectID);
+																																		echo  $subjectName ;
 																																	} else {
 																																		echo '<div class="page-title-text">Subject Not Found</div>';
 																																	}
 																																	?></span></span>
+							
 					</div>
 
 				</center>
