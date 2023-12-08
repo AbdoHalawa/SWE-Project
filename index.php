@@ -1,11 +1,28 @@
 <?php
-define('__ROOT__',"../");
+define('__ROOT__', dirname(__FILE__)); 
 // Path: index.php
 
 
 // Get the current URL
 $url = $_SERVER['REQUEST_URI'];
+define('__ROOT__', __DIR__);
 
+// Include necessary files
+require_once(__ROOT__ . '/controller/StudentsController.php');
+require_once(__ROOT__ . '/model/StudentModel.php');
+
+// Initialize the model and controller
+$model = new StudentModel();
+$controller = new StudentsController($model);
+
+// Handle the request
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Assuming the form action is set to "process_registration.php"
+    require_once(__ROOT__ . '/../php');
+} else {
+    // Display the registration form
+    include(__ROOT__ . '/registration_form.php');
+}
 // segments
 $segments = explode('/', $url);
 // We use segments[2] to determine which route to load

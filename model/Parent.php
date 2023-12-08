@@ -1,19 +1,23 @@
 <?php
 
-require_once(__ROOT__ . "model/Model.php");
+require_once(__ROOT__ . "/Model.php");
+require_once(__ROOT__ . "/StudentModel.php");
 
-class Parent extends Model
+class Parents extends Model
 {
     private $ParentName;
     private $ParentID;
     private $Password;
     private $Email;
-
+    private $Student; 
     public function __construct($id, $name = "")
     {
-        parent::__construct(); 
+        $db_handle = new DBh();
+        parent::__construct();
         $this->ParentID = $id;
-
+        $sql = Select * from Student Where ParentID = $this->ParentID;
+        $this->Student = new Student($row[0]); // Instantiated the Student object here
+        $this->Student->readUser($id,true)
         if ("" === $name) {
             $this->readParent($id);
         } else {
@@ -71,16 +75,27 @@ class Parent extends Model
         }
     }
 
-    public function getFees($studentId)
+    public function getFees()
     {
-        $parentID = $this->getParentID();
+        $studentID = $this->Student->getID();
+        $sql = "SELECT * FROM Fees WHERE StudentID = :studentID";
+        
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(':studentID', $studentID, PDO::PARAM_INT);
+        $stmt->execute();
 
-        $sql = "SELECT Fees.Amount, Fees.PaymentStatus
-                FROM Fees
-                INNER JOIN Students ON Fees.StudentID = Students.StudentID
-                WHERE Students.ParentID = :parentID";
+        $fees = [];
 
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $fees[] = [
+                'amount' => $row['Amount'],
+                'payment_status' => $row['PaymentStatus'],
+            ];
+        }
+
+        return $fees;
     }
+    
 
     public function getAssignments($studentId)
     {
@@ -88,9 +103,29 @@ class Parent extends Model
     }
 
     public function getGrades($studentId)
-    {
-        // Your implementation here
+{
+    $studentID = $this->Student->getID();
+
+    // Prepare and execute the SQL query
+    $sql = "SELECT * FROM Grades WHERE StudentID = :studentID";
+    $stmt = $this->db->prepare($sql);
+    $stmt->bindParam(':studentID', $studentID, PDO::PARAM_INT);
+    $stmt->execute();
+
+    $grades = [];
+
+    // Fetch grades
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $grades[] = [
+            'class_id' => $row['ClassID'],
+            'subject_id' => $row['SubjectID'],
+            'grade' => $row['Grade'],
+        ];
     }
+
+    return $grades;
+}
+
 }
 
 ?>

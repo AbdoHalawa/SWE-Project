@@ -1,15 +1,17 @@
 <?php
-require_once("/xampp/htdocs/Ragy_Website/SWE_project/SWE-project/model/Model.php");
-
-class Student extends Model
+  require_once( __ROOT__ . "model/Model.php");
+?>
+<?php
+class STudent extends Model
 {
     private $id;
     private $name;
     private $password;
     private $grade;
     private $class;
+    private $ParentId;
 
-    function __construct($id, $name = "", $password = "", $grade = "", $class = "")
+    function __construct($id, $name = "", $password = "", $grade = "", $class = "",$ParentId)
     {
         $this->id = $id;
         $this->db = $this->connect();
@@ -21,17 +23,76 @@ class Student extends Model
             $this->password = $password;
             $this->grade = $grade;
             $this->class = $class;
+            $this->ParentId = $ParentId;
         }
     }
 
-    // ... (getter and setter functions)
-
-    function readUser($id)
+    function getName()
     {
-        $sql = "SELECT * FROM user where ID=" . $id;
+        return $this->name;
+    }
+    function setName($name)
+    {
+        return $this->name = $name;
+    }
+    function getParentId()
+    {
+        return $this->ParentId;
+    }
+    function setParentId($ParentId)
+    {
+        return $this->ParentId = $ParentId;
+    }
+    function getPassword()
+    {
+        return $this->password;
+    }
+    function setPassword($password)
+    {
+        return $this->password = $password;
+    }
+
+    function getGrade()
+    {
+        return $this->grade;
+    }
+    function setGrade($grade)
+    {
+        return $this->grade = $grade;
+    }
+
+    function getClass()
+    {
+        return $this->class;
+    }
+    function setClass($class)
+    {
+        return $this->class = $class;
+    }
+
+    function getID()
+    {
+        return $this->id;
+    }
+
+    public function readUser($id)
+    {
+        $sql = "SELECT * FROM user where StudentID=" . $id;
         $db = $this->connect();
         $result = $db->query($sql);
-       
+        if ($result->num_rows == 1) {
+            $row = $db->fetchRow();
+            $this->name = $row["StudentName"];
+            $_SESSION["StudentName"] = $row["StudentName"];
+            $this->password = $row["Password"];
+            $this->grade = $row["Grade"];
+            $this->class = $row["ClassID"];
+        } else {
+            $this->name = "";
+            $this->password = "";
+            $this->grade = "";
+            $this->class = "";
+        }
     }
 
     function editUser($name, $password, $class, $grade)
