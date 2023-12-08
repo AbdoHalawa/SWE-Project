@@ -2,15 +2,16 @@
   require_once( __ROOT__ . "model/Model.php");
 ?>
 <?php
-class STudent extends Model
+class Student extends Model
 {
     private $id;
     private $name;
     private $password;
     private $grade;
     private $class;
+    private $ParentId;
 
-    function __construct($id, $name = "", $password = "", $grade = "", $class = "")
+    function __construct($id, $name = "", $password = "", $grade = "", $class = "",$ParentId)
     {
         $this->id = $id;
         $this->db = $this->connect();
@@ -22,6 +23,7 @@ class STudent extends Model
             $this->password = $password;
             $this->grade = $grade;
             $this->class = $class;
+            $this->ParentId = $ParentId;
         }
     }
 
@@ -33,7 +35,14 @@ class STudent extends Model
     {
         return $this->name = $name;
     }
-
+    function getParentId()
+    {
+        return $this->ParentId;
+    }
+    function setParentId($ParentId)
+    {
+        return $this->ParentId = $ParentId;
+    }
     function getPassword()
     {
         return $this->password;
@@ -66,9 +75,10 @@ class STudent extends Model
         return $this->id;
     }
 
-    function readUser($id)
+    public function readUser($id, $isParent)
     {
-        $sql = "SELECT * FROM user where ID=" . $id;
+        if($isParent){
+        $sql = "SELECT * FROM user where StudentID=" . $id;
         $db = $this->connect();
         $result = $db->query($sql);
         if ($result->num_rows == 1) {
@@ -78,11 +88,33 @@ class STudent extends Model
             $this->password = $row["Password"];
             $this->grade = $row["Grade"];
             $this->class = $row["ClassID"];
+            $this->ParentId=$row["ParentId"]
         } else {
             $this->name = "";
             $this->password = "";
             $this->grade = "";
             $this->class = "";
+            $this->ParentId="";
+        }
+        } else{
+            $sql = "SELECT * FROM user where ParentID=" . $id;
+            $db = $this->connect();
+            $result = $db->query($sql);
+            if ($result->num_rows == 1) {
+                $row = $db->fetchRow();
+                $this->name = $row["StudentName"];
+                $_SESSION["StudentName"] = $row["StudentName"];
+                $this->password = $row["Password"];
+                $this->grade = $row["Grade"];
+                $this->class = $row["ClassID"];
+                $this->ParentId=$row["ParentId"]
+            } else {
+                $this->name = "";
+                $this->password = "";
+                $this->grade = "";
+                $this->class = "";
+                $this->ParentId="";
+            }
         }
     }
 
