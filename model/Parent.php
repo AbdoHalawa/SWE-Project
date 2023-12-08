@@ -3,21 +3,22 @@
 require_once(__ROOT__ . "model/Model.php");
 require_once(__ROOT__ . "model/Student.php");
 
-class Parent extends Model
+class Parents extends Model
 {
     private $ParentName;
     private $ParentID;
     private $Password;
     private $Email;
     private $Student; 
-
     public function __construct($id, $name = "")
     {
+        $db_handle = new DBh();
         parent::__construct();
         $this->ParentID = $id;
-        $sql = Select * from Student Where ParentID = $this->ParentID;
-        $this->Student = new Student($row[0]); // Instantiated the Student object here
-        $this->Student->readUser($id,true)
+        $sql = "SELECT * FROM Student WHERE ParentID = " . $this->ParentID;
+        $result = mysqli_query($db_handle->conn,$sql);
+        $row = mysqli_fetch_assoc($result);
+        $this->Student = new Student($row['StudentID'], $row['StudentName'], $row['Password'], $row['Grade'], $row['ClassID'], $row['ParentID']);
         if ("" === $name) {
             $this->readParent($id);
         } else {
@@ -77,8 +78,14 @@ class Parent extends Model
 
     public function getFees()
     {
-        $Student_ID=$this->Student->getID();
-        $sql = "SELECT * FROM Fees WHERE StudentID = :$Student_ID";
+        $studentID = $this->Student->getID();
+        $sql = "SELECT * FROM Fees WHERE StudentID = :studentID";
+        
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(':studentID', $studentID, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $fees = [];
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $fees[] = [

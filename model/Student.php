@@ -75,29 +75,9 @@ class Student extends Model
         return $this->id;
     }
 
-    public function readUser($id, $isParent)
+    public function readUser($id)
     {
-        if($isParent){
-        $sql = "SELECT * FROM user where StudentID=" . $id;
-        $db = $this->connect();
-        $result = $db->query($sql);
-        if ($result->num_rows == 1) {
-            $row = $db->fetchRow();
-            $this->name = $row["StudentName"];
-            $_SESSION["StudentName"] = $row["StudentName"];
-            $this->password = $row["Password"];
-            $this->grade = $row["Grade"];
-            $this->class = $row["ClassID"];
-            $this->ParentId=$row["ParentId"]
-        } else {
-            $this->name = "";
-            $this->password = "";
-            $this->grade = "";
-            $this->class = "";
-            $this->ParentId="";
-        }
-        } else{
-            $sql = "SELECT * FROM user where ParentID=" . $id;
+            $sql = "SELECT * FROM user where StudentID=" . $id;
             $db = $this->connect();
             $result = $db->query($sql);
             if ($result->num_rows == 1) {
@@ -116,8 +96,6 @@ class Student extends Model
                 $this->ParentId="";
             }
         }
-    }
-
     function editUser($name, $password, $class, $grade)
     {
         $sql = "update user set name='$name',password='$password', class='$class', grade='$grade' where id=$this->id;";
