@@ -3,5 +3,5 @@
     define('DB_SERVER', "localhost");
     define('DB_USER', "root");
     define('DB_PASS', "");
-    define('DB_DATABASE', "UserMVC2");
+    define('DB_DATABASE', "UserMVC");
  ?>
