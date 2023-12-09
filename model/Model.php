@@ -24,26 +24,26 @@ abstract class Model
         return $this->db;
     }
 
-    // Common method to execute SQL queries
+    // Common method to execute SQL queries using MySQLi
     protected function executeQuery($sql, $params = [])
-{
-    $stmt = $this->db->getConn()->prepare($sql);
+    {
+        $stmt = $this->db->getConn()->prepare($sql);
 
-    if (!$stmt) {
-        throw new Exception("Error preparing SQL statement: " . implode(" ", $this->db->getConn()->errorInfo()));
+        if (!$stmt) {
+            throw new Exception("Error preparing SQL statement: " . $this->db->getConn()->error);
+        }
+
+        // Bind parameters if there are any
+        if (!empty($params)) {
+            $types = str_repeat('s', count($params)); // Assuming all parameters are strings, adjust accordingly
+            $stmt->bind_param($types, ...$params);
+        }
+
+        $stmt->execute();
+        return $stmt;
     }
 
-    // Bind parameters if there are any
-    foreach ($params as $key => &$value) {
-        $stmt->bindParam(":$key", $value);
-    }
-
-    $stmt->execute();
-    return $stmt;
-
-}
-
-    // Select records from the database
+    // Select records from the database using MySQLi
     protected function select($table, $columns = "*", $where = "", $params = [])
     {
         $sql = "SELECT $columns FROM $table";
@@ -52,52 +52,27 @@ abstract class Model
         }
 
         $stmt = $this->executeQuery($sql, $params);
-        return $stmt->fetch_all(PDO::FETCH_ASSOC);
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    // Insert a record into the database
+    // Insert a record into the database using MySQLi
     protected function insert($table, $data)
     {
         $columns = implode(", ", array_keys($data));
-        $values = ":" . implode(", :", array_keys($data));
-    
+        $values = rtrim(str_repeat("?, ", count($data)), ", ");
+
         $sql = "INSERT INTO $table ($columns) VALUES ($values)";
-    
-        // Prepare the statement
-        $stmt = $this->db->getConn()->prepare($sql);
-    
-        if (!$stmt) {
-            throw new Exception("Error preparing SQL statement: " . implode(" ", $this->db->getConn()->errorInfo()));
-        }
-    
-        // Bind parameters
-        foreach ($data as $key => $value) {
-            $stmt->bind_param("s", $value); // Assuming all parameters are strings, adjust accordingly
-        }
-    
-        // Execute the statement
-        $stmt->execute();
+        $this->executeQuery($sql, array_values($data));
     }
 
-    // Update records in the database
+    // Update records in the database using MySQLi
     protected function update($table, $data, $where, $params = [])
-{
-    $setClause = implode(" = ?, ", array_keys($data)) . " = ?";
-    $sql = "UPDATE $table SET $setClause WHERE $where";
+    {
+        $setClause = implode(" = ?, ", array_keys($data)) . " = ?";
+        $sql = "UPDATE $table SET $setClause WHERE $where";
 
-    // Prepare the statement
-    $stmt = $this->db->getConn()->prepare($sql);
-
-    if (!$stmt) {
-        throw new Exception("Error preparing SQL statement: " . implode(" ", $this->db->getConn()->errorInfo()));
+        $this->executeQuery($sql, array_merge(array_values($data), $params));
     }
-
-    // Bind parameters
-    $types = str_repeat('s', count($data));  // Assuming all parameters are strings, adjust accordingly
-    $stmt->bind_param($types, ...array_values($data));
-
-    // Execute the statement
-    $stmt->execute();
-}
 }
 ?>

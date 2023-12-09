@@ -42,7 +42,7 @@ class StudentModel extends Model
     public function insertStudent(): bool
 {
     $data = [
-        'StudentID'=>'1',
+        'StudentID'=>'2',
         'FirstName' => $this->firstName,
         'LastName' => $this->lastName,
         'Gender' => $this->gender,
@@ -50,7 +50,7 @@ class StudentModel extends Model
         'Religion' => $this->religion,
         'Grade' => $this->grade,
         'ClassId'=>"101",// Assuming the class is provided correctly in $this->classID
-        'AdmissionID' => "12",
+        'AdmissionID' => "2",
         'ParentID' => $this->parentID,
         'PhoneNumber' => $this->phoneNumber, // Assuming this is the parent's phone number
         'Email' => $this->email,
@@ -58,7 +58,7 @@ class StudentModel extends Model
     ];
 
 
-    $sql = 'INSERT INTO Students (FirstName, LastName, Gender, DateOfBirth, Religion, Grade, ClassID, AdmissionID, ParentID, PhoneNumber, Email, Password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+    $sql = 'INSERT INTO Students (StudentID,FirstName, LastName, Gender, DateOfBirth, Religion, Grade, ClassID, AdmissionID, ParentID, PhoneNumber, Email, Password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)';
 
     // Extract values from the associative array to create the parameter array for bind_param
     $values = array_values($data);
