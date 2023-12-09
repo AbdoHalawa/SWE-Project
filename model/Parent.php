@@ -21,19 +21,17 @@ class Parents extends Model
     // Check if $id is an associative array (assuming 'ParentID' is a key in the array)
     if (is_array($id) && isset($id['ParentID'])) {
         $this->initializeFromDataArray($id);
-    } else {
+    } 
+    else {
         // Check if ParentID exists in the database
         if ($this->parentExists($id)) {
             // Parent exists, retrieve the rest of the info
             $this->readParent($id);
             $this->fetchStudentData();
         } else {
-            // Parent does not exist, initialize with the provided ParentID
+            
             $this->ParentName = $name;
-            // You can add additional initialization logic here
-
-            // If needed, you can call a method to insert the new parent record
-            // $this->insertNewParent();
+            
         }
     }
 
