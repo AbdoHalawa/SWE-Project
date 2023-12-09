@@ -1,8 +1,8 @@
 
 <?php
-require_once('/xampp/htdocs/Ragy_Website/SWE_project/SWE-project/model/Student.php'); // Adjust the path if needed
+require_once('/xampp/htdocs/Ragy_Website/SWE_project/SWE-project/model/StudentModel.php'); // Adjust the path if needed
 
-$student = new Student($_SESSION['user_id']);
+$student = new StudentModel($_SESSION['user_id']);
 
 $subjects = $student->getSubjectsForStudent();
 $grades = $student->getGradesForStudent();
