@@ -43,7 +43,7 @@ CREATE TABLE Parents (
 );
 -- Table for Students
 CREATE TABLE Students (
-    StudentID INT PRIMARY KEY,
+    StudentID INT AUTO_INCREMENT PRIMARY KEY,
     FirstName VARCHAR(50),
     LastName VARCHAR(50),
     Gender VARCHAR(10),
