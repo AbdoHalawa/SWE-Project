@@ -48,7 +48,7 @@ class StudentModel extends Model
             'DateOfBirth' => $this->dateOfBirth,
             'Religion' => $this->religion,
             'Grade' => $this->grade,
-            'ClassID' => "101",  // Assuming the class is provided correctly in $this->classID
+            'ClassID' =>  $this->classID,
             'AdmissionID' => $this->admissionID,
             'ParentID' => $this->parentID,
             'PhoneNumber' => $this->phoneNumber, // Assuming this is the parent's phone number

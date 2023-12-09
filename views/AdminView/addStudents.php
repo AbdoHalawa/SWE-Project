@@ -197,6 +197,39 @@
     <script src="assets/plugins/moment/moment.min.js"></script>
     <script src="assets/js/bootstrap-datetimepicker.min.js"></script>
     <script src="assets/js/script.js"></script>
+    
 </body>
+<script>
+        function generateAdmissionID() {
+            // Generate a unique ID starting with "1" using a timestamp and a random number
+            const timestamp = Date.now();
+            const randomNum = Math.floor(Math.random() * 10000); // Adjust the range as needed
+            const admissionID = '10' + timestamp + randomNum;
 
+            // Trim the ID to a maximum of 5 digits
+            const trimmedID = admissionID.slice(0, 5);
+
+            // Update the value of the admission_id input field
+            document.getElementById('admission_id').value = trimmedID;
+        }
+
+        function generateParentID() {
+            // Generate a unique ID starting with "2" using a timestamp and a random number
+            const timestamp = Date.now();
+            const randomNum = Math.floor(Math.random() * 10000); // Adjust the range as needed
+            const parentID = '20' + timestamp + randomNum;
+
+            // Trim the ID to a maximum of 5 digits
+            const trimmedID = parentID.slice(0, 5);
+
+            // Update the value of the parent_id input field
+            document.getElementById('parent_id').value = trimmedID;
+        }
+
+        // Call the functions when the page loads
+        generateAdmissionID();
+        generateParentID();
+    </script>
+</body>
 </html>
+

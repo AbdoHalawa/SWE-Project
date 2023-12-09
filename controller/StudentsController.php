@@ -13,6 +13,28 @@ class StudentsController {
     public function __construct(StudentModel $model) {
         $this->model = $model;
     }
+    private function getClassID($grade, $class) {
+        $gradeMap = [
+            '10' => 100,
+            '11' => 110,
+            '12' => 120,
+        ];
+
+        $classMap = [
+            'A' => 1,
+            'B' => 2,
+            'C' => 3,
+        ];
+
+        // Check if grade and class are valid
+        if (isset($gradeMap[$grade]) && isset($classMap[$class])) {
+            return $gradeMap[$grade] + $classMap[$class];
+        } else {
+            // Return a default value or handle the error as needed
+            return 0;
+        }
+    }
+
 
     public function handleFormSubmission() {
         var_dump($_POST);
@@ -25,7 +47,7 @@ class StudentsController {
                 'DateOfBirth' => $_POST['dob'],
                 'Religion' => $_POST['religion'],
                 'Grade' => $_POST['grade'],
-                'ClassID' => "101",
+                'ClassID' => $this->getClassID($_POST['grade'], $_POST['class']),
                 'AdmissionID' => $_POST['admission_id'],
                 'ParentID' => $_POST['parent_id'],
                 'PhoneNumber' => $_POST['parent_phone'],
