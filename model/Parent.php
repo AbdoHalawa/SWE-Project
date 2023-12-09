@@ -124,8 +124,12 @@ class Parents extends Model
     while ($row = $result->fetch_assoc()) {
         $this->fees[] = [
             'amount' => $row['Amount'],
+            'amount2'=>$row['Amount2'],
             'payment_status' => $row['PaymentStatus'],
             'Due'=> $row['Due'],
+            'Due2'=> $row['Due2'],
+            'payment_status2'=>$row['PaymentStatus2'],
+
         ];
     }
 

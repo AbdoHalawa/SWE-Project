@@ -241,19 +241,38 @@ include "../partials/nav.php"
                                     <tr>
                                         <th>Part</th>
                                         <th>Due </th>
+                                        <th> Status </th>
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <!-- ngRepeat: oldDue in Screen.CurrentDues -->
+                                    <?php foreach ($P1->fees as $fee): ?>
                                     <tr class="odd gradeX ng-scope" ng-repeat="oldDue in Screen.CurrentDues" style="">
-                                        <td class="ng-binding"><?=$P1->fees[0]['amount']?></td>
-                                        <td class="ng-binding"><?=$P1->fees[0]['Due']?></td>
+                                        <td class="ng-binding"><?=$fee['amount']?></td>
+                                        <td class="ng-binding"><?=$fee['Due']?></td>
+
+                                       
                                         <td>
-                                            <input type="checkbox" name="install_1" value="install_1" id="installment_1" ng-checked="oldDue.IsChecked" ng-disabled="oldDue.IsDisabled" ng-model="oldDue.IsChecked" ng-change="CaclulateAmount();" class="ng-valid ng-dirty ng-valid-parse ng-touched" style="">
+                                        <?php if ($fee['payment_status']): ?>
+                Paid
+            <?php else: ?>
+                Not Paid
+            <?php endif; ?>
                                         </td>
 
-                                    </tr><!-- end ngRepeat: oldDue in Screen.CurrentDues -->
+                                    </tr>
+                                    <tr class="odd gradeX ng-scope" ng-repeat="oldDue in Screen.CurrentDues" style="">
+                                    <td class="ng-binding"><?=$fee['amount2']?></td>
+                                    <td class="ng-binding"><?=$fee['Due2']?></td>
+                                    <td>
+                                    <?php if ($fee['payment_status2']): ?>
+                Paid
+            <?php else: ?>
+                Not Paid
+            <?php endif; ?>
+                                        </td>
+                                    <?php endforeach; ?><!-- end ngRepeat: oldDue in Screen.CurrentDues -->
                                 </tbody>
                             </table>
                         </div>

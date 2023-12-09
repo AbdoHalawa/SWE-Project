@@ -88,9 +88,14 @@ CREATE TABLE Grades (
 CREATE TABLE Fees (
     StudentID INT,
     Amount DECIMAL(10, 2),
-    PaymentStatus BOOLEAN, -- True if paid, False if not paid
+    Due DATE,
+    Amount2 DECIMAL(10, 2),
+    Due2 DATE,
+    PaymentStatus BOOLEAN,
+    PaymentStatus2 BOOLEAN, -- True if paid, False if not paid
     PRIMARY KEY (StudentID),
     FOREIGN KEY (StudentID) REFERENCES Students(StudentID)
+
 );
 
 CREATE TABLE Assignments (
