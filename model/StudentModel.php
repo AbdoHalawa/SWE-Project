@@ -1,5 +1,5 @@
 <?php
-define('__ROOT__', dirname(dirname(__FILE__)));
+//define('__ROOT__', dirname(dirname(__FILE__)));
 require_once(__DIR__ . '/../Db/Dbh.php');
 require_once(__DIR__ . '/Model.php');
  error_reporting(E_ALL);
@@ -23,7 +23,7 @@ class StudentModel extends Model
     public function __construct($data = [])
     {
         parent::__construct(); // Call the constructor of the parent class (Model)
-
+         $this->id = $data['StudentID']?? '';
         // Initialize the student object with data or set default values
         $this->firstName = $data['FirstName'] ?? '';
         $this->lastName = $data['LastName'] ?? '';
@@ -38,7 +38,10 @@ class StudentModel extends Model
         $this->email = $data['Email'] ?? '';
         $this->password = $data['Password'] ?? '';
     }
-
+    public function getID()
+    {
+return $this->id;
+    }
     public function insertStudent()
     {
         $data = [
