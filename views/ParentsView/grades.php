@@ -235,7 +235,7 @@ include "../partials/nav.php"
 
     <?php foreach ($P1->grades as $grade): ?>
         <div class="subject">
-            <h2><?= $grade['subject_id'] ?></h2>
+            <h2><?= $grade['subject_name'] ?></h2>
             <p>Grade: <?= $grade['grade'] ?></p>
         </div>
     <?php endforeach; ?>

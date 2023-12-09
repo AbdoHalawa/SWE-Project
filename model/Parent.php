@@ -135,32 +135,35 @@ class Parents extends Model
 
     //return $fees[];
 }
-    public function getGrades()
-    {
-        $studentID = $this->Student->getID(); // Replace getStudentID with the actual method in StudentModel
-    
-        // Prepare and execute the SQL query
-        $sql = "SELECT * FROM Grades WHERE StudentID = " . $studentID;
-        $result = $this->db->query($sql);
+public function getGrades()
+{
+    $studentID = $this->Student->getID();
+
+    // Prepare and execute the SQL query with a join on Subjects table
+    $sql = "SELECT Grades.ClassID, Grades.SubjectID, Subjects.SubjectName, Grades.Grade FROM Grades
+            JOIN Subjects ON Grades.SubjectID = Subjects.SubjectID
+            WHERE Grades.StudentID = " . $studentID;
+
+    $result = $this->db->query($sql);
 
     if (!$result) {
         // Handle the case when the query fails
         return [];
     }
-    
-        $this->grades = [];
-    
-        // Fetch grades
-        while ($row = $result->fetch_assoc()) {
-            $this->grades[] = [
-                'class_id' => $row['ClassID'],
-                'subject_id' => $row['SubjectID'],
-                'grade' => $row['Grade'],
-            ];
-        }
-    
-        //return $grades;
+
+    $this->grades = [];
+
+    // Fetch grades
+    while ($row = $result->fetch_assoc()) {
+        $this->grades[] = [
+            'class_id' => $row['ClassID'],
+            'subject_id' => $row['SubjectID'],
+            'subject_name' => $row['SubjectName'], // Include the subject name
+            'grade' => $row['Grade'],
+        ];
     }
+}
+
     
 
 }
