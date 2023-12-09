@@ -1,18 +1,17 @@
 <?php
 
-// StudentsController.php
-
 require_once(__DIR__ . '/../model/StudentModel.php');
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+require_once(__DIR__ . '/../model/Parent.php'); // Add the path to your ParentModel
 
 class StudentsController {
-    private $model;
+    private $studentModel;
+    private $parentModel;
 
-
-    public function __construct(StudentModel $model) {
-        $this->model = $model;
+    public function __construct(StudentModel $studentModel, Parents $parentModel) {
+        $this->studentModel = $studentModel;
+        $this->parentModel = $parentModel;
     }
+
     private function getClassID($grade, $class) {
         $gradeMap = [
             '10' => 100,
@@ -35,11 +34,29 @@ class StudentsController {
         }
     }
 
-
     public function handleFormSubmission() {
-        var_dump($_POST);
         if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
-            // Validate and process user input
+            // Validate and process user input for parent
+            $parentData = [
+                'ParentID' => $_POST['parent_id'],
+                'ParentName' => $_POST['parent_name'],
+                'Email' => $_POST['parent_email'],
+                'Password' => $_POST['parent_password'],
+            ];
+
+            // Create a new ParentModel object with $parentData as an argument
+            $parentModel = new Parents($parentData);
+
+            // Check if the model is successfully constructed
+            if ($parentModel) {
+                // Insert the parent into the database
+                    $parentModel->insertParent($parentData['ParentID'], $parentData['ParentName'], $parentData['Email'], $parentData['Password']);
+            } else {
+                // Handle the case where the model construction failed
+                echo 'console.error("Error: Unable to construct ParentModel.");';
+            }
+
+            // Validate and process user input for student
             $studentData = [
                 'FirstName' => $_POST['first_name'],
                 'LastName' => $_POST['last_name'],
@@ -74,9 +91,9 @@ class StudentsController {
     }
 }
 
-// Instantiate the controller with a StudentModel object
-$modelData = [
-    'FirstName' => '',  // Provide default or empty values here
+// Instantiate the controller with StudentModel and ParentModel objects
+$studentModelData = [
+    'FirstName' => '',
     'LastName' => '',
     'Gender' => '',
     'DateOfBirth' => '',
@@ -90,8 +107,18 @@ $modelData = [
     'Password' => '',
 ];
 
-$model = new StudentModel($modelData);
-$controller = new StudentsController($model);
+$parentModelData = [
+    'ParentID' => '',
+    'ParentName' => '',
+    'Email' => '',
+    'Password' => '',
+];
+
+$studentModel = new StudentModel($studentModelData);
+$parentModel = new Parents($parentModelData);
+
+$controller = new StudentsController($studentModel, $parentModel);
 
 // Call the method to handle form submission
 $controller->handleFormSubmission();
+?>

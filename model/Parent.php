@@ -1,7 +1,8 @@
 <?php
+
 require_once(__DIR__ . '/../model/Model.php');
-require_once(__ROOT__ . "model/Model.php");
-require_once(__ROOT__ . "model/StudentModel.php");
+require_once(__ROOT__ . "/model/Model.php");
+require_once(__ROOT__ . "/model/StudentModel.php");
 class Parents extends Model
 {
     private $ParentName;
@@ -13,21 +14,70 @@ class Parents extends Model
     public $grades;
 
     public function __construct($id, $name = "")
-    {
-        parent::__construct();
-        $this->ParentID = $id;
+{
+    parent::__construct();
+    $this->ParentID = $id;
 
-        // Fetch parent data
-        $this->readParent($id);
-
-        // Fetch associated student data
-        $this->fetchStudentData();
-
-        if ("" !== $name) {
+    // Check if $id is an associative array (assuming 'ParentID' is a key in the array)
+    if (is_array($id) && isset($id['ParentID'])) {
+        $this->initializeFromDataArray($id);
+    } else {
+        // Check if ParentID exists in the database
+        if ($this->parentExists($id)) {
+            // Parent exists, retrieve the rest of the info
+            $this->readParent($id);
+            $this->fetchStudentData();
+        } else {
+            // Parent does not exist, initialize with the provided ParentID
             $this->ParentName = $name;
+            // You can add additional initialization logic here
+
+            // If needed, you can call a method to insert the new parent record
+            // $this->insertNewParent();
         }
     }
 
+    if ("" !== $name) {
+        $this->ParentName = $name;
+    }
+}
+
+// Check if ParentID exists in the database
+private function parentExists($id)
+{
+    $sql = "SELECT COUNT(*) AS count FROM parents WHERE ParentID = " . $this->db->getConn()->real_escape_string($id);
+    $result = $this->db->query($sql);
+
+    if ($result) {
+        $row = $result->fetch_assoc();
+        return $row['count'] > 0;
+    }
+
+    return false;
+}
+
+    private function initializeFromDataArray($data)
+    {
+        // Initialize object properties from the associative array
+        $this->ParentID = $data['ParentID'];
+        $this->ParentName = $data['ParentName'] ?? "";
+        $this->Email = $data['Email'] ?? "";
+        $this->Password = $data['Password'] ?? "";
+
+        
+    }
+
+    public function insertParent($id,$name, $email, $password)
+    {
+        // Hash the password using PHP's password_hash function
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+    
+        // SQL query to insert a new parent record
+        $sql = 'INSERT INTO Parents (ParentID,ParentName, Email, Password) VALUES (?,?, ?, ?)';
+    
+        // Execute the query with the provided values
+        $this->executeQuery($sql, [$id,$name, $email, $hashedPassword]);
+    }
     private function fetchStudentData()
 {
     $sql = "SELECT * FROM Students WHERE ParentID = " . $this->ParentID;
