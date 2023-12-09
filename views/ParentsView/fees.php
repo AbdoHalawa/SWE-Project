@@ -1,3 +1,14 @@
+<?php
+define('__ROOT__', "../../");
+require_once(__ROOT__ . "model/Parent.php");
+require_once(__ROOT__ . "controller/ParentsController.php"); // Adjust the path based on your actual file structure
+$P1  = new Parents(123);
+$P2 = new ParentController($P1);
+
+$P2->viewFees($P1->Student->getID());
+?>
+
+
 <!DOCTYPE html>
 <html lang="en-GB">
 
@@ -215,7 +226,7 @@ include "../partials/nav.php"
                         <div class="portlet-title">
                             <div class="caption">
                                 <i class="fa fa-money font-green"></i>
-                                <span class="caption-subject font-green sbold uppercase">Print Bank Deposit</span>
+                                <span class="caption-subject font-green sbold uppercase"> Bank Deposit</span>
                             </div>
                             <div class="tools">
                             </div>
@@ -229,20 +240,39 @@ include "../partials/nav.php"
                                 <thead>
                                     <tr>
                                         <th>Part</th>
-                                        <th>Due</th>
+                                        <th>Due </th>
+                                        <th> Status </th>
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <!-- ngRepeat: oldDue in Screen.CurrentDues -->
+                                    <?php foreach ($P1->fees as $fee): ?>
                                     <tr class="odd gradeX ng-scope" ng-repeat="oldDue in Screen.CurrentDues" style="">
-                                        <td class="ng-binding">9665</td>
-                                        <td class="ng-binding">2023-12-20</td>
+                                        <td class="ng-binding"><?=$fee['amount']?></td>
+                                        <td class="ng-binding"><?=$fee['Due']?></td>
+
+                                       
                                         <td>
-                                            <input type="checkbox" name="install_1" value="install_1" id="installment_1" ng-checked="oldDue.IsChecked" ng-disabled="oldDue.IsDisabled" ng-model="oldDue.IsChecked" ng-change="CaclulateAmount();" class="ng-valid ng-dirty ng-valid-parse ng-touched" style="">
+                                        <?php if ($fee['payment_status']): ?>
+                Paid
+            <?php else: ?>
+                Not Paid
+            <?php endif; ?>
                                         </td>
 
-                                    </tr><!-- end ngRepeat: oldDue in Screen.CurrentDues -->
+                                    </tr>
+                                    <tr class="odd gradeX ng-scope" ng-repeat="oldDue in Screen.CurrentDues" style="">
+                                    <td class="ng-binding"><?=$fee['amount2']?></td>
+                                    <td class="ng-binding"><?=$fee['Due2']?></td>
+                                    <td>
+                                    <?php if ($fee['payment_status2']): ?>
+                Paid
+            <?php else: ?>
+                Not Paid
+            <?php endif; ?>
+                                        </td>
+                                    <?php endforeach; ?><!-- end ngRepeat: oldDue in Screen.CurrentDues -->
                                 </tbody>
                             </table>
                         </div>
@@ -250,7 +280,7 @@ include "../partials/nav.php"
                         <!--Other-->
                         <!-- ngIf: Screen.hasOtherFees -->
 
-                        <div class="portlet-title">
+                        <!-- <div class="portlet-title">
                             <div class="caption">
                                 Administration Fees
                             </div>
@@ -270,7 +300,7 @@ include "../partials/nav.php"
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <!-- ngRepeat: admindDue in Screen.AdministrationFeesDue -->
+                                    ngRepeat: admindDue in Screen.AdministrationFeesDue 
                                     <tr class="odd gradeX ng-scope" ng-repeat="admindDue in Screen.AdministrationFeesDue">
                                         <td class="ng-binding">0</td>
                                         <td class="ng-binding">2023-10-03</td>
@@ -278,7 +308,7 @@ include "../partials/nav.php"
                                             <input type="checkbox" name="adminInstall_1" value="adminInstall_1" id="adminInstallment_1" ng-checked="admindDue.IsChecked" ng-disabled="admindDue.IsDisabled" ng-model="admindDue.IsChecked" ng-change="CaclulateAmount();" class="ng-valid ng-dirty ng-valid-parse ng-touched" style="">
                                         </td>
 
-                                    </tr><!-- end ngRepeat: admindDue in Screen.AdministrationFeesDue -->
+                                    </tr> end ngRepeat: admindDue in Screen.AdministrationFeesDue 
                                     <tr class="odd gradeX ng-scope" ng-repeat="admindDue in Screen.AdministrationFeesDue">
                                         <td class="ng-binding">5500</td>
                                         <td class="ng-binding">2024-02-01</td>
@@ -286,31 +316,15 @@ include "../partials/nav.php"
                                             <input type="checkbox" name="adminInstall_2" value="adminInstall_2" id="adminInstallment_2" ng-checked="admindDue.IsChecked" ng-disabled="admindDue.IsDisabled" ng-model="admindDue.IsChecked" ng-change="CaclulateAmount();" class="ng-valid ng-dirty ng-valid-parse ng-touched" style="">
                                         </td>
 
-                                    </tr><!-- end ngRepeat: admindDue in Screen.AdministrationFeesDue -->
+                                    </tr> end ngRepeat: admindDue in Screen.AdministrationFeesDue 
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                </div><!-- end ngIf: Screen.hasOtherFees -->
+                </div>end ngIf: Screen.hasOtherFees -->
 
 
-                <div style="clear:both">
-                    <div style="padding-top:1%;"></div>
-                    <div class="portlet box red">
-                        <div class="portlet-title">
-                            <div class="caption">
-                                Amount to be paid
-                            </div>
-                        </div>
-                        <div class="portlet-body ng-binding">
-                            <button ng-click="CaclulateAmount();" class="btn btn-primary" fdprocessedid="3he2hp">
-                                <i class="fa fa-print"></i> Calculate Amount
-                            </button>
-                            15165 EG
-                        </div>
-
-
-                    </div>
+                
 
 </body>
 

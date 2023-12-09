@@ -1,3 +1,11 @@
+<?php
+define('__ROOT__', "../../");
+require_once(__ROOT__ . "model/Parent.php");
+require_once(__ROOT__ . "controller/ParentsController.php"); // Adjust the path based on your actual file structure
+$P1  = new Parents(122);
+$P2 = new ParentController($P1);
+$P2->viewGrades($P1->Student->getID());
+?>
 <!DOCTYPE html>
 <html lang="en-GB">
 
@@ -222,23 +230,17 @@ include "../partials/nav.php"
 </head>
 <body>
 
-    <div class="grade-container">
-        <h1 class="s">School Grades</h1>
+<div class="grade-container">
+    <h1 class="s">School Grades</h1>
 
+    <?php foreach ($P1->grades as $grade): ?>
         <div class="subject">
-            <h2>Mathematics</h2>
-            <p>Grade: A</p>
+            <h2><?= $grade['subject_name'] ?></h2>
+            <p>Grade: <?= $grade['grade'] ?></p>
         </div>
+    <?php endforeach; ?>
+</div>
 
-        <div class="subject">
-            <h2>Science</h2>
-            <p>Grade: B</p>
-        </div>
-
-        <div class="subject">
-            <h2>English</h2>
-            <p>Grade: C</p>
-        </div>
 
         <!-- Add more subjects as needed -->
 

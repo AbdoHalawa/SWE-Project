@@ -78,10 +78,66 @@ flexibility(document.documentElement);
 
 
 	<meta name="msapplication-TileImage" content="https://www.westminster.org.uk/wp-content/uploads/2018/07/Westminster-Favicon.png" />
+	<style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
 
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        select,
+        input,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        label.inline-label {
+            display: inline-block;
+            margin-right: 8px;
+        }
+
+        .button-container {
+            text-align: center;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #0b0b21;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color:#0c0b34;
+        }
+		</style>
 </head>
 <?php
-include "../partials/nav.php"
+include "../partials/nav.php";
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "UserMVC";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Fetch subjects from the database
+     $sql = "SELECT SubjectID, SubjectName FROM Subjects";
+     $result = $conn->query($sql);
 ?>
 
 <body itemtype='https://schema.org/WebPage' itemscope='itemscope' class="page-template-default page page-id-42 page-parent ast-desktop ast-page-builder-template ast-no-sidebar astra-4.4.1 ast-header-custom-item-inside ast-full-width-primary-header group-blog ast-single-post ast-mobile-inherit-site-logo ast-inherit-site-logo-transparent ast-above-mobile-menu-align-inline ast-default-menu-enable ast-flyout-above-menu-enable ast-flyout-above-left-side ast-default-below-menu-enable ast-full-width-layout ast-full-width-header ast-inherit-site-logo-sticky ast-normal-title-enabled astra-addon-4.4.0">
@@ -209,8 +265,45 @@ include "../partials/nav.php"
 				<!-- Classes section -->
 				<div class="astra-advanced-hook-30270 ">
 					<section class="featured-pages-strip">
+					<div class="astra-advanced-hook-30270 ">
+             <section class="featured-pages-strip">
+        <form action="process_assignment.php" method="post">
+		<label for="grade">Choose Grade:</label>
+<select id="grade" name="grade" required>
+    <?php
+    $gradeQuery = "SELECT DISTINCT Grade FROM Classes";
+    $gradeResult = $conn->query($gradeQuery);
+    while ($gradeRow = $gradeResult->fetch_assoc()) {
+        echo "<option value='" . $gradeRow['Grade'] . "'>" . $gradeRow['Grade'] . "</option>";
+    }
+    ?>
+</select>
 
-                <form>
+
+			 <label for="class">Choose Class:</label>
+            <select id="class" name="class" required>
+                <?php
+          
+                $classQuery = "SELECT ClassID, ClassName FROM Classes";
+                $classResult = $conn->query($classQuery);
+                while ($classRow = $classResult->fetch_assoc()) {
+                    echo "<option value='" . $classRow['ClassID'] . "'>" . $classRow['ClassName'] . "</option>";
+                }
+                ?>
+            </select>
+
+
+            <label for="subject">Choose Subject:</label>
+            <select id="subject" name="subject" required>
+                <?php
+          
+                while ($row = $result->fetch_assoc()) {
+                    echo "<option value='" . $row['SubjectID'] . "'>" . $row['SubjectName'] . "</option>";
+                }
+                ?>
+            </select>
+
+                <form action="..\controller\TeachersController.php">
                       <label for="title">Title:</label>
                       <input type="text" id="title" name="title" required>
 
@@ -219,6 +312,12 @@ include "../partials/nav.php"
 
                           <label for="content">Content</label>
                         <textarea id="Content" name="content" rows="4" required></textarea>
+						
+						<label for="upload_date">Upload Date:</label>
+                  <input type="date" id="upload_date" name="upload_date" required>
+
+                       <label for="deadline">Deadline:</label>
+                             <input type="date" id="deadline" name="deadline" required>
 
                      <label for="file">Upload Assignment:</label>
                      <input type="file" id="file" name="file" accept=".pdf, .doc, .docx" required>
