@@ -10,9 +10,8 @@ class ParentController extends Controller {
     }
 
 
-    public function viewGrades() {
-        $studentId = $_REQUEST['StudentID']; 
-        $this->model->getGrades($studentId);
+    public function viewGrades($studentID) {
+        $this->model->getGrades($studentID);
         
     }
 }

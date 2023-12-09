@@ -10,6 +10,7 @@ class Parents extends Model
     private $Email;
     public $Student;
     public $fees;
+    public $grades;
 
     public function __construct($id, $name = "")
     {
@@ -135,28 +136,26 @@ class Parents extends Model
         $studentID = $this->Student->getID(); // Replace getStudentID with the actual method in StudentModel
     
         // Prepare and execute the SQL query
-        $sql = "SELECT * FROM Grades WHERE StudentID = :studentID";
-        $stmt = $this->db->prepare($sql);
-        $stmt->bindParam(':studentID', $studentID, PDO::PARAM_INT);
-        $stmt->execute();
+        $sql = "SELECT * FROM Grades WHERE StudentID = " . $studentID;
+        $result = $this->db->query($sql);
+
+    if (!$result) {
+        // Handle the case when the query fails
+        return [];
+    }
     
-        // Check if there are no grades found
-        if ($stmt->rowCount() === 0) {
-            return [];
-        }
-    
-        $grades = [];
+        $this->grades = [];
     
         // Fetch grades
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $grades[] = [
+        while ($row = $result->fetch_assoc()) {
+            $this->grades[] = [
                 'class_id' => $row['ClassID'],
                 'subject_id' => $row['SubjectID'],
                 'grade' => $row['Grade'],
             ];
         }
     
-        return $grades;
+        //return $grades;
     }
     
 
