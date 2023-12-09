@@ -39,16 +39,9 @@ class StudentsController {
             // Check if the model is successfully constructed
             if ($studentModel) {
                 // Insert the student into the database
-                $result = $studentModel->insertStudent();
-
-                // Check if the insertion was successful
-                if ($result) {
-                    // Redirect to the addStudents page
-                    header("Location: ../views/AdminView/addStudents.php");
-                    exit();
-                } else {
-                    echo 'console.error("Error: Unable to insert student into the database.");';
-                }
+                $studentModel->insertStudent();
+                header("Location: ../views/AdminView/addStudents.php");
+                exit();
             } else {
                 // Handle the case where the model construction failed
                 echo 'console.error("Error: Unable to construct StudentModel.");';

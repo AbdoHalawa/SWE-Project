@@ -6,7 +6,7 @@ require_once(__DIR__ . '/Model.php');
 ini_set('display_errors', 1);
 class StudentModel extends Model
 {
-   
+   private $id;
     private $firstName;
     private $lastName;
     private $gender;
@@ -39,36 +39,32 @@ class StudentModel extends Model
         $this->password = $data['Password'] ?? '';
     }
 
-    public function insertStudent(): bool
-{
-    $data = [
-        'StudentID'=>'2',
-        'FirstName' => $this->firstName,
-        'LastName' => $this->lastName,
-        'Gender' => $this->gender,
-        'DateOfBirth' => $this->dateOfBirth,
-        'Religion' => $this->religion,
-        'Grade' => $this->grade,
-        'ClassId'=>"101",// Assuming the class is provided correctly in $this->classID
-        'AdmissionID' => "2",
-        'ParentID' => $this->parentID,
-        'PhoneNumber' => $this->phoneNumber, // Assuming this is the parent's phone number
-        'Email' => $this->email,
-        'Password' => password_hash($this->password, PASSWORD_DEFAULT),
-    ];
-
-
-    $sql = 'INSERT INTO Students (StudentID,FirstName, LastName, Gender, DateOfBirth, Religion, Grade, ClassID, AdmissionID, ParentID, PhoneNumber, Email, Password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)';
-
-    // Extract values from the associative array to create the parameter array for bind_param
-    $values = array_values($data);
-
-    // Insert data into the database
-    $result = $this->executeQuery($sql, $values);
-
-    // Return true if the insertion was successful, false otherwise
-    return $result;
-}
+    public function insertStudent()
+    {
+        $data = [
+            'FirstName' => $this->firstName,
+            'LastName' => $this->lastName,
+            'Gender' => $this->gender,
+            'DateOfBirth' => $this->dateOfBirth,
+            'Religion' => $this->religion,
+            'Grade' => $this->grade,
+            'ClassID' => "101",  // Assuming the class is provided correctly in $this->classID
+            'AdmissionID' => $this->admissionID,
+            'ParentID' => $this->parentID,
+            'PhoneNumber' => $this->phoneNumber, // Assuming this is the parent's phone number
+            'Email' => $this->email,
+            'Password' => password_hash($this->password, PASSWORD_DEFAULT),
+        ];
+    
+        $sql = 'INSERT INTO Students (FirstName, LastName, Gender, DateOfBirth, Religion, Grade, ClassID, AdmissionID, ParentID, PhoneNumber, Email, Password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+    
+        // Extract values from the associative array to create the parameter array for bind_param
+        $values = array_values($data);
+    
+        // Insert data into the database
+        $this->executeQuery($sql, $values);
+    }
+    
 
 }
 ?>
