@@ -92,3 +92,20 @@ CREATE TABLE Fees (
     PRIMARY KEY (StudentID),
     FOREIGN KEY (StudentID) REFERENCES Students(StudentID)
 );
+
+CREATE TABLE Assignments (
+    AssignmentID INT PRIMARY KEY,
+    Title VARCHAR(100),
+    SubjectID INT,
+    Content TEXT,
+    UploadDate DATE,
+    Deadline DATE,
+    TeacherID INT,
+    Grade ENUM('10', '11', '12'),
+    ClassID INT,
+    FOREIGN KEY (SubjectID) REFERENCES Subjects(SubjectID),
+    FOREIGN KEY (TeacherID) REFERENCES Teachers(TeacherID),
+    FOREIGN KEY (ClassID) REFERENCES Classes(ClassID)
+
+
+) ENGINE=InnoDB;
