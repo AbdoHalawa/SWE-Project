@@ -1,3 +1,15 @@
+
+
+<?php
+
+define('__ROOT__', "../../");
+require_once(__ROOT__ . "model/Teacher.php");
+require_once(__ROOT__ . "controller/TeachersController.php"); 
+
+$teacherModel = new Teacher();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en-GB">
 
@@ -121,25 +133,10 @@ flexibility(document.documentElement);
         }
 		</style>
 </head>
+
 <?php
 include "../partials/nav.php";
-
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "UserMVC";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-// Fetch subjects from the database
-     $sql = "SELECT SubjectID, SubjectName FROM Subjects";
-     $result = $conn->query($sql);
 ?>
-
 <body itemtype='https://schema.org/WebPage' itemscope='itemscope' class="page-template-default page page-id-42 page-parent ast-desktop ast-page-builder-template ast-no-sidebar astra-4.4.1 ast-header-custom-item-inside ast-full-width-primary-header group-blog ast-single-post ast-mobile-inherit-site-logo ast-inherit-site-logo-transparent ast-above-mobile-menu-align-inline ast-default-menu-enable ast-flyout-above-menu-enable ast-flyout-above-left-side ast-default-below-menu-enable ast-full-width-layout ast-full-width-header ast-inherit-site-logo-sticky ast-normal-title-enabled astra-addon-4.4.0">
 	<!-- Google Tag Manager (noscript) -->
 	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T7Q5GX8" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -261,77 +258,70 @@ if ($conn->connect_error) {
 
 
 
+<!-- Teacher Actions -->
+<div>
+    <button onclick="showForm('add')">Add Assignment</button>
+    <button onclick="showForm('edit')">Edit Assignment</button>
+    <button onclick="showForm('delete')">Delete Assignment</button>
+    <button onclick="showForm('view')">View Students Assignments</button>
+</div>
 
-				<!-- Classes section -->
-				<div class="astra-advanced-hook-30270 ">
-					<section class="featured-pages-strip">
-					<div class="astra-advanced-hook-30270 ">
-             <section class="featured-pages-strip">
-        <form action="process_assignment.php" method="post">
-		<label for="grade">Choose Grade:</label>
-<select id="grade" name="grade" required>
-    <?php
-    $gradeQuery = "SELECT DISTINCT Grade FROM Classes";
-    $gradeResult = $conn->query($gradeQuery);
-    while ($gradeRow = $gradeResult->fetch_assoc()) {
-        echo "<option value='" . $gradeRow['Grade'] . "'>" . $gradeRow['Grade'] . "</option>";
+<!-- Add Assignment Form -->
+<form id="add" style="display: none;" action="../controller/TeachersController.php?action=addAssignment" method="post" enctype="multipart/form-data">
+    <!-- Dropdowns for selecting grade and class -->
+    <label for="grade">Choose Grade:</label>
+    <select id="grade" name="grade" required>
+        <?php
+        while ($grade = $grades->fetch_assoc()) {
+            echo "<option value='" . $grade['Grade'] . "'>" . $grade['Grade'] . "</option>";
+        }
+        ?>
+    </select>
+
+    <label for="class">Choose Class:</label>
+    <select id="class" name="class" required>
+        <?php
+        while ($class = $teacherClasses->fetch_assoc()) {
+            echo "<option value='" . $class['ClassID'] . "'>" . $class['ClassName'] . "</option>";
+        }
+        ?>
+    </select>
+
+    <!-- Other assignment details inputs -->
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title" required>
+
+    <label for="content">Content:</label>
+    <textarea id="content" name="content" rows="4" required></textarea>
+
+    <label for="upload_date">Upload Date:</label>
+    <input type="date" id="upload_date" name="upload_date" required>
+
+    <label for="deadline">Deadline:</label>
+    <input type="date" id="deadline" name="deadline" required>
+
+    <label for="file">Upload Assignment:</label>
+    <input type="file" id="file" name="file" accept=".pdf, .doc, .docx" required>
+
+    <!-- Add Assignment button -->
+    <button type="submit">Add Assignment</button>
+</form>
+
+<!-- Other Forms (Edit, Delete, View) will be similar with different form fields -->
+
+<script>
+    function showForm(action) {
+        // Hide all forms
+        var forms = document.getElementsByClassName('assignment-form');
+        for (var i = 0; i < forms.length; i++) {
+            forms[i].style.display = 'none';
+        }
+
+        // Show the selected form
+        document.getElementById(action).style.display = 'block';
     }
-    ?>
-</select>
-
-
-			 <label for="class">Choose Class:</label>
-            <select id="class" name="class" required>
-                <?php
-          
-                $classQuery = "SELECT ClassID, ClassName FROM Classes";
-                $classResult = $conn->query($classQuery);
-                while ($classRow = $classResult->fetch_assoc()) {
-                    echo "<option value='" . $classRow['ClassID'] . "'>" . $classRow['ClassName'] . "</option>";
-                }
-                ?>
-            </select>
-
-
-            <label for="subject">Choose Subject:</label>
-            <select id="subject" name="subject" required>
-                <?php
-          
-                while ($row = $result->fetch_assoc()) {
-                    echo "<option value='" . $row['SubjectID'] . "'>" . $row['SubjectName'] . "</option>";
-                }
-                ?>
-            </select>
-
-                <form action="..\controller\TeachersController.php">
-                      <label for="title">Title:</label>
-                      <input type="text" id="title" name="title" required>
-
-                       <label for="subject">Subject Name</label>
-                       <input type="text" id="subject" name="subject" required>
-
-                          <label for="content">Content</label>
-                        <textarea id="Content" name="content" rows="4" required></textarea>
-						
-						<label for="upload_date">Upload Date:</label>
-                  <input type="date" id="upload_date" name="upload_date" required>
-
-                       <label for="deadline">Deadline:</label>
-                             <input type="date" id="deadline" name="deadline" required>
-
-                     <label for="file">Upload Assignment:</label>
-                     <input type="file" id="file" name="file" accept=".pdf, .doc, .docx" required>
-
-                        <button type="submit">Add Assignment</button>
-             </form>
-					</section>
-				</div>
-				<!-- end Classes section -->
-
-				<!--------------------- footer-------------------------- -->
-				<?php
-				include "../partials/footer.php"
-				?>
+</script>
+<!--------------------- footer-------------------------- -->
+<?php include "../partials/footer.php" ?>
 </body>
-
 </html>

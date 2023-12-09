@@ -103,6 +103,7 @@ CREATE TABLE Assignments (
     Title VARCHAR(100),
     SubjectID INT,
     Content TEXT,
+    FileUpload VARCHAR(255), 
     UploadDate DATE,
     Deadline DATE,
     TeacherID INT,
