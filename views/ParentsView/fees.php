@@ -2,7 +2,7 @@
 define('__ROOT__', "../../");
 require_once(__ROOT__ . "model/Parent.php");
 require_once(__ROOT__ . "controller/ParentsController.php"); // Adjust the path based on your actual file structure
-$P1  = new Parents(123);
+$P1  = new Parents($_SESSION['user_id']);
 $P2 = new ParentController($P1);
 
 $P2->viewFees($P1->Student->getID());
@@ -23,7 +23,7 @@ $P2->viewFees($P1->Student->getID());
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Parents | Nefertari International School</title>
-    
+
     <meta property="og:locale" content="en_GB" />
     <meta property="og:type" content="article" />
     <meta property="og:title" content="Academic Life" />
@@ -133,14 +133,14 @@ include "../partials/nav.php"
                     <div class="astra-advanced-hook-39611 ">
                         <!--BEGIN DEPT header links wrapper-->
                         <div class="header-links" id="divcontent">
-                            <div class="featured_box_content">
-                                <div class="box-content">
-                                    <div class="links-group">
-                                        <a href="../index.php">Logout</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+							<div class="featured_box_content">
+								<div class="box-content">
+									<div class="links-group">
+										<a href="../../controller/logout-handler.php?action=logout">Logout</a>
+									</div>
+								</div>
+							</div>
+						</div>
                         <!-- END DEPT header links wrapper -->
                     </div>
                     <!--Academic & Dept Links-->
@@ -247,32 +247,32 @@ include "../partials/nav.php"
                                 </thead>
                                 <tbody>
                                     <!-- ngRepeat: oldDue in Screen.CurrentDues -->
-                                    <?php foreach ($P1->fees as $fee): ?>
-                                    <tr class="odd gradeX ng-scope" ng-repeat="oldDue in Screen.CurrentDues" style="">
-                                        <td class="ng-binding"><?=$fee['amount']?></td>
-                                        <td class="ng-binding"><?=$fee['Due']?></td>
+                                    <?php foreach ($P1->fees as $fee) : ?>
+                                        <tr class="odd gradeX ng-scope" ng-repeat="oldDue in Screen.CurrentDues" style="">
+                                            <td class="ng-binding"><?= $fee['amount'] ?></td>
+                                            <td class="ng-binding"><?= $fee['Due'] ?></td>
 
-                                       
-                                        <td>
-                                        <?php if ($fee['payment_status']): ?>
-                Paid
-            <?php else: ?>
-                Not Paid
-            <?php endif; ?>
-                                        </td>
 
-                                    </tr>
-                                    <tr class="odd gradeX ng-scope" ng-repeat="oldDue in Screen.CurrentDues" style="">
-                                    <td class="ng-binding"><?=$fee['amount2']?></td>
-                                    <td class="ng-binding"><?=$fee['Due2']?></td>
-                                    <td>
-                                    <?php if ($fee['payment_status2']): ?>
-                Paid
-            <?php else: ?>
-                Not Paid
-            <?php endif; ?>
-                                        </td>
-                                    <?php endforeach; ?><!-- end ngRepeat: oldDue in Screen.CurrentDues -->
+                                            <td>
+                                                <?php if ($fee['payment_status']) : ?>
+                                                    Paid
+                                                <?php else : ?>
+                                                    Not Paid
+                                                <?php endif; ?>
+                                            </td>
+
+                                        </tr>
+                                        <tr class="odd gradeX ng-scope" ng-repeat="oldDue in Screen.CurrentDues" style="">
+                                            <td class="ng-binding"><?= $fee['amount2'] ?></td>
+                                            <td class="ng-binding"><?= $fee['Due2'] ?></td>
+                                            <td>
+                                                <?php if ($fee['payment_status2']) : ?>
+                                                    Paid
+                                                <?php else : ?>
+                                                    Not Paid
+                                                <?php endif; ?>
+                                            </td>
+                                        <?php endforeach; ?><!-- end ngRepeat: oldDue in Screen.CurrentDues -->
                                 </tbody>
                             </table>
                         </div>
@@ -324,7 +324,7 @@ include "../partials/nav.php"
                 </div>end ngIf: Screen.hasOtherFees -->
 
 
-                
+
 
 </body>
 
