@@ -1,5 +1,6 @@
 <?php
 require_once "/xampp/htdocs/SWE/m/SWE-project/model/TeacherModel.php";
+require_once "/xampp/htdocs/SWE/m/SWE-project/model/Model.php";
 
 class TeachersController {
     public function handleRequest() {
@@ -20,6 +21,7 @@ class TeachersController {
     }
     public function addTeacher() {
               // Validate and sanitize the input data (perform input validation here)
+       
         $teacherData = [
             'TeacherId'=>$_POST['teacherId'],
             'TeacherName' => $_POST['teacherName'] ?? '',

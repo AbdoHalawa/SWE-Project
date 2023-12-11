@@ -53,13 +53,13 @@ include "adminNav.php";
 <div class="col-12 col-sm-4">
 <div class="form-group local-forms">
 <label>Teacher ID <span class="login-danger">*</span></label>
-<input name="teacherId" type="text" class="form-control" placeholder="Teacher ID">
+<input name="teacherId" type="text" class="form-control" placeholder="Teacher ID" id="teacher_id">
 </div>
 </div>
 <div class="col-12 col-sm-4">
 <div class="form-group local-forms">
 <label>Name <span class="login-danger">*</span></label>
-<input name="teacherName"type="text" class="form-control" placeholder="Enter Name">
+<input name="teacherName"type="text" class="form-control" placeholder="Enter Name" id="teacher_name">
 </div>
 </div>
 <div class="col-12 col-sm-4">
@@ -162,13 +162,31 @@ include "adminNav.php";
 <script src="assets/js/bootstrap-datetimepicker.min.js"></script>
 
 <script src="assets/js/script.js"></script>
-<!-- <script>
-// Check for an error message in the session
-if (isset($_SESSION['error']) && !empty($_SESSION['error'])) {
-    // Display the error message and clear it from the session
-    echo "<script>alert('{$_SESSION['error']}');</script>";
-    unset($_SESSION['error']);
-}
-</script> -->
+<script>
+    function validateForm() {
+        // Get form input values
+        var teacherID = document.getElementById('teacher_id').value.trim();
+        var teacherName = document.getElementById('teacher_name').value.trim();
+        // Other field values...
+
+        // Validation checks
+        if (teacherID === '') {
+            alert('Please enter Teacher ID');
+            return false;
+        }
+
+        if (teacherName === '') {
+            alert('Please enter Teacher Name');
+            return false;
+        }
+
+        
+
+        // Add more validation checks for other fields as needed
+
+        return true; // If all validations pass, allow form submission
+    }
+</script>
+
 </body>
 </html>

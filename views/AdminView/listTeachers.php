@@ -1,4 +1,7 @@
-
+<?php
+require_once('/xampp/htdocs/SWE/m/SWE-project/model/TeacherModel.php'); // Adjust the path if needed
+$teachers = TeacherModel::getTeachers();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -91,49 +94,55 @@ include "adminNav.php";
 </th>
 <th>ID</th>
 <th>Name</th>
-<th>Class</th>
 <th>Gender</th>
-<th>Subject</th>
-<th>Section</th>
+<th>Date of birth</th>
+<th>joining date</th>
 <th>Mobile Number</th>
-<th>Address</th>
+<th>experience</th>
+<th>Email</th>
+<th>Teacher Type</th>
 <th class="text-end">Action</th>
 </tr>
 </thead>
 <tbody>
+    
+<?php foreach ($teachers as $teacher) : ?>
 <tr>
 <td>
  <div class="form-check check-tables">
 <input class="form-check-input" type="checkbox" value="something">
 </div>
 </td>
-<td>PRE2209</td>
+<td><?php echo $teacher['TeacherID']; ?></td>
 <td>
 <h2 class="table-avatar">
-<a href="teacher-details.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle" src="assets/img/profiles/avatar-02.jpg" alt="User Image"></a>
-<a href="teacher-details.html">Aaliyah</a>
+<!-- <a href="teacher-details.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle" src="assets/img/profiles/avatar-02.jpg" alt="User Image"></a> -->
+<a href="teacher-details.html"><?php echo $teacher['TeacherName']; ?></a>
 </h2>
 </td>
-<td>10</td>
-<td>Female</td>
-<td>Mathematics</td>
-<td>A</td>
-<td>097 3584 5870</td>
-<td>911 Deer Ridge Drive,USA</td>
+<td><?php echo $teacher['Gender']; ?></td>
+<td><?php echo $teacher['DateOfBirth']; ?></td>
+<td><?php echo $teacher['JoiningDate']; ?></td>
+<td><?php echo $teacher['PhoneNumber']; ?></td>
+<td><?php echo $teacher['Experience']; ?></td>
+<td><?php echo $teacher['Email']; ?></td>
+<td><?php echo $teacher['TeacherType']; ?></td>
 <td class="text-end">
 <div class="actions">
 <a href="javascript:;" class="btn btn-sm bg-success-light me-2">
 <i class="feather-eye"></i>
 </a>
-<a href="edit-teacher.html" class="btn btn-sm bg-danger-light">
+<a href="./editTeachers.php?id=<?php echo $teacher['TeacherID']; ?>" class="btn btn-sm bg-danger-light">
 <i class="feather-edit"></i>
 </a>
 </div>
 </td>
 </tr>
+<?php endforeach; ?>
+
 <tr>
 <td>
-<div class="form-check check-tables">
+<!-- <div class="form-check check-tables">
 <input class="form-check-input" type="checkbox" value="something">
 </div>
 </td>
@@ -158,249 +167,12 @@ include "adminNav.php";
 <a href="edit-teacher.html" class="btn btn-sm bg-danger-light">
 <i class="feather-edit"></i>
 </a>
-</div>
-</td>
-</tr>
-<tr>
-<td>
-<div class="form-check check-tables">
-<input class="form-check-input" type="checkbox" value="something">
-</div>
-</td>
-<td>PRE2143</td>
-<td>
-<h2 class="table-avatar">
-<a href="teacher-details.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle" src="assets/img/profiles/avatar-04.jpg" alt="User Image"></a>
-<a href="teacher-details.html">Levell Scott</a>
-</h2>
-</td>
-<td>10</td>
-<td>Male</td>
-<td>Science</td>
-<td>B</td>
-<td>026 7318 4366</td>
-<td>P.O. Box: 41, Gaborone</td>
-<td class="text-end">
-<div class="actions">
-<a href="javascript:;" class="btn btn-sm bg-success-light me-2">
-<i class="feather-eye"></i>
-</a>
-<a href="edit-teacher.html" class="btn btn-sm bg-danger-light">
-<i class="feather-edit"></i>
-</a>
-</div>
-</td>
-</tr>
-<tr>
-<td>
-<div class="form-check check-tables">
-<input class="form-check-input" type="checkbox" value="something">
-</div>
-</td>
-<td>PRE2431</td>
-<td>
-<h2 class="table-avatar">
-<a href="teacher-details.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle" src="assets/img/profiles/avatar-05.jpg" alt="User Image"></a>
-<a href="teacher-details.html">Minnie</a>
-</h2>
-</td>
-<td>11</td>
-<td>Male</td>
-<td>History</td>
-<td>C</td>
-<td>952 512 4909</td>
-<td>4771 Oral Lake Road, Golden Valley</td>
-<td class="text-end">
-<div class="actions">
-<a href="javascript:;" class="btn btn-sm bg-success-light me-2">
-<i class="feather-eye"></i>
-</a>
-<a href="edit-teacher.html" class="btn btn-sm bg-danger-light">
-<i class="feather-edit"></i>
-</a>
-</div>
-</td>
-</tr>
-<tr>
-<td>
-<div class="form-check check-tables">
-<input class="form-check-input" type="checkbox" value="something">
-</div>
-</td>
-<td>PRE1534</td>
-<td>
-<h2 class="table-avatar">
-<a href="teacher-details.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle" src="assets/img/profiles/avatar-06.jpg" alt="User Image"></a>
-<a href="teacher-details.html">Lois A</a>
-</h2>
-</td>
-<td>10</td>
-<td>Female</td>
-<td>English</td>
-<td>B</td>
-<td>413 289 1314</td>
-<td>2844 Leverton Cove Road, Palmer</td>
-<td class="text-end">
-<div class="actions">
-<a href="javascript:;" class="btn btn-sm bg-success-light me-2">
-<i class="feather-eye"></i>
-</a>
-<a href="edit-teacher.html" class="btn btn-sm bg-danger-light">
-<i class="feather-edit"></i>
-</a>
-</div>
-</td>
-</tr>
-<tr>
-<td>
-<div class="form-check check-tables">
-<input class="form-check-input" type="checkbox" value="something">
-</div>
-</td>
-<td>PRE2153</td>
-<td>
-<h2 class="table-avatar">
-<a href="teacher-details.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle" src="assets/img/profiles/avatar-07.jpg" alt="User Image"></a>
-<a href="teacher-details.html">Calvin</a>
-</h2>
-</td>
-<td>9</td>
-<td>Male</td>
-<td>Mathematics</td>
-<td>C</td>
-<td>701 753 3810</td>
-<td>1900 Hidden Meadow Drive, Crete</td>
-<td class="text-end">
-<div class="actions">
-<a href="javascript:;" class="btn btn-sm bg-success-light me-2">
-<i class="feather-eye"></i>
-</a>
-<a href="edit-teacher.html" class="btn btn-sm bg-danger-light">
-<i class="feather-edit"></i>
-</a>
-</div>
-</td>
-</tr>
-<tr>
-<td>
-<div class="form-check check-tables">
-<input class="form-check-input" type="checkbox" value="something">
-</div>
-</td>
-<td>PRE1434</td>
-<td>
-<h2 class="table-avatar">
-<a href="teacher-details.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle" src="assets/img/profiles/avatar-08.jpg" alt="User Image"></a>
-<a href="teacher-details.html">Vincent</a>
-</h2>
-</td>
-<td>10</td>
-<td>Male</td>
-<td>Mathematics</td>
-<td>C</td>
-<td>402 221 7523</td>
-<td>3979 Ashwood Drive, Omaha</td>
-<td class="text-end">
-<div class="actions">
-<a href="javascript:;" class="btn btn-sm bg-success-light me-2">
-<i class="feather-eye"></i>
-</a>
-<a href="edit-teacher.html" class="btn btn-sm bg-danger-light">
-<i class="feather-edit"></i>
-</a>
-</div>
-</td>
-</tr>
-<tr>
-<td>
-<div class="form-check check-tables">
-<input class="form-check-input" type="checkbox" value="something">
-</div>
-</td>
-<td>PRE2345</td>
-<td>
-<h2 class="table-avatar">
-<a href="teacher-details.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle" src="assets/img/profiles/avatar-09.jpg" alt="User Image"></a>
-<a href="teacher-details.html">Kozma  Tatari</a>
-</h2>
-</td>
-<td>9</td>
-<td>Female</td>
-<td>Science</td>
-<td>A</td>
-<td>04 2239 968</td>
-<td>Rruga E Kavajes, Condor Center, Tirana</td>
-<td class="text-end">
-<div class="actions">
-<a href="javascript:;" class="btn btn-sm bg-success-light me-2">
-<i class="feather-eye"></i>
-</a>
-<a href="edit-teacher.html" class="btn btn-sm bg-danger-light">
-<i class="feather-edit"></i>
-</a>
-</div>
-</td>
-</tr>
-<tr>
-<td>
-<div class="form-check check-tables">
-<input class="form-check-input" type="checkbox" value="something">
-</div>
-</td>
-<td>PRE2365</td>
-<td>
-<h2 class="table-avatar">
-<a href="teacher-details.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle" src="assets/img/profiles/avatar-10.jpg" alt="User Image"></a>
-<a href="teacher-details.html">John Chambers</a>
-</h2>
-</td>
-<td>11</td>
-<td>Male</td>
-<td>Botony</td>
-<td>B</td>
-<td>870 663 2334</td>
-<td>4667 Sunset Drive, Pine Bluff</td>
-<td class="text-end">
-<div class="actions">
-<a href="javascript:;" class="btn btn-sm bg-success-light me-2">
-<i class="feather-eye"></i>
-</a>
-<a href="edit-teacher.html" class="btn btn-sm bg-danger-light">
-<i class="feather-edit"></i>
-</a>
-</div>
-</td>
-</tr>
-<tr>
-<td>
-<div class="form-check check-tables">
-<input class="form-check-input" type="checkbox" value="something">
-</div>
-</td>
-<td>PRE1234</td>
-<td>
-<h2 class="table-avatar">
-<a href="teacher-details.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle" src="assets/img/profiles/avatar-11.jpg" alt="User Image"></a>
-<a href="teacher-details.html">Nathan Humphries</a>
-</h2>
-</td>
-<td>10</td>
-<td>Male</td>
-<td>Biology</td>
-<td>A</td>
-<td>077 3499 9959</td>
-<td>86 Lamphey Road, Thelnetham</td>
-<td class="text-end">
-<div class="actions">
-<a href="javascript:;" class="btn btn-sm bg-success-light me-2">
-<i class="feather-eye"></i>
-</a>
-<a href="edit-teacher.html" class="btn btn-sm bg-danger-light">
-<i class="feather-edit"></i>
-</a>
-</div>
-</td>
-</tr>
+</div> -->
+<!-- </td>
+</tr> -->
+
+ 
+
 </tbody>
 </table>
 </div>

@@ -181,6 +181,23 @@ class TeacherModel extends Model
 
             return ($row['count'] > 0);
         }
+        public static function getTeachers(){
+            $db = new Dbh(); // Assuming Dbh handles the database connection
+        
+            $sql = "SELECT * FROM Teachers";
+            $stmt = $db->getConn()->prepare($sql);
+            $stmt->execute();
+        
+            $result = $stmt->get_result();
+            $teachers = [];
+        
+            while ($row = $result->fetch_assoc()) {
+                $teachers[] = $row;
+            }
+            
+            return $teachers;
+        }
+        
 
     
     
