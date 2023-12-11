@@ -2,7 +2,7 @@
 define('__ROOT__', "../../");
 require_once(__ROOT__ . "model/Parent.php");
 require_once(__ROOT__ . "controller/ParentsController.php"); // Adjust the path based on your actual file structure
-$P1  = new Parents(122);
+$P1  = new Parents($_SESSION['user_id']);
 $P2 = new ParentController($P1);
 $P2->viewGrades($P1->Student->getID());
 ?>
@@ -128,15 +128,15 @@ include "../partials/nav.php"
 				<div id="wgs-header-wrapper">
                     <div class="astra-advanced-hook-39611 ">
                         <!--BEGIN DEPT header links wrapper-->
-                        <div class="header-links" id="divcontent">
-                            <div class="featured_box_content">
-                                <div class="box-content">
-                                    <div class="links-group">
-                                        <a href="../index.php">Logout</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+						<div class="header-links" id="divcontent">
+							<div class="featured_box_content">
+								<div class="box-content">
+									<div class="links-group">
+										<a href="../../controller/logout-handler.php?action=logout">Logout</a>
+									</div>
+								</div>
+							</div>
+						</div>
                         <!-- END DEPT header links wrapper -->
                     </div>
 				<!--Academic & Dept Links-->
