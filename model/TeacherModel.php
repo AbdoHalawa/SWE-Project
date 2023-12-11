@@ -1,17 +1,18 @@
 <?php
-define('__ROOT__', dirname(dirname(__FILE__)));
-require_once(__DIR__ . '/../Db/Dbh.php');
-require_once(__DIR__ . '/Model.php');
+// define('__ROOT__', dirname(dirname(__FILE__)));
+require_once( '/xampp/htdocs/SWE/m/SWE-project/Db/Dbh.php');
+require_once( '/xampp/htdocs/SWE/m/SWE-project/model/Model.php');
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 class TeacherModel extends Model
 {
 
-    private $id;
+    private $teacherId;
     private $teacherName;
     private $gender;
     private $dateOfBirth;
     private $phoneNumber;
+    private $religion;
     private $joiningDate;
     private $experience;
     private $email;
@@ -23,6 +24,7 @@ class TeacherModel extends Model
         parent::__construct(); // Call the constructor of the parent class (Model)
 
         // Initialize the student object with data or set default values
+        $this->teacherId = $data['TeacherId'] ?? '';
         $this->teacherName = $data['TeacherName'] ?? '';
         $this->gender = $data['Gender'] ?? '';
         $this->dateOfBirth = $data['DateOfBirth'] ?? '';
@@ -32,13 +34,110 @@ class TeacherModel extends Model
         $this->experience = $data['Experience'] ?? '';
         $this->email = $data['Email'] ?? '';
         $this->password = $data['Password'] ?? '';
-        $this->teacherType = $data['EeacherType'] ?? '';
+        $this->teacherType = $data['TeacherType'] ?? '';
+    }
+    // Setters
+    public function setId($id) {
+        $this->teacherId = $id;
     }
 
-    public function insertTeacher(): bool
+    public function setTeacherName($teacherName) {
+        $this->teacherName = $teacherName;
+    }
+
+    public function setGender($gender) {
+        $this->gender = $gender;
+    }
+
+    public function setDateOfBirth($dateOfBirth) {
+        $this->dateOfBirth = $dateOfBirth;
+    }
+
+    public function setPhoneNumber($phoneNumber) {
+        $this->phoneNumber = $phoneNumber;
+    }
+
+    public function setReligion($religion) {
+        $this->religion = $religion;
+    }
+
+    public function setJoiningDate($joiningDate) {
+        $this->joiningDate = $joiningDate;
+    }
+
+    public function setExperience($experience) {
+        $this->experience = $experience;
+    }
+
+    public function setEmail($email) {
+        $this->email = $email;
+    }
+
+    public function setPassword($password) {
+        $this->password = $password;
+    }
+
+    public function setTeacherType($teacherType) {
+        $this->teacherType = $teacherType;
+    }
+
+    // Getters
+    public function getId() {
+        return $this->teacherId;
+    }
+
+    public function getTeacherName() {
+        return $this->teacherName;
+    }
+
+    public function getGender() {
+        return $this->gender;
+    }
+
+    public function getDateOfBirth() {
+        return $this->dateOfBirth;
+    }
+
+    public function getPhoneNumber() {
+        return $this->phoneNumber;
+    }
+
+    public function getReligion() {
+        return $this->religion;
+    }
+
+    public function getJoiningDate() {
+        return $this->joiningDate;
+    }
+
+    public function getExperience() {
+        return $this->experience;
+    }
+
+    public function getEmail() {
+        return $this->email;
+    }
+
+    public function getPassword() {
+        return $this->password;
+    }
+
+    public function getTeacherType() {
+        return $this->teacherType;
+    }
+
+    public function addTeacher(): bool
     {
+        if ($this->teacherIdExists($this->teacherId)) {
+            // Set an error message
+            $_SESSION['error'] = 'TeacherID already exists.';
+            echo 'user exists';
+            // Redirect to the same page
+            // header("Location: ../views/AdminView/addTeachers.php");
+            exit();
+        }
         $data = [
-            // 'TeacherID'=>'2',  //do not know what is 2
+            'TeacherID'=>$this->teacherId,
             'TeacherName' => $this->teacherName,
             'Gender' => $this->gender,
             'DateOfBirth' => $this->dateOfBirth,
@@ -49,64 +148,41 @@ class TeacherModel extends Model
             'Password' => password_hash($this->password, PASSWORD_DEFAULT),
             'TeacherType' => $this->teacherType,
         ];
-
-
-        $sql = "INSERT INTO Teacher (TeacherName, Gender, DateOfBirth,PhoneNumber, JoiningDate, Experience, Email, Password, TeacherType) VALUES (?, ?, ?, ?, ?, ?, ?,?, ?)";
-
-        // Extract values from the associative array to create the parameter array for bind_param
+        $sql = "INSERT INTO Teachers (TeacherID,TeacherName, Gender, DateOfBirth,PhoneNumber, JoiningDate, Experience, Email, Password, TeacherType) VALUES (?, ?, ?, ?, ?, ?, ?,?, ?,?)";
         $values = array_values($data);
-
-        // Insert data into the database
-        $result = $this->executeQuery($sql, $values);
-
-        // Return true if the insertion was successful, false otherwise
-        return $result;
-    }
-    
-    public function getSubjects() {
-        $sql = "SELECT SubjectID, SubjectName FROM Subjects";
-        return $this->db->query($sql);
-    }
-
-    public function getClasses() {
-        $sql = "SELECT ClassID, ClassName FROM Classes";
-        return $this->db->query($sql);
-    }
-
-    public function getDistinctGrades() {
-        $sql = "SELECT DISTINCT Grade FROM Classes";
-        return $this->db->query($sql);
-    }
-
-    public function addAssignment($title, $subjectID, $content, $uploadDate, $deadline, $teacherID, $grade, $classID) {
-        if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
-            $uploadDir = __DIR__ . '/uploads/';
-            $uploadFile = $uploadDir . basename($_FILES['file']['name']);
-    
-            if (move_uploaded_file($_FILES['file']['tmp_name'], $uploadFile)) {
-                $fileUploadPath = 'uploads/' . basename($_FILES['file']['name']);
-                $sql = "INSERT INTO Assignments (Title, SubjectID, Content, FileUpload, UploadDate, Deadline, TeacherID, Grade, ClassID) 
-                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-                $stmt = $this->db->prepare($sql);
-                $stmt->bind_param("sissisiss", $title, $subjectID, $content, $fileUploadPath, $uploadDate, $deadline, $teacherID, $grade, $classID);
-    
-                if ($stmt->execute()) {
-                    // Successful execution
-                    return true;
-                } else {
-                    // Display the specific error message
-                    echo "Error: " . $stmt->error;
-                    return false;
-                }
-            } else {
-                echo "File upload failed.";
-                return false;
+        try {
+            $result = $this->executeQuery($sql, $values);
+            
+            // If insertion was successful, return true
+            if ($result) {
+                return true;
             }
-        } else {
-            echo "File upload error or no file uploaded.";
-            return false;
+        } catch (mysqli_sql_exception $exception) {
+            // Check if it's a duplicate entry error
+            if ($exception->getCode() === 1062) {
+                // Handle the duplicate entry error (for example, redirecting to the same page)
+                header("Location:#?error=duplicate_entry");
+                exit();
+            } else {
+                // Handle other exceptions
+                // Log the exception, display an error message, etc.
+                echo "Error: " . $exception->getMessage();
+            }
         }
-    }
+        return false;
+        }
+         // Function to check if a TeacherID already exists in the database
+        private function teacherIdExists($teacherId): bool
+        {
+            $sql = "SELECT COUNT(*) as count FROM Teachers WHERE TeacherID = ?";
+            $stmt = $this->executeQuery($sql, [$teacherId]);
+            $result = $stmt->get_result();
+            $row = $result->fetch_assoc();
 
+            return ($row['count'] > 0);
+        }
+
+    
+    
 }
 ?>

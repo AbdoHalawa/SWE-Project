@@ -1,8 +1,8 @@
 <?php
 session_start();
-define('__ROOT__', dirname(dirname(__FILE__)));
+// define('__ROOT__', dirname(dirname(__FILE__)));
 
-require_once(__ROOT__ . "/Db/Dbh.php");
+require_once( "/xampp/htdocs/SWE/m/SWE-project/Db/Dbh.php");
 
 abstract class Model
 {
@@ -30,7 +30,6 @@ abstract class Model
     protected function executeQuery($sql, $params = [])
     {
         $stmt = $this->db->getConn()->prepare($sql);
-
         if (!$stmt) {
             throw new Exception("Error preparing SQL statement: " . $this->db->getConn()->error);
         }

@@ -4,29 +4,32 @@ require_once(__DIR__ . '/../Db/Dbh.php');
 require_once(__DIR__ . '/Model.php');
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-class SubjectModel extends Model
+class ClassesModel extends Model
 {
 
-    private $subjectId;
-    private $subjectName;
+    private $classId;
+    private $className;
+    private $grade;
     
     public function __construct($data = [])
     {
         parent::__construct(); // Call the constructor of the parent class (Model)
 
         // Initialize the student object with data or set default values
-        $this->subjectName = $data['SubjectName'] ?? '';
-        
+        $this->className = $data['ClassName'] ?? '';
+        $this->grade = $data['grade'] ?? '';
     }
 
-    public function addSubject(): bool
+    public function addClass(): bool
     {
         $data = [
-            'SubjectName' => $this->subjectName,
+            'ClassId'=>$this->classId, 
+            'ClassName' => $this->className,
+            'Grade' => $this->grade,
         ];
 
 
-        $sql = "INSERT INTO subjects ( SubjectName) VALUES (?)";
+        $sql = "INSERT INTO Classes (ClassId, ClassName, Grade) VALUES (?, ?, ?)";
 
         // Extract values from the associative array to create the parameter array for bind_param
         $values = array_values($data);
@@ -38,10 +41,5 @@ class SubjectModel extends Model
         return $result;
     }
     
-    public function getSubjects() {
-        $sql = "SELECT SubjectID, SubjectName FROM Subjects";
-        return $this->db->query($sql);
-    }
-
 }
 ?>

@@ -1,3 +1,7 @@
+<?php
+require_once( '../../controller/TeachersController.php');
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -41,7 +45,7 @@ include "adminNav.php";
 <div class="col-sm-12">
 <div class="card">
 <div class="card-body">
-<form>
+<form method="POST" action="../../controller/TeachersController.php?action=addTeacher">
 <div class="row">
 <div class="col-12">
 <h5 class="form-title"><span>Basic Details</span></h5>
@@ -49,47 +53,47 @@ include "adminNav.php";
 <div class="col-12 col-sm-4">
 <div class="form-group local-forms">
 <label>Teacher ID <span class="login-danger">*</span></label>
-<input type="text" class="form-control" placeholder="Teacher ID">
+<input name="teacherId" type="text" class="form-control" placeholder="Teacher ID">
 </div>
 </div>
 <div class="col-12 col-sm-4">
 <div class="form-group local-forms">
 <label>Name <span class="login-danger">*</span></label>
-<input type="text" class="form-control" placeholder="Enter Name">
+<input name="teacherName"type="text" class="form-control" placeholder="Enter Name">
 </div>
 </div>
 <div class="col-12 col-sm-4">
 <div class="form-group local-forms">
 <label>Gender <span class="login-danger">*</span></label>
-<select class="form-control select">
-<option>Male</option>
-<option>Female</option>
-<option>Others</option>
+<select class="form-control select" name="gender">
+<option value="male">Male</option>
+<option value="female">Female</option>
+<option value="others">Others</option>
 </select>
 </div>
 </div>
 <div class="col-12 col-sm-4">
 <div class="form-group local-forms calendar-icon">
 <label>Date Of Birth <span class="login-danger">*</span></label>
-<input class="form-control datetimepicker" type="text" placeholder="DD-MM-YYYY">
+<input name="DOB"class="form-control datetimepicker" type="text" placeholder="DD-MM-YYYY">
 </div>
 </div>
 <div class="col-12 col-sm-4">
 <div class="form-group local-forms">
 <label>Mobile <span class="login-danger">*</span></label>
-<input type="text" class="form-control" placeholder="Enter Phone">
+<input name="mobile"type="text" class="form-control" placeholder="Enter Phone">
 </div>
 </div>
 <div class="col-12 col-sm-4">
 <div class="form-group local-forms calendar-icon">
 <label>Joining Date <span class="login-danger">*</span></label>
-<input class="form-control datetimepicker" type="text" placeholder="DD-MM-YYYY">
+<input name="joiningDate" class="form-control datetimepicker" type="text" placeholder="DD-MM-YYYY">
 </div>
 </div>
  <div class="col-12 col-sm-4">
 <div class="form-group local-forms">
 <label>Experience <span class="login-danger">*</span></label>
-<input class="form-control" type="text" placeholder="Enter Experience">
+<input name="experience"class="form-control" type="text" placeholder="Enter Experience">
 </div>
 </div>
 <div class="col-12">
@@ -98,15 +102,15 @@ include "adminNav.php";
 <div class="col-12 col-sm-4">
 <div class="form-group local-forms">
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="headTeacherRadio" id="headTeacherYes" value="Yes">
-            <label class="form-check-label" for="headTeacherYes">
+            <input name="teacherType" value="Head" class="form-check-input" type="radio" id="headTeacherYes" >
+            <label  class="form-check-label" for="headTeacherYes">
                 Yes
             </label>
         </div>
 </div>
         <div class="form-group local-forms">
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="headTeacherRadio" id="headTeacherNo" value="No">
+            <input name="teacherType" value="normal" class="form-check-input" type="radio" id="headTeacherNo" >
             <label class="form-check-label" for="headTeacherNo">
                 No
             </label>
@@ -118,13 +122,13 @@ include "adminNav.php";
 <div class="col-12 col-sm-4">
 <div class="form-group local-forms">
 <label>Email ID <span class="login-danger">*</span></label>
-<input type="email" class="form-control" placeholder="Enter Mail Id">
+<input name="email" type="email" class="form-control" placeholder="Enter Mail Id">
 </div>
 </div>
 <div class="col-12 col-sm-4">
 <div class="form-group local-forms">
 <label>Password <span class="login-danger">*</span></label>
-<input type="text" class="form-control" placeholder="Enter Password">
+<input name="password" type="text" class="form-control" placeholder="Enter Password">
 </div>
 </div>
 <div class="col-12">
@@ -158,5 +162,13 @@ include "adminNav.php";
 <script src="assets/js/bootstrap-datetimepicker.min.js"></script>
 
 <script src="assets/js/script.js"></script>
+<!-- <script>
+// Check for an error message in the session
+if (isset($_SESSION['error']) && !empty($_SESSION['error'])) {
+    // Display the error message and clear it from the session
+    echo "<script>alert('{$_SESSION['error']}');</script>";
+    unset($_SESSION['error']);
+}
+</script> -->
 </body>
 </html>

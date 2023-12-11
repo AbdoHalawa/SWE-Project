@@ -12,8 +12,8 @@ require_once(__ROOT__ . '/controller/StudentsController.php');
 require_once(__ROOT__ . '/model/StudentModel.php');
 
 // Initialize the model and controller
-$model = new StudentModel();
-$controller = new StudentsController($model);
+// $model = new StudentModel();
+// $controller = new StudentsController($model);
 
 // Handle the request
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
