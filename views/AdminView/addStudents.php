@@ -200,36 +200,68 @@
     
 </body>
 <script>
-        function generateAdmissionID() {
-            // Generate a unique ID starting with "1" using a timestamp and a random number
-            const timestamp = Date.now();
-            const randomNum = Math.floor(Math.random() * 10000); // Adjust the range as needed
-            const admissionID = '10' + timestamp + randomNum;
+    let counter = 0;
 
-            // Trim the ID to a maximum of 5 digits
-            const trimmedID = admissionID.slice(0, 5);
+    function generateID(prefix) {
+        const randomArray = new Uint32Array(1);
+        crypto.getRandomValues(randomArray);
+        const randomNum = randomArray[0];
 
-            // Update the value of the admission_id input field
-            document.getElementById('admission_id').value = trimmedID;
+        const timestamp = performance.now();
+        const generatedID = `${prefix}${timestamp}${randomNum}${counter}`;
+
+        // Trim the ID to a maximum of 5 digits
+        const trimmedID = generatedID.slice(0, 5);
+
+        // Increment the counter for the next call
+        counter++;
+
+        return trimmedID;
+    }
+
+    function generateAdmissionID() {
+    let admissionID = generateID('10');
+
+    // Check if the admission ID is taken, generate a new one until it's unique
+    while (isAdmissionIDTaken(admissionID)) {
+        admissionID = generateID('10');
+    }
+
+    document.getElementById('admission_id').value = admissionID;
+    }
+
+    function generateParentID() {
+        const parentID = generateID('20');
+        document.getElementById('parent_id').value = parentID;
+    }
+    
+
+    function isAdmissionIDTaken(admissionID) {
+    let isTaken = false;
+
+    $.ajax({
+        type: "POST",
+        url: "../../controller/StudentsController.php?action=checkAdmissionID",
+        data: { admissionID: admissionID },
+        async: false,
+        success: function(response) {
+            isTaken = response === 'taken';
+
+            // Log the result to the console
+            console.log('Admission ID ' + admissionID + ' is ' + (isTaken ? 'taken' : 'available'));
         }
+    });
 
-        function generateParentID() {
-            // Generate a unique ID starting with "2" using a timestamp and a random number
-            const timestamp = Date.now();
-            const randomNum = Math.floor(Math.random() * 10000); // Adjust the range as needed
-            const parentID = '20' + timestamp + randomNum;
+    return isTaken;
 
-            // Trim the ID to a maximum of 5 digits
-            const trimmedID = parentID.slice(0, 5);
+}
 
-            // Update the value of the parent_id input field
-            document.getElementById('parent_id').value = trimmedID;
-        }
 
-        // Call the functions when the page loads
-        generateAdmissionID();
-        generateParentID();
-    </script>
+    // Call the functions when the page loads
+    generateAdmissionID();
+    generateParentID();
+</script>
+
 </body>
 </html>
 

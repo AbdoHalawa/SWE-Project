@@ -55,6 +55,7 @@ class StudentsController {
                 // Handle the case where the model construction failed
                 echo 'console.error("Error: Unable to construct ParentModel.");';
             }
+            
 
             // Validate and process user input for student
             $studentData = [
@@ -89,6 +90,21 @@ class StudentsController {
             echo 'console.error("Error: Form not submitted.");';
         }
     }
+    public function checkAdmissionID() {
+        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["admissionID"])) {
+            $admissionID = $_POST["admissionID"];
+
+            // Check if the admission ID is taken
+            $result = $this->studentModel->checkAdmissionID($admissionID);
+
+            
+            echo ($result->num_rows > 0) ? 'taken' : 'available';
+        } else {
+            echo 'invalid_request';  // Handle the case where the request is not valid
+        }
+    }
+    
+    
 }
 
 // Instantiate the controller with StudentModel and ParentModel objects

@@ -1,6 +1,6 @@
 <?php
 //define('__ROOT__', dirname(dirname(__FILE__)));
-require_once(__DIR__ . '/../Db/Dbh.php');
+require_once(__DIR__ . '../../Db/Dbh.php');
 require_once(__DIR__ . '/Model.php');
  error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -67,7 +67,12 @@ return $this->id;
         // Insert data into the database
         $this->executeQuery($sql, $values);
     }
-    
+    public function checkAdmissionID($admissionID) {
+        $sql = "SELECT * FROM Students WHERE AdmissionID = ?";
+        $values = [$admissionID];
+
+        return $this->executeQuery($sql, $values);
+    }
     function getSubjectsForStudent()
     {
         // Include your database connection file
