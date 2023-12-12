@@ -1,4 +1,21 @@
+<?php
+require_once('/xampp/htdocs/SWE/m/SWE-project/model/TeacherModel.php'); // Adjust the path if needed
+if (isset($_GET['teacherId'])) {
+    $teacherId = $_GET['teacherId'];
+    $teacher = TeacherModel::getTeacherById($teacherId);
+}
 
+    // Check if the teacher exists
+    if ($teacher) {
+        $teacherName = $teacher['TeacherName'];
+        $gender = $teacher['Gender'];
+        $DOB= $teacher['DateOfBirth'];
+        $phoneNumber=$teacher['PhoneNumber'];
+        $joiningDate=$teacher['JoiningDate'];
+        $experience=$teacher['Experience'];
+        $email = $teacher['Email'];
+    }
+        ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,7 +47,7 @@ include "adminNav.php";
 <div class="col">
 <h3 class="page-title">Edit Teachers</h3>
 <ul class="breadcrumb">
-<li class="breadcrumb-item"><a href="teachers.html">Teachers</a></li>
+<li class="breadcrumb-item"><a href="listTeachers.php">Teachers</a></li>
 <li class="breadcrumb-item active">Edit Teachers</li>
 </ul>
 </div>
@@ -41,7 +58,7 @@ include "adminNav.php";
 <div class="col-sm-12">
 <div class="card">
 <div class="card-body">
-<form>
+<form method="POST" action="../../controller/TeachersController.php?action=editTeacher">
 <div class="row">
 <div class="col-12">
 <h5 class="form-title"><span>Basic Details</span></h5>
@@ -49,118 +66,66 @@ include "adminNav.php";
 <div class="col-12 col-sm-4">
 <div class="form-group local-forms">
 <label>Teacher ID <span class="login-danger">*</span></label>
-<input type="text" class="form-control" value="PRE1234">
+<input type="text" class="form-control" value=<?php echo $teacherId?> readonly style="background-color: white;">
 </div>
 </div>
 <div class="col-12 col-sm-4">
 <div class="form-group local-forms">
 <label>Name <span class="login-danger">*</span></label>
-<input type="text" class="form-control" value="Vincent">
+<input type="text" class="form-control" value=<?php echo $teacherName?>>
 </div>
 </div>
 <div class="col-12 col-sm-4">
 <div class="form-group local-forms">
 <label>Gender <span class="login-danger">*</span></label>
 <select class="form-control select">
-<option>Male</option>
-<option>Female</option>
-<option>Others</option>
+<option <?php if ($gender === 'Male') echo 'selected'; ?>>Male</option>
+            <option <?php if ($gender === 'Female') echo 'selected'; ?>>Female</option>
+            <option <?php if ($gender === 'Others') echo 'selected'; ?>>Others</option>
 </select>
 </div>
 </div>
 <div class="col-12 col-sm-4">
 <div class="form-group local-forms calendar-icon">
 <label>Date Of Birth <span class="login-danger">*</span></label>
-<input class="form-control datetimepicker" type="text" placeholder="29-04-2022">
+<input class="form-control datetimepicker" type="text" placeholder=<?php echo $DOB?>>
 </div>
 </div>
 <div class="col-12 col-sm-4">
 <div class="form-group local-forms">
 <label>Mobile <span class="login-danger">*</span></label>
-<input type="text" class="form-control" value="077 3499 9959">
+<input type="text" class="form-control" value=<?php echo $phoneNumber?>>
 </div>
 </div>
 <div class="col-12 col-sm-4">
 <div class="form-group local-forms calendar-icon">
 <label>Joining Date <span class="login-danger">*</span></label>
-<input class="form-control datetimepicker" type="text" placeholder="29-04-2022">
+<input class="form-control datetimepicker" type="text" placeholder=<?php echo $joiningDate?>>
 </div>
 </div>
-<div class="col-12 col-sm-4">
-<div class="form-group local-forms">
-<label>Qualification <span class="login-danger">*</span></label>
-<input class="form-control" type="text" value="Bachelor of Engineering">
-</div>
-</div>
+
 <div class="col-12 col-sm-4">
 <div class="form-group local-forms">
 <label>Experience <span class="login-danger">*</span></label>
-<input class="form-control" type="text" value="5">
+<input class="form-control" type="text" value=<?php echo $experience?>>
 </div>
 </div>
 <div class="col-12">
 <h5 class="form-title"><span>Login Details</span></h5>
 </div>
-<div class="col-12 col-sm-4">
-<div class="form-group local-forms">
-<label>Username <span class="login-danger">*</span></label>
-<input type="text" class="form-control" value="Vincent">
-</div>
-</div>
+
 <div class="col-12 col-sm-4">
 <div class="form-group local-forms">
 <label>Email ID <span class="login-danger">*</span></label>
-<input type="email" class="form-control" value="vincent20@gmail.com">
+<input type="email" class="form-control" value=<?php echo $email?>>
 </div>
 </div>
-<div class="col-12 col-sm-4">
-<div class="form-group local-forms">
-<label>Password <span class="login-danger">*</span></label>
-<input type="password" class="form-control" value="vincent">
-</div>
-</div>
-<div class="col-12 col-sm-4">
-<div class="form-group local-forms">
-<label>Repeat Password <span class="login-danger">*</span></label>
-<input type="password" class="form-control" value="vincent">
-</div>
-</div>
-<div class="col-12">
-<h5 class="form-title"><span>Address</span></h5>
-</div>
-<div class="col-12 ">
-<div class="form-group local-forms">
-<label>Address <span class="login-danger">*</span></label>
-<input type="text" class="form-control" value="3979 Ashwood Drive">
-</div>
-</div>
-<div class="col-12 col-sm-4">
-<div class="form-group local-forms">
-<label>City <span class="login-danger">*</span></label>
-<input type="text" class="form-control" value="Omaha">
-</div>
-</div>
-<div class="col-12 col-sm-4">
-<div class="form-group local-forms">
-<label>State <span class="login-danger">*</span></label>
-<input type="text" class="form-control" value="Omaha">
-</div>
-</div>
-<div class="col-12 col-sm-4">
-<div class="form-group local-forms">
-<label>Zip Code <span class="login-danger">*</span></label>
-<input type="text" class="form-control" value="3979">
-</div>
-</div>
-<div class="col-12 col-sm-4">
-<div class="form-group local-forms">
-<label>Country <span class="login-danger">*</span></label>
-<input type="text" class="form-control" value="USA">
-</div>
-</div>
+
+
 <div class="col-12">
 <div class="student-submit">
 <button type="submit" class="btn btn-primary">Submit</button>
+<button type="submit" class="btn btn-primary">Delete</button>
 </div>
 </div>
 </div>

@@ -132,7 +132,7 @@ include "adminNav.php";
 <a href="javascript:;" class="btn btn-sm bg-success-light me-2">
 <i class="feather-eye"></i>
 </a>
-<a href="./editTeachers.php?id=<?php echo $teacher['TeacherID']; ?>" class="btn btn-sm bg-danger-light">
+<a href="./editTeachers.php?teacherId=<?php echo $teacher['TeacherID']; ?>" class="btn btn-sm bg-danger-light">
 <i class="feather-edit"></i>
 </a>
 </div>
@@ -140,38 +140,6 @@ include "adminNav.php";
 </tr>
 <?php endforeach; ?>
 
-<tr>
-<td>
-<!-- <div class="form-check check-tables">
-<input class="form-check-input" type="checkbox" value="something">
-</div>
-</td>
-<td>PRE2213</td>
-<td>
-<h2 class="table-avatar">
-<a href="teacher-details.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle" src="assets/img/profiles/avatar-03.jpg" alt="User Image"></a>
-<a href="teacher-details.html">Malynne</a>
-</h2>
-</td>
-<td>8</td>
-<td>Female</td>
-<td>Physics</td>
-<td>A</td>
-<td>242 362 3100</td>
-<td>Bacardi Rd P.O. Box N-4880, New Providence</td>
-<td class="text-end">
-<div class="actions">
-<a href="javascript:;" class="btn btn-sm bg-success-light me-2">
-<i class="feather-eye"></i>
-</a>
-<a href="edit-teacher.html" class="btn btn-sm bg-danger-light">
-<i class="feather-edit"></i>
-</a>
-</div> -->
-<!-- </td>
-</tr> -->
-
- 
 
 </tbody>
 </table>

@@ -12,7 +12,6 @@ class TeacherModel extends Model
     private $gender;
     private $dateOfBirth;
     private $phoneNumber;
-    private $religion;
     private $joiningDate;
     private $experience;
     private $email;
@@ -29,7 +28,6 @@ class TeacherModel extends Model
         $this->gender = $data['Gender'] ?? '';
         $this->dateOfBirth = $data['DateOfBirth'] ?? '';
         $this->phoneNumber = $data['PhoneNumber'] ?? '';
-        $this->religion = $data['Religion'] ?? '';
         $this->joiningDate = $data['JoiningDate'] ?? '';
         $this->experience = $data['Experience'] ?? '';
         $this->email = $data['Email'] ?? '';
@@ -57,10 +55,7 @@ class TeacherModel extends Model
         $this->phoneNumber = $phoneNumber;
     }
 
-    public function setReligion($religion) {
-        $this->religion = $religion;
-    }
-
+   
     public function setJoiningDate($joiningDate) {
         $this->joiningDate = $joiningDate;
     }
@@ -102,9 +97,6 @@ class TeacherModel extends Model
         return $this->phoneNumber;
     }
 
-    public function getReligion() {
-        return $this->religion;
-    }
 
     public function getJoiningDate() {
         return $this->joiningDate;
@@ -196,6 +188,30 @@ class TeacherModel extends Model
             }
             
             return $teachers;
+        }
+        public static function getTeacherById($teacherId) {
+            $db = new Dbh(); // Create a database connection object
+        
+            // Prepare the SQL statement
+            $sql = "SELECT * FROM Teachers WHERE TeacherID = ?";
+        
+            // Create a prepared statement
+            $stmt = $db->getConn()->prepare($sql);
+        
+            // Bind the parameter to the placeholder
+            $stmt->bind_param("i", $teacherId); // Assuming TeacherID is an integer
+        
+            // Execute the query
+            $stmt->execute();
+        
+            // Get the result
+            $result = $stmt->get_result();
+        
+            // Fetch the data as an associative array
+            $teacher = $result->fetch_assoc();
+            var_dump($teacher);
+            // Return the teacher details
+            return $teacher;
         }
         
 
