@@ -1,8 +1,8 @@
 <?php
 session_start();
-// define('__ROOT__', dirname(dirname(__FILE__)));
+define('__ROOT__', dirname(dirname(__FILE__)));
 
-require_once( "/xampp/htdocs/SWE/m/SWE-project/Db/Dbh.php");
+require_once( "../Db/Dbh.php");
 
 abstract class Model
 {
