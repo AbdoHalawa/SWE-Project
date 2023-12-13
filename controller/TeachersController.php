@@ -12,10 +12,11 @@ class TeachersController {
                 case 'addTeacher':
                     $this->addTeacher(); // Call the addTeacher method
                     break;
-                // Add cases for other actions if needed
-                default:
-                    // Handle default case or invalid action
+                case 'searchTeachers':
+                    $this->searchTeachers(); // Call the searchTeachers method
                     break;
+                default:
+                    break;
             }
         }
     }
@@ -52,6 +53,23 @@ class TeachersController {
             // Render an error view or handle the error appropriately
         }
     }
+    public function searchTeachers()
+{
+    $searchID = $_POST['searchID'] ?? '';
+    $searchName = $_POST['searchName'] ?? '';
+    $searchPhone = $_POST['searchPhone'] ?? '';
+
+    $teacherModel = new TeacherModel();
+
+    $searchResults = $teacherModel->searchTeachers($searchID, $searchName, $searchPhone);
+
+    // Set search results in the session
+    $_SESSION['searchResults'] = $searchResults;
+
+    // Redirect back to the same page
+    header("Location: ../views/AdminView/listTeachers.php");
+    exit();
+}
 
 }
 

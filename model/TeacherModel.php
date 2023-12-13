@@ -213,6 +213,32 @@ class TeacherModel extends Model
             // Return the teacher details
             return $teacher;
         }
+        public function searchTeachers($searchID, $searchName, $searchPhone){
+            $whereConditions = [];
+            $params = [];
+        
+            if (!empty($searchID)) {
+                $whereConditions[] = "TeacherID = ?";
+                $params[] = $searchID;
+            }
+        
+            if (!empty($searchName)) {
+                $whereConditions[] = "TeacherName LIKE ?";
+                $params[] = "%$searchName%";
+            }
+        
+            if (!empty($searchPhone)) {
+                $whereConditions[] = "PhoneNumber LIKE ?";
+                $params[] = "%$searchPhone%";
+            }
+        
+            // Combine conditions with OR
+            $where = implode(" OR ", $whereConditions);
+        
+            $teachers = $this->select('Teachers', '*', $where, $params);
+        
+            return $teachers;
+        }
         
 
     

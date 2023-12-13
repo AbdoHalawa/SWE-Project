@@ -21,6 +21,16 @@ require_once( '../../controller/TeachersController.php');
     
 </head>
 
+<?php
+if (isset($_GET['success']) && $_GET['success'] == 1) {
+    echo "<script>
+            document.addEventListener('DOMContentLoaded', function() {
+                alert('Teacher added successfully');
+            });
+          </script>";
+}
+?>
+
 <body>
 
 <?php
