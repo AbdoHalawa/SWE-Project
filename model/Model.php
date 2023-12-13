@@ -10,7 +10,7 @@ abstract class Model
     {
         try {
             $this->db = $this->connect();
-        } catch (PDOException $e) {
+        } catch (Exception $e) {
             // Handle the exception, you can log or display an error message
             die("Connection failed: " . $e->getMessage());
         }
@@ -19,30 +19,47 @@ abstract class Model
     public function connect()
     {
         if (null === $this->db) {
-            $this->db = new Dbh();
+            $this->db = (new Dbh(DB_SERVER, DB_USER, DB_PASS, DB_DATABASE))->connect();
         }
         return $this->db;
     }
 
-    // Common method to execute SQL queries using MySQLi
-    protected function executeQuery($sql, $params = [])
+    protected function bindValues($stmt, $values)
     {
-        $stmt = $this->db->getConn()->prepare($sql);
-        if (!$stmt) {
-            throw new Exception("Error preparing SQL statement: " . $this->db->getConn()->error);
+        $types = '';
+        foreach ($values as $value) {
+            if (is_int($value)) {
+                $types .= 'i';  // Integer
+            } elseif (is_double($value)) {
+                $types .= 'd';  // Double
+            } else {
+                $types .= 's';  // String
+            }
         }
 
-        // Bind parameters if there are any
-        if (!empty($params)) {
-            $types = str_repeat('s', count($params)); // Assuming all parameters are strings, adjust accordingly
-            $stmt->bind_param($types, ...$params);
+        $stmt->bind_param($types, ...$values);
+    }
+
+    protected function executeQuery($sql, $values = [])
+    {
+        $stmt = $this->db->prepare($sql);
+
+        if (!$stmt) {
+            // Handle the error, e.g., log it or return an error response
+            die("Error in the prepared statement: " . $this->db->error);
+        }
+
+        if (!empty($values)) {
+            $this->bindValues($stmt, $values);
         }
 
         $stmt->execute();
-        return $stmt;
+        $result = $stmt->get_result();
+        $stmt->close();
+
+        return $result;
     }
 
-    // Select records from the database using MySQLi
     protected function select($table, $columns = "*", $where = "", $params = [])
     {
         $sql = "SELECT $columns FROM $table";
@@ -51,11 +68,10 @@ abstract class Model
         }
 
         $stmt = $this->executeQuery($sql, $params);
-        $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
+        $result = $stmt->fetch_all(MYSQLI_ASSOC);
+        return $result;
     }
 
-    // Insert a record into the database using MySQLi
     protected function insert($table, $data)
     {
         $columns = implode(", ", array_keys($data));
@@ -65,7 +81,6 @@ abstract class Model
         $this->executeQuery($sql, array_values($data));
     }
 
-    // Update records in the database using MySQLi
     protected function update($table, $data, $where, $params = [])
     {
         $setClause = implode(" = ?, ", array_keys($data)) . " = ?";

@@ -33,8 +33,27 @@ class StudentsController {
             return 0;
         }
     }
+    public function handleFormSubmission()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $action = $_GET['action'] ?? ''; // Get the action parameter from the URL
 
-    public function handleFormSubmission() {
+            // Check which action is requested and call the corresponding function
+            switch ($action) {
+                case 'addStudent':
+                    $this->addStudent(); // Call the addTeacher method
+                    break;
+                case 'editStudent':
+                    $this->editStudent(); // Call the deleteTeacher method
+                    break;
+                
+                default:
+                    break;
+            }
+        }
+    }
+    public function editStudent() {}
+    public function addStudent() {
         if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
             // Validate and process user input for parent
             $parentData = [

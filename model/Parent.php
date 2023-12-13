@@ -1,8 +1,7 @@
 <?php
-
-require_once(__DIR__ . '/../model/Model.php');
-require_once(__ROOT__ . "/model/Model.php");
-require_once(__ROOT__ . "/model/StudentModel.php");
+;
+require_once(__DIR__ .  "/../model/Model.php");
+require_once(__DIR__ .  "/../model/StudentModel.php");
 class Parents extends Model
 {
     private $ParentName;

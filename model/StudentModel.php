@@ -67,6 +67,19 @@ return $this->id;
         // Insert data into the database
         $this->executeQuery($sql, $values);
     }
+    public function getStudents()
+    {
+        $sql = "SELECT * FROM Students";
+        $result = $this->executeQuery($sql);
+    
+        $students = array();
+    
+        while ($row = $result->fetch_assoc()) {
+            $students[] = $row;
+        }
+    
+        return $students;
+    }
     public function checkAdmissionID($admissionID) {
         $sql = "SELECT * FROM Students WHERE AdmissionID = ?";
         $values = [$admissionID];

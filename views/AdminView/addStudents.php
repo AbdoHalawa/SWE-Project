@@ -44,7 +44,7 @@
                 <div class="col-sm-12">
                     <div class="card comman-shadow">
                         <div class="card-body">
-                            <form method="post" action="../../controller/StudentsController.php"> <!-- Change the action attribute accordingly -->
+                            <form method="post" action="../../controller/StudentsController.php?action=addStudent"> <!-- Change the action attribute accordingly -->
 
                             <div class="row">
     <div class="col-12">
