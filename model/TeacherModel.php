@@ -182,6 +182,42 @@ class TeacherModel extends Model
         }
         return false;
     }
+    public function editTeacher($teacherId): bool {
+        $data = [
+            'TeacherName' => $this->teacherName,
+            'Gender' => $this->gender,
+            'DateOfBirth' => $this->dateOfBirth,
+            'PhoneNumber' => $this->phoneNumber,
+            'JoiningDate' => $this->joiningDate,
+            'Experience' => $this->experience,
+            'Email' => $this->email,
+        ];
+        $sql = "UPDATE Teachers 
+                SET TeacherName=?, Gender=?, DateOfBirth=?, PhoneNumber=?, JoiningDate=?, Experience=?, Email=?
+                WHERE TeacherID=?";
+        $values = array_values($data);
+        $values[] = $teacherId;
+        
+        try {
+            $result = $this->executeQuery($sql, $values);
+    
+            // If update was successful, return true
+            if ($result !== false && $result->affected_rows > 0) {
+                return true;
+            } else {
+                // Consider throwing an exception or logging an error
+                // based on the specific situation/error.
+                throw new Exception("Error: Teacher not updated.");
+            }
+        } catch (mysqli_sql_exception $exception) {
+            // Echo the error message, and re-throw the exception
+            echo "Error: " . $exception->getMessage();
+            throw $exception;
+        }
+        return false;
+    }
+    
+
     // Function to check if a TeacherID already exists in the database
     private function teacherIdExists($teacherId): bool
     {

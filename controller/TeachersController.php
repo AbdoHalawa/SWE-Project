@@ -14,6 +14,9 @@ class TeachersController
                 case 'addTeacher':
                     $this->addTeacher(); // Call the addTeacher method
                     break;
+                case 'editTeacher':
+                    $this->editTeacher(); // Call the deleteTeacher method
+                    break;
                 case 'searchTeachers':
                     $this->searchTeachers(); // Call the searchTeachers method
                     break;
@@ -73,7 +76,37 @@ class TeachersController
         header("Location: ../views/AdminView/listTeachers.php");
         exit();
     }
+    public function editTeacher(){
+        $TeacherId = $_POST['teacherId'];
+        $teacherData = [
+            'TeacherId' => $_POST['teacherId']?? '',
+            'TeacherName' => $_POST['teacherName'] ?? '',
+            'Gender' => $_POST['gender'] ?? '',
+            'DateOfBirth' => $_POST['DOB'] ?? '',
+            'PhoneNumber' => $_POST['mobile'] ?? '',
+            'JoiningDate' => $_POST['joiningDate'] ?? '',
+            'Experience' => $_POST['experience'] ?? '',
+            'Email' => $_POST['email'] ?? '',
+        ];
+        var_dump($teacherData);
+        // Create TeacherModel instance
+        $teacherModel = new TeacherModel($teacherData);
+
+        // Add the teacher
+        $result = $teacherModel->editTeacher($TeacherId);
+
+        if ($result) {
+            echo 'Teacher updated successfully';
+            // Redirect or render a success view
+            header("Location: ../views/AdminView/listTeachers.php");
+            exit();
+        } else {
+            echo "Error updating teacher.";
+            // Render an error view or handle the error appropriately
+        }
+    }
 }
+
 
 // Create an instance of TeachersController and call handleRequest method
 $teachersController = new TeachersController();

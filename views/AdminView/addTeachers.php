@@ -1,5 +1,5 @@
 <?php
-require_once( '../../controller/TeachersController.php');
+require_once('../../controller/TeachersController.php');
 
 ?>
 

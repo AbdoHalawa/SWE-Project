@@ -24,6 +24,7 @@ if (isset($_SESSION['searchResults'])) {
     <link rel="stylesheet" href="assets\plugins\fontawesome\css\fontawesome.min.css">
     <link rel="stylesheet" href="assets\plugins\fontawesome\css\all.min.css">
     <link rel="stylesheet" href="assets\css\style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 </head>
 
@@ -138,8 +139,8 @@ if (isset($_SESSION['searchResults'])) {
                                                 <td><?php echo $teacher['TeacherType']; ?></td>
                                                 <td class="text-end">
                                                     <div class="actions">
-                                                        <a href="javascript:;" class="btn btn-sm bg-success-light me-2">
-                                                            <i class="feather-eye"></i>
+                                                        <a href="#" action="../../controller/TeachersController.php?action=deleteTeacher"class="btn btn-sm bg-success-light me-2">
+                                                        <i class="fa-solid fa-trash"></i>
                                                         </a>
                                                         <a href="./editTeachers.php?teacherId=<?php echo $teacher['TeacherID']; ?>" class="btn btn-sm bg-danger-light">
                                                             <i class="feather-edit"></i>
@@ -180,6 +181,7 @@ if (isset($_SESSION['searchResults'])) {
     <script src="assets/plugins/datatables/datatables.min.js"></script>
 
     <script src="assets/js/script.js"></script>
+    
 </body>
 
 </html>

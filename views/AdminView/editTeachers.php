@@ -66,48 +66,48 @@ if ($teacher) {
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
                                             <label>Teacher ID <span class="login-danger">*</span></label>
-                                            <input type="text" class="form-control" value=<?php echo $teacherId ?> readonly style="background-color: white;">
+                                            <input name="teacherId" type="text" class="form-control" value=<?php echo $teacherId ?> readonly style="background-color: white;">
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
                                             <label>Name <span class="login-danger">*</span></label>
-                                            <input type="text" class="form-control" value=<?php echo $teacherName ?>>
+                                            <input name="teacherName" type="text" class="form-control" value=<?php echo $teacherName ?>>
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
                                             <label>Gender <span class="login-danger">*</span></label>
-                                            <select class="form-control select">
-                                                <option <?php if ($gender === 'Male') echo 'selected'; ?>>Male</option>
-                                                <option <?php if ($gender === 'Female') echo 'selected'; ?>>Female</option>
-                                                <option <?php if ($gender === 'Others') echo 'selected'; ?>>Others</option>
+                                            <select class="form-control select" name="gender">
+                                                <option  value="male"<?php if ($gender === 'Male') echo 'selected'; ?>>Male</option>
+                                                <option value="female" <?php if ($gender === 'Female') echo 'selected'; ?>>Female</option>
+                                                <option value="others"<?php if ($gender === 'Others') echo 'selected'; ?>>Others</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms calendar-icon">
                                             <label>Date Of Birth <span class="login-danger">*</span></label>
-                                            <input class="form-control datetimepicker" type="text" placeholder=<?php echo $DOB ?>>
+                                            <input name="DOB" class="form-control datetimepicker" type="text" placeholder=<?php echo $DOB ?>>
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
                                             <label>Mobile <span class="login-danger">*</span></label>
-                                            <input type="text" class="form-control" value=<?php echo $phoneNumber ?>>
+                                            <input name="mobile" type="text" class="form-control" value=<?php echo $phoneNumber ?>>
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms calendar-icon">
                                             <label>Joining Date <span class="login-danger">*</span></label>
-                                            <input class="form-control datetimepicker" type="text" placeholder=<?php echo $joiningDate ?>>
+                                            <input name="joiningDate"class="form-control datetimepicker" type="text" placeholder=<?php echo $joiningDate ?>>
                                         </div>
                                     </div>
 
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
                                             <label>Experience <span class="login-danger">*</span></label>
-                                            <input class="form-control" type="text" value=<?php echo $experience ?>>
+                                            <input name="experience"class="form-control" type="text" value=<?php echo $experience ?>>
                                         </div>
                                     </div>
                                     <div class="col-12">
@@ -117,7 +117,7 @@ if ($teacher) {
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
                                             <label>Email ID <span class="login-danger">*</span></label>
-                                            <input type="email" class="form-control" value=<?php echo $email ?>>
+                                            <input name="email" type="email" class="form-control" value=<?php echo $email ?>>
                                         </div>
                                     </div>
 
