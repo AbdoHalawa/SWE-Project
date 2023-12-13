@@ -1,5 +1,5 @@
 <?php
-require_once(_DIR_ . '/../../model/TeacherModel.php');
+require_once(__DIR__ . '/../../model/TeacherModel.php');
 
 if (isset($_SESSION['searchResults'])) {
     $teachers = $_SESSION['searchResults'];

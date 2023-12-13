@@ -1,9 +1,11 @@
 <?php
-require_once "/xampp/htdocs/SWE/m/SWE-project/model/TeacherModel.php";
-require_once "/xampp/htdocs/SWE/m/SWE-project/model/Model.php";
+require_once(__DIR__ . '/../model/TeacherModel.php');
+require_once(__DIR__ . '/../model/Model.php');
 
-class TeachersController {
-    public function handleRequest() {
+class TeachersController
+{
+    public function handleRequest()
+    {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $action = $_GET['action'] ?? ''; // Get the action parameter from the URL
 
@@ -16,15 +18,16 @@ class TeachersController {
                     $this->searchTeachers(); // Call the searchTeachers method
                     break;
                 default:
-                    break;
+                    break;
             }
         }
     }
-    public function addTeacher() {
-              // Validate and sanitize the input data (perform input validation here)
-       
+    public function addTeacher()
+    {
+        // Validate and sanitize the input data (perform input validation here)
+
         $teacherData = [
-            'TeacherId'=>$_POST['teacherId'],
+            'TeacherId' => $_POST['teacherId'],
             'TeacherName' => $_POST['teacherName'] ?? '',
             'Gender' => $_POST['gender'] ?? '',
             'DateOfBirth' => $_POST['DOB'] ?? '',
@@ -39,7 +42,7 @@ class TeachersController {
 
         // Create TeacherModel instance
         $teacherModel = new TeacherModel($teacherData);
-        
+
         // Add the teacher
         $result = $teacherModel->addTeacher();
 
@@ -54,26 +57,24 @@ class TeachersController {
         }
     }
     public function searchTeachers()
-{
-    $searchID = $_POST['searchID'] ?? '';
-    $searchName = $_POST['searchName'] ?? '';
-    $searchPhone = $_POST['searchPhone'] ?? '';
+    {
+        $searchID = $_POST['searchID'] ?? '';
+        $searchName = $_POST['searchName'] ?? '';
+        $searchPhone = $_POST['searchPhone'] ?? '';
 
-    $teacherModel = new TeacherModel();
+        $teacherModel = new TeacherModel();
 
-    $searchResults = $teacherModel->searchTeachers($searchID, $searchName, $searchPhone);
+        $searchResults = $teacherModel->searchTeachers($searchID, $searchName, $searchPhone);
 
-    // Set search results in the session
-    $_SESSION['searchResults'] = $searchResults;
+        // Set search results in the session
+        $_SESSION['searchResults'] = $searchResults;
 
-    // Redirect back to the same page
-    header("Location: ../views/AdminView/listTeachers.php");
-    exit();
-}
-
+        // Redirect back to the same page
+        header("Location: ../views/AdminView/listTeachers.php");
+        exit();
+    }
 }
 
 // Create an instance of TeachersController and call handleRequest method
 $teachersController = new TeachersController();
 $teachersController->handleRequest();
-?>

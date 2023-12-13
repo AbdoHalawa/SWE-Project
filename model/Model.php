@@ -1,8 +1,6 @@
 <?php
 session_start();
-define('__ROOT__', dirname(dirname(__FILE__)));
-
-require_once( "../Db/Dbh.php");
+require_once(__DIR__ . "/../Db/Dbh.php");
 
 abstract class Model
 {
