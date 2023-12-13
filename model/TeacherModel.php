@@ -142,9 +142,8 @@ class TeacherModel extends Model
         if ($this->teacherIdExists($this->teacherId)) {
             // Set an error message
             $_SESSION['error'] = 'TeacherID already exists.';
-            echo 'user exists';
-            // Redirect to the same page
-            // header("Location: ../views/AdminView/addTeachers.php");
+            header("Location: ../views/AdminView/addTeachers.php?exists=1");
+
             exit();
         }
         $data = [

@@ -50,9 +50,7 @@ class TeachersController
         $result = $teacherModel->addTeacher();
 
         if ($result) {
-            echo 'Teacher added successfully';
-            // Redirect or render a success view
-            // header("Location: success_page.php");
+            header("Location: ../views/AdminView/addTeachers.php?success=1");
             exit();
         } else {
             echo "Error adding teacher.";
@@ -76,10 +74,11 @@ class TeachersController
         header("Location: ../views/AdminView/listTeachers.php");
         exit();
     }
-    public function editTeacher(){
+    public function editTeacher()
+    {
         $TeacherId = $_POST['teacherId'];
         $teacherData = [
-            'TeacherId' => $_POST['teacherId']?? '',
+            'TeacherId' => $_POST['teacherId'] ?? '',
             'TeacherName' => $_POST['teacherName'] ?? '',
             'Gender' => $_POST['gender'] ?? '',
             'DateOfBirth' => $_POST['DOB'] ?? '',
