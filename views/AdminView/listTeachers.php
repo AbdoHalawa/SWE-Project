@@ -41,7 +41,7 @@ if (isset($_SESSION['searchResults'])) {
                     <div class="col">
                         <h3 class="page-title">Teachers</h3>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="../AdminView/adminIndex.php">Dashboard</a></li>
                             <li class="breadcrumb-item active">Teachers</li>
                         </ul>
                     </div>
@@ -85,10 +85,7 @@ if (isset($_SESSION['searchResults'])) {
                                         <h3 class="page-title">Teachers</h3>
                                     </div>
                                     <div class="col-auto text-end float-end ms-auto download-grp">
-                                        <a href="teachers.html" class="btn btn-outline-gray me-2 active"><i class="feather-list"></i></a>
-                                        <a href="teachers-grid.html" class="btn btn-outline-gray me-2"><i class="feather-grid"></i></a>
-                                        <a href="#" class="btn btn-outline-primary me-2"><i class="fas fa-download"></i> Download</a>
-                                        <a href="add-teacher.html" class="btn btn-primary"><i class="fas fa-plus"></i></a>
+                                        <a href="../AdminView/addTeachers.php" class="btn btn-primary"><i class="fas fa-plus"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -127,7 +124,7 @@ if (isset($_SESSION['searchResults'])) {
                                                 <td>
                                                     <h2 class="table-avatar">
                                                         <!-- <a href="teacher-details.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle" src="assets/img/profiles/avatar-02.jpg" alt="User Image"></a> -->
-                                                        <a href="teacher-details.html"><?php echo $teacher['TeacherName']; ?></a>
+                                                        <?php echo $teacher['TeacherName']; ?>
                                                     </h2>
                                                 </td>
                                                 <td><?php echo $teacher['Gender']; ?></td>

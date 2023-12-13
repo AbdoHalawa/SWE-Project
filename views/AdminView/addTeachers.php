@@ -50,7 +50,7 @@ if (isset($_GET['success']) && $_GET['success'] == 1) {
                     <div class="col">
                         <h3 class="page-title">Add Teachers</h3>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="teachers.html">Teachers</a></li>
+                            <li class="breadcrumb-item"><a href="../AdminView/listTeachers.php">Teachers</a></li>
                             <li class="breadcrumb-item active">Add Teachers</li>
                         </ul>
                     </div>
