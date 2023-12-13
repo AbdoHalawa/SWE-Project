@@ -44,11 +44,12 @@ return $this->id;
     }
     public function insertStudent()
     {
+        $formattedDob = date('Y-m-d', strtotime($this->dateOfBirth));
         $data = [
             'FirstName' => $this->firstName,
             'LastName' => $this->lastName,
             'Gender' => $this->gender,
-            'DateOfBirth' => $this->dateOfBirth,
+            'DateOfBirth' => $formattedDob,
             'Religion' => $this->religion,
             'Grade' => $this->grade,
             'ClassID' =>  $this->classID,
@@ -69,7 +70,10 @@ return $this->id;
     }
     public function getStudents()
 {
-    $sql = "SELECT * FROM Students";
+    $sql = "SELECT Students.*, Classes.ClassName, Classes.Grade, Parents.ParentName 
+            FROM Students
+            JOIN Classes ON Students.ClassID = Classes.ClassID
+            JOIN Parents ON Students.ParentID = Parents.ParentID";
     $stmt = $this->executeQuery($sql);
 
     if ($stmt) {

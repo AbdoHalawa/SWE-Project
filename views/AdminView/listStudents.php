@@ -123,9 +123,9 @@ include "adminNav.php";
 <a href="student-details.html"><?php echo $student['FirstName']; ?></a>
 </h2>
 </td>
-<td><?php echo $student['ClassID']; ?></td>
+<td><?php echo (string) $student['Grade']. $student['ClassName']; ?></td>
 <td><?php echo $student['DateOfBirth']; ?></td>
-<td><?php echo $student['ParentID']; ?></td>
+<td><?php echo $student['ParentName']; ?></td>
 <td><?php echo $student['PhoneNumber']; ?></td>
 <td class="text-end">
 <div class="actions ">
