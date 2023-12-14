@@ -2,7 +2,7 @@
 define('__ROOT__', "../../");
 require_once(__ROOT__ . "model/Parent.php");
 require_once(__ROOT__ . "controller/ParentsController.php"); // Adjust the path based on your actual file structure
-$P1  = new Parents($_SESSION['user_id']);
+$P1  = new Parents(122);
 $P2 = new ParentController($P1);
 
 $P2->viewFees($P1->Student->getID());
@@ -323,8 +323,71 @@ include "../partials/nav.php"
                     </div>
                 </div>end ngIf: Screen.hasOtherFees -->
 
+                <button id="payNowButton">Pay Now</button>
 
+<!-- Payment Form Popup -->
+<div id="paymentForm" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeForm">&times;</span>
+        <!-- Payment Form Fields -->
+        <form id="paymentFormFields">
+            <label for="amount">Amount:</label>
+            <input type="text" id="amount" required>
 
+            <label for="cardNumber">Card Number:</label>
+            <input type="text" id="cardNumber" required>
+
+            <label for="expiryMonth">Expiry Month:</label>
+            <input type="text" id="expiryMonth" required>
+
+            <label for="expiryYear">Expiry Year:</label>
+            <input type="text" id="expiryYear" required>
+
+            <label for="cvc">CVC/CVV:</label>
+            <input type="text" id="cvc" required>
+
+            <label for="cardHolderName">Card Holder Name:</label>
+            <input type="text" id="cardHolderName" required>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+<SCRIPT>
+    document.addEventListener('DOMContentLoaded', function () {
+    // Get the modal and the button that opens it
+    var modal = document.getElementById('paymentForm');
+    var payNowButton = document.getElementById('payNowButton');
+    var closeForm = document.getElementById('closeForm');
+
+    // Open the modal when the button is clicked
+    payNowButton.addEventListener('click', function () {
+        modal.style.display = 'block';
+    });
+
+    // Close the modal when the close button is clicked
+    closeForm.addEventListener('click', function () {
+        modal.style.display = 'none';
+    });
+
+    // Close the modal when clicking outside the modal content
+    window.addEventListener('click', function (event) {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+
+    // Prevent the form from submitting (for demonstration purposes)
+    document.getElementById('paymentFormFields').addEventListener('submit', function (event) {
+        event.preventDefault();
+        // Add your logic for handling form submission here
+        alert('Form submitted!');
+        // Optionally, close the modal after submission
+        modal.style.display = 'none';
+    });
+});
+
+    </SCRIPT>
 
 </body>
 

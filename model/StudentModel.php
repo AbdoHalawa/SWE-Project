@@ -44,11 +44,12 @@ return $this->id;
     }
     public function insertStudent()
     {
+        $formattedDob = date('Y-m-d', strtotime($this->dateOfBirth));
         $data = [
             'FirstName' => $this->firstName,
             'LastName' => $this->lastName,
             'Gender' => $this->gender,
-            'DateOfBirth' => $this->dateOfBirth,
+            'DateOfBirth' => $formattedDob,
             'Religion' => $this->religion,
             'Grade' => $this->grade,
             'ClassID' =>  $this->classID,
@@ -67,6 +68,38 @@ return $this->id;
         // Insert data into the database
         $this->executeQuery($sql, $values);
     }
+    public function getStudents()
+{
+    $sql = "SELECT Students.*, Classes.ClassName, Classes.Grade, Parents.ParentName 
+            FROM Students
+            JOIN Classes ON Students.ClassID = Classes.ClassID
+            JOIN Parents ON Students.ParentID = Parents.ParentID";
+    $stmt = $this->executeQuery($sql);
+
+    if ($stmt) {
+        $result = $stmt->get_result();
+
+        if ($result) {
+            // Use fetch_assoc to fetch each row as an associative array
+            $students = array();
+            while ($row = $result->fetch_assoc()) {
+                $students[] = $row;
+            }
+
+            // Close the result set and the statement
+            $result->close();
+            $stmt->close();
+
+            return $students;
+        } else {
+            // Handle the case where get_result is not available
+            die("Error getting result set: " . $this->db->error);
+        }
+    } else {
+        // Handle the case where the query execution failed
+        die("Error executing query: " . $this->db->error);
+    }
+}
     public function checkAdmissionID($admissionID) {
         $sql = "SELECT * FROM Students WHERE AdmissionID = ?";
         $values = [$admissionID];

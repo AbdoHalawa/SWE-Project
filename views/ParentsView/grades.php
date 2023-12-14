@@ -2,7 +2,7 @@
 define('__ROOT__', "../../");
 require_once(__ROOT__ . "model/Parent.php");
 require_once(__ROOT__ . "controller/ParentsController.php"); // Adjust the path based on your actual file structure
-$P1  = new Parents($_SESSION['user_id']);
+$P1  = new Parents(122);
 $P2 = new ParentController($P1);
 $P2->viewGrades($P1->Student->getID());
 ?>
@@ -197,6 +197,7 @@ include "../partials/nav.php"
 					$(this).addClass('wus-nav-item--active');
 				});
 			</script>
+			
 	</div>
 	<!--Nav Menu-->
 	</div>
