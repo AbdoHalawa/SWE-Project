@@ -336,14 +336,17 @@ include "../partials/nav.php"
 
             <label for="cardNumber" style="display: block; margin-bottom: 8px;">Card Number:</label>
             <input type="text" id="cardNumber" style="width: 100%; padding: 8px; margin-bottom: 16px; box-sizing: border-box;" required>
+            <span class="error" id="cardNumberError" style="color: red; font-size: 12px; padding-top: 2px; display: block;"></span>
 
             <label for="expiryMonth" style="display: block; margin-bottom: 8px;">Expiry Month:</label>
             <input type="text" id="expiryMonth" style="width: 100%; padding: 8px; margin-bottom: 16px; box-sizing: border-box;" required>
+            <span class="error" id="expiryMonthError" style="color: red; font-size: 12px; padding-top: 2px; display: block;"></span>
 
             <label for="expiryYear" style="display: block; margin-bottom: 8px;">Expiry Year:</label>
             <input type="text" id="expiryYear" style="width: 100%; padding: 8px; margin-bottom: 16px; box-sizing: border-box;" required>
+            <span class="error" id="expiryYearError" style="color: red; font-size: 12px; padding-top: 2px; display: block;"></span>
 
-            <label for="cvc" style="display: block; margin-bottom: 8px;">CVC/CVV:</label>
+            <label for="cvc" style="display: block; margin-bottom: 8px;">Card Verfication Code:</label>
             <input type="text" id="cvc" style="width: 100%; padding: 8px; margin-bottom: 16px; box-sizing: border-box;" required>
 
             <label for="cardHolderName" style="display: block; margin-bottom: 8px;">Card Holder Name:</label>
@@ -354,42 +357,74 @@ include "../partials/nav.php"
     </div>
 </div>
 
+<script>
 
-<SCRIPT>
-    document.addEventListener('DOMContentLoaded', function () {
-    // Get the modal and the button that opens it
-    var modal = document.getElementById('paymentForm');
-    var payNowButton = document.getElementById('payNowButton');
-    var closeForm = document.getElementById('closeForm');
+document.addEventListener('DOMContentLoaded', function () {
+        // Get the modal and the button that opens it
+        var modal = document.getElementById('paymentForm');
+        var payNowButton = document.getElementById('payNowButton');
+        var closeForm = document.getElementById('closeForm');
+        var paymentForm = document.getElementById('paymentFormFields');
 
-    // Open the modal when the button is clicked
-    payNowButton.addEventListener('click', function () {
-        modal.style.display = 'block';
-    });
+        // Open the modal when the button is clicked
+        payNowButton.addEventListener('click', function () {
+            modal.style.display = 'block';
+        });
 
-    // Close the modal when the close button is clicked
-    closeForm.addEventListener('click', function () {
-        modal.style.display = 'none';
-    });
-
-    // Close the modal when clicking outside the modal content
-    window.addEventListener('click', function (event) {
-        if (event.target === modal) {
+        // Close the modal when the close button is clicked
+        closeForm.addEventListener('click', function () {
             modal.style.display = 'none';
-        }
-    });
+        });
 
-    // Prevent the form from submitting (for demonstration purposes)
-    document.getElementById('paymentFormFields').addEventListener('submit', function (event) {
-        event.preventDefault();
-        // Add your logic for handling form submission here
-        alert('Form submitted!');
-        // Optionally, close the modal after submission
-        modal.style.display = 'none';
-    });
-});
+        // Close the modal when clicking outside the modal content
+        window.addEventListener('click', function (event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
 
-    </SCRIPT>
+        // Add validation logic for form submission
+        paymentForm.addEventListener('submit', function (event) {
+            var cardNumberInput = document.getElementById('cardNumber');
+            var expiryMonthInput = document.getElementById('expiryMonth');
+            var expiryYearInput = document.getElementById('expiryYear');
+
+            // Validate card number (14 digits)
+            if (cardNumberInput.value.length !== 14 || !/^\d{14}$/.test(cardNumberInput.value)) {
+                document.getElementById('cardNumberError').textContent = 'Invalid card number. Please enter exactly 14 digits.';
+                event.preventDefault();
+            } else {
+                document.getElementById('cardNumberError').textContent = '';
+            }
+
+            // Validate expiry month (2 digits)
+            if (expiryMonthInput.value.length !== 2 || !/^\d{2}$/.test(expiryMonthInput.value)) {
+                document.getElementById('expiryMonthError').textContent = 'Invalid expiry month. Please enter exactly 2 digits.';
+                event.preventDefault();
+            } else {
+                document.getElementById('expiryMonthError').textContent = '';
+            }
+
+            // Validate expiry year (2 digits)
+            if (expiryYearInput.value.length !== 2 || !/^\d{2}$/.test(expiryYearInput.value)) {
+                document.getElementById('expiryYearError').textContent = 'Invalid expiry year. Please enter exactly 2 digits.';
+                event.preventDefault();
+            } else {
+                document.getElementById('expiryYearError').textContent = '';
+            }
+
+            // Add your logic for handling form submission here
+            if (!event.defaultPrevented) {
+                alert('Form submitted!');
+                // Optionally, close the modal after submission
+                modal.style.display = 'none';
+            }
+        });
+    });
+</script>
+
+
+
 
 </body>
 
