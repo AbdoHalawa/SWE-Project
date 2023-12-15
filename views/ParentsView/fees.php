@@ -327,32 +327,34 @@ include "../partials/nav.php"
 
 <!-- Payment Form Popup -->
 <div id="paymentForm" class="modal">
-    <div class="modal-content">
-        <span class="close" id="closeForm">&times;</span>
+    <div class="modal-content" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #fff; padding: 20px; border-radius: 8px; text-align: center; width: 400px;">
+        <span class="close" id="closeForm" style="position: absolute; top: 10px; right: 10px; font-size: 20px; cursor: pointer;">&times;</span>
         <!-- Payment Form Fields -->
         <form id="paymentFormFields">
-            <label for="amount">Amount:</label>
-            <input type="text" id="amount" required>
+            <label for="amount" style="display: block; margin-bottom: 8px;">Amount:</label>
+            <input type="text" id="amount" style="width: 100%; padding: 8px; margin-bottom: 16px; box-sizing: border-box;" required>
 
-            <label for="cardNumber">Card Number:</label>
-            <input type="text" id="cardNumber" required>
+            <label for="cardNumber" style="display: block; margin-bottom: 8px;">Card Number:</label>
+            <input type="text" id="cardNumber" style="width: 100%; padding: 8px; margin-bottom: 16px; box-sizing: border-box;" required>
 
-            <label for="expiryMonth">Expiry Month:</label>
-            <input type="text" id="expiryMonth" required>
+            <label for="expiryMonth" style="display: block; margin-bottom: 8px;">Expiry Month:</label>
+            <input type="text" id="expiryMonth" style="width: 100%; padding: 8px; margin-bottom: 16px; box-sizing: border-box;" required>
 
-            <label for="expiryYear">Expiry Year:</label>
-            <input type="text" id="expiryYear" required>
+            <label for="expiryYear" style="display: block; margin-bottom: 8px;">Expiry Year:</label>
+            <input type="text" id="expiryYear" style="width: 100%; padding: 8px; margin-bottom: 16px; box-sizing: border-box;" required>
 
-            <label for="cvc">CVC/CVV:</label>
-            <input type="text" id="cvc" required>
+            <label for="cvc" style="display: block; margin-bottom: 8px;">CVC/CVV:</label>
+            <input type="text" id="cvc" style="width: 100%; padding: 8px; margin-bottom: 16px; box-sizing: border-box;" required>
 
-            <label for="cardHolderName">Card Holder Name:</label>
-            <input type="text" id="cardHolderName" required>
+            <label for="cardHolderName" style="display: block; margin-bottom: 8px;">Card Holder Name:</label>
+            <input type="text" id="cardHolderName" style="width: 100%; padding: 8px; margin-bottom: 16px; box-sizing: border-box;" required>
 
             <button type="submit">Submit</button>
         </form>
     </div>
 </div>
+
+
 <SCRIPT>
     document.addEventListener('DOMContentLoaded', function () {
     // Get the modal and the button that opens it
