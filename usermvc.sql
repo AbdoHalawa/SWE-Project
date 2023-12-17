@@ -1,8 +1,4 @@
--- Table for Subjects
-CREATE TABLE Subjects (
-    SubjectID INT PRIMARY KEY,
-    SubjectName VARCHAR(50)
-);
+
 
 -- Table for Teachers
 CREATE TABLE Teachers (
@@ -17,6 +13,13 @@ CREATE TABLE Teachers (
     Password VARCHAR(255),
     TeacherType VARCHAR(20) -- 'Normal' or 'Head'
 );
+-- Table for Subjects
+CREATE TABLE Subjects (
+    SubjectID INT PRIMARY KEY,
+    SubjectName VARCHAR(50),
+    TeacherID INT,
+    FOREIGN KEY (TeacherID) REFERENCES Teachers(TeacherID)
+)ENGINE=InnoDB;
 
 -- Table for Materials
 CREATE TABLE Materials (

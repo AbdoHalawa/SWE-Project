@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en-GB">
-
+	<?php
+$_SESSION['teacher_id'] = 1234;
+require_once('../../model/TeacherModel.php');
+$teacher = new TeacherModel($_SESSION['teacher_id']);
+$subjects = $teacher->getSubjectsForTeacher();
+?>
 <head>
 	<script src="https://kit.fontawesome.com/cd800095c4.js" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/11298abef4.js" crossorigin="anonymous"></script>
@@ -84,32 +89,8 @@ flexibility(document.documentElement);
 
 include "../partials/nav.php";
 
-define('__ROOT__', dirname(__DIR__) . "/");
-require_once(__ROOT__ . "controller/TeachersController.php");
-require_once(__ROOT__ . "model/addMaterialModel.php");  
-
-$servername = "localhost";  
-$username = "root";         
-$password = "";             
-$dbname = "UserMVC";
-
-$db = new mysqli($servername, $username, $password, $dbname);
-
-if ($db->connect_error) {
-    die("Connection failed: " . $db->connect_error);
-}
-
-$teachersController = new TeachersController($db);
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $title = $_POST["title"];
-    $content = $_POST["content"];
-    $subjectID = $_POST["subject"];
-    $teacherID = 1; // Assuming I have 1 default teacher for now
-
-    $teachersController->addMaterial($title, $content, $subjectID, $teacherID);
-}
 ?>
+
 
 
 
@@ -234,29 +215,239 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 				</center>
 
+				<style>
+    /* Add your CSS styling here */
+    .subject-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px; /* Adjust the value to set the space between buttons */
+        margin-bottom: 20px; /* Adjust the value to set the space after buttons */
+    }
+
+    .subject {
+        margin-bottom: 10px; /* Adjust the value to set the space between buttons and forms */
+    }
+
+    .subject-buttons {
+        display: none;
+        margin-top: 10px; /* Adjust the value to set the space between buttons and forms */
+    }
+
+    .subject-buttons button {
+        margin-right: 10px; /* Adjust the value to set the space between buttons */
+    }
+
+    .material-buttons {
+        display: none;
+        margin-top: 10px; /* Adjust the value to set the space between buttons and forms */
+    }
+
+    .material-buttons button {
+        margin-right: 10px; /* Adjust the value to set the space between buttons */
+    }
+</style>
+
+<!-- Display buttons for each subject -->
+<div class="subject-container">
+    <?php foreach ($subjects as $subject) : ?>
+        <div class="subject">
+            <!-- Add a button to reveal the form -->
+            <button class="reveal-form-btn" data-subject-id="<?php echo $subject['SubjectID']; ?>"><?php echo $subject['SubjectName']; ?></button>
+
+            <!-- Buttons for Add, Edit, and Delete -->
+            <div class="subject-buttons" id="buttons-<?php echo $subject['SubjectID']; ?>">
+                <button class="add-btn">Add</button>
+                <button class="edit-btn">Edit</button>
+                <button class="delete-btn">Delete</button>
+            </div>
+
+        <form>   
+<form class="add-form" id="form-<?php echo $subject['SubjectID']; ?>" style="display: none;" enctype="multipart/form-data">
+    <!-- Additional fields for Add -->
+    <input type="hidden" name="subjectId" value="<?php echo $subject['SubjectID']; ?>">
+    <input type="hidden" name="teacherId" value="<?php echo $_SESSION['teacher_id']; ?>">
+
+    <label for="add-content">Content:</label>
+    <textarea id="add-content" name="add-content"></textarea>
+
+    <label for="add-title">Title:</label>
+    <input type="text" id="add-title" name="add-title">
+
+    <label for="add-pdf">Upload PDF:</label>
+    <input type="file" id="add-pdf" name="add-pdf">
+
+    <button type="button" class="add-material-btn">Add Material</button>
+</form>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    const addMaterialButtons = document.querySelectorAll('.add-material-btn');
+
+    addMaterialButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            const form = this.closest('form'); // Use closest('form') to get the closest form element
+            const formData = new FormData(form);
+
+            // Make sure to include the subjectId and teacherId in the FormData
+            formData.append('subjectId', form.querySelector('[name="subjectId"]').value);
+            formData.append('teacherId', form.querySelector('[name="teacherId"]').value);
+
+            console.log('Form Data:', formData); // Log the FormData to check if it contains the expected values
+
+            // Make an AJAX request to handle the form submission
+            fetch('MaterialController.php?action=addMaterial', {
+                    method: 'POST',
+                    body: formData,
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Handle the response, e.g., show a success message
+                    console.log('Response Data:', data);
+
+                    // Optionally, you can redirect or perform other actions based on the response
+                })
+                .catch(error => {
+                    // Handle errors, e.g., show an error message
+                    console.error('Error:', error);
+                });
+        });
+    });
+});
+
+</script>
 
 
+                </div>
+<form>
+                <!-- Additional fields for Edit -->
+                <div class="edit-form" style="display: none;">
+                    <!-- Display buttons for each material -->
+                    <!-- Adjust the loop and content based on your data structure -->
+                    <?php foreach ($subject['materials'] as $material) : ?>
+                        <button class="material-btn" data-material-id="<?php echo $material['MaterialID']; ?>"><?php echo $material['MaterialTitle']; ?></button>
+                    <?php endforeach; ?>
 
-				<!-- Classes section -->
-				<div class="astra-advanced-hook-30270 ">
-					<section class="featured-pages-strip">
+                    <label for="edit-content" style="display: none;">Edit Content:</label>
+                    <textarea id="edit-content" name="edit-content" style="display: none;"></textarea>
 
-					<form action="..\controller\TeachersController.php" method="POST">
-                      <label for="title">Title:</label>
-                      <input type="text" id="title" name="title" required>
+                    <label for="edit-title" style="display: none;">Edit Title:</label>
+                    <input type="text" id="edit-title" name="edit-title" style="display: none;">
 
-                       <label for="subject">Subject Name</label>
-                       <input type="text" id="subject" name="subject" required>
+                    <label for="edit-pdf" style="display: none;">Edit PDF:</label>
+                    <input type="file" id="edit-pdf" name="edit-pdf" style="display: none;">
 
-                          <label for="content">Content</label>
-                        <textarea id="Content" name="content" rows="4" required></textarea>
+                    <button class="save-changes-btn" style="display: none;">Save Changes</button>
+                </div>
+                    </form>
+                    <form>
+                <!-- Additional fields for Delete -->
+                <div class="delete-form" style="display: none;">
+                    <label for="delete-content" style="display: none;">Content:</label>
+                    <textarea id="delete-content" name="delete-content" style="display: none;"></textarea>
 
-                     <label for="file">Upload Material:</label>
-                     <input type="file" id="file" name="file" accept=".pdf, .doc, .docx" required>
+                    <label for="delete-title" style="display: none;">Title:</label>
+                    <input type="text" id="delete-title" name="delete-title" style="display: none;">
 
-                        <button type="submit">Add Material</button>
-             </form>
-					</section>
+                    <button class="delete-material-btn" style="display: none;">Delete Material</button>
+                       </form>
+                </div>
+            </form>
+        </div>
+    <?php endforeach; ?>
+</div>
+
+<script>
+    // JavaScript to toggle the form visibility
+    document.addEventListener('DOMContentLoaded', function () {
+        const revealButtons = document.querySelectorAll('.reveal-form-btn');
+
+        revealButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const subjectId = this.getAttribute('data-subject-id');
+                const forms = document.querySelectorAll('.subject-form');
+                const buttons = document.querySelectorAll('.subject-buttons');
+
+                // Hide all forms and buttons
+                forms.forEach(form => {
+                    form.style.display = 'none';
+                });
+
+                buttons.forEach(button => {
+                    button.style.display = 'none';
+                });
+
+                // Show the clicked form and buttons
+                document.getElementById(`form-${subjectId}`).style.display = 'block';
+                document.getElementById(`buttons-${subjectId}`).style.display = 'flex';
+            });
+        });
+
+        // JavaScript to toggle the material buttons and fields
+        const materialButtons = document.querySelectorAll('.material-btn');
+
+        materialButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const materialId = this.getAttribute('data-material-id');
+                const materialFields = document.querySelectorAll('.material-field');
+
+                // Hide all material fields
+                materialFields.forEach(field => {
+                    field.style.display = 'none';
+                });
+
+                // Show the clicked material field
+                document.getElementById(`material-field-${materialId}`).style.display = 'block';
+            });
+        });
+
+        // JavaScript to toggle the Add, Edit, Delete forms
+        const addButtons = document.querySelectorAll('.add-btn');
+        const editButtons = document.querySelectorAll('.edit-btn');
+        const deleteButtons = document.querySelectorAll('.delete-btn');
+
+        addButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const subjectId = this.closest('.subject').querySelector('.reveal-form-btn').getAttribute('data-subject-id');
+                toggleForms('add', subjectId);
+            });
+        });
+
+        editButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const subjectId = this.closest('.subject').querySelector('.reveal-form-btn').getAttribute('data-subject-id');
+                toggleForms('edit', subjectId);
+            });
+        });
+
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const subjectId = this.closest('.subject').querySelector('.reveal-form-btn').getAttribute('data-subject-id');
+                toggleForms('delete', subjectId);
+            });
+        });
+
+        function toggleForms(action, subjectId) {
+            const addForm = document.querySelector(`#form-${subjectId} .add-form`);
+            const editForm = document.querySelector(`#form-${subjectId} .edit-form`);
+            const deleteForm = document.querySelector(`#form-${subjectId} .delete-form`);
+
+            if (action === 'add') {
+                addForm.style.display = 'block';
+                editForm.style.display = 'none';
+                deleteForm.style.display = 'none';
+            } else if (action === 'edit') {
+                addForm.style.display = 'none';
+                editForm.style.display = 'block';
+                deleteForm.style.display = 'none';
+            } else if (action === 'delete') {
+                addForm.style.display = 'none';
+                editForm.style.display = 'none';
+                deleteForm.style.display = 'block';
+            }
+        }
+    });
+</script>
+
 				</div>
 				<!-- end Classes section -->
 
@@ -264,6 +455,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				<?php
 				include "../partials/footer.php"
 				?>
+
+</section>
+
 </body>
 
 </html>

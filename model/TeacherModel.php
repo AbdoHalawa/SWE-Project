@@ -1,8 +1,10 @@
 <?php
+
 require_once(__DIR__ . '../../Db/Dbh.php');
 require_once(__DIR__ . '/Model.php');
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+
 class TeacherModel extends Model
 {
 
@@ -297,4 +299,48 @@ class TeacherModel extends Model
 
         return $teachers;
     }
+
+    public function getSubjectsForTeacher()
+    {
+        // Check if teacher_id is set in the session
+        if (!isset($_SESSION['teacher_id'])) {
+            // Handle the case when teacher_id is not set
+            return []; // or throw an exception, redirect, etc.
+        }
+    
+        // Get teacherID from session and ensure it's an integer
+        $teacherID = (int)$_SESSION['teacher_id'];
+    
+        // Use prepared statements to prevent SQL injection
+        $query = "SELECT SubjectID, SubjectName
+                  FROM Subjects
+                  WHERE TeacherID = ?";
+    
+        // Prepare the query
+        $stmt = $this->db->connect()->prepare($query);
+    
+        // Bind the parameter
+        $stmt->bind_param("i", $teacherID);
+    
+        // Execute the query
+        $stmt->execute();
+    
+        // Get the result
+        $result = $stmt->get_result();
+    
+        // Check if the query failed
+        if (!$result) {
+            die("Query failed: " . $stmt->error);
+        }
+    
+        // Fetch the data as an associative array
+        $subjects = $result->fetch_all(MYSQLI_ASSOC);
+    
+        // Close the statement
+        $stmt->close();
+    
+        return $subjects;
+    }
+    
+
 }
