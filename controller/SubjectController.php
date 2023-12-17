@@ -7,11 +7,11 @@ class SubjectController
     public function handleRequest()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $action = $_GET['action'] ?? ''; // Get the action parameter from the URL
+            $action = $_POST['action'] ?? ''; // Use POST for action
 
             switch ($action) {
                 case 'addSubject':
-                    $this->addSubject(); // Call the addTeacher method
+                    $this->addSubject();
                     break;
                 default:
                     break;
@@ -31,8 +31,12 @@ class SubjectController
         // Add the subject
         $result = $subjectmodel->addSubject();
 
-        header("Location: ../views/AdminView/addSubjects.php?success=1");
-
+        if ($result) {
+            header("Location: ../views/AdminView/addSubjects.php?success=1");
+            exit();
+        } else {
+            echo 'Error adding subject: ';
+        }
     }
 }
 

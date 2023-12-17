@@ -32,15 +32,16 @@ class SubjectModel extends Model
         $stmt = $this->executeQuery($sql, $values);
 
         // Check if the query execution was successful
-        if ($stmt === true) {
-            echo 'yes';
+        if ($stmt !== false) {
             return true; // Successful insertion
         } else {
             // Log or handle the error
-            error_log("Error in addSubject: " . $stmt->error); // Log the error
+            $this->errorMessage = "Error in addSubject: " . $this->db->error;
+            error_log($this->errorMessage); // Log the error
             return false; // Failed insertion
         }
     }
+
 
 
 
