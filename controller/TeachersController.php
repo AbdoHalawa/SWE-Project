@@ -1,7 +1,6 @@
 <?php
 require_once(__DIR__ . '/../model/TeacherModel.php');
 require_once(__DIR__ . '/../model/Model.php');
-
 class TeachersController
 {
     public function handleRequest()
@@ -20,6 +19,9 @@ class TeachersController
                 case 'searchTeachers':
                     $this->searchTeachers(); // Call the searchTeachers method
                     break;
+                    case 'getSubjectsForTeacher':
+                        $this->getSubjectsForTeacher(); // Call the getSubjectsForTeacher method
+                        break;
                 default:
                     break;
             }
@@ -104,6 +106,7 @@ class TeachersController
             // Render an error view or handle the error appropriately
         }
     }
+
 }
 
 
