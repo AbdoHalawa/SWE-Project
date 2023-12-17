@@ -202,7 +202,6 @@
                         <li><a href="listTeachers.php">Teacher List</a></li>
         
                         <li><a href="addTeachers.php">Teacher Add</a></li>
-                        <li><a href="editTeachers.php">Teacher Edit</a></li>
                     </ul>
                 </li>
                
@@ -212,7 +211,6 @@
                     <ul>
                         <li><a href="listSubjects.php">Subject List</a></li>
                         <li><a href="addSubjects.php">Subject Add</a></li>
-                        <li><a href="editSubjects.php">Subject Edit</a></li>
                     </ul>
                 </li>
                 

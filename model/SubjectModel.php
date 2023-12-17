@@ -1,5 +1,4 @@
 <?php
-define('__ROOT__', dirname(dirname(__FILE__)));
 require_once(__DIR__ . '/../Db/Dbh.php');
 require_once(__DIR__ . '/Model.php');
 error_reporting(E_ALL);
@@ -9,39 +8,54 @@ class SubjectModel extends Model
 
     private $subjectId;
     private $subjectName;
-    
+
     public function __construct($data = [])
     {
         parent::__construct(); // Call the constructor of the parent class (Model)
 
-        // Initialize the student object with data or set default values
+        $this->subjectId = $data['SubjectID'] ?? '';
         $this->subjectName = $data['SubjectName'] ?? '';
-        
     }
 
     public function addSubject(): bool
     {
+
         $data = [
-            'SubjectName' => $this->subjectName,
+            'SubjectID' => $this->subjectId,
+            'SubjectName' => $this->subjectName
         ];
 
-
-        $sql = "INSERT INTO subjects ( SubjectName) VALUES (?)";
-
-        // Extract values from the associative array to create the parameter array for bind_param
+        $sql = "INSERT INTO subjects (SubjectID, SubjectName) VALUES (?, ?)";
         $values = array_values($data);
 
         // Insert data into the database
-        $result = $this->executeQuery($sql, $values);
+        $stmt = $this->executeQuery($sql, $values);
 
-        // Return true if the insertion was successful, false otherwise
-        return $result;
+        // Check if the query execution was successful
+        if ($stmt === true) {
+            echo 'yes';
+            return true; // Successful insertion
+        } else {
+            // Log or handle the error
+            error_log("Error in addSubject: " . $stmt->error); // Log the error
+            return false; // Failed insertion
+        }
     }
-    
-    public function getSubjects() {
-        $sql = "SELECT SubjectID, SubjectName FROM Subjects";
+
+
+
+    public function getSubjects()
+    {
+        $sql = "SELECT 
+                    s.SubjectID, 
+                    s.SubjectName, 
+                    COUNT(g.StudentID) AS NumberOfStudents,
+                    GROUP_CONCAT(st.FirstName, ' ', st.LastName) AS StudentList
+                FROM Subjects s
+                LEFT JOIN Grades g ON s.SubjectID = g.SubjectID
+                LEFT JOIN Students st ON g.StudentID = st.StudentID
+                GROUP BY s.SubjectID, s.SubjectName";
+
         return $this->db->query($sql);
     }
-
 }
-?>
