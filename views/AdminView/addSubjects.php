@@ -22,7 +22,7 @@ if (isset($_GET['success']) && $_GET['success'] == 1) {
                 alert('Subject added successfully');
             });
           </script>";
-} 
+}
 ?>
 
 
@@ -50,7 +50,9 @@ if (isset($_GET['success']) && $_GET['success'] == 1) {
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-body">
-                            <form method="post" action="../../controller/SubjectController.php?action=addsubject">
+                            <form method="post" action="../../controller/SubjectController.php?action=Add">
+
+                                <input type="hidden" name="action" value="Add">
                                 <div class="row">
                                     <div class="col-12">
                                         <h5 class="form-title"><span>Subject Information</span></h5>

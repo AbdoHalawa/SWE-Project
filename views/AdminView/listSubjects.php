@@ -7,7 +7,15 @@ $subjects = $subjectModel->getSubjects();
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
+<?php
+if (isset($_GET['deleteSuccess']) && $_GET['deleteSuccess'] == 1) {
+    echo "<script>
+            document.addEventListener('DOMContentLoaded', function() {
+                alert('Subject deleted successfully!');
+            });
+          </script>";
+}
+?>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
@@ -22,6 +30,7 @@ $subjects = $subjectModel->getSubjects();
     <link rel="stylesheet" href="assets\css\style.css">
 
 </head>
+
 
 <body>
 
@@ -48,30 +57,7 @@ $subjects = $subjectModel->getSubjects();
                 </div>
             </div>
 
-            <div class="student-group-form">
-                <div class="row">
-                    <div class="col-lg-3 col-md-6">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search by ID ...">
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search by Name ...">
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search by Class ...">
-                        </div>
-                    </div>
-                    <div class="col-lg-2">
-                        <div class="search-student-btn">
-                            <button type="btn" class="btn btn-primary">Search</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
             <div class="row">
                 <div class="col-sm-12">
                     <div class="card card-table">
@@ -79,9 +65,7 @@ $subjects = $subjectModel->getSubjects();
 
                             <div class="page-header">
                                 <div class="row align-items-center">
-                                    <div class="col">
-                                        <h3 class="page-title">Subjects</h3>
-                                    </div>
+
                                     <div class="col-auto text-end float-end ms-auto download-grp">
                                         <a href="#" class="btn btn-outline-primary me-2"><i class="fas fa-download"></i> Download</a>
                                         <a href="add-subject.html" class="btn btn-primary"><i class="fas fa-plus"></i></a>
@@ -128,9 +112,13 @@ $subjects = $subjectModel->getSubjects();
                                                 </td>
                                                 <td class="text-end">
                                                     <div class="actions">
-                                                        <a href="#" action="../../controller/TeachersController.php?action=deleteTeacher" class="btn btn-sm bg-success-light me-2">
-                                                            <i class="fa-solid fa-trash"></i>
-                                                        </a>
+                                                        <form action="../../controller/SubjectController.php" method="post">
+                                                            <input type="hidden" name="subjectId" value="<?php echo $subject['SubjectID']; ?>">
+                                                            <input type="hidden" name="action" value="deleteSubject">
+                                                            <button type="submit" class="btn btn-sm bg-success-light me-2">
+                                                                Delete
+                                                            </button>
+                                                        </form>
                                                         <a href="./editSubjects.php?subjectId=<?php echo $subject['SubjectID']; ?>" class="btn btn-sm bg-danger-light">
                                                             <i class="feather-edit"></i>
                                                         </a>
@@ -138,7 +126,6 @@ $subjects = $subjectModel->getSubjects();
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>
-
 
 
                                     </tbody>

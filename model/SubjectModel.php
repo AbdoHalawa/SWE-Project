@@ -17,30 +17,39 @@ class SubjectModel extends Model
         $this->subjectName = $data['SubjectName'] ?? '';
     }
 
-    public function addSubject(): bool
-    {
 
-        $data = [
-            'SubjectID' => $this->subjectId,
-            'SubjectName' => $this->subjectName
-        ];
+    public function deleteSubject($subjectId)
+{
+    $sql = "DELETE FROM subjects WHERE SubjectID = ?";
+    var_dump($sql); // Debugging line
+    $values = [$subjectId];
 
-        $sql = "INSERT INTO subjects (SubjectID, SubjectName) VALUES (?, ?)";
-        $values = array_values($data);
+    $stmt = $this->executeQuery($sql, $values);
 
-        // Insert data into the database
-        $stmt = $this->executeQuery($sql, $values);
+    return $stmt !== false;
+}
 
-        // Check if the query execution was successful
-        if ($stmt !== false) {
-            return true; // Successful insertion
-        } else {
-            // Log or handle the error
-            $this->errorMessage = "Error in addSubject: " . $this->db->error;
-            error_log($this->errorMessage); // Log the error
-            return false; // Failed insertion
-        }
+public function addSubject(): bool
+{
+    $data = [
+        'SubjectID' => $this->subjectId,
+        'SubjectName' => $this->subjectName,
+    ];
+
+    $sql = "INSERT INTO subjects (SubjectID, SubjectName) VALUES (?, ?)";
+    $values = array_values($data);
+
+    // Insert data into the database
+    $stmt = $this->executeQuery($sql, $values);
+
+    if ($stmt !== false) {
+        return true;
+    } else {
+        // Log or handle the error
+        echo 'Error adding subject: ' . $this->db->getLastError();
+        return false;
     }
+}
 
 
 
