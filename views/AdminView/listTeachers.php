@@ -27,6 +27,15 @@ if (isset($_SESSION['searchResults'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 </head>
+<?php
+if (isset($_GET['deleteSuccess']) && $_GET['deleteSuccess'] == 1) {
+    echo "<script>
+            document.addEventListener('DOMContentLoaded', function() {
+                alert('Teacher deleted successfully!');
+            });
+          </script>";
+}
+?>
 
 <body>
 
@@ -136,9 +145,14 @@ if (isset($_SESSION['searchResults'])) {
                                                 <td><?php echo $teacher['TeacherType']; ?></td>
                                                 <td class="text-end">
                                                     <div class="actions">
-                                                        <a href="#" action="../../controller/TeachersController.php?action=deleteTeacher"class="btn btn-sm bg-success-light me-2">
-                                                        <i class="fa-solid fa-trash"></i>
-                                                        </a>
+                                                        <form action="../../controller/TeachersController.php?action=deleteTeacher" method="post">
+                                                            <!-- ... other form inputs ... -->
+                                                            <input type="hidden" name="teacherId" value="<?php echo $teacher['TeacherID']; ?>">
+                                                            <button type="submit" class="btn btn-sm bg-success-light me-2">
+                                                                Delete
+                                                            </button>
+                                                        </form>
+
                                                         <a href="./editTeachers.php?teacherId=<?php echo $teacher['TeacherID']; ?>" class="btn btn-sm bg-danger-light">
                                                             <i class="feather-edit"></i>
                                                         </a>
@@ -178,7 +192,7 @@ if (isset($_SESSION['searchResults'])) {
     <script src="assets/plugins/datatables/datatables.min.js"></script>
 
     <script src="assets/js/script.js"></script>
-    
+
 </body>
 
 </html>

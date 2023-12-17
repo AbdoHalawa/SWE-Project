@@ -19,14 +19,46 @@ class TeachersController
                 case 'searchTeachers':
                     $this->searchTeachers(); // Call the searchTeachers method
                     break;
-                    case 'getSubjectsForTeacher':
-                        $this->getSubjectsForTeacher(); // Call the getSubjectsForTeacher method
-                        break;
+                case 'deleteTeacher':
+                    $this->deleteTeacher();
                 default:
                     break;
             }
         }
     }
+
+
+    public function deleteTeacher()
+    {
+        $TeacherId = isset($_POST['teacherId']) ? $_POST['teacherId'] : '';
+
+        // Debugging output
+        echo 'Teacher ID: ' . $TeacherId;
+
+        if (empty($TeacherId)) {
+            echo 'Error: Teacher ID is empty.';
+            return;
+        }
+
+        $teacherModel = new TeacherModel();
+
+        try {
+            $result = $teacherModel->deleteTeacher($TeacherId);
+
+            if ($result) {
+                header("Location: ../views/AdminView/listTeachers.php?deleteSuccess=1");
+                exit();
+            } else {
+                echo 'Error deleting teacher.';
+            }
+        } catch (Exception $e) {
+            echo 'Error: ' . $e->getMessage();
+            // Log the error if needed
+        }
+    }
+
+
+
     public function addTeacher()
     {
         // Validate and sanitize the input data (perform input validation here)
@@ -106,7 +138,6 @@ class TeachersController
             // Render an error view or handle the error appropriately
         }
     }
-
 }
 
 

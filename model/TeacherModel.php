@@ -139,6 +139,24 @@ class TeacherModel extends Model
         return $this->teacherType;
     }
 
+    
+    public function deleteTeacher($TeacherId)
+{
+    $sql = "DELETE FROM Teachers WHERE TeacherID = ?";
+    $values = [$TeacherId];
+
+    try {
+        $stmt = $this->executeQuery($sql, $values);
+        return $stmt !== false && $stmt->affected_rows > 0;
+    } catch (Exception $e) {
+        echo 'Error: ' . $e->getMessage();
+        // Log the error if needed
+        return false;
+    }
+}
+
+
+
     public function addTeacher(): bool
     {
         if ($this->teacherIdExists($this->teacherId)) {
@@ -183,7 +201,8 @@ class TeacherModel extends Model
         }
         return false;
     }
-    public function editTeacher($teacherId): bool {
+    public function editTeacher($teacherId): bool
+    {
         $data = [
             'TeacherName' => $this->teacherName,
             'Gender' => $this->gender,
@@ -198,10 +217,10 @@ class TeacherModel extends Model
                 WHERE TeacherID=?";
         $values = array_values($data);
         $values[] = $teacherId;
-        
+
         try {
             $result = $this->executeQuery($sql, $values);
-    
+
             // If update was successful, return true
             if ($result !== false && $result->affected_rows > 0) {
                 return true;
@@ -217,7 +236,7 @@ class TeacherModel extends Model
         }
         return false;
     }
-    
+
 
     // Function to check if a TeacherID already exists in the database
     private function teacherIdExists($teacherId): bool
@@ -307,40 +326,38 @@ class TeacherModel extends Model
             // Handle the case when teacher_id is not set
             return []; // or throw an exception, redirect, etc.
         }
-    
+
         // Get teacherID from session and ensure it's an integer
         $teacherID = (int)$_SESSION['teacher_id'];
-    
+
         // Use prepared statements to prevent SQL injection
         $query = "SELECT SubjectID, SubjectName
                   FROM Subjects
                   WHERE TeacherID = ?";
-    
+
         // Prepare the query
         $stmt = $this->db->connect()->prepare($query);
-    
+
         // Bind the parameter
         $stmt->bind_param("i", $teacherID);
-    
+
         // Execute the query
         $stmt->execute();
-    
+
         // Get the result
         $result = $stmt->get_result();
-    
+
         // Check if the query failed
         if (!$result) {
             die("Query failed: " . $stmt->error);
         }
-    
+
         // Fetch the data as an associative array
         $subjects = $result->fetch_all(MYSQLI_ASSOC);
-    
+
         // Close the statement
         $stmt->close();
-    
+
         return $subjects;
     }
-    
-
 }
