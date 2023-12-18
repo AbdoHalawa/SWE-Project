@@ -6,6 +6,7 @@ $P1  = new Parents(122);
 $P2 = new ParentController($P1);
 
 $P2->viewFees($P1->Student->getID());
+$P2->updateStatus($P1->Student->getID());
 ?>
 
 
@@ -458,42 +459,40 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        // Your logic for handling form submission here
-        // Assume you have a server-side script (e.g., update_payment_status.php) to handle the database update
+        var checkboxes = document.querySelectorAll('input[name="payment_checkbox[]"]');
 
-        // Make an asynchronous request to update payment status
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'update_payment_status.php', true);
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        // Check if at least one checkbox is checked
+        var atLeastOneChecked = false;
 
-        // Get the selected amounts
-        var selectedAmounts = [];
         checkboxes.forEach(function (checkbox) {
             if (checkbox.checked) {
-                selectedAmounts.push(checkbox.value);
+                atLeastOneChecked = true;
             }
         });
 
-        // Add data to send with the request
-        var data = 'amounts=' + encodeURIComponent(selectedAmounts.join(','));
+        if (!atLeastOneChecked) {
+            // No checkbox is checked, prevent form submission
+            alert('Please select at least one amount to pay.');
+            event.preventDefault();
+            return;
+        }
 
-        // Send the request
-        xhr.send(data);
+        // Get the selected amounts
+        var checkboxAmount1 = document.querySelector('input[name="payment_checkbox[]"][value="<?= $fee['amount'] ?>"]');
+        var checkboxAmount2 = document.querySelector('input[name="payment_checkbox[]"][value="<?= $fee['amount2'] ?>"]');
 
-        // Handle the response if needed
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === XMLHttpRequest.DONE) {
-                if (xhr.status === 200) {
-                    // Successfully updated the payment status
-                    console.log('Payment status updated successfully');
-                } else {
-                    // Failed to update the payment status
-                    console.error('Failed to update payment status');
-                }
-            }
-        };
+        // Check which checkboxes are selected
+        var updateAmount1 = checkboxAmount1 && checkboxAmount1.checked;
+        var updateAmount2 = checkboxAmount2 && checkboxAmount2.checked;
 
-        // ... (your existing code for displaying the modal)
+        // Make the call to updatePaymentStatus function only if at least one checkbox is checked
+        if (updateAmount1 && !updateAmount2) {
+            P1.updatePaymentStatus(true, false);
+        } else if (!updateAmount1 && updateAmount2) {
+            P1.updatePaymentStatus(false, true);
+        } else if (updateAmount1 && updateAmount2) {
+            P1.updatePaymentStatus(true, true);
+        }
     });
 });
 </script>

@@ -14,5 +14,8 @@ class ParentController extends Controller {
         $this->model->getGrades($studentID);
         
     }
+    public function updateStatus($studentID){
+        $this->model->updatePaymentStatus($studentID);
+    }
 }
 ?>

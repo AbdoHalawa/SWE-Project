@@ -211,8 +211,31 @@ public function getGrades()
     }
 }
 
-    
+public function updatePaymentStatus($updateAmount1=false , $updateAmount2=false )
+{
+    $studentID = $this->Student->getID();
 
+    
+    if ($updateAmount1 && !$updateAmount2) {
+        $sql = "UPDATE Fees SET PaymentStatus = 1 WHERE StudentID = $studentID";
+        $this->db->query($sql);
+        
+    }
+    // Update payment_status2 for amount2
+    elseif (!$updateAmount1 && $updateAmount2) {
+        $sql = "UPDATE Fees SET PaymentStatus2 = 1 WHERE StudentID = $studentID";
+        $this->db->query($sql);
+     
+    }
+    // Update both payment_status and payment_status2
+    elseif ($updateAmount1 && $updateAmount2) {
+        $sql = "UPDATE Fees SET PaymentStatus = 1, PaymentStatus2 = 1 WHERE StudentID = $studentID";
+        $this->db->query($sql);
+        
+    }
+   
+
+}
 }
 
 ?>
