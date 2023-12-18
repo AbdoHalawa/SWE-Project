@@ -234,95 +234,56 @@ include "../partials/nav.php"
                         <br>
                         <!-- Current Due -->
 
+
                         <div class="portlet-body">
+    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+        <thead>
+            <tr>
+                <th>Part</th>
+                <th>Due</th>
+                <th>Status</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- ngRepeat: oldDue in Screen.CurrentDues -->
+            <?php foreach ($P1->fees as $fee) : ?>
+                <tr class="odd gradeX ng-scope" ng-repeat="oldDue in Screen.CurrentDues" style="">
+                    <td class="ng-binding"><?= $fee['amount'] ?></td>
+                    <td class="ng-binding"><?= $fee['Due'] ?></td>
+                    <td>
+                        <?php if ($fee['payment_status']) : ?>
+                            Paid
+                        <?php else : ?>
+                            Not Paid
+                        <?php endif; ?>
+                    </td>
+                    <!-- Add checkbox column -->
+                    <td>
+                        <input type="checkbox" name="payment_checkbox[]" value="<?= $fee['amount'] ?>">
+                    </td>
+                </tr>
+                <tr class="odd gradeX ng-scope" ng-repeat="oldDue in Screen.CurrentDues" style="">
+                    <td class="ng-binding"><?= $fee['amount2'] ?></td>
+                    <td class="ng-binding"><?= $fee['Due2'] ?></td>
+                    <td>
+                        <?php if ($fee['payment_status2']) : ?>
+                            Paid
+                        <?php else : ?>
+                            Not Paid
+                        <?php endif; ?>
+                    </td>
+                    <!-- Add checkbox column -->
+                    <td>
+                        <input type="checkbox" name="payment_checkbox[]" value="<?= $fee['amount2'] ?>">
+                    </td>
+                </tr>
+            <?php endforeach; ?><!-- end ngRepeat: oldDue in Screen.CurrentDues -->
+        </tbody>
+    </table>
+</div>
 
-                            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                <thead>
-                                    <tr>
-                                        <th>Part</th>
-                                        <th>Due </th>
-                                        <th> Status </th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <!-- ngRepeat: oldDue in Screen.CurrentDues -->
-                                    <?php foreach ($P1->fees as $fee) : ?>
-                                        <tr class="odd gradeX ng-scope" ng-repeat="oldDue in Screen.CurrentDues" style="">
-                                            <td class="ng-binding"><?= $fee['amount'] ?></td>
-                                            <td class="ng-binding"><?= $fee['Due'] ?></td>
-
-
-                                            <td>
-                                                <?php if ($fee['payment_status']) : ?>
-                                                    Paid
-                                                <?php else : ?>
-                                                    Not Paid
-                                                <?php endif; ?>
-                                            </td>
-
-                                        </tr>
-                                        <tr class="odd gradeX ng-scope" ng-repeat="oldDue in Screen.CurrentDues" style="">
-                                            <td class="ng-binding"><?= $fee['amount2'] ?></td>
-                                            <td class="ng-binding"><?= $fee['Due2'] ?></td>
-                                            <td>
-                                                <?php if ($fee['payment_status2']) : ?>
-                                                    Paid
-                                                <?php else : ?>
-                                                    Not Paid
-                                                <?php endif; ?>
-                                            </td>
-                                        <?php endforeach; ?><!-- end ngRepeat: oldDue in Screen.CurrentDues -->
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <!--Other-->
-                        <!-- ngIf: Screen.hasOtherFees -->
-
-                        <!-- <div class="portlet-title">
-                            <div class="caption">
-                                Administration Fees
-                            </div>
-                            <div class="actions">
-                                <div style="text-align:center">
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="portlet-body">
-                            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                <thead>
-                                    <tr>
-                                        <th>Part</th>
-                                        <th>Due</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    ngRepeat: admindDue in Screen.AdministrationFeesDue 
-                                    <tr class="odd gradeX ng-scope" ng-repeat="admindDue in Screen.AdministrationFeesDue">
-                                        <td class="ng-binding">0</td>
-                                        <td class="ng-binding">2023-10-03</td>
-                                        <td>
-                                            <input type="checkbox" name="adminInstall_1" value="adminInstall_1" id="adminInstallment_1" ng-checked="admindDue.IsChecked" ng-disabled="admindDue.IsDisabled" ng-model="admindDue.IsChecked" ng-change="CaclulateAmount();" class="ng-valid ng-dirty ng-valid-parse ng-touched" style="">
-                                        </td>
-
-                                    </tr> end ngRepeat: admindDue in Screen.AdministrationFeesDue 
-                                    <tr class="odd gradeX ng-scope" ng-repeat="admindDue in Screen.AdministrationFeesDue">
-                                        <td class="ng-binding">5500</td>
-                                        <td class="ng-binding">2024-02-01</td>
-                                        <td>
-                                            <input type="checkbox" name="adminInstall_2" value="adminInstall_2" id="adminInstallment_2" ng-checked="admindDue.IsChecked" ng-disabled="admindDue.IsDisabled" ng-model="admindDue.IsChecked" ng-change="CaclulateAmount();" class="ng-valid ng-dirty ng-valid-parse ng-touched" style="">
-                                        </td>
-
-                                    </tr> end ngRepeat: admindDue in Screen.AdministrationFeesDue 
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>end ngIf: Screen.hasOtherFees -->
-
+                       
                 <button id="payNowButton">Pay Now</button>
 
 <!-- Payment Form Popup -->
@@ -414,13 +375,127 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             // Add your logic for handling form submission here
-            if (!event.defaultPrevented) {
-                alert('Form submitted!');
-                // Optionally, close the modal after submission
-                modal.style.display = 'none';
-            }
+            
         });
     });
+    document.addEventListener('DOMContentLoaded', function () {
+    // Get the modal and the button that opens it
+    var modal = document.getElementById('paymentForm');
+    var payNowButton = document.getElementById('payNowButton');
+    var closeForm = document.getElementById('closeForm');
+    var paymentForm = document.getElementById('paymentFormFields');
+    var checkboxes = document.querySelectorAll('input[name="payment_checkbox[]"]');
+    var amountInput = document.getElementById('amount');
+
+    // Open the modal when the button is clicked
+    payNowButton.addEventListener('click', function () {
+        // Initialize default value to 0
+        var defaultValue = 0;
+
+        // Loop through checkboxes to calculate the default value
+        checkboxes.forEach(function (checkbox) {
+            if (checkbox.checked) {
+                // Parse the amount and add to the default value
+                defaultValue += parseFloat(checkbox.value);
+            }
+        });
+
+        // Set the default value in the amount input
+        amountInput.value = defaultValue.toFixed(2);
+
+        // Make the amount input readonly
+        amountInput.setAttribute('readonly', 'readonly');
+
+        // Display the modal
+        modal.style.display = 'block';
+    });
+
+    // Close the modal when the close button is clicked
+    closeForm.addEventListener('click', function () {
+        modal.style.display = 'none';
+    });
+
+    // Close the modal when clicking outside the modal content
+    window.addEventListener('click', function (event) {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+
+    // Add validation logic for form submission
+    paymentForm.addEventListener('submit', function (event) {
+        var cardNumberInput = document.getElementById('cardNumber');
+        var expiryMonthInput = document.getElementById('expiryMonth');
+        var expiryYearInput = document.getElementById('expiryYear');
+
+        // Validate card number, expiry month, and expiry year
+        var isValid = true;
+
+        if (cardNumberInput.value.length !== 14 || !/^\d{14}$/.test(cardNumberInput.value)) {
+            document.getElementById('cardNumberError').textContent = 'Invalid card number. Please enter exactly 14 digits.';
+            isValid = false;
+        } else {
+            document.getElementById('cardNumberError').textContent = '';
+        }
+
+        if (expiryMonthInput.value.length !== 2 || !/^\d{2}$/.test(expiryMonthInput.value)) {
+            document.getElementById('expiryMonthError').textContent = 'Invalid expiry month. Please enter exactly 2 digits.';
+            isValid = false;
+        } else {
+            document.getElementById('expiryMonthError').textContent = '';
+        }
+
+        if (expiryYearInput.value.length !== 2 || !/^\d{2}$/.test(expiryYearInput.value)) {
+            document.getElementById('expiryYearError').textContent = 'Invalid expiry year. Please enter exactly 2 digits.';
+            isValid = false;
+        } else {
+            document.getElementById('expiryYearError').textContent = '';
+        }
+
+        if (!isValid) {
+            // Prevent form submission if validation fails
+            event.preventDefault();
+            return;
+        }
+
+        // Your logic for handling form submission here
+        // Assume you have a server-side script (e.g., update_payment_status.php) to handle the database update
+
+        // Make an asynchronous request to update payment status
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'update_payment_status.php', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+        // Get the selected amounts
+        var selectedAmounts = [];
+        checkboxes.forEach(function (checkbox) {
+            if (checkbox.checked) {
+                selectedAmounts.push(checkbox.value);
+            }
+        });
+
+        // Add data to send with the request
+        var data = 'amounts=' + encodeURIComponent(selectedAmounts.join(','));
+
+        // Send the request
+        xhr.send(data);
+
+        // Handle the response if needed
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    // Successfully updated the payment status
+                    console.log('Payment status updated successfully');
+                } else {
+                    // Failed to update the payment status
+                    console.error('Failed to update payment status');
+                }
+            }
+        };
+
+        // ... (your existing code for displaying the modal)
+    });
+});
 </script>
 
 
