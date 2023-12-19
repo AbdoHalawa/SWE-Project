@@ -71,7 +71,7 @@ class StudentModel extends Model
     public function editStudent()
     {
         $formattedDob = date('Y-m-d', strtotime($this->dateOfBirth));
-        $hashedPassword = password_hash($this->password, PASSWORD_DEFAULT);
+        
     
         $sql = 'UPDATE Students SET
                 FirstName = ?,
@@ -99,7 +99,7 @@ class StudentModel extends Model
             $this->parentID,
             $this->phoneNumber,
             $this->email,
-            $hashedPassword,
+            $this->password,
             $this->studentID
         ];
     

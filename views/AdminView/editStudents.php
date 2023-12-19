@@ -206,53 +206,41 @@ if (isset($_GET['studentId'])) {
                                 </div>
 
                                 <div class="col-12">
-                                    <h5 class="form-title"><span>Login Details</span></h5>
-                                    <div class="col-12 col-sm-4">
-                                        <div class="form-group local-forms">
-                                            <label for="email">Student Email ID <span
-                                                        class="login-danger">*</span></label>
-                                            <input type="email" class="form-control" id="email" name="email"
-                                                   placeholder="Enter Mail Id"
-                                                   value="<?php echo isset($email) ? $email : ''; ?>">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-4">
-                                        <div class="form-group local-forms">
-                                            <label for="password">Student Password <span
-                                                        class="login-danger">*</span></label>
-                                            <input type="text" class="form-control" id="password" name="password"
-                                                   placeholder="Enter Password"
-                                                   value="<?php echo isset($password) ? $password : ''; ?>">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-4">
-                                        <div class="form-group local-forms">
-                                            <label for="parent_email">Parent Email ID <span
-                                                        class="login-danger">*</span></label>
-                                            <input type="email" class="form-control" id="parent_email"
-                                                   name="parent_email" placeholder="Enter Parent Mail Id"
-                                                   value="<?php echo isset($parentEmail) ? $parentEmail : ''; ?>">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-4">
-                                        <div class="form-group local-forms">
-                                            <label for="parent_password">Parent Password <span
-                                                        class="login-danger">*</span></label>
-                                            <input type="text" class="form-control" id="parent_password"
-                                                   name="parent_password" placeholder="Enter Parent Password"
-                                                   value="<?php echo isset($parentPassword) ? $parentPassword : ''; ?>">
-                                        </div>
-                                    </div>
-                                </div>
+                                 
+        <div class="form-group local-forms">
+            <input type="hidden" class="form-control" id="email" name="email"
+                placeholder="Enter Mail Id"
+                value="<?php echo isset($email) ? $email : ''; ?>">
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="form-group local-forms">
+            <input type="hidden" class="form-control" id="password" name="password"
+                placeholder="Enter Password"
+                value="<?php echo isset($password) ? $password : ''; ?>">
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="form-group local-forms">
+            <input type="hidden" class="form-control" id="parent_email"
+                name="parent_email" placeholder="Enter Parent Mail Id"
+                value="<?php echo isset($parentEmail) ? $parentEmail : ''; ?>">
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="form-group local-forms">
+            <input type="hidden" class="form-control" id="parent_password"
+                name="parent_password" placeholder="Enter Parent Password"
+                value="<?php echo isset($parentPassword) ? $parentPassword : ''; ?>">
+        </div>
+    </div>
 
-                                <div class="col-12">
-                                    <div class="student-submit">
-                                    <button type="submit" name="submit" class="btn btn-primary">Submit</button>
-                                        </div>
-                                </div>
-
-                            </div>
-                        </form>
+    <div class="col-12">
+        <div class="student-submit">
+            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+</form>
 
                     </div>
                 </div>
