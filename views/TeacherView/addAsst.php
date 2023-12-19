@@ -175,7 +175,7 @@ include "../partials/nav.php";
 					<div class="mobile-links">
 
 						<div class="mobile-links-group">
-							<a href="../index.php">
+							<a href="../../controller/logout-handler.php?action=logout">
 								Log Out</a>
 						</div>
 
