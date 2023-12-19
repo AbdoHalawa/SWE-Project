@@ -149,8 +149,8 @@ class StudentModel extends Model
 {
     $sql = "SELECT Students.*, Classes.ClassName, Classes.Grade, Parents.ParentName 
             FROM Students
-            JOIN Classes ON Students.ClassID = Classes.ClassID
-            JOIN Parents ON Students.ParentID = Parents.ParentID";
+            LEFT JOIN Classes ON Students.ClassID = Classes.ClassID
+            LEFT JOIN Parents ON Students.ParentID = Parents.ParentID";
     $stmt = $this->executeQuery($sql);
 
     if ($stmt) {
