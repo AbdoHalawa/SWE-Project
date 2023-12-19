@@ -71,7 +71,7 @@ class StudentModel extends Model
     public function editStudent()
     {
         $formattedDob = date('Y-m-d', strtotime($this->dateOfBirth));
-        $hashedPassword = password_hash($this->password, PASSWORD_DEFAULT);
+        
     
         $sql = 'UPDATE Students SET
                 FirstName = ?,
@@ -99,7 +99,7 @@ class StudentModel extends Model
             $this->parentID,
             $this->phoneNumber,
             $this->email,
-            $hashedPassword,
+            $this->password,
             $this->studentID
         ];
     
@@ -329,6 +329,39 @@ class StudentModel extends Model
 
         return $grades;
     }
-
+    
+    function getMaterialsForStudent()
+    {
+        require_once('../../Db/Dbh.php');
+    
+        $db = new Dbh();
+        $conn = $db->connect();
+    
+        // Assuming the student is logged in and user_id is set in the session
+        $studentID = $_SESSION['user_id'];
+        $studentID = mysqli_real_escape_string($conn, $studentID);
+    
+        $query = "SELECT Materials.MaterialID, Materials.Title, Materials.Content, Materials.FilePath
+                  FROM Materials
+                  INNER JOIN Subjects ON Materials.SubjectID = Subjects.SubjectID
+                  INNER JOIN Grades ON Subjects.SubjectID = Grades.SubjectID
+                  WHERE Grades.StudentID = $studentID";
+    
+        $result = mysqli_query($conn, $query);
+    
+        if (!$result) {
+            die("Query failed: " . mysqli_error($conn));
+        }
+    
+        $materials = array();
+        while ($row = mysqli_fetch_assoc($result)) {
+            $materials[] = $row;
+        }
+    
+        mysqli_close($conn);
+    
+        return $materials;
+    }
+    
 }
 ?>
