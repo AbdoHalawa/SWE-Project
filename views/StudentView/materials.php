@@ -5,6 +5,8 @@ $student = new StudentModel($_SESSION['user_id']);
 
 $subjects = $student->getSubjectsForStudent();
 $grades = $student->getGradesForStudent();
+$materials= $student->getMaterialsForStudent();
+
 ?>
 <!DOCTYPE html>
 <html lang="en-GB">
@@ -296,277 +298,47 @@ include "../partials/nav.php"
 
 
                     <div class="content" id="yui_3_18_1_1_1700781941318_32">
-                        <div class="summary">
-                        </div>
-                        <ul class="activity-cards section yui3-dd-drop" id="yui_3_18_1_1_1700781941318_31">
-
-                            <li class="activity col-12 col-md-6 col-lg-4 col-xl-3 modtype_resource" id="module-1542" data-id="1542" data-section="1" aria-labelledby="module-1542-title">
-                                <div class="single-card">
-                                    <div class="d-flex flex-column single-card-child-wrapper">
-                                        <!-- <div class="wdm-mod-name ">File</div> -->
-
-                                        <h4 id="module-1542-title" class="title nosummary m-0">
-                                            <div class="activity-instance d-flex flex-column">
-                                                <div class="activitytitle media  modtype_resource position-relative align-self-start">
-                                                    <div class="activityiconcontainer content courseicon align-self-start mr-3">
-                                                        <img src="https://moodle1.miuegypt.edu.eg/theme/image.php/mb2nl/resource/1698497336/monologo?filtericon=1" class="activityicon " alt="File icon">
-                                                    </div>
-                                                    <div class="media-body align-self-center">
-                                                        <div class="activityname">
-                                                            <a href="https://moodle1.miuegypt.edu.eg/mod/resource/view.php?id=1542" class=" aalink stretched-link" onclick=""> <span class="instancename">1. Introduction and Image Acquisition <span class="accesshide "> File</span></span> </a>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </h4>
-                                        <div data-region="sectionbadges" class="sectionbadges d-flex align-items-center ">
-                                        </div>
-                                        <div class="activity-content">
+    <div class="summary"></div>
+    <ul class="activity-cards section yui3-dd-drop" id="yui_3_18_1_1_1700781941318_31">
+        <?php foreach ($materials as $material): ?>
+            <li class="activity col-12 col-md-6 col-lg-4 col-xl-3 modtype_resource" id="module-<?php echo $material['MaterialID']; ?>" data-id="<?php echo $material['MaterialID']; ?>" data-section="1" aria-labelledby="module-<?php echo $material['MaterialID']; ?>-title">
+                <div class="single-card">
+                    <div class="d-flex flex-column single-card-child-wrapper">
+                        <h4 id="module-<?php echo $material['MaterialID']; ?>-title" class="title nosummary m-0">
+                            <div class="activity-instance d-flex flex-column">
+                                <div class="activitytitle media  modtype_resource position-relative align-self-start">
+                                    <div class="activityiconcontainer content courseicon align-self-start mr-3">
+                                        <img src="https://moodle1.miuegypt.edu.eg/theme/image.php/mb2nl/resource/1698497336/monologo?filtericon=1" class="activityicon " alt="File icon">
+                                    </div>
+                                    <div class="media-body align-self-center">
+                                        <div class="activityname">
+                                            <a href="<?php echo $material['FilePath']; ?>" class="aalink stretched-link" onclick="">
+                                                <span class="instancename"><?php echo $material['Title']; ?> <span class="accesshide "> File</span></span>
+                                            </a>
                                         </div>
                                     </div>
-                                    <div class="completion-container manual-completion align-items-center pr-15 p-r-1 ">
-                                        <div class="completion-check-1542">
-                                            <div data-region="activity-information" data-activityname="1. Introduction and Image Acquisition" class="activity-information">
-
-                                                <div class="completion-info" data-region="completion-info">
-                                                    <button class="btn btn-secondary btn-sm text-nowrap" data-action="toggle-manual-completion" data-toggletype="manual:mark-done" data-cmid="1549" data-activityname="5. Image Segmentation" data-withavailability="0" title="Mark 5. Image Segmentation as done" aria-label="Mark 5. Image Segmentation as done" fdprocessedid="uwujha">
-                                                        Mark as done
-                                                    </button>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="nosummary"></div>
-                                    </div>
-
                                 </div>
-                            </li>
-
-                            <li class="activity col-12 col-md-6 col-lg-4 col-xl-3 modtype_resource" id="module-1542" data-id="1542" data-section="1" aria-labelledby="module-1542-title">
-                                <div class="single-card" id="yui_3_18_1_1_1700781941318_30">
-                                    <div class="d-flex flex-column single-card-child-wrapper" id="yui_3_18_1_1_1700781941318_29">
-                                        <!-- <div class="wdm-mod-name ">File</div> -->
-
-                                        <h4 id="module-1544-title" class="title nosummary m-0">
-                                            <div class="activity-instance d-flex flex-column" id="yui_3_18_1_1_1700781941318_28">
-                                                <div class="activitytitle media  modtype_resource position-relative align-self-start" id="yui_3_18_1_1_1700781941318_27">
-                                                    <div class="activityiconcontainer content courseicon align-self-start mr-3">
-                                                        <img src="https://moodle1.miuegypt.edu.eg/theme/image.php/mb2nl/resource/1698497336/monologo?filtericon=1" class="activityicon " alt="File icon">
-                                                    </div>
-                                                    <div class="media-body align-self-center" id="yui_3_18_1_1_1700781941318_26">
-                                                        <div class="activityname" id="yui_3_18_1_1_1700781941318_25">
-                                                            <a href="https://moodle1.miuegypt.edu.eg/mod/resource/view.php?id=1544" class=" aalink stretched-link" onclick="" id="yui_3_18_1_1_1700781941318_24"> <span class="instancename">2. Image Enhancement <span class="accesshide "> File</span></span> </a>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </h4>
-                                        <div data-region="sectionbadges" class="sectionbadges d-flex align-items-center ">
-                                        </div>
-                                        <div class="activity-content">
-                                        </div>
-                                    </div>
-                                    <div class="completion-container manual-completion align-items-center pr-15 p-r-1 ">
-                                        <div class="completion-check-1544">
-                                            <div data-region="activity-information" data-activityname="2. Image Enhancement" class="activity-information">
-
-                                                <div class="completion-info" data-region="completion-info">
-                                                    <button class="btn btn-secondary btn-sm text-nowrap" data-action="toggle-manual-completion" data-toggletype="manual:mark-done" data-cmid="1549" data-activityname="5. Image Segmentation" data-withavailability="0" title="Mark 5. Image Segmentation as done" aria-label="Mark 5. Image Segmentation as done" fdprocessedid="uwujha">
-                                                        Mark as done
-                                                    </button>
-
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="nosummary"></div>
-                                    </div>
-
-                                </div>
-                            </li>
-
-                            <li class="activity col-12 col-md-6 col-lg-4 col-xl-3 modtype_resource" id="module-1542" data-id="1542" data-section="1" aria-labelledby="module-1542-title">
-                                <div class="single-card">
-                                    <div class="d-flex flex-column single-card-child-wrapper">
-                                        <!-- <div class="wdm-mod-name ">File</div> -->
-
-                                        <h4 id="module-1546-title" class="title nosummary m-0">
-                                            <div class="activity-instance d-flex flex-column">
-                                                <div class="activitytitle media  modtype_resource position-relative align-self-start">
-                                                    <div class="activityiconcontainer content courseicon align-self-start mr-3">
-                                                        <img src="https://moodle1.miuegypt.edu.eg/theme/image.php/mb2nl/resource/1698497336/monologo?filtericon=1" class="activityicon " alt="File icon">
-                                                    </div>
-                                                    <div class="media-body align-self-center">
-                                                        <div class="activityname">
-                                                            <a href="https://moodle1.miuegypt.edu.eg/mod/resource/view.php?id=1546" class=" aalink stretched-link" onclick=""> <span class="instancename">3. Image Restoration <span class="accesshide "> File</span></span> </a>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </h4>
-                                        <div data-region="sectionbadges" class="sectionbadges d-flex align-items-center ">
-                                        </div>
-                                        <div class="activity-content">
-                                        </div>
-                                    </div>
-                                    <div class="completion-container manual-completion align-items-center pr-15 p-r-1 ">
-                                        <div class="completion-check-1546">
-                                            <div data-region="activity-information" data-activityname="3. Image Restoration" class="activity-information">
-
-                                                <div class="completion-info" data-region="completion-info">
-                                                    <button class="btn btn-secondary btn-sm text-nowrap" data-action="toggle-manual-completion" data-toggletype="manual:mark-done" data-cmid="1549" data-activityname="5. Image Segmentation" data-withavailability="0" title="Mark 5. Image Segmentation as done" aria-label="Mark 5. Image Segmentation as done" fdprocessedid="uwujha">
-                                                        Mark as done
-                                                    </button>
-
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="nosummary"></div>
-                                    </div>
-
-                                </div>
-                            </li>
-
-                            <li class="activity col-12 col-md-6 col-lg-4 col-xl-3 modtype_resource" id="module-1542" data-id="1542" data-section="1" aria-labelledby="module-1542-title">
-                                <div class="single-card">
-                                    <div class="d-flex flex-column single-card-child-wrapper">
-                                        <!-- <div class="wdm-mod-name ">Folder</div> -->
-
-                                        <h4 id="module-1548-title" class="title nosummary m-0">
-                                            <div class="activity-instance d-flex flex-column">
-                                                <div class="activitytitle media  modtype_folder position-relative align-self-start">
-                                                    <div class="activityiconcontainer content courseicon align-self-start mr-3">
-                                                        <img src="https://moodle1.miuegypt.edu.eg/theme/image.php/mb2nl/folder/1698497336/monologo?filtericon=1" class="activityicon " alt="Folder icon">
-                                                    </div>
-                                                    <div class="media-body align-self-center">
-                                                        <div class="activityname">
-                                                            <a href="https://moodle1.miuegypt.edu.eg/mod/folder/view.php?id=1548" class=" aalink stretched-link" onclick=""> <span class="instancename">4. Image Compression <span class="accesshide "> Folder</span></span> </a>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </h4>
-                                        <div data-region="sectionbadges" class="sectionbadges d-flex align-items-center ">
-                                        </div>
-                                        <div class="activity-content">
-                                        </div>
-                                    </div>
-                                    <div class="completion-container manual-completion align-items-center pr-15 p-r-1 text-muted">
-                                        <div class="completion-check-1548">
-                                            <div data-region="activity-information" data-activityname="4. Image Compression" class="activity-information">
-
-                                                <div class="completion-info" data-region="completion-info">
-                                                    <button class="btn btn-secondary btn-sm text-nowrap" data-action="toggle-manual-completion" data-toggletype="manual:mark-done" data-cmid="1548" data-activityname="4. Image Compression" data-withavailability="0" title="Mark 4. Image Compression as done" aria-label="Mark 4. Image Compression as done" fdprocessedid="92aac">
-                                                        Mark as done
-                                                    </button>
-
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="nosummary"></div>
-                                    </div>
-
-                                </div>
-                            </li>
-
-                            <li class="activity col-12 col-md-6 col-lg-4 col-xl-3 modtype_resource" id="module-1542" data-id="1542" data-section="1" aria-labelledby="module-1542-title">
-                                <div class="single-card">
-                                    <div class="d-flex flex-column single-card-child-wrapper">
-                                        <!-- <div class="wdm-mod-name ">Folder</div> -->
-
-                                        <h4 id="module-1549-title" class="title nosummary m-0">
-                                            <div class="activity-instance d-flex flex-column">
-                                                <div class="activitytitle media  modtype_folder position-relative align-self-start">
-                                                    <div class="activityiconcontainer content courseicon align-self-start mr-3">
-                                                        <img src="https://moodle1.miuegypt.edu.eg/theme/image.php/mb2nl/folder/1698497336/monologo?filtericon=1" class="activityicon " alt="Folder icon">
-                                                    </div>
-                                                    <div class="media-body align-self-center">
-                                                        <div class="activityname">
-                                                            <a href="https://moodle1.miuegypt.edu.eg/mod/folder/view.php?id=1549" class=" aalink stretched-link" onclick=""> <span class="instancename">5. Image Segmentation <span class="accesshide "> Folder</span></span> </a>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </h4>
-                                        <div data-region="sectionbadges" class="sectionbadges d-flex align-items-center ">
-                                        </div>
-                                        <div class="activity-content">
-                                        </div>
-                                    </div>
-                                    <div class="completion-container manual-completion align-items-center pr-15 p-r-1 text-muted">
-                                        <div class="completion-check-1549">
-                                            <div data-region="activity-information" data-activityname="5. Image Segmentation" class="activity-information">
-
-                                                <div class="completion-info" data-region="completion-info">
-                                                    <button class="btn btn-secondary btn-sm text-nowrap" data-action="toggle-manual-completion" data-toggletype="manual:mark-done" data-cmid="1549" data-activityname="5. Image Segmentation" data-withavailability="0" title="Mark 5. Image Segmentation as done" aria-label="Mark 5. Image Segmentation as done" fdprocessedid="uwujha">
-                                                        Mark as done
-                                                    </button>
-
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="nosummary"></div>
-                                    </div>
-
-                                </div>
-                            </li>
-
-                            <li class="activity col-12 col-md-6 col-lg-4 col-xl-3 modtype_resource" id="module-1542" data-id="1542" data-section="1" aria-labelledby="module-1542-title">
-                                <div class="single-card">
-                                    <div class="d-flex flex-column single-card-child-wrapper">
-                                        <!-- <div class="wdm-mod-name ">Folder</div> -->
-
-                                        <h4 id="module-1552-title" class="title nosummary m-0">
-                                            <div class="activity-instance d-flex flex-column">
-                                                <div class="activitytitle media  modtype_folder position-relative align-self-start">
-                                                    <div class="activityiconcontainer content courseicon align-self-start mr-3">
-                                                        <img src="https://moodle1.miuegypt.edu.eg/theme/image.php/mb2nl/folder/1698497336/monologo?filtericon=1" class="activityicon " alt="Folder icon">
-                                                    </div>
-                                                    <div class="media-body align-self-center">
-                                                        <div class="activityname">
-                                                            <a href="https://moodle1.miuegypt.edu.eg/mod/folder/view.php?id=1552" class=" aalink stretched-link" onclick=""> <span class="instancename">6. Image Representation and Description <span class="accesshide "> Folder</span></span> </a>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </h4>
-                                        <div data-region="sectionbadges" class="sectionbadges d-flex align-items-center ">
-                                        </div>
-                                        <div class="activity-content">
-                                        </div>
-                                    </div>
-                                    <div class="completion-container manual-completion align-items-center pr-15 p-r-1 text-muted">
-                                        <div class="completion-check-1552">
-                                            <div data-region="activity-information" data-activityname="6. Image Representation and Description" class="activity-information">
-
-                                                <div class="completion-info" data-region="completion-info">
-                                                    <button class="btn btn-secondary btn-sm text-nowrap" data-action="toggle-manual-completion" data-toggletype="manual:mark-done" data-cmid="1552" data-activityname="6. Image Representation and Description" data-withavailability="0" title="Mark 6. Image Representation and Description as done" aria-label="Mark 6. Image Representation and Description as done" fdprocessedid="t42s1m">
-                                                        Mark as done
-                                                    </button>
-
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="nosummary"></div>
-                                    </div>
-
-                                </div>
-                            </li>
-                        </ul>
+                            </div>
+                        </h4>
+                        <div data-region="sectionbadges" class="sectionbadges d-flex align-items-center "></div>
+                        <div class="activity-content"></div>
                     </div>
-
-
-            </div>
+                    <div class="completion-container manual-completion align-items-center pr-15 p-r-1 ">
+                        <div class="completion-check-<?php echo $material['MaterialID']; ?>">
+                            <div data-region="activity-information" data-activityname="<?php echo $material['Title']; ?>" class="activity-information">
+                                <div class="completion-info" data-region="completion-info">
+                                    <!-- You can add completion-related buttons or information here if needed -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="nosummary"></div>
+                    </div>
+                </div>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+</div>
+        </div>
 </body>
 
 <style>

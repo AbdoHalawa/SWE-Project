@@ -5,6 +5,8 @@ $student = new StudentModel($_SESSION['user_id']);
 
 $subjects = $student->getSubjectsForStudent();
 $grades = $student->getGradesForStudent();
+$materials= $student->getMaterialsForStudent();
+
 ?>
 
 <!DOCTYPE html>
