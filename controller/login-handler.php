@@ -127,6 +127,7 @@ class LoginController
                 exit();
             case 'Teacher':
                 if ($userData['TeacherType'] == 'Head') {
+                    $_SESSION['user_type']="Head";
                     header("Location: ../views/AdminView/adminindex.php");
                     exit();
                 } else {
