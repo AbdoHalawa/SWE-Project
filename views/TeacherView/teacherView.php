@@ -217,7 +217,7 @@ include "../partials/nav.php"
 				<div class="astra-advanced-hook-30270 ">
 					<section class="featured-pages-strip">
 
-					<div class="featured-pages-strip">
+ <div class="featured-pages-strip">
     <div class="featured-pages">
         <?php
         // Loop through teacher subjects and generate HTML for each subject
