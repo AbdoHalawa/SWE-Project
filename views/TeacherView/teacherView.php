@@ -2,11 +2,14 @@
 <html lang="en-GB">
 	<?php
 	require_once '../../model/TeacherModel.php';
-	require_once '../../model/WSubjectModel.php'; // Include the model file
+	require_once '../../model/SubjectModel.php'; // Include the model file
 	$model = new TeacherModel();
-	$subjectModel = new SubjectModel();
+	
+$subjectModel = new SubjectModel();
 
-	$teacherSubjects = $subjectModel->getSubjectDetail();
+// Assuming you have a method to fetch teacher subjects
+
+	$teacherSubjects = $model->getSubjectsForTeacher();
 	$teacherName = isset($_SESSION['user_name']) ? $_SESSION['user_name'] : 'notav';
 	
 	?>
@@ -220,29 +223,18 @@ include "../partials/nav.php"
 				<div class="astra-advanced-hook-30270 ">
 					<section class="featured-pages-strip">
 
- <div class="featured-pages-strip">
+					<div class="featured-pages-strip">
     <div class="featured-pages">
         <?php
         // Loop through teacher subjects and generate HTML for each subject
         foreach ($teacherSubjects as $subject) {
-            // Get subject details (grade and class)
-            $subjectDetails = $subjectModel->getSubjectDetails($subject['SubjectID']);
-
-            // Output HTML for each subject
+            // Output HTML for each subject with a link
             echo '<div class="featured-page">';
+            echo '<a href="innerTeacherview.php?subjectId=' . $subject['SubjectID'] . '">';
             echo '<img src="../../Public/imgs/copybook.png" alt="Subject Image">';
             echo '<div class="featured-page-caption">' . $subject['SubjectName'] . '</div>';
-
-            // Display grade and class details
-            if (!empty($subjectDetails)) {
-                foreach ($subjectDetails as $details) {
-                    echo '<div class="subject-details">';
-                    echo '<p>Grade: ' . $details['Grade'] . '</p>';
-                    echo '<p>Class: ' . $details['ClassName'] . '</p>';
-                    echo '</div>';
-                }
-            }
-
+            // Add more details as needed
+            echo '</a>';
             echo '</div>';
         }
         ?>
