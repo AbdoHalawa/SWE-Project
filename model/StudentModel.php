@@ -362,6 +362,23 @@ class StudentModel extends Model
     
         return $materials;
     }
+
+    public function getNumberOfStudents()
+    {
+        $sql = "SELECT COUNT(*) AS total FROM Students";
+        $stmt = $this->executeQuery($sql);
+
+        if ($stmt) {
+            $result = $stmt->get_result();
+            $data = $result->fetch_assoc();
+            $stmt->close();
+
+            return $data['total'];
+        } else {
+            // Handle the case where the query execution failed
+            die("Error executing query: " . $this->db->error);
+        }
+    }
     
 }
 ?>
