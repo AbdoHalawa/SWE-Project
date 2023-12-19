@@ -320,13 +320,13 @@ class TeacherModel extends Model
     public function getSubjectsForTeacher()
     {
         // Check if teacher_id is set in the session
-        if (!isset($_SESSION['teacher_id'])) {
+        if (!isset($_SESSION['user_id'])) {
             // Handle the case when teacher_id is not set
             return []; // or throw an exception, redirect, etc.
         }
 
         // Get teacherID from session and ensure it's an integer
-        $teacherID = (int)$_SESSION['teacher_id'];
+        $teacherID = (int)$_SESSION['user_id'];
 
         // Use prepared statements to prevent SQL injection
         $query = "SELECT SubjectID, SubjectName

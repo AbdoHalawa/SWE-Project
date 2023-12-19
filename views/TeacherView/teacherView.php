@@ -5,13 +5,7 @@
 	$model = new TeacherModel();
 	$teacherSubjects = $model->getSubjectsForTeacher();
 	$teacherName = isset($_SESSION['user_name']) ? $_SESSION['user_name'] : 'notav';
-	if (isset($_SESSION['user_name'])) {
-		// Echo the TeacherName
-		echo $_SESSION['user_name'];
-	} else {
-		// Handle the case when TeacherName is not set
-		echo 'Teacher Name Not Available';
-	}
+	
 	?>
 <head>
 	<script src="https://kit.fontawesome.com/cd800095c4.js" crossorigin="anonymous"></script>
@@ -118,7 +112,7 @@ include "../partials/nav.php"
 						</div>
 
 						<div class="page-title-text">
-						<?php echo $teacherName; ?> </div>
+						<?php echo"Hi,".$teacherName; ?> </div>
 
 					</div>
 
@@ -229,7 +223,7 @@ include "../partials/nav.php"
 		// Loop through teacher subjects and generate HTML for each subject
 		foreach ($teacherSubjects as $subject) {
 			echo '<div class="featured-page">';
-			echo '<img src="../../Public/imgs/subjectImage.jpg" alt="Subject Image">';
+			echo '<img src="../../Public/imgs/copybook.png" alt="Subject Image">';
 			echo '<div class="featured-page-caption">' . $subject['SubjectName'] . '</div>';
 			echo '</div>';
 		}
