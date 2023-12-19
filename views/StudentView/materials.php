@@ -7,7 +7,6 @@ $subjects = $student->getSubjectsForStudent();
 $grades = $student->getGradesForStudent();
 $materials= $student->getMaterialsForStudent();
 
-?>
 <!DOCTYPE html>
 <html lang="en-GB">
 
