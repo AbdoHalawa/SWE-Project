@@ -297,48 +297,59 @@ include "../partials/nav.php"
 
 
 
-                    <div class="content" id="yui_3_18_1_1_1700781941318_32">
-    <div class="summary"></div>
-    <ul class="activity-cards section yui3-dd-drop" id="yui_3_18_1_1_1700781941318_31">
-        <?php foreach ($materials as $material): ?>
-            <li class="activity col-12 col-md-6 col-lg-4 col-xl-3 modtype_resource" id="module-<?php echo $material['MaterialID']; ?>" data-id="<?php echo $material['MaterialID']; ?>" data-section="1" aria-labelledby="module-<?php echo $material['MaterialID']; ?>-title">
-                <div class="single-card">
-                    <div class="d-flex flex-column single-card-child-wrapper">
-                        <h4 id="module-<?php echo $material['MaterialID']; ?>-title" class="title nosummary m-0">
-                            <div class="activity-instance d-flex flex-column">
-                                <div class="activitytitle media  modtype_resource position-relative align-self-start">
-                                    <div class="activityiconcontainer content courseicon align-self-start mr-3">
-                                        <img src="https://moodle1.miuegypt.edu.eg/theme/image.php/mb2nl/resource/1698497336/monologo?filtericon=1" class="activityicon " alt="File icon">
-                                    </div>
-                                    <div class="media-body align-self-center">
-                                        <div class="activityname">
-                                            <a href="<?php echo $material['FilePath']; ?>" class="aalink stretched-link" onclick="">
-                                                <span class="instancename"><?php echo $material['Title']; ?> <span class="accesshide "> File</span></span>
-                                            </a>
+                    <?php
+// ... (your existing code)
+
+$materials = $student->getMaterialsForStudent();
+
+if (empty($materials)) {
+    echo "No materials found for the student.";
+} else {
+    ?>
+    <div class="content" id="yui_3_18_1_1_1700781941318_32">
+        <div class="summary"></div>
+        <ul class="activity-cards section yui3-dd-drop" id="yui_3_18_1_1_1700781941318_31">
+            <?php foreach ($materials as $material): ?>
+                <li class="activity col-12 col-md-6 col-lg-4 col-xl-3 modtype_resource" id="module-<?php echo $material['MaterialID']; ?>" data-id="<?php echo $material['MaterialID']; ?>" data-section="1" aria-labelledby="module-<?php echo $material['MaterialID']; ?>-title">
+                    <div class="single-card">
+                        <div class="d-flex flex-column single-card-child-wrapper">
+                            <h4 id="module-<?php echo $material['MaterialID']; ?>-title" class="title nosummary m-0">
+                                <div class="activity-instance d-flex flex-column">
+                                    <div class="activitytitle media  modtype_resource position-relative align-self-start">
+                                        <div class="activityiconcontainer content courseicon align-self-start mr-3">
+                                            <img src="https://moodle1.miuegypt.edu.eg/theme/image.php/mb2nl/resource/1698497336/monologo?filtericon=1" class="activityicon " alt="File icon">
+                                        </div>
+                                        <div class="media-body align-self-center">
+                                            <div class="activityname">
+                                                <a href="<?php echo $material['FilePath']; ?>" download class="aalink stretched-link">
+                                                    <span class="instancename"><?php echo $material['Title']; ?> <span class="accesshide "> File</span></span>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </h4>
-                        <div data-region="sectionbadges" class="sectionbadges d-flex align-items-center "></div>
-                        <div class="activity-content"></div>
-                    </div>
-                    <div class="completion-container manual-completion align-items-center pr-15 p-r-1 ">
-                        <div class="completion-check-<?php echo $material['MaterialID']; ?>">
-                            <div data-region="activity-information" data-activityname="<?php echo $material['Title']; ?>" class="activity-information">
-                                <div class="completion-info" data-region="completion-info">
-                                    <!-- You can add completion-related buttons or information here if needed -->
+                            </h4>
+                            <div data-region="sectionbadges" class="sectionbadges d-flex align-items-center "></div>
+                            <div class="activity-content"></div>
+                        </div>
+                        <div class="completion-container manual-completion align-items-center pr-15 p-r-1 ">
+                            <div class="completion-check-<?php echo $material['MaterialID']; ?>">
+                                <div data-region="activity-information" data-activityname="<?php echo $material['Title']; ?>" class="activity-information">
+                                    <div class="completion-info" data-region="completion-info">
+                                        <!-- You can add completion-related buttons or information here if needed -->
+                                    </div>
                                 </div>
                             </div>
+                            <div class="nosummary"></div>
                         </div>
-                        <div class="nosummary"></div>
                     </div>
-                </div>
-            </li>
-        <?php endforeach; ?>
-    </ul>
-</div>
-        </div>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+    <?php
+}
+?>
 </body>
 
 <style>
