@@ -5,7 +5,6 @@ if (isset($_GET['teacherId'])) {
     $teacher = TeacherModel::getTeacherById($teacherId);
 }
 
-// Check if the teacher exists
 if ($teacher) {
     $teacherName = $teacher['TeacherName'];
     $gender = $teacher['Gender'];

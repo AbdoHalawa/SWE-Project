@@ -142,6 +142,34 @@ return $this->id;
 
         return $subjects;
     }
+    public function getStudentByAdmissionID($admissionID)
+    {
+        $sql = "SELECT * FROM Students WHERE AdmissionID = ?";
+        $values = [$admissionID];
+
+        $stmt = $this->executeQuery($sql, $values);
+
+        if ($stmt) {
+            $result = $stmt->get_result();
+
+            if ($result) {
+                // Fetch the student details as an associative array
+                $student = $result->fetch_assoc();
+
+                // Close the result set and the statement
+                $result->close();
+                $stmt->close();
+
+                return $student;
+            } else {
+                // Handle the case where get_result is not available
+                die("Error getting result set: " . $this->db->error);
+            }
+        } else {
+            // Handle the case where the query execution failed
+            die("Error executing query: " . $this->db->error);
+        }
+    }
 
     function getSubjectNameById($subjectID)
     {

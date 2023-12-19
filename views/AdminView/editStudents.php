@@ -1,7 +1,13 @@
 
 <!DOCTYPE html>
 <html lang="en">
+    <?php
+$studentID = $_GET['student_id']; // Ensure proper validation and sanitization
 
+// Fetch student details from the database based on the ID
+$studentModel = new StudentModel();
+$studentData = $studentModel->getStudentByAdmissionId($studentID);
+?>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">

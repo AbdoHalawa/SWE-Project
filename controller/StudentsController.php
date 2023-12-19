@@ -109,6 +109,23 @@ class StudentsController {
             echo 'console.error("Error: Form not submitted.");';
         }
     }
+    public function getStudentByAdmissionID($admissionID)
+    {
+        // Instantiate the StudentModel
+        $studentModel = new StudentModel();
+
+        // Get the student details by AdmissionID
+        $studentData = $studentModel->getStudentByAdmissionID($admissionID);
+
+        if ($studentData) {
+            // Return the student details as an array
+            return $studentData;
+        } else {
+            // Return an empty array or handle the case where the student is not found
+            return [];
+        }
+    }
+
     public function checkAdmissionID() {
         if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["admissionID"])) {
             $admissionID = $_POST["admissionID"];

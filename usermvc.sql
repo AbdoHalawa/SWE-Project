@@ -46,7 +46,7 @@ CREATE TABLE Parents (
 );
 -- Table for Students
 CREATE TABLE Students (
-    StudentID INT AUTO_INCREMENT PRIMARY KEY,
+   AdmissionID INT PRIMARY KEY, -- Use AdmissionID as the primary key
     FirstName VARCHAR(50),
     LastName VARCHAR(50),
     Gender VARCHAR(10),
@@ -54,18 +54,16 @@ CREATE TABLE Students (
     Religion VARCHAR(50),
     Grade ENUM('10', '11', '12'), -- Using ENUM for valid grades
     ClassID INT, -- Foreign key referencing Classes
-    AdmissionID INT,
     ParentID INT, -- Foreign key referencing Parents
     PhoneNumber VARCHAR(15),
     Email VARCHAR(100),
     Password VARCHAR(255),
     FOREIGN KEY (ClassID) REFERENCES Classes(ClassID),
-    FOREIGN KEY (ParentID) REFERENCES Parents(ParentID),
-    UNIQUE (AdmissionID)
+    FOREIGN KEY (ParentID) REFERENCES Parents(ParentID)
 );
 -- Table for Enrollment (connecting students with classes)
 CREATE TABLE Enrollment (
-    StudentID INT,
+    AdmissionID INT,
     ClassID INT,
     PRIMARY KEY (StudentID, ClassID),
     FOREIGN KEY (StudentID) REFERENCES Students(StudentID),
