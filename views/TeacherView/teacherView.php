@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html lang="en-GB">
-
+	<?php
+	require_once '../../model/TeacherModel.php'; // Include the model file
+	$model = new TeacherModel();
+	$teacherSubjects = $model->getSubjectsForTeacher();
+	$teacherName = isset($_SESSION['user_name']) ? $_SESSION['user_name'] : 'notav';
+	if (isset($_SESSION['user_name'])) {
+		// Echo the TeacherName
+		echo $_SESSION['user_name'];
+	} else {
+		// Handle the case when TeacherName is not set
+		echo 'Teacher Name Not Available';
+	}
+	?>
 <head>
 	<script src="https://kit.fontawesome.com/cd800095c4.js" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/11298abef4.js" crossorigin="anonymous"></script>
@@ -81,7 +93,7 @@ flexibility(document.documentElement);
 </head>
 <?php
 include "../partials/nav.php"
-?>
+	?>
 
 <body itemtype='https://schema.org/WebPage' itemscope='itemscope' class="page-template-default page page-id-42 page-parent ast-desktop ast-page-builder-template ast-no-sidebar astra-4.4.1 ast-header-custom-item-inside ast-full-width-primary-header group-blog ast-single-post ast-mobile-inherit-site-logo ast-inherit-site-logo-transparent ast-above-mobile-menu-align-inline ast-default-menu-enable ast-flyout-above-menu-enable ast-flyout-above-left-side ast-default-below-menu-enable ast-full-width-layout ast-full-width-header ast-inherit-site-logo-sticky ast-normal-title-enabled astra-addon-4.4.0">
 	<!-- Google Tag Manager (noscript) -->
@@ -106,7 +118,7 @@ include "../partials/nav.php"
 						</div>
 
 						<div class="page-title-text">
-							Teacher </div>
+						<?php echo $teacherName; ?> </div>
 
 					</div>
 
@@ -116,19 +128,19 @@ include "../partials/nav.php"
 				<!--Page Title Strip-->
 
 				<div id="wgs-header-wrapper">
-                    <div class="astra-advanced-hook-39611 ">
-                        <!--BEGIN DEPT header links wrapper-->
-                        <div class="header-links" id="divcontent">
-                            <div class="featured_box_content">
-                                <div class="box-content">
-                                    <div class="links-group">
-                                        <a href="../../controller/logout-handler.php?action=logout">Logout</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- END DEPT header links wrapper -->
-                    </div>
+					<div class="astra-advanced-hook-39611 ">
+						<!--BEGIN DEPT header links wrapper-->
+						<div class="header-links" id="divcontent">
+							<div class="featured_box_content">
+								<div class="box-content">
+									<div class="links-group">
+										<a href="../../controller/logout-handler.php?action=logout">Logout</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- END DEPT header links wrapper -->
+					</div>
 					<!--Academic & Dept Links-->
 
 					<div class="wgs-header-image">
@@ -211,64 +223,19 @@ include "../partials/nav.php"
 				<div class="astra-advanced-hook-30270 ">
 					<section class="featured-pages-strip">
 
-						<!-- <div class="featured-pages-heading">                               optional header
-    <h5>Discover More</h5>
- Find out more about Academic Life at Westminster	</div> -->
-
-
-						<div class="featured-pages">
-
-
-							<div class="featured-page">
-
-								<img width="2560" height="1709" src="../../Public/imgs/clasPic.jpeg" class="featured-page-img wp-post-image" alt="" decoding="async" loading="lazy" sizes="(max-width: 2560px) 100vw, 2560px" /><a href="./innerTeacherView.php">
-									<div class="featured-page-caption">
-										Class 1
-									</div>
-								</a>
-							</div>
-							<div class="featured-page">
-
-								<img width="2560" height="1709" src="../../Public/imgs/clasPic.jpeg" class="featured-page-img wp-post-image" alt="" decoding="async" loading="lazy" sizes="(max-width: 2560px) 100vw, 2560px" /><a href="./innerTeacherView.php">
-									<div class="featured-page-caption">
-										Class 2
-									</div>
-								</a>
-							</div>
-							<div class="featured-page">
-
-								<img width="2560" height="1709" src="../../Public/imgs/clasPic.jpeg" class="featured-page-img wp-post-image" alt="" decoding="async" loading="lazy" sizes="(max-width: 2560px) 100vw, 2560px" /><a href="../views/innerTeacherView.php">
-									<div class="featured-page-caption">
-										Class 3
-									</div>
-								</a>
-							</div>
-							<div class="featured-page">
-
-								<img width="2560" height="1709" src="../../Public/imgs/clasPic.jpeg" class="featured-page-img wp-post-image" alt="" decoding="async" loading="lazy" sizes="(max-width: 2560px) 100vw, 2560px" /><a href="../views/innerTeacherView.php">
-									<div class="featured-page-caption">
-										Class 4
-									</div>
-								</a>
-							</div>
-							<div class="featured-page">
-
-								<img width="2560" height="1709" src="../../Public/imgs/clasPic.jpeg" class="featured-page-img wp-post-image" alt="" decoding="async" loading="lazy" sizes="(max-width: 2560px) 100vw, 2560px" /><a href="../views/innerTeacherView.php">
-									<div class="featured-page-caption">
-										Class 5
-									</div>
-								</a>
-							</div>
-							<div class="featured-page">
-
-								<img width="2560" height="1709" src="../../Public/imgs/clasPic.jpeg" class="featured-page-img wp-post-image" alt="" decoding="async" loading="lazy" sizes="(max-width: 2560px) 100vw, 2560px" /><a href="../views/innerTeacherView.php">
-									<div class="featured-page-caption">
-										Class 6
-									</div>
-								</a>
-							</div>
-
-						</div>
+ <div class="featured-pages-strip">
+	<div class="featured-pages">
+		<?php
+		// Loop through teacher subjects and generate HTML for each subject
+		foreach ($teacherSubjects as $subject) {
+			echo '<div class="featured-page">';
+			echo '<img src="../../Public/imgs/subjectImage.jpg" alt="Subject Image">';
+			echo '<div class="featured-page-caption">' . $subject['SubjectName'] . '</div>';
+			echo '</div>';
+		}
+		?>
+	</div>
+</div>
 					</section>
 				</div>
 				<!-- end Classes section -->
@@ -276,7 +243,7 @@ include "../partials/nav.php"
 				<!--------------------- footer-------------------------- -->
 				<?php
 				include "../partials/footer.php"
-				?>
+					?>
 </body>
 
 </html>
