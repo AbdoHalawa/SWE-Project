@@ -138,7 +138,7 @@ if (isset($_GET['success']) && $_GET['success'] == 1) {
                                         <div class="col-12 col-sm-4">
                                             <div class="form-group local-forms">
                                                 <label>Email ID <span class="login-danger">*</span></label>
-                                                <input name="email" type="email" class="form-control" placeholder="Enter Mail Id">
+                                                <input name="email" type="email" id="email" class="form-control" placeholder="Enter Mail Id">
                                             </div>
                                         </div>
                                         <div class="col-12 col-sm-4">
@@ -162,47 +162,51 @@ if (isset($_GET['success']) && $_GET['success'] == 1) {
     </div>
 
     </div>
-
-
-    <script src="assets/js/jquery-3.6.0.min.js"></script>
-
-    <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <script src="assets/js/feather.min.js"></script>
-
-    <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-
-    <script src="assets/plugins/select2/js/select2.min.js"></script>
-
-    <script src="assets/plugins/moment/moment.min.js"></script>
-    <script src="assets/js/bootstrap-datetimepicker.min.js"></script>
-
-    <script src="assets/js/script.js"></script>
     <script>
-        function validateForm() {
-            // Get form input values
-            var teacherID = document.getElementById('teacher_id').value.trim();
-            var teacherName = document.getElementById('teacher_name').value.trim();
-            // Other field values...
+    function generateID(prefix) {
+        const validCharacters = '0123456789';
+        const randomIDArray = new Uint32Array(5);
+        crypto.getRandomValues(randomIDArray);
 
-            // Validation checks
-            if (teacherID === '') {
-                alert('Please enter Teacher ID');
-                return false;
-            }
-
-            if (teacherName === '') {
-                alert('Please enter Teacher Name');
-                return false;
-            }
-
-
-
-            // Add more validation checks for other fields as needed
-
-            return true; // If all validations pass, allow form submission
+        let generatedID = prefix;
+        for (let i = 0; i < randomIDArray.length; i++) {
+            const randomNum = randomIDArray[i] % validCharacters.length;
+            generatedID += validCharacters.charAt(randomNum);
         }
-    </script>
+
+        // Ensure the generated ID has exactly 5 digits
+        generatedID = generatedID.slice(0, 5);
+
+        return generatedID;
+    }
+
+    function generateTeacherID() {
+        const teacherID = generateID('30');
+        document.getElementById('teacher_id').value = teacherID;
+    }
+
+    function generateTeacherEmail() {
+        // Get the values from the form
+        const teacherName = document.getElementById('teacher_name').value.trim();
+        const teacherID = document.getElementById('teacher_id').value;
+
+        // Check if both teacher name and teacher ID are not empty
+        if (teacherName && teacherID) {
+            // Generate the teacher email
+            const teacherEmail = `${teacherName.toLowerCase()}${teacherID}@nefertari.com`;
+
+            // Set the generated email to the corresponding input field
+            document.getElementById('email').value = teacherEmail;
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        // Attach event listeners after the DOM is fully loaded
+        document.getElementById('teacher_name').addEventListener('input', generateTeacherEmail);
+        generateTeacherID();
+        generateTeacherEmail();
+    });
+</script>
 
 </body>
 
