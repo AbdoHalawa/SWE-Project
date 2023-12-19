@@ -1,7 +1,7 @@
 
 <?php
-require_once('/xampp/htdocs/Ragy_Website/SWE_project/SWE-project/model/StudentModel.php'); // Adjust the path if needed
-
+define('__ROOT__', "../../");
+require_once(__ROOT__ . "model/StudentModel.php"); 
 $student = new StudentModel($_SESSION['user_id']);
 
 $subjects = $student->getSubjectsForStudent();

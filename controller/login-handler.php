@@ -8,63 +8,60 @@ class LoginController
 {
     public function processLogin($email, $password)
     {
-        // Validate user input (you can add more validation)
         if (empty($email) || empty($password)) {
-            // Handle validation errors
             return "Please enter both email and password.";
         }
 
-        // Check if the user is a teacher
-        $db = new Dbh();
-        $conn = $db->connect();
+        // Extract user type and first two digits of ID from the email
+        $matches = [];
+        if (preg_match('/^([a-zA-Z]+)(\d{2})\d*@nefertari\.com$/', $email, $matches)) {
+            $name = $matches[1];
+            $idPrefix = $matches[2];
 
-        // Assuming you have a 'Teachers' table
-        $teacherQuery = "SELECT * FROM Teachers WHERE TeacherName = ? AND Password = ?";
-        $stmt = mysqli_prepare($conn, $teacherQuery);
-
-        if ($stmt) {
-            mysqli_stmt_bind_param($stmt, "ss", $email, $password);
-            mysqli_stmt_execute($stmt);
-            $teacherResult = mysqli_stmt_get_result($stmt);
-
-            if ($teacherResult && mysqli_num_rows($teacherResult) > 0) {
-                $teacherData = mysqli_fetch_assoc($teacherResult);
-                $this->handleSuccessfulLogin($teacherData, 'Teacher');
+            // Check user type based on the extracted ID prefix
+            if ($idPrefix == '10') {
+                return $this->checkUserType('Students', 'Email', $email, $password, 'Student');
+            } elseif ($idPrefix == '20') {
+                return $this->checkUserType('Parents', 'Email', $email, $password, 'Parent');
+            } elseif ($idPrefix == '30') {
+                return $this->checkUserType('Teachers', 'Email', $email, $password, 'Teacher');
             }
         }
 
-        // Check if the user is a student
-        $studentQuery = "SELECT * FROM Students WHERE FirstName = ? AND Password = ?";
-        $stmt = mysqli_prepare($conn, $studentQuery);
+        // Invalid email format
+        return "Invalid email format or password.";
+    }
 
-        if ($stmt) {
-            mysqli_stmt_bind_param($stmt, "ss", $email, $password);
-            mysqli_stmt_execute($stmt);
-            $studentResult = mysqli_stmt_get_result($stmt);
 
-            if ($studentResult && mysqli_num_rows($studentResult) > 0) {
-                $studentData = mysqli_fetch_assoc($studentResult);
-                $this->handleSuccessfulLogin($studentData, 'Student');
-            }
+
+    // ... (other code remains unchanged)
+
+private function checkUserType($table, $columnName, $email, $password, $userType)
+{
+    // Include your database connection file
+    $db = new Dbh();
+    $conn = $db->connect();
+
+    $query = "SELECT * FROM $table WHERE $columnName = ? AND Password = ?";
+    $stmt = mysqli_prepare($conn, $query);
+
+    if ($stmt) {
+        mysqli_stmt_bind_param($stmt, "ss", $email, $password);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+
+        if ($result && mysqli_num_rows($result) > 0) {
+            $userData = mysqli_fetch_assoc($result);
+
+            // Debugging: Output values for troubleshooting
+            echo "Email: $email, Password: $password, UserType: $userType, UserData: " . print_r($userData, true);
+
+            // Simulate login without password hashing
+            $this->handleSuccessfulLogin($userData, $userType);
+        } else {
+            // Debugging: Output error message
+            echo "Error: " . mysqli_error($conn);
         }
-
-        // Check if the user is a parent
-        $parentQuery = "SELECT * FROM Parents WHERE ParentName = ? AND Password = ?";
-        $stmt = mysqli_prepare($conn, $parentQuery);
-
-        if ($stmt) {
-            mysqli_stmt_bind_param($stmt, "ss", $email, $password);
-            mysqli_stmt_execute($stmt);
-            $parentResult = mysqli_stmt_get_result($stmt);
-
-            if ($parentResult && mysqli_num_rows($parentResult) > 0) {
-                $parentData = mysqli_fetch_assoc($parentResult);
-                $this->handleSuccessfulLogin($parentData, 'Parent');
-            }
-        }
-
-        // Invalid credentials
-        return "Invalid email or password.";
 
         // Close the prepared statement
         mysqli_stmt_close($stmt);
@@ -72,6 +69,15 @@ class LoginController
         // Close the database connection
         mysqli_close($conn);
     }
+
+    // Simulate successful login without password hashing
+    return "Simulated login with plain text password.";
+}
+
+// ... (other code remains unchanged)
+
+
+
 
     private function handleSuccessfulLogin($userData, $userType)
     {
@@ -124,4 +130,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     header("Location: login.php");
     exit();
 }
-?>
