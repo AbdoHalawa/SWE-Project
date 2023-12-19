@@ -1,5 +1,32 @@
 <!DOCTYPE html>
 <html lang="en-GB">
+<?php
+require_once '../../model/TeacherModel.php';
+require_once '../../model/SubjectModel.php';
+if (isset($_GET['subjectId'])) {
+    // Get the subjectId from the URL
+    $subjectId = $_GET['subjectId'];
+
+    // Assuming you have a method to get subject information from your model
+    $subjectModel = new SubjectModel(); // Change this based on your actual model
+    $subjectInfo = $subjectModel->getSubjectInfo($subjectId);
+
+    // Check if subject information is retrieved successfully
+    if ($subjectInfo) {
+        $subjectName = $subjectInfo['SubjectName'];
+
+        // Use $subjectName as needed in your code
+        echo "Subject ID: $subjectId<br>";
+        echo "Subject Name: $subjectName";
+    } else {
+        // Handle the case where subject information cannot be retrieved
+        echo "Error retrieving subject information.";
+    }
+} else {
+    // Handle the case where subjectId is not present in the URL
+    echo "Subject ID not provided in the URL.";
+}
+?>
 
 <head>
 	<script src="https://kit.fontawesome.com/cd800095c4.js" crossorigin="anonymous"></script>

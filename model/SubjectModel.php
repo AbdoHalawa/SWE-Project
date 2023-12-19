@@ -29,45 +29,25 @@ class SubjectModel extends Model
 
     return $stmt !== false;
 }
-public function getSubjectDetails($subjectId)
-{
-    try {"SELECT 
-                    s.SubjectID, 
-                    s.SubjectName, 
-                    c.ClassName
-                FROM Subjects s
-                LEFT JOIN Classes c ON s.ClassID = c.ClassID
-                WHERE s.SubjectID = ?";
-        
-        $values = [$subjectId];
+public function getSubjectInfo($subjectId) {
+    // Assuming you have a database connection
+    $db = $this->connect();
 
-        // Execute the query and get the result set
-        $stmt = $this->executeQuery($sql, $values);
+    $query = "SELECT * FROM subjects WHERE SubjectID = ?";
 
-        if ($stmt !== false) {
-            $result = [];
+    // Execute the query and get the statement
+    $stmt = $this->executeQuery($query, [$subjectId]);
 
-    $stmt->bind_result($subjectId, $subjectName, $className, $grade);
+    // Get the result
+    $result = $stmt->get_result();
 
-    while ($stmt->fetch()) {
-        $result[] = [
-            'SubjectID' => $subjectId,
-            'SubjectName' => $subjectName,
-            'ClassName' => $className,
-            'Grade' => $grade,
-        ];
+    if ($result && $result->num_rows > 0) {
+        return $result->fetch_assoc();
     }
 
-    return $result;
-        }
-
-        return false;
-    } catch (PDOException $e) {
-        // Log or handle the error as needed
-        echo "Error: " . $e->getMessage();
-        return false;
-    }
+    return false;
 }
+
 
 // Add this helper method to fetch results from the statement
 
