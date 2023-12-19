@@ -39,7 +39,7 @@ if (isset($_GET['success']) && $_GET['success'] == 1) {
                     <div class="col">
                         <h3 class="page-title">Add Subject</h3>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="subjects.html">Subject</a></li>
+                            <li class="breadcrumb-item"><a href="../AdminView/listSubjects.php">Subject</a></li>
                             <li class="breadcrumb-item active">Add Subject</li>
                         </ul>
                     </div>

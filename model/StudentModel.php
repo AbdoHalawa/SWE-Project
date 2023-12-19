@@ -71,7 +71,7 @@ class StudentModel extends Model
     public function editStudent()
     {
         $formattedDob = date('Y-m-d', strtotime($this->dateOfBirth));
-        $hashedPassword = password_hash($this->password, PASSWORD_DEFAULT);
+        
     
         $sql = 'UPDATE Students SET
                 FirstName = ?,
@@ -99,7 +99,7 @@ class StudentModel extends Model
             $this->parentID,
             $this->phoneNumber,
             $this->email,
-            $hashedPassword,
+            $this->password,
             $this->studentID
         ];
     
@@ -149,8 +149,8 @@ class StudentModel extends Model
 {
     $sql = "SELECT Students.*, Classes.ClassName, Classes.Grade, Parents.ParentName 
             FROM Students
-            JOIN Classes ON Students.ClassID = Classes.ClassID
-            JOIN Parents ON Students.ParentID = Parents.ParentID";
+            LEFT JOIN Classes ON Students.ClassID = Classes.ClassID
+            LEFT JOIN Parents ON Students.ParentID = Parents.ParentID";
     $stmt = $this->executeQuery($sql);
 
     if ($stmt) {

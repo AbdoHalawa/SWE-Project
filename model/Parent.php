@@ -77,12 +77,6 @@ private function parentExists($id)
     }
     public function editParent($id, $name, $email, $password)
 {
-    // Check if the provided password is hashed
-    $isPasswordHashed = password_verify($password, $password);
-
-    // If not hashed, hash the password
-    $hashedPassword = $isPasswordHashed ? $password : password_hash($password, PASSWORD_DEFAULT);
-
     // SQL query to update an existing parent record
     $sql = 'UPDATE Parents SET
             ParentName = ?,
@@ -94,7 +88,7 @@ private function parentExists($id)
     $values = [
         $name,
         $email,
-        $hashedPassword,
+        $password, // Store the password as-is without hashing
         $id
     ];
 
@@ -103,7 +97,7 @@ private function parentExists($id)
         $result = $this->executeQuery($sql, $values);
 
         // If update was successful, return true
-        if ($result !== false && $result->affected_rows > 0) {
+        if ($result->affected_rows > 0) {
             return true;
         } else {
             // Consider throwing an exception or logging an error
@@ -112,7 +106,9 @@ private function parentExists($id)
         }
     } catch (mysqli_sql_exception $exception) {
         // Echo the error message, and re-throw the exception
-        echo "Error: " . $exception->getMessage();
+        error_log("Exception Message: " . $exception->getMessage());
+
+        // Re-throw the exception
         throw $exception;
     }
 
