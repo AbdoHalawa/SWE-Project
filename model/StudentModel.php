@@ -1,5 +1,4 @@
 <?php
-//define('__ROOT__', dirname(dirname(__FILE__)));
 require_once(__DIR__ . '../../Db/Dbh.php');
 require_once(__DIR__ . '/Model.php');
  error_reporting(E_ALL);

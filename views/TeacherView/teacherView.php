@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 	<?php
-	require_once '../../model/TeacherModel.php'; // Include the model file
+	require_once '../../model/TeacherModel.php';
+	require_once '../../model/WSubjectModel.php'; // Include the model file
 	$model = new TeacherModel();
-	$teacherSubjects = $model->getSubjectsForTeacher();
+	$subjectModel = new SubjectModel();
+
+	$teacherSubjects = $subjectModel->getSubjectDetail();
 	$teacherName = isset($_SESSION['user_name']) ? $_SESSION['user_name'] : 'notav';
 	
 	?>
