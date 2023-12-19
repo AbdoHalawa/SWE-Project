@@ -1,5 +1,29 @@
 <!DOCTYPE html>
 <html lang="en-GB">
+<?php
+require_once '../../model/TeacherModel.php';
+require_once '../../model/SubjectModel.php';
+if (isset($_GET['subjectId'])) {
+    // Get the subjectId from the URL
+    $subjectId = $_GET['subjectId'];
+
+    // Assuming you have a method to get subject information from your model
+    $subjectModel = new SubjectModel(); // Change this based on your actual model
+    $subjectInfo = $subjectModel->getSubjectInfo($subjectId);
+
+    // Check if subject information is retrieved successfully
+    if ($subjectInfo) {
+        $subjectName = $subjectInfo['SubjectName'];
+
+    } else {
+        // Handle the case where subject information cannot be retrieved
+        echo "Error retrieving subject information.";
+    }
+} else {
+    // Handle the case where subjectId is not present in the URL
+    echo "Subject ID not provided in the URL.";
+}
+?>
 
 <head>
 	<script src="https://kit.fontawesome.com/cd800095c4.js" crossorigin="anonymous"></script>
@@ -96,7 +120,7 @@ include "../partials/nav.php"
 						</div>
 
 						<div class="page-title-text">
-							Class 1 </div>
+						<?php echo$subjectName; ?> </div>
 
 					</div>
 
@@ -213,7 +237,7 @@ include "../partials/nav.php"
 								</div>
 								<div class="featured-page">
 
-									<img width="2560" height="1709" src="../../Public/imgs/checklist-check-list-marker.jpg" class="featured-page-img wp-post-image" alt="" decoding="async" loading="lazy" sizes="(max-width: 2560px) 100vw, 2560px" /><a href="./addMatrial.php">
+									<img width="2560" height="1709" src="../../Public/imgs/checklist-check-list-marker.jpg" class="featured-page-img wp-post-image" alt="" decoding="async" loading="lazy" sizes="(max-width: 2560px) 100vw, 2560px" /><a href="./addMatrial.php?subjectId=<?php echo $subjectId; ?>">
 										<div class="featured-page-caption">
 											Material
 										</div>

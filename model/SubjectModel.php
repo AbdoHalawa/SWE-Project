@@ -29,22 +29,28 @@ class SubjectModel extends Model
 
     return $stmt !== false;
 }
-public function getSubjectDetails($subjectId)
-    {
-        $sql = "SELECT 
-                    s.SubjectID, 
-                    s.SubjectName, 
-                    c.ClassName, 
-                    g.Grade
-                FROM Subjects s
-                LEFT JOIN Grades g ON s.SubjectID = g.SubjectID
-                LEFT JOIN Classes c ON g.ClassID = c.ClassID
-                WHERE s.SubjectID = ?";
-        
-        $values = [$subjectId];
+public function getSubjectInfo($subjectId) {
+    // Assuming you have a database connection
+    $db = $this->connect();
 
-        return $this->db->query($sql, $values);
+    $query = "SELECT * FROM subjects WHERE SubjectID = ?";
+
+    // Execute the query and get the statement
+    $stmt = $this->executeQuery($query, [$subjectId]);
+
+    // Get the result
+    $result = $stmt->get_result();
+
+    if ($result && $result->num_rows > 0) {
+        return $result->fetch_assoc();
     }
+
+    return false;
+}
+
+
+// Add this helper method to fetch results from the statement
+
 public function addSubject(): bool
 {
     $data = [

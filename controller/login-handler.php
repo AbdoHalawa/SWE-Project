@@ -83,7 +83,43 @@ class LoginController
         $_SESSION['user_id'] = $userData[$userType . 'ID'];
         $_SESSION['user_name'] = $userData[$userType . 'Name'];
         $_SESSION['user_type'] = $userType;
+        $_SESSION['user_id'] = $userData[$userType . 'ID'];
+        $_SESSION['user_name'] = $userData[$userType . 'Name'];
+        $_SESSION['user_type'] = $userType;
 
+        // Additional fields for a student
+        if ($userType === 'Student') {
+            $_SESSION['student_gender'] = $userData['Gender'];
+            $_SESSION['student_dob'] = $userData['DateOfBirth'];
+            $_SESSION['student_religion'] = $userData['Religion'];
+            $_SESSION['student_grade'] = $userData['Grade'];
+            $_SESSION['student_class_id'] = $userData['ClassID'];
+            $_SESSION['student_parent_id'] = $userData['ParentID'];
+            $_SESSION['student_phone_number'] = $userData['PhoneNumber'];
+            $_SESSION['student_email'] = $userData['Email'];
+            $_SESSION['student_password'] = $userData['Password'];
+            // Add more fields as needed
+        }
+
+        // Additional fields for a teacher
+        if ($userType === 'Teacher') {
+            $_SESSION['teacher_gender'] = $userData['Gender'];
+            $_SESSION['teacher_dob'] = $userData['DateOfBirth'];
+            $_SESSION['teacher_phone_number'] = $userData['PhoneNumber'];
+            $_SESSION['teacher_joining_date'] = $userData['JoiningDate'];
+            $_SESSION['teacher_experience'] = $userData['Experience'];
+            $_SESSION['teacher_email'] = $userData['Email'];
+            $_SESSION['teacher_password'] = $userData['Password'];
+            $_SESSION['teacher_teacher_type'] = $userData['TeacherType'];
+            // Add more fields as needed
+        }
+
+        // Additional fields for a parent
+        if ($userType === 'Parent') {
+            $_SESSION['parent_email'] = $userData['Email'];
+            $_SESSION['parent_password'] = $userData['Password'];
+            // Add more fields as needed
+        }
         // Redirect to the appropriate view based on user type
         switch ($userType) {
             case 'Student':
