@@ -255,9 +255,44 @@
     return isTaken;
 
 }
+function generateStudentEmail() {
+        // Get the values from the form
+        const firstName = document.getElementById('first_name').value;
+        const admissionID = document.getElementById('admission_id').value;
 
+        // Check if both first name and admission ID are not empty
+        if (firstName && admissionID) {
+            // Generate the student email
+            const studentEmail = `${firstName.toLowerCase()}${admissionID}@nefertari.com`;
 
-    // Call the functions when the page loads
+            // Set the generated email to the corresponding input field
+            document.getElementById('email').value = studentEmail;
+        }
+    }
+
+    // Function to generate parent email
+    function generateParentEmail() {
+        // Get the values from the form
+        const parentName = document.getElementById('parent_name').value;
+        const parentID = document.getElementById('parent_id').value;
+
+        // Check if both parent name and parent ID are not empty
+        if (parentName && parentID) {
+            // Generate the parent email
+            const parentEmail = `${parentName.toLowerCase()}${parentID}@nefertari.com`;
+
+            // Set the generated email to the corresponding input field
+            document.getElementById('parent_email').value = parentEmail;
+        }
+    }
+
+    // Attach event listeners to the name fields to trigger email generation
+    document.getElementById('first_name').addEventListener('input', generateStudentEmail);
+    document.getElementById('parent_name').addEventListener('input', generateParentEmail);
+
+   
+        generateStudentEmail();
+        generateParentEmail();
     generateAdmissionID();
     generateParentID();
 </script>
