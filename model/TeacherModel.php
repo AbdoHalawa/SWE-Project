@@ -238,14 +238,12 @@ class TeacherModel extends Model
     }
 
 
-    // Function to check if a TeacherID already exists in the database
-    private function teacherIdExists($teacherId): bool
+    public function teacherIdExists($teacherId): bool
     {
         $sql = "SELECT COUNT(*) as count FROM Teachers WHERE TeacherID = ?";
         $stmt = $this->executeQuery($sql, [$teacherId]);
         $result = $stmt->get_result();
         $row = $result->fetch_assoc();
-
         return ($row['count'] > 0);
     }
     public static function getTeachers()

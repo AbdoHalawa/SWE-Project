@@ -75,6 +75,70 @@ private function parentExists($id)
         // Execute the query with the provided values
         $this->executeQuery($sql, [$id,$name, $email, $hashedPassword]);
     }
+    public function editParent($id, $name, $email, $password)
+{
+    // Check if the provided password is hashed
+    $isPasswordHashed = password_verify($password, $password);
+
+    // If not hashed, hash the password
+    $hashedPassword = $isPasswordHashed ? $password : password_hash($password, PASSWORD_DEFAULT);
+
+    // SQL query to update an existing parent record
+    $sql = 'UPDATE Parents SET
+            ParentName = ?,
+            Email = ?,
+            Password = ?
+            WHERE ParentID = ?';
+
+    // Prepare the values array
+    $values = [
+        $name,
+        $email,
+        $hashedPassword,
+        $id
+    ];
+
+    try {
+        // Execute the query
+        $result = $this->executeQuery($sql, $values);
+
+        // If update was successful, return true
+        if ($result !== false && $result->affected_rows > 0) {
+            return true;
+        } else {
+            // Consider throwing an exception or logging an error
+            // based on the specific situation/error.
+            throw new Exception("Error: Parent not updated.");
+        }
+    } catch (mysqli_sql_exception $exception) {
+        // Echo the error message, and re-throw the exception
+        echo "Error: " . $exception->getMessage();
+        throw $exception;
+    }
+
+    return false;
+}
+public function deleteParent($parentID)
+    {
+        $sql = 'DELETE FROM Parents WHERE ParentID = ?';
+
+        try {
+            $result = $this->executeQuery($sql, [$parentID]);
+
+            // If deletion was successful, return true
+            if ($result !== false && $result->affected_rows > 0) {
+                return true;
+            } else {
+                throw new Exception("Error: Parent not deleted.");
+            }
+        } catch (mysqli_sql_exception $exception) {
+            // Echo the error message, and re-throw the exception
+            echo "Error: " . $exception->getMessage();
+            throw $exception;
+        }
+
+        return false;
+    }
     private function fetchStudentData()
 {
     $sql = "SELECT * FROM Students WHERE ParentID = " . $this->ParentID;

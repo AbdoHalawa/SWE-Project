@@ -46,7 +46,7 @@ CREATE TABLE Parents (
 );
 -- Table for Students
 CREATE TABLE Students (
-   AdmissionID INT PRIMARY KEY, -- Use AdmissionID as the primary key
+   StudentID INT PRIMARY KEY, -- Use AdmissionID as the primary key
     FirstName VARCHAR(50),
     LastName VARCHAR(50),
     Gender VARCHAR(10),
@@ -63,7 +63,7 @@ CREATE TABLE Students (
 );
 -- Table for Enrollment (connecting students with classes)
 CREATE TABLE Enrollment (
-    AdmissionID INT,
+    StudentID INT,
     ClassID INT,
     PRIMARY KEY (StudentID, ClassID),
     FOREIGN KEY (StudentID) REFERENCES Students(StudentID),

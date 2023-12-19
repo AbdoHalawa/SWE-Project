@@ -69,6 +69,12 @@ if (isset($_GET['success']) && $_GET['success'] == 1) {
                                             <input type="text" class="form-control" name="subjectName">
                                         </div>
                                     </div>
+                                    <div class="col-12 col-sm-4">
+                                        <div class="form-group local-forms">
+                                            <label>Teacher Id <span class="login-danger">*</span></label>
+                                            <input type="text" class="form-control" name="teacherId">
+                                        </div>
+                                    </div>
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="student-submit">

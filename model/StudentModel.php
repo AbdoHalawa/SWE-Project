@@ -14,7 +14,7 @@ class StudentModel extends Model
     private $religion;
     private $grade;
     private $classID;
-    private $admissionID;
+    private $studentID;
     private $parentID;
     private $phoneNumber;
     private $email;
@@ -32,7 +32,7 @@ class StudentModel extends Model
         $this->religion = $data['Religion'] ?? '';
         $this->grade = $data['Grade'] ?? '';
         $this->classID = $data['ClassID'] ?? '';
-        $this->admissionID = $data['AdmissionID'] ?? '';
+        $this->studentID = $data['StudentID'] ?? '';
         $this->parentID = $data['ParentID'] ?? '';
         $this->phoneNumber = $data['PhoneNumber'] ?? '';
         $this->email = $data['Email'] ?? '';
@@ -40,7 +40,7 @@ class StudentModel extends Model
     }
     public function getID()
     {
-return $this->id;
+      return $this->id;
     }
     public function insertStudent()
     {
@@ -53,14 +53,14 @@ return $this->id;
             'Religion' => $this->religion,
             'Grade' => $this->grade,
             'ClassID' =>  $this->classID,
-            'AdmissionID' => $this->admissionID,
+            'StudentID' => $this->studentID,
             'ParentID' => $this->parentID,
             'PhoneNumber' => $this->phoneNumber, // Assuming this is the parent's phone number
             'Email' => $this->email,
             'Password' => password_hash($this->password, PASSWORD_DEFAULT),
         ];
     
-        $sql = 'INSERT INTO Students (FirstName, LastName, Gender, DateOfBirth, Religion, Grade, ClassID, AdmissionID, ParentID, PhoneNumber, Email, Password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+        $sql = 'INSERT INTO Students (FirstName, LastName, Gender, DateOfBirth, Religion, Grade, ClassID, StudentID, ParentID, PhoneNumber, Email, Password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
     
         // Extract values from the associative array to create the parameter array for bind_param
         $values = array_values($data);
@@ -68,6 +68,83 @@ return $this->id;
         // Insert data into the database
         $this->executeQuery($sql, $values);
     }
+    public function editStudent()
+    {
+        $formattedDob = date('Y-m-d', strtotime($this->dateOfBirth));
+        $hashedPassword = password_hash($this->password, PASSWORD_DEFAULT);
+    
+        $sql = 'UPDATE Students SET
+                FirstName = ?,
+                LastName = ?,
+                Gender = ?,
+                DateOfBirth = ?,
+                Religion = ?,
+                Grade = ?,
+                ClassID = ?,
+                ParentID = ?,
+                PhoneNumber = ?,
+                Email = ?,
+                Password = ?
+                WHERE StudentID = ?';
+    
+        // Prepare the values array
+        $values = [
+            $this->firstName,
+            $this->lastName,
+            $this->gender,
+            $formattedDob,
+            $this->religion,
+            $this->grade,
+            $this->classID,
+            $this->parentID,
+            $this->phoneNumber,
+            $this->email,
+            $hashedPassword,
+            $this->studentID
+        ];
+    
+        try {
+            // Execute the query
+            $result = $this->executeQuery($sql, $values);
+    
+            // If update was successful, return true
+            if ($result !== false && $result->affected_rows > 0) {
+                return true;
+            } else {
+                // Consider throwing an exception or logging an error
+                // based on the specific situation/error.
+                throw new Exception("Error: Student not updated.");
+            }
+        } catch (mysqli_sql_exception $exception) {
+            // Echo the error message, and re-throw the exception
+            echo "Error: " . $exception->getMessage();
+            throw $exception;
+        }
+    
+       
+    }
+    public function deleteStudent($studentID)
+    {
+        $sql = 'DELETE FROM Students WHERE StudentID = ?';
+
+        try {
+            $result = $this->executeQuery($sql, [$studentID]);
+
+            // If deletion was successful, return true
+            if ($result !== false && $result->affected_rows > 0) {
+                return true;
+            } else {
+                throw new Exception("Error: Student not deleted.");
+            }
+        } catch (mysqli_sql_exception $exception) {
+            // Echo the error message, and re-throw the exception
+            echo "Error: " . $exception->getMessage();
+            throw $exception;
+        }
+
+        return false;
+    }
+
     public function getStudents()
 {
     $sql = "SELECT Students.*, Classes.ClassName, Classes.Grade, Parents.ParentName 
@@ -101,7 +178,7 @@ return $this->id;
     }
 }
     public function checkAdmissionID($admissionID) {
-        $sql = "SELECT * FROM Students WHERE AdmissionID = ?";
+        $sql = "SELECT * FROM Students WHERE StudentID = ?";
         $values = [$admissionID];
 
         return $this->executeQuery($sql, $values);
@@ -142,10 +219,13 @@ return $this->id;
 
         return $subjects;
     }
-    public function getStudentByAdmissionID($admissionID)
+    public function getStudentByID($studentID)
     {
-        $sql = "SELECT * FROM Students WHERE AdmissionID = ?";
-        $values = [$admissionID];
+        $sql = "SELECT Students.*, Parents.ParentID as ParentID, Parents.ParentName, Parents.Email as ParentEmail, Parents.Password as ParentPassword
+                FROM Students
+                JOIN Parents ON Students.ParentID = Parents.ParentID
+                WHERE Students.StudentID = ?";
+        $values = [$studentID];
 
         $stmt = $this->executeQuery($sql, $values);
 
@@ -153,14 +233,35 @@ return $this->id;
             $result = $stmt->get_result();
 
             if ($result) {
-                // Fetch the student details as an associative array
-                $student = $result->fetch_assoc();
-
-                // Close the result set and the statement
+                // Fetch the student and parent details as an associative array
+                $data = $result->fetch_assoc();
                 $result->close();
                 $stmt->close();
 
-                return $student;
+                // Split the data into student and parent data
+                $studentData = [
+                    'FirstName' => $data['FirstName'],
+                    'LastName' => $data['LastName'],
+                    'Gender' => $data['Gender'],
+                    'DateOfBirth' => $data['DateOfBirth'],
+                    'Religion' => $data['Religion'],
+                    'Grade' => $data['Grade'],
+                    'ClassID' => $data['ClassID'],
+                    'StudentID' => $data['StudentID'],
+                    'ParentID' => $data['ParentID'],
+                    'PhoneNumber' => $data['PhoneNumber'],
+                    'Email' => $data['Email'],
+                    'Password' => $data['Password'],
+                ];
+
+                $parentData = [
+                    'ParentID' => $data['ParentID'],
+                    'ParentName' => $data['ParentName'],
+                    'Email' => $data['ParentEmail'],
+                    'Password' => $data['ParentPassword'],
+                ];
+
+                return ['studentData' => $studentData, 'parentData' => $parentData];
             } else {
                 // Handle the case where get_result is not available
                 die("Error getting result set: " . $this->db->error);

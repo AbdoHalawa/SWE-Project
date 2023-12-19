@@ -192,7 +192,7 @@
                         <li><a href="listStudents.php">Student List</a></li>
                     
                         <li><a href="addStudents.php">Student Add</a></li>
-                        <li><a href="editStudents.php">Student Edit</a></li>
+                        
                     </ul>
                 </li>
                 <li class="submenu">
