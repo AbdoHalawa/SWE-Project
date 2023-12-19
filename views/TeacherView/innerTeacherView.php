@@ -15,9 +15,6 @@ if (isset($_GET['subjectId'])) {
     if ($subjectInfo) {
         $subjectName = $subjectInfo['SubjectName'];
 
-        // Use $subjectName as needed in your code
-        echo "Subject ID: $subjectId<br>";
-        echo "Subject Name: $subjectName";
     } else {
         // Handle the case where subject information cannot be retrieved
         echo "Error retrieving subject information.";
@@ -123,7 +120,7 @@ include "../partials/nav.php"
 						</div>
 
 						<div class="page-title-text">
-							Class 1 </div>
+						<?php echo$subjectName; ?> </div>
 
 					</div>
 
@@ -240,7 +237,7 @@ include "../partials/nav.php"
 								</div>
 								<div class="featured-page">
 
-									<img width="2560" height="1709" src="../../Public/imgs/checklist-check-list-marker.jpg" class="featured-page-img wp-post-image" alt="" decoding="async" loading="lazy" sizes="(max-width: 2560px) 100vw, 2560px" /><a href="./addMatrial.php">
+									<img width="2560" height="1709" src="../../Public/imgs/checklist-check-list-marker.jpg" class="featured-page-img wp-post-image" alt="" decoding="async" loading="lazy" sizes="(max-width: 2560px) 100vw, 2560px" /><a href="./addMatrial.php?subjectId=<?php echo $subjectId; ?>">
 										<div class="featured-page-caption">
 											Material
 										</div>

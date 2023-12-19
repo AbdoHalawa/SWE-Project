@@ -3,10 +3,13 @@
 	<?php
 
     
-$_SESSION['teacher_id'] = 1234;
 require_once('../../model/TeacherModel.php');
-$teacher = new TeacherModel(['teacher_id']);
-$subjects = $teacher->getSubjectsForTeacher();
+$teacher = new TeacherModel($_SESSION['user_id']);
+if (isset($_GET['subjectId'])) {
+    // Get the subjectId from the URL
+    $subjectId = $_GET['subjectId'];
+	
+}
 ?>
 <head>
 	<script src="https://kit.fontawesome.com/cd800095c4.js" crossorigin="anonymous"></script>
@@ -251,22 +254,15 @@ include "../partials/nav.php";
 
 <!-- Display buttons for each subject -->
 <div class="subject-container">
-    <?php foreach ($subjects as $subject) : ?>
+   
         <div class="subject">
-            <button class="reveal-form-btn" data-subject-id="<?php echo $subject['SubjectID']; ?>"><?php echo $subject['SubjectName']; ?></button>
-
-            <div class="subject-buttons" id="buttons-<?php echo $subject['SubjectID']; ?>">
-                <button class="add-btn">Add</button>
-                <button class="edit-btn">Edit</button>
-                <button class="delete-btn">Delete</button>
-            </div>
 
             <!-- Main form for each subject -->
             <form class="subject-form" enctype="multipart/form-data" method="post" action="../../controller/MaterialController.php?action=addMaterial">
                 <!-- Add your form fields here -->
                 <input type="hidden" name="action" value="addMaterial">
-                <input type="hidden" name="subjectId" value="<?php echo $subject['SubjectID']; ?>">
-                <input type="hidden" name="teacherId" value="<?php echo $_SESSION['teacher_id']; ?>">
+                <input type="hidden" name="subjectId" value="<?php echo $subjectId ?>">
+                <input type="hidden" name="teacherId" value="<?php echo $_SESSION['user_id']; ?>">
                 <label for="add-content">Content:</label>
                 <textarea id="add-content" name="add-content"></textarea>
                 <label for="add-title">Title:</label>
@@ -276,7 +272,6 @@ include "../partials/nav.php";
                 <button type="submit" name="submit" class="add-material-button">Submit</button>
             </form>
         </div>
-    <?php endforeach; ?>
 </div>
 
 <!-- Additional fields for Edit -->

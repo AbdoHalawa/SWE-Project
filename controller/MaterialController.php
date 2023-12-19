@@ -33,7 +33,7 @@ class MaterialController
     {}
     public function addMaterial()
     {
-        try {
+       
             // Validate input data
             $materialData = [
                 'Title' => $_POST['add-title'] ?? '',
@@ -57,19 +57,18 @@ class MaterialController
             header('Content-Type: application/json');
     
             if ($result) {
-                echo json_encode(['success' => true, 'message' => 'Material added successfully.']);
+                header("Location: ../views/TeacherView/addMatrial.php?success=1");
+                exit();
             } else {
-                throw new Exception('Failed to add material.');
+                echo "Error adding teacher.";
+                // Render an error view or handle the error appropriately
             }
-        } catch (Exception $e) {
-            // Handle exceptions and errors
-            header('Content-Type: application/json');
-            echo json_encode(['success' => false, 'message' => $e->getMessage()]);
-        }
     
         exit;
-    }
+    
 
+
+    }
 }
 $controller = new MaterialController();
 $controller->handleRequest();
