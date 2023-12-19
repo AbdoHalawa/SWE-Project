@@ -26,12 +26,12 @@ CREATE TABLE Materials (
     MaterialID INT PRIMARY KEY,
     Title VARCHAR(100),
     Content TEXT,
+    FilePath VARCHAR(255), -- Adjust the size accordingly
     SubjectID INT,
     TeacherID INT,
     FOREIGN KEY (SubjectID) REFERENCES Subjects(SubjectID),
     FOREIGN KEY (TeacherID) REFERENCES Teachers(TeacherID)
 ) ENGINE=InnoDB;
-
 -- Table for Classes
 CREATE TABLE Classes (
     ClassID INT PRIMARY KEY,
