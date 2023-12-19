@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 	<?php
+
+    
 $_SESSION['teacher_id'] = 1234;
 require_once('../../model/TeacherModel.php');
-$teacher = new TeacherModel($_SESSION['teacher_id']);
+$teacher = new TeacherModel(['teacher_id']);
 $subjects = $teacher->getSubjectsForTeacher();
 ?>
 <head>
@@ -251,213 +253,75 @@ include "../partials/nav.php";
 <div class="subject-container">
     <?php foreach ($subjects as $subject) : ?>
         <div class="subject">
-            <!-- Add a button to reveal the form -->
             <button class="reveal-form-btn" data-subject-id="<?php echo $subject['SubjectID']; ?>"><?php echo $subject['SubjectName']; ?></button>
 
-            <!-- Buttons for Add, Edit, and Delete -->
             <div class="subject-buttons" id="buttons-<?php echo $subject['SubjectID']; ?>">
                 <button class="add-btn">Add</button>
                 <button class="edit-btn">Edit</button>
                 <button class="delete-btn">Delete</button>
             </div>
 
-        <form>   
-<form class="add-form" id="form-<?php echo $subject['SubjectID']; ?>" style="display: none;" enctype="multipart/form-data">
-    <!-- Additional fields for Add -->
-    <input type="hidden" name="subjectId" value="<?php echo $subject['SubjectID']; ?>">
-    <input type="hidden" name="teacherId" value="<?php echo $_SESSION['teacher_id']; ?>">
-
-    <label for="add-content">Content:</label>
-    <textarea id="add-content" name="add-content"></textarea>
-
-    <label for="add-title">Title:</label>
-    <input type="text" id="add-title" name="add-title">
-
-    <label for="add-pdf">Upload PDF:</label>
-    <input type="file" id="add-pdf" name="add-pdf">
-
-    <button type="button" class="add-material-btn">Add Material</button>
-</form>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-    const addMaterialButtons = document.querySelectorAll('.add-material-btn');
-
-    addMaterialButtons.forEach(button => {
-        button.addEventListener('click', function () {
-            const form = this.closest('form'); // Use closest('form') to get the closest form element
-            const formData = new FormData(form);
-
-            // Make sure to include the subjectId and teacherId in the FormData
-            formData.append('subjectId', form.querySelector('[name="subjectId"]').value);
-            formData.append('teacherId', form.querySelector('[name="teacherId"]').value);
-
-            console.log('Form Data:', formData); // Log the FormData to check if it contains the expected values
-
-            // Make an AJAX request to handle the form submission
-            fetch('MaterialController.php?action=addMaterial', {
-                    method: 'POST',
-                    body: formData,
-                })
-                .then(response => response.json())
-                .then(data => {
-                    // Handle the response, e.g., show a success message
-                    console.log('Response Data:', data);
-
-                    // Optionally, you can redirect or perform other actions based on the response
-                })
-                .catch(error => {
-                    // Handle errors, e.g., show an error message
-                    console.error('Error:', error);
-                });
-        });
-    });
-});
-
-</script>
-
-
-                </div>
-<form>
-                <!-- Additional fields for Edit -->
-                <div class="edit-form" style="display: none;">
-                    <!-- Display buttons for each material -->
-                    <!-- Adjust the loop and content based on your data structure -->
-                    <?php foreach ($subject['materials'] as $material) : ?>
-                        <button class="material-btn" data-material-id="<?php echo $material['MaterialID']; ?>"><?php echo $material['MaterialTitle']; ?></button>
-                    <?php endforeach; ?>
-
-                    <label for="edit-content" style="display: none;">Edit Content:</label>
-                    <textarea id="edit-content" name="edit-content" style="display: none;"></textarea>
-
-                    <label for="edit-title" style="display: none;">Edit Title:</label>
-                    <input type="text" id="edit-title" name="edit-title" style="display: none;">
-
-                    <label for="edit-pdf" style="display: none;">Edit PDF:</label>
-                    <input type="file" id="edit-pdf" name="edit-pdf" style="display: none;">
-
-                    <button class="save-changes-btn" style="display: none;">Save Changes</button>
-                </div>
-                    </form>
-                    <form>
-                <!-- Additional fields for Delete -->
-                <div class="delete-form" style="display: none;">
-                    <label for="delete-content" style="display: none;">Content:</label>
-                    <textarea id="delete-content" name="delete-content" style="display: none;"></textarea>
-
-                    <label for="delete-title" style="display: none;">Title:</label>
-                    <input type="text" id="delete-title" name="delete-title" style="display: none;">
-
-                    <button class="delete-material-btn" style="display: none;">Delete Material</button>
-                       </form>
-                </div>
+            <!-- Main form for each subject -->
+            <form class="subject-form" enctype="multipart/form-data" method="post" action="../../controller/MaterialController.php?action=addMaterial">
+                <!-- Add your form fields here -->
+                <input type="hidden" name="action" value="addMaterial">
+                <input type="hidden" name="subjectId" value="<?php echo $subject['SubjectID']; ?>">
+                <input type="hidden" name="teacherId" value="<?php echo $_SESSION['teacher_id']; ?>">
+                <label for="add-content">Content:</label>
+                <textarea id="add-content" name="add-content"></textarea>
+                <label for="add-title">Title:</label>
+                <input type="text" id="add-title" name="add-title">
+                <label for="add-pdf">Upload PDF:</label>
+                <input type="file" id="add-pdf" name="add-pdf">
+                <button type="submit" name="submit" class="add-material-button">Submit</button>
             </form>
         </div>
     <?php endforeach; ?>
 </div>
 
-<script>
-    // JavaScript to toggle the form visibility
-    document.addEventListener('DOMContentLoaded', function () {
-        const revealButtons = document.querySelectorAll('.reveal-form-btn');
+<!-- Additional fields for Edit -->
+<div class="edit-form" style="display: none;">
+    <?php foreach ($subjects as $subject) : ?>
+        <?php foreach ($subject['materials'] as $material) : ?>
+            <button class="material-btn" data-material-id="<?php echo $material['MaterialID']; ?>"><?php echo $material['MaterialTitle']; ?></button>
+        <?php endforeach; ?>
+    <?php endforeach; ?>
+    <!-- Add your edit form fields here -->
+    <form>
+        <label for="edit-content">Edit Content:</label>
+        <textarea id="edit-content" name="edit-content" style="display: none;"></textarea>
 
-        revealButtons.forEach(button => {
-            button.addEventListener('click', function () {
-                const subjectId = this.getAttribute('data-subject-id');
-                const forms = document.querySelectorAll('.subject-form');
-                const buttons = document.querySelectorAll('.subject-buttons');
+        <label for="edit-title">Edit Title:</label>
+        <input type="text" id="edit-title" name="edit-title" style="display: none;">
 
-                // Hide all forms and buttons
-                forms.forEach(form => {
-                    form.style.display = 'none';
-                });
+        <label for="edit-pdf">Edit PDF:</label>
+        <input type="file" id="edit-pdf" name="edit-pdf" style="display: none;">
 
-                buttons.forEach(button => {
-                    button.style.display = 'none';
-                });
+        <button class="save-changes-btn" style="display: none;">Save Changes</button>
+    </form>
+</div>
 
-                // Show the clicked form and buttons
-                document.getElementById(`form-${subjectId}`).style.display = 'block';
-                document.getElementById(`buttons-${subjectId}`).style.display = 'flex';
-            });
-        });
+<!-- Additional fields for Delete -->
+<div class="delete-form" style="display: none;">
+    <!-- Add your delete form fields here -->
+    <form>
+        <label for="delete-content">Content:</label>
+        <textarea id="delete-content" name="delete-content" style="display: none;"></textarea>
 
-        // JavaScript to toggle the material buttons and fields
-        const materialButtons = document.querySelectorAll('.material-btn');
+        <label for="delete-title">Title:</label>
+        <input type="text" id="delete-title" name="delete-title" style="display: none;">
 
-        materialButtons.forEach(button => {
-            button.addEventListener('click', function () {
-                const materialId = this.getAttribute('data-material-id');
-                const materialFields = document.querySelectorAll('.material-field');
+        <button class="delete-material-btn" style="display: none;">Delete Material</button>
+    </form>
+</div>
 
-                // Hide all material fields
-                materialFields.forEach(field => {
-                    field.style.display = 'none';
-                });
+</div>
 
-                // Show the clicked material field
-                document.getElementById(`material-field-${materialId}`).style.display = 'block';
-            });
-        });
+<!-- end Classes section -->
 
-        // JavaScript to toggle the Add, Edit, Delete forms
-        const addButtons = document.querySelectorAll('.add-btn');
-        const editButtons = document.querySelectorAll('.edit-btn');
-        const deleteButtons = document.querySelectorAll('.delete-btn');
-
-        addButtons.forEach(button => {
-            button.addEventListener('click', function () {
-                const subjectId = this.closest('.subject').querySelector('.reveal-form-btn').getAttribute('data-subject-id');
-                toggleForms('add', subjectId);
-            });
-        });
-
-        editButtons.forEach(button => {
-            button.addEventListener('click', function () {
-                const subjectId = this.closest('.subject').querySelector('.reveal-form-btn').getAttribute('data-subject-id');
-                toggleForms('edit', subjectId);
-            });
-        });
-
-        deleteButtons.forEach(button => {
-            button.addEventListener('click', function () {
-                const subjectId = this.closest('.subject').querySelector('.reveal-form-btn').getAttribute('data-subject-id');
-                toggleForms('delete', subjectId);
-            });
-        });
-
-        function toggleForms(action, subjectId) {
-            const addForm = document.querySelector(`#form-${subjectId} .add-form`);
-            const editForm = document.querySelector(`#form-${subjectId} .edit-form`);
-            const deleteForm = document.querySelector(`#form-${subjectId} .delete-form`);
-
-            if (action === 'add') {
-                addForm.style.display = 'block';
-                editForm.style.display = 'none';
-                deleteForm.style.display = 'none';
-            } else if (action === 'edit') {
-                addForm.style.display = 'none';
-                editForm.style.display = 'block';
-                deleteForm.style.display = 'none';
-            } else if (action === 'delete') {
-                addForm.style.display = 'none';
-                editForm.style.display = 'none';
-                deleteForm.style.display = 'block';
-            }
-        }
-    });
-</script>
-
-				</div>
-				<!-- end Classes section -->
-
-				<!--------------------- footer-------------------------- -->
-				<?php
-				include "../partials/footer.php"
-				?>
-
+<!--------------------- footer-------------------------- -->
+<?php include "../partials/footer.php"; ?>
 </section>
-
 </body>
 
 </html>

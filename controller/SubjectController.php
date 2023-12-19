@@ -49,29 +49,28 @@ class SubjectController
     public function addSubject()
     {
         echo 'Action: ' . $_POST['action'] . '<br>'; // Debugging
-
+        var_dump($_POST);
         $subjectData = [
             'SubjectID' => $_POST['subjectID'],
             'SubjectName' => $_POST['subjectName'],
-            'TeacherID' => $_POST['TeacherID'] // Use correct key
+            'TeacherID' => $_POST['teacherId'] // Correct key here
         ];
-
+    
         // Create an instance of TeacherModel
         $teacherModel = new TeacherModel();
-
+    
         // Check if the provided TeacherID exists
         if (!$teacherModel->teacherIdExists($subjectData['TeacherID'])) {
             // Display an alert using JavaScript
-            echo '<script>alert("Error: Teacher with ID ' . $subjectData['TeacherID'] . ' not found."); window.location.href="../views/AdminView/addSubjects.php";</script>';
-    exit();
-        
+            echo '<script>alert("Error: Teacher with ID ' . $subjectData['TeacherID'] . ' not found."); ';
+           
         }
-
+    
         // Debugging
         var_dump($subjectData);
-
+    
         $subjectModel = new SubjectModel($subjectData);
-
+    
         $result = $subjectModel->addSubject();
         if ($result) {
             header("Location: ../views/AdminView/addSubjects.php?success=1");

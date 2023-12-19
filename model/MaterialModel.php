@@ -26,7 +26,44 @@ ini_set('display_errors', 1);
             $this->subjectId = $data['SubjectID'] ?? '';
             $this->teacherId = $data['TeacherID'] ?? '';
         }
-    
+        public function addMaterialWithFile($file): bool
+        {
+            $uploadDir = '../Public/uploads/';
+            $uploadFile = $uploadDir . basename($file['name']);
+        
+            // Check if the file has been successfully uploaded
+            if (move_uploaded_file($file['tmp_name'], $uploadFile)) {
+                $data = [
+                    'Title' => $this->title,
+                    'Content' => $this->content,
+                    'FilePath' => $uploadFile, // Updated key to 'FilePath'
+                    'SubjectID' => $this->subjectId,
+                    'TeacherID' => $this->teacherId,
+                ];
+        
+                $sql = "INSERT INTO Materials (Title, Content, FilePath, SubjectID, TeacherID) VALUES (?, ?, ?, ?, ?)";
+                $values = array_values($data);
+        
+                try {
+                    $result = $this->executeQuery($sql, $values);
+        
+                    if ($result) {
+                        return true;
+                    } else {
+                        // Log the error or handle it in a way suitable for your application
+                        echo "Error: Failed to execute SQL query.";
+                    }
+                } catch (mysqli_sql_exception $exception) {
+                    // Log the exception or handle it in a way suitable for your application
+                    echo "Error: " . $exception->getMessage();
+                }
+            } else {
+                // Log or handle the case where file upload fails
+                echo "Error: Failed to move uploaded file.";
+            }
+        
+            return false;
+        }
         public function setMaterialId($materialId)
         {
             $this->materialId = $materialId;
@@ -97,44 +134,7 @@ ini_set('display_errors', 1);
         {
             return $this->teacherId;
         }    
-        public function addMaterialWithFile($file): bool
-    {
-        $uploadDir = '../uploads/';
-        $uploadFile = $uploadDir . basename($file['name']);
-
-        // Check if the file has been successfully uploaded
-        if (move_uploaded_file($file['tmp_name'], $uploadFile)) {
-            $data = [
-                'Title' => $this->title,
-                'Content' => $this->content,
-                'File' => $uploadFile,
-                'SubjectID' => $this->subjectId,
-                'TeacherID' => $this->teacherId,
-            ];
-
-            $sql = "INSERT INTO Materials (Title, Content, File, SubjectID, TeacherID) VALUES (?, ?, ?, ?, ?)";
-            $values = array_values($data);
-
-            try {
-                $result = $this->executeQuery($sql, $values);
-
-                if ($result) {
-                    return true;
-                } else {
-                    // Log the error or handle it in a way suitable for your application
-                    echo "Error: Failed to execute SQL query.";
-                }
-            } catch (mysqli_sql_exception $exception) {
-                // Log the exception or handle it in a way suitable for your application
-                echo "Error: " . $exception->getMessage();
-            }
-        } else {
-            // Log or handle the case where file upload fails
-            echo "Error: Failed to move uploaded file.";
-        }
-
-        return false;
-    }
+       
 }
     
     

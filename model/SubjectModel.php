@@ -8,13 +8,14 @@ class SubjectModel extends Model
 
     private $subjectId;
     private $subjectName;
-
+   private $teacherID;
     public function __construct($data = [])
     {
         parent::__construct(); // Call the constructor of the parent class (Model)
 
         $this->subjectId = $data['SubjectID'] ?? '';
         $this->subjectName = $data['SubjectName'] ?? '';
+        $this->teacherID = $data['TeacherID'] ?? '';
     }
 
 
@@ -34,9 +35,10 @@ public function addSubject(): bool
     $data = [
         'SubjectID' => $this->subjectId,
         'SubjectName' => $this->subjectName,
+        'TeacherID' => $this->teacherID
     ];
 
-    $sql = "INSERT INTO subjects (SubjectID, SubjectName) VALUES (?, ?)";
+    $sql = "INSERT INTO subjects (SubjectID, SubjectName,TeacherID) VALUES (?, ?,?)";
     $values = array_values($data);
 
     // Insert data into the database
