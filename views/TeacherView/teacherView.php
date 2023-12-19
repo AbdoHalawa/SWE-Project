@@ -217,18 +217,33 @@ include "../partials/nav.php"
 				<div class="astra-advanced-hook-30270 ">
 					<section class="featured-pages-strip">
 
- <div class="featured-pages-strip">
-	<div class="featured-pages">
-		<?php
-		// Loop through teacher subjects and generate HTML for each subject
-		foreach ($teacherSubjects as $subject) {
-			echo '<div class="featured-page">';
-			echo '<img src="../../Public/imgs/copybook.png" alt="Subject Image">';
-			echo '<div class="featured-page-caption">' . $subject['SubjectName'] . '</div>';
-			echo '</div>';
-		}
-		?>
-	</div>
+					<div class="featured-pages-strip">
+    <div class="featured-pages">
+        <?php
+        // Loop through teacher subjects and generate HTML for each subject
+        foreach ($teacherSubjects as $subject) {
+            // Get subject details (grade and class)
+            $subjectDetails = $subjectModel->getSubjectDetails($subject['SubjectID']);
+
+            // Output HTML for each subject
+            echo '<div class="featured-page">';
+            echo '<img src="../../Public/imgs/copybook.png" alt="Subject Image">';
+            echo '<div class="featured-page-caption">' . $subject['SubjectName'] . '</div>';
+
+            // Display grade and class details
+            if (!empty($subjectDetails)) {
+                foreach ($subjectDetails as $details) {
+                    echo '<div class="subject-details">';
+                    echo '<p>Grade: ' . $details['Grade'] . '</p>';
+                    echo '<p>Class: ' . $details['ClassName'] . '</p>';
+                    echo '</div>';
+                }
+            }
+
+            echo '</div>';
+        }
+        ?>
+    </div>
 </div>
 					</section>
 				</div>

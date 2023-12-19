@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// Include your database connection file
 require_once('../Db/Dbh.php');
 
 class LoginController
