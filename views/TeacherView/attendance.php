@@ -114,7 +114,7 @@ include "../partials/nav.php"
                             <div class="featured_box_content">
                                 <div class="box-content">
                                     <div class="links-group">
-                                        <a href="../index.php">Logout</a>
+                                        <a href="../../controller/logout-handler.php?action=logout">Logout</a>
                                     </div>
                                 </div>
                             </div>

@@ -34,7 +34,7 @@ class LoginController
 
 
 
-    // ... (other code remains unchanged)
+ // ... (other code remains unchanged)
 
 private function checkUserType($table, $columnName, $email, $password, $userType)
 {
@@ -42,11 +42,11 @@ private function checkUserType($table, $columnName, $email, $password, $userType
     $db = new Dbh();
     $conn = $db->connect();
 
-    $query = "SELECT * FROM $table WHERE $columnName = ? AND Password = ?";
+    $query = "SELECT * FROM $table WHERE $columnName = ?";
     $stmt = mysqli_prepare($conn, $query);
 
     if ($stmt) {
-        mysqli_stmt_bind_param($stmt, "ss", $email, $password);
+        mysqli_stmt_bind_param($stmt, "s", $email);
         mysqli_stmt_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
 
@@ -54,10 +54,23 @@ private function checkUserType($table, $columnName, $email, $password, $userType
             $userData = mysqli_fetch_assoc($result);
 
             // Debugging: Output values for troubleshooting
-            echo "Email: $email, Password: $password, UserType: $userType, UserData: " . print_r($userData, true);
+            echo "Email: $email, UserType: $userType, UserData: " . print_r($userData, true);
 
-            // Simulate login without password hashing
-            $this->handleSuccessfulLogin($userData, $userType);
+            // Check if the stored password is hashed
+            $storedPassword = $userData['Password'];
+            if (password_needs_rehash($storedPassword, PASSWORD_DEFAULT)) {
+                // Password is hashed, verify it
+                if (password_verify($password, $storedPassword)) {
+                    $this->handleSuccessfulLogin($userData, $userType);
+                } else {
+                    // Passwords do not match
+                    echo "Invalid password.";
+                }
+            } else {
+                // Password is not hashed (for educational purposes only)
+                echo "Stored password is not hashed. Simulated login with plain text password.";
+                $this->handleSuccessfulLogin($userData, $userType);
+            }
         } else {
             // Debugging: Output error message
             echo "Error: " . mysqli_error($conn);
@@ -70,9 +83,11 @@ private function checkUserType($table, $columnName, $email, $password, $userType
         mysqli_close($conn);
     }
 
-    // Simulate successful login without password hashing
-    return "Simulated login with plain text password.";
+    // Invalid credentials
+    return "Invalid email or password.";
 }
+
+// ... (other code remains unchanged)
 
 // ... (other code remains unchanged)
 
