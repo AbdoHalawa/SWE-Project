@@ -1,14 +1,12 @@
 <?php
-require_once(__DIR__ . '/../Db/Dbh.php');
-require_once(__DIR__ . '/Model.php');
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-class SubjectModel extends Model
-{
+require_once('AbstractSubjectModel.php');
 
+class ConcreteSubjectModel extends AbstractSubjectModel
+{
     private $subjectId;
     private $subjectName;
-   private $teacherID;
+    private $teacherID;
+
     public function __construct($data = [])
     {
         parent::__construct(); // Call the constructor of the parent class (Model)
@@ -18,64 +16,59 @@ class SubjectModel extends Model
         $this->teacherID = $data['TeacherID'] ?? '';
     }
 
-
     public function deleteSubject($subjectId)
-{
-    $sql = "DELETE FROM subjects WHERE SubjectID = ?";
-    var_dump($sql); // Debugging line
-    $values = [$subjectId];
-
-    $stmt = $this->executeQuery($sql, $values);
-
-    return $stmt !== false;
-}
-public function getSubjectInfo($subjectId) {
-    // Assuming you have a database connection
-    $db = $this->connect();
-
-    $query = "SELECT * FROM subjects WHERE SubjectID = ?";
-
-    // Execute the query and get the statement
-    $stmt = $this->executeQuery($query, [$subjectId]);
-
-    // Get the result
-    $result = $stmt->get_result();
-
-    if ($result && $result->num_rows > 0) {
-        return $result->fetch_assoc();
+    {
+        $sql = "DELETE FROM subjects WHERE SubjectID = ?";
+        var_dump($sql); // Debugging line
+        $values = [$subjectId];
+    
+        $stmt = $this->executeQuery($sql, $values);
+    
+        return $stmt !== false;
     }
 
-    return false;
-}
+    public function getSubjectInfo($subjectId)
+    {
+        // Assuming you have a database connection
+        $db = $this->connect();
 
+        $query = "SELECT * FROM subjects WHERE SubjectID = ?";
 
-// Add this helper method to fetch results from the statement
+        // Execute the query and get the statement
+        $stmt = $this->executeQuery($query, [$subjectId]);
 
-public function addSubject(): bool
-{
-    $data = [
-        'SubjectID' => $this->subjectId,
-        'SubjectName' => $this->subjectName,
-        'TeacherID' => $this->teacherID
-    ];
+        // Get the result
+        $result = $stmt->get_result();
 
-    $sql = "INSERT INTO subjects (SubjectID, SubjectName,TeacherID) VALUES (?, ?,?)";
-    $values = array_values($data);
+        if ($result && $result->num_rows > 0) {
+            return $result->fetch_assoc();
+        }
 
-    // Insert data into the database
-    $stmt = $this->executeQuery($sql, $values);
-
-    if ($stmt !== false) {
-        return true;
-    } else {
-        // Log or handle the error
-        echo 'Error adding subject: ' . $this->db->getLastError();
         return false;
     }
-}
 
-
-
+    public function addSubject(): bool
+    {
+        $data = [
+            'SubjectID' => $this->subjectId,
+            'SubjectName' => $this->subjectName,
+            'TeacherID' => $this->teacherID
+        ];
+    
+        $sql = "INSERT INTO subjects (SubjectID, SubjectName,TeacherID) VALUES (?, ?,?)";
+        $values = array_values($data);
+    
+        // Insert data into the database
+        $stmt = $this->executeQuery($sql, $values);
+    
+        if ($stmt !== false) {
+            return true;
+        } else {
+            // Log or handle the error
+            echo 'Error adding subject: ' . $this->db->getLastError();
+            return false;
+        }
+    }
 
     public function getSubjects()
     {
@@ -92,3 +85,4 @@ public function addSubject(): bool
         return $this->db->query($sql);
     }
 }
+?>
