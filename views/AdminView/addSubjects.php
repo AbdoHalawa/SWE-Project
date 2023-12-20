@@ -1,18 +1,18 @@
-<!DOCTYPE html>
+v<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
     <title>Admin Dashboard</title>
-    <link rel="shortcut icon" href="..\views\AdminView\assets\img\favicon.png">
+    <link rel="shortcut icon" href="../views/AdminView/assets/img/favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets\plugins\bootstrap\css\bootstrap.min.css">
-    <link rel="stylesheet" href="assets\plugins\feather\feather.css">
-    <link rel="stylesheet" href="assets\plugins\icons\flags\flags.css">
-    <link rel="stylesheet" href="assets\plugins\fontawesome\css\fontawesome.min.css">
-    <link rel="stylesheet" href="assets\plugins\fontawesome\css\all.min.css">
-    <link rel="stylesheet" href="assets\css\style.css">
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/plugins/feather/feather.css">
+    <link rel="stylesheet" href="assets/plugins/icons/flags/flags.css">
+    <link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 
 </head>
 <?php
@@ -20,6 +20,13 @@ if (isset($_GET['success']) && $_GET['success'] == 1) {
     echo "<script>
             document.addEventListener('DOMContentLoaded', function() {
                 alert('Subject added successfully');
+            });
+          </script>";
+}
+if (isset($_GET['teacherNotFound']) && $_GET['teacherNotFound'] == 1) {
+    echo "<script>
+            document.addEventListener('DOMContentLoaded', function() {
+                alert('Error: Teacher with provided ID not found');
             });
           </script>";
 }
@@ -50,7 +57,7 @@ if (isset($_GET['success']) && $_GET['success'] == 1) {
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-body">
-                            <form method="post" action="../../controller/SubjectController.php?action=Add">
+                            <form method="post" action="../../controller/SubjectController.php?action=Add" id="addSubjectForm">
 
                                 <input type="hidden" name="action" value="Add">
                                 <div class="row">
@@ -59,37 +66,39 @@ if (isset($_GET['success']) && $_GET['success'] == 1) {
                                     </div>
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
-                                            <label>Subject ID <span class="login-danger">*</span></label>
-                                            <input type="text" class="form-control" name="subjectID">
+                                            <label for="subjectID">Subject ID <span class="login-danger">*</span></label>
+                                            <input type="text" class="form-control" name="subjectID" id="subjectID">
+                                            <span class="error-message" id="subjectID-error"></span>
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
-                                            <label>Subject Name <span class="login-danger">*</span></label>
-                                            <input type="text" class="form-control" name="subjectName">
+                                            <label for="subjectName">Subject Name <span class="login-danger">*</span></label>
+                                            <input type="text" class="form-control" name="subjectName" id="subjectName">
+                                            <span class="error-message" id="subjectName-error"></span>
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
-                                            <label>Teacher Id <span class="login-danger">*</span></label>
-                                            <input type="text" class="form-control" name="teacherId">
+                                            <label for="teacherId">Teacher Id <span class="login-danger">*</span></label>
+                                            <input type="text" class="form-control" name="teacherId" id="teacherId">
+                                            <span class="error-message" id="teacherId-error"></span>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="student-submit">
-                                                <button type="submit" class="btn btn-primary">Submit</button>
-                                            </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="student-submit">
+                                            <button type="button" class="btn btn-primary" onclick="validateForm()">Submit</button>
                                         </div>
                                     </div>
+                                </div>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
     </div>
 
 
@@ -102,6 +111,41 @@ if (isset($_GET['success']) && $_GET['success'] == 1) {
     <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
     <script src="assets/js/script.js"></script>
+
+    <script>
+        function validateForm() {
+            var subjectID = document.getElementById('subjectID').value;
+            var subjectName = document.getElementById('subjectName').value;
+            var teacherId = document.getElementById('teacherId').value;
+
+            if (subjectID.trim() === '') {
+                document.getElementById('subjectID-error').innerText = 'Subject ID is required.';
+                document.getElementById('subjectID-error').style.color = 'red';
+                return;
+            } else {
+                document.getElementById('subjectID-error').innerText = '';
+            }
+
+            if (subjectName.trim() === '') {
+                document.getElementById('subjectName-error').innerText = 'Subject Name is required.';
+                document.getElementById('subjectName-error').style.color = 'red';
+                return;
+            } else {
+                document.getElementById('subjectName-error').innerText = '';
+            }
+
+            if (teacherId.trim() === '') {
+                document.getElementById('teacherId-error').innerText = 'Teacher ID is required.';
+                document.getElementById('teacherId-error').style.color = 'red';
+                return;
+            } else {
+                document.getElementById('teacherId-error').innerText = '';
+            }
+
+            // Submit the form using JavaScript
+            document.getElementById('addSubjectForm').submit();
+        }
+    </script>
 </body>
 
 </html>
