@@ -1,6 +1,4 @@
-<?php
-include("../../Public/js/validations.js");
-?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -51,13 +49,7 @@ if (isset($_GET['success']) && $_GET['success'] == 1) {
             });
           </script>";
 }
-if (isset($_GET['teacherNotFound']) && $_GET['teacherNotFound'] == 1) {
-    echo "<script>
-            document.addEventListener('DOMContentLoaded', function() {
-                alert('Error: Teacher with provided ID not found');
-            });
-          </script>";
-}
+
 ?>
 
 
@@ -117,7 +109,7 @@ if (isset($_GET['teacherNotFound']) && $_GET['teacherNotFound'] == 1) {
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="student-submit">
-                                            <button type="button" class="btn btn-primary" onclick="validateForm()">Submit</button>
+                                            <button type="submit" name="submit" class="btn btn-primary" >Submit</button>
                                         </div>
                                     </div>
                                 </div>
@@ -141,6 +133,7 @@ if (isset($_GET['teacherNotFound']) && $_GET['teacherNotFound'] == 1) {
     <script src="assets/js/script.js"></script>
 
     <script>
+        
         function validateForm() {
             var subjectID = document.getElementById('subjectID').value;
             var subjectName = document.getElementById('subjectName').value;
@@ -173,6 +166,7 @@ if (isset($_GET['teacherNotFound']) && $_GET['teacherNotFound'] == 1) {
             // Submit the form using JavaScript
             document.getElementById('addSubjectForm').submit();
         }
+        
     </script>
 </body>
 
