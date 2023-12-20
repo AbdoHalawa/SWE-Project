@@ -166,13 +166,15 @@ class TeacherModel extends Model
 
             exit();
         }
+        $formattedDob = date('Y-m-d', strtotime($this->dateOfBirth));
+        $formattedDoj = date('Y-m-d', strtotime($this->joiningDate));
         $data = [
             'TeacherID' => $this->teacherId,
             'TeacherName' => $this->teacherName,
             'Gender' => $this->gender,
-            'DateOfBirth' => $this->dateOfBirth,
+            'DateOfBirth' => $formattedDob,
             'PhoneNumber' => $this->phoneNumber,
-            'JoiningDate' => $this->joiningDate,
+            'JoiningDate' => $formattedDoj,
             'Experience' => $this->experience,
             'Email' => $this->email,
             'Password' => password_hash($this->password, PASSWORD_DEFAULT),

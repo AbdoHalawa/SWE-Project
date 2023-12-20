@@ -10,8 +10,7 @@ class SubjectController
 {
     public function handleRequest()
     {
-        $action = $_POST['action'] ?? '';
-        echo 'Action from POST: ' . $action; // Debugging
+        $action = $_POST['action'] ?? ''; // Debugging
 
         switch ($action) {
             case 'Add':
@@ -29,11 +28,7 @@ class SubjectController
     {
         $subjectId = $_POST['subjectId'] ?? '';
 
-        if (empty($subjectId)) {
-            // Handle error - subjectId is required
-            return;
-        }
-
+        
         $subjectModel = new SubjectModel();
         $result = $subjectModel->deleteSubject($subjectId);
 

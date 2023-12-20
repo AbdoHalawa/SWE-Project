@@ -1,5 +1,7 @@
 <?php
+ini_set('session.gc_maxlifetime', 1800);
 session_start();
+
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">

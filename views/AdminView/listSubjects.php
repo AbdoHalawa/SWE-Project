@@ -121,7 +121,7 @@ if (isset($_GET['deleteSuccess']) && $_GET['deleteSuccess'] == 1) {
                                                 </td>
                                                 <td class="text-end">
                                                     <div class="actions">
-                                                        <form action="../../controller/SubjectController.php" method="post">
+                                                        <form action="../../controller/SubjectController.php?action=deleteSubject" method="post">
                                                             <input type="hidden" name="subjectId" value="<?php echo $subject['SubjectID']; ?>">
                                                             <input type="hidden" name="action" value="deleteSubject">
                                                             <button type="submit" class="btn btn-sm bg-success-light me-2">
