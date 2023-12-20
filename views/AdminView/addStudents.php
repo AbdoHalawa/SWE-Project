@@ -1,17 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-
-// Check if the user is logged in
-if (!isset($_SESSION['user_type'])) {
-    // Redirect to the login page if not logged in
-    header("Location: ../../views/login.php");
-    exit();
-}
-
+session_start();
 // Check if the user is a teacher and the type is headteacher
 if ($_SESSION['user_type'] !== 'Teacher' || $_SESSION['teacher_type'] !== 'Head') {
-    header("Location: ../../views/unauthorized.php");
+    echo "User type: {$_SESSION['user_type']}, Teacher type: {$_SESSION['teacher_type']}";
+    
     exit();
 }
 // The rest of your page content goes here
@@ -218,20 +212,21 @@ if ($_SESSION['user_type'] !== 'Teacher' || $_SESSION['teacher_type'] !== 'Head'
     let counter = 0;
 
     function generateID(prefix) {
-        const randomArray = new Uint32Array(1);
-        crypto.getRandomValues(randomArray);
-        const randomNum = randomArray[0];
+        const validCharacters = '0123456789';
+        const randomIDArray = new Uint32Array(5);
+        crypto.getRandomValues(randomIDArray);
 
-        const timestamp = performance.now();
-        const generatedID = `${prefix}${timestamp}${randomNum}${counter}`;
+        let generatedID = prefix;
+        for (let i = 0; i < randomIDArray.length; i++) {
+            const randomNum = randomIDArray[i] % validCharacters.length;
+            generatedID += validCharacters.charAt(randomNum);
+        }
 
-        // Trim the ID to a maximum of 5 digits
-        const trimmedID = generatedID.slice(0, 5);
+        // Ensure the generated ID has exactly 5 digits
+        generatedID = generatedID.slice(0, 5);
 
-        // Increment the counter for the next call
-        counter++;
-
-        return trimmedID;
+        return generatedID;
+    
     }
 
     function generateAdmissionID() {

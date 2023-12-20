@@ -1,21 +1,14 @@
 <?php
-if (!isset($_SESSION['user_type'])) {
-    // Redirect to the login page if not logged in
-    header("Location: ../../views/login.php");
-    exit();
-}
 
-// Check if the user is a teacher and the type is headteacher
+
+
+require_once(__DIR__ . '/../../model/StudentModel.php');
+$studentModel = new StudentModel();
+$students = $studentModel->getStudents();
 if ($_SESSION['user_type'] !== 'Teacher' || $_SESSION['teacher_type'] !== 'Head') {
     header("Location: ../../views/unauthorized.php");
     exit();
 }
-require_once(__DIR__ . '/../../model/StudentModel.php');
-$studentModel = new StudentModel();
-
-// Get all students
-$students = $studentModel->getStudents();
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

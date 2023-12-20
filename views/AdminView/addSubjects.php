@@ -5,7 +5,7 @@ include("../../Public/js/validations.js");
 <!DOCTYPE html>
 <html lang="en">
 <?php
-
+session_start();
 // Check if the user is logged in
 if (!isset($_SESSION['user_type'])) {
     // Redirect to the login page if not logged in
