@@ -1,7 +1,7 @@
 <?php
-require_once('AbstractSubjectModel.php');
+require_once('SubjectDP.php');
 
-class ConcreteSubjectModel extends AbstractSubjectModel
+class SubjectModel extends SubjectDP
 {
     private $subjectId;
     private $subjectName;
