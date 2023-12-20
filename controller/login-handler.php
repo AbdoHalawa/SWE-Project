@@ -158,10 +158,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Call processLogin method
     $result = $loginController->processLogin($email, $password);
 
-    // Handle the result (e.g., display error message)
-    echo $result;
+    // Set a session variable for the error message
+    $_SESSION['login_error'] = $result;
+
+    // Redirect back to login.php
+    header("Location: ../views/login.php");
+    exit();
 } else {
     // Redirect to the login page if accessed directly
-    header("Location: login.php");
+    header("Location: ../views/login.php");
     exit();
 }

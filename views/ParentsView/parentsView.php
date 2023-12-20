@@ -116,79 +116,79 @@ include "../partials/nav.php"
 				<!--Page Title Strip-->
 
 				<div id="wgs-header-wrapper">
-                    <div class="astra-advanced-hook-39611 ">
-                        <!--BEGIN DEPT header links wrapper-->
-                        <div class="header-links" id="divcontent">
-                            <div class="featured_box_content">
-                                <div class="box-content">
-                                    <div class="links-group">
-                                        <a href="../index.php">Logout</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- END DEPT header links wrapper -->
-                    </div>
-				<!--Academic & Dept Links-->
+					<div class="astra-advanced-hook-39611 ">
+						<!--BEGIN DEPT header links wrapper-->
+						<div class="header-links" id="divcontent">
+							<div class="featured_box_content">
+								<div class="box-content">
+									<div class="links-group">
+										<a href="../../controller/logout-handler.php?action=logout">Logout</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- END DEPT header links wrapper -->
+					</div>
+					<!--Academic & Dept Links-->
 
-				<div class="wgs-header-image">
+					<div class="wgs-header-image">
 
-					<div class="image" style="background-image: url('../../Public/imgs/parents.jpg');"></div>
+						<div class="image" style="background-image: url('../../Public/imgs/parents.jpg');"></div>
 
 
-					<div class="wgs-header-image-overlay"></div>
+						<div class="wgs-header-image-overlay"></div>
+
+					</div>
+
+					<div class="wgs-header-menu-mobile">
+						<button id="links" class="menu-links">SECTION MENU</button>
+					</div>
 
 				</div>
+				<!-- Function to open the section list (resposive)  -->
+				<SCRIPT>
+					let links = document.getElementById("links");
+					let divcontent = document.getElementById("divcontent");
 
-				<div class="wgs-header-menu-mobile">
-					<button id="links" class="menu-links">SECTION MENU</button>
-				</div>
+					//will use addeventlistener method and arrow function
+					links.addEventListener("click", () => {
+						//toggle method to show div
+						divcontent.classList.toggle('showdiv');
+						//will change text now using if condition
+						if (links.innerText == "SECTION MENU") {
+							links.innerText = "CLOSE MENU";
+						} else {
+							links.innerText = "SECTION MENU"
+						}
+					})
+				</SCRIPT>
 
-			</div>
-			<!-- Function to open the section list (resposive)  -->
-			<SCRIPT>
-				let links = document.getElementById("links");
-				let divcontent = document.getElementById("divcontent");
 
-				//will use addeventlistener method and arrow function
-				links.addEventListener("click", () => {
-					//toggle method to show div
-					divcontent.classList.toggle('showdiv');
-					//will change text now using if condition
-					if (links.innerText == "SECTION MENU") {
-						links.innerText = "CLOSE MENU";
-					} else {
-						links.innerText = "SECTION MENU"
+
+
+
+				<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+				<script>
+					wusmenu: {
+						$('.wus-menu__button:not(.no-js)').on('click', function() {
+							$('.wus-menu').toggleClass('is-open');
+						});
+						$('.wus-menu__close').on('click', function() {
+							$('.wus-menu').removeClass('is-open');
+						});
 					}
-				})
-			</SCRIPT>
+				</script>
 
 
-
-
-
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-
-			<script>
-				wusmenu: {
-					$('.wus-menu__button:not(.no-js)').on('click', function() {
-						$('.wus-menu').toggleClass('is-open');
+				<script>
+					$('body').delegate('.wus-nav-item', 'click', function() {
+						$('.wus-nav-item').removeClass('wus-nav-item--active');
+						$(this).addClass('wus-nav-item--active');
 					});
-					$('.wus-menu__close').on('click', function() {
-						$('.wus-menu').removeClass('is-open');
-					});
-				}
-			</script>
-
-
-			<script>
-				$('body').delegate('.wus-nav-item', 'click', function() {
-					$('.wus-nav-item').removeClass('wus-nav-item--active');
-					$(this).addClass('wus-nav-item--active');
-				});
-			</script>
-	</div>
-	<!--Nav Menu-->
+				</script>
+			</div>
+			<!--Nav Menu-->
 	</div>
 	</header>
 	<div class="astra-advanced-hook-34726 ">

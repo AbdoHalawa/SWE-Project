@@ -23,17 +23,17 @@ session_start();
 
         <script>
             wusmenu: {
-                $('.wus-menu__button:not(.no-js)').on('click', function () {
+                $('.wus-menu__button:not(.no-js)').on('click', function() {
                     $('.wus-menu').toggleClass('is-open');
                 });
-                $('.wus-menu__close').on('click', function () {
+                $('.wus-menu__close').on('click', function() {
                     $('.wus-menu').removeClass('is-open');
                 });
             }
         </script>
 
         <script>
-            $('body').delegate('.wus-nav-item', 'click', function () {
+            $('body').delegate('.wus-nav-item', 'click', function() {
                 $('.wus-nav-item').removeClass('wus-nav-item--active');
                 $(this).addClass('wus-nav-item--active');
             });
@@ -41,7 +41,7 @@ session_start();
     </div>
     <div class="wrapper">
         <h2>Login</h2>
-        <form action="../controller/login-handler.php" method="post"  novalidate>
+        <form action="../controller/login-handler.php" method="post" novalidate>
             <div class="input-box">
                 <input type="text" placeholder="Enter your email" name="email" id="email">
                 <small class="error" id="emailError"></small>
@@ -58,6 +58,13 @@ session_start();
                 <input type="Submit" value="Login">
             </div>
         </form>
+        <!-- Display error message with orange color -->
+        <?php if (isset($_SESSION['login_error'])) : ?>
+            <div class="error" style="color: orange;">
+                <?php echo htmlspecialchars($_SESSION['login_error']); ?>
+            </div>
+            <?php unset($_SESSION['login_error']); ?>
+        <?php endif; ?>
     </div>
 
     <script>
