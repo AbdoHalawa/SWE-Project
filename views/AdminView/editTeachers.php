@@ -1,5 +1,16 @@
 <?php
 require_once(__DIR__ . '/../../model/TeacherModel.php');
+if (!isset($_SESSION['user_type'])) {
+    // Redirect to the login page if not logged in
+    header("Location: ../../views/login.php");
+    exit();
+}
+
+// Check if the user is a teacher and the type is headteacher
+if ($_SESSION['user_type'] !== 'Teacher' || $_SESSION['teacher_type'] !== 'Head') {
+    header("Location: ../../views/unauthorized.php");
+    exit();
+}
 if (isset($_GET['teacherId'])) {
     $teacherId = $_GET['teacherId'];
     $teacher = TeacherModel::getTeacherById($teacherId);
