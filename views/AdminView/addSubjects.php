@@ -4,19 +4,34 @@ include("../../Public/js/validations.js");
 
 <!DOCTYPE html>
 <html lang="en">
+<?php
 
+// Check if the user is logged in
+if (!isset($_SESSION['user_type'])) {
+    // Redirect to the login page if not logged in
+    header("Location: ../../views/login.php");
+    exit();
+}
+
+// Check if the user is a teacher and the type is headteacher
+if ($_SESSION['user_type'] !== 'Teacher' || $_SESSION['teacher_type'] !== 'Head') {
+    header("Location: ../../views/unauthorized.php");
+    exit();
+}
+// The rest of your page content goes here
+?>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
     <title>Admin Dashboard</title>
-    <link rel="shortcut icon" href="..\views\AdminView\assets\img\favicon.png">
+    <link rel="shortcut icon" href="../views/AdminView/assets/img/favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets\plugins\bootstrap\css\bootstrap.min.css">
-    <link rel="stylesheet" href="assets\plugins\feather\feather.css">
-    <link rel="stylesheet" href="assets\plugins\icons\flags\flags.css">
-    <link rel="stylesheet" href="assets\plugins\fontawesome\css\fontawesome.min.css">
-    <link rel="stylesheet" href="assets\plugins\fontawesome\css\all.min.css">
-    <link rel="stylesheet" href="assets\css\style.css">
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/plugins/feather/feather.css">
+    <link rel="stylesheet" href="assets/plugins/icons/flags/flags.css">
+    <link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <style>
         /* CSS styles */
         #error {
@@ -26,12 +41,20 @@ include("../../Public/js/validations.js");
             /* Add other styles as needed */
         }
     </style>
+
 </head>
 <?php
 if (isset($_GET['success']) && $_GET['success'] == 1) {
     echo "<script>
             document.addEventListener('DOMContentLoaded', function() {
                 alert('Subject added successfully');
+            });
+          </script>";
+}
+if (isset($_GET['teacherNotFound']) && $_GET['teacherNotFound'] == 1) {
+    echo "<script>
+            document.addEventListener('DOMContentLoaded', function() {
+                alert('Error: Teacher with provided ID not found');
             });
           </script>";
 }
@@ -71,37 +94,39 @@ if (isset($_GET['success']) && $_GET['success'] == 1) {
                                     </div>
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
-                                            <label>Subject ID <span class="login-danger">*</span></label>
-                                            <input type="text" class="form-control" name="subjectID">
+                                            <label for="subjectID">Subject ID <span class="login-danger">*</span></label>
+                                            <input type="text" class="form-control" name="subjectID" id="subjectID">
+                                            <span class="error-message" id="subjectID-error"></span>
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
-                                            <label>Subject Name <span class="login-danger">*</span></label>
-                                            <input type="text" class="form-control" name="subjectName">
+                                            <label for="subjectName">Subject Name <span class="login-danger">*</span></label>
+                                            <input type="text" class="form-control" name="subjectName" id="subjectName">
+                                            <span class="error-message" id="subjectName-error"></span>
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
-                                            <label>Teacher Id <span class="login-danger">*</span></label>
-                                            <input type="text" class="form-control" name="teacherId">
+                                            <label for="teacherId">Teacher Id <span class="login-danger">*</span></label>
+                                            <input type="text" class="form-control" name="teacherId" id="teacherId">
+                                            <span class="error-message" id="teacherId-error"></span>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="student-submit">
-                                                <button type="submit" class="btn btn-primary">Submit</button>
-                                            </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="student-submit">
+                                            <button type="button" class="btn btn-primary" onclick="validateForm()">Submit</button>
                                         </div>
                                     </div>
+                                </div>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
     </div>
 
 
@@ -114,93 +139,40 @@ if (isset($_GET['success']) && $_GET['success'] == 1) {
     <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
     <script src="assets/js/script.js"></script>
-    <script>
-        function camelcaseToNormalString(word) {
-    var normalString = word.replace(/([a-z])([A-Z])/g, "$1 $2");
-    return normalString.toLowerCase();
-  }
-  
-  function capitalizeFirstLetter(sentence) {
-    var words = sentence.split(" "); // Split the sentence into an array of words
-    var capitalizedWords = words.map(function (word) {
-      return word.charAt(0).toUpperCase() + word.slice(1);
-    });
-    return capitalizedWords.join(" "); // Join the words into a sentence
-  }
-  
-  function emailValidation(input) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // email validation
-    return emailRegex.test(input.value) ? false : "Invalid Email";
-  }
-  function usernameValidation(input) {
-    const usernameRegex = /^[a-zA-Z0-9_-]{3,16}$/; //username validationconst
-    return usernameRegex.test(input.value) ? false : "Invalid Username";
-  }
-  
-  function passwordValidation(input) {
-    if (input.value.length < 8)
-      return "Password should be at least 8 characters long.";
-  
-    let hasUppercase = /[A-Z]/.test(input.value);
-    let hasLowercase = /[a-z]/.test(input.value);
-    let hasNumeric = /[0-9]/.test(input.value);
-  
-    if (!hasUppercase || !hasLowercase || !hasNumeric)
-      return "Password should contain at least one uppercase letter, one lowercase letter, and one numeric digit.";
-  
-    let hasSpecialChar = /[^A-Za-z0-9]/.test(input.value);
-  
-    if (!hasSpecialChar)
-      return "Password should contain at least one special character.";
-  
-    return false;
-  }
-  
-  export function validateForm(form) {
-   // return false; //turn off validation
-    let errorMessage;
-    let pwd;
-    for (let input of Array.from(form.elements)) {
-      if (
-        input.value === "" &&
-        input.type !== "submit" &&
-        input.type !== "reset" &&
-        input.hasAttribute("name")
-      ) {
-        errorMessage = camelcaseToNormalString(input.name);
-        errorMessage = capitalizeFirstLetter(errorMessage);
-        return errorMessage + " is required";
-      }
-    }
-    for (let input of Array.from(form.elements)) {
-      if (input.name === "username") {
-        errorMessage = usernameValidation(input);
-        if (errorMessage) return errorMessage;
-      }
-      if (input.name === "email") {
-        errorMessage = emailValidation(input);
-        if (errorMessage) return errorMessage;
-      }
-      if (input.name === "password") {
-        errorMessage = passwordValidation(input);
-        pwd = input.value;
-        if (errorMessage) return errorMessage;
-      }
-      if (input.name === "confirmPassword") {
-        let cPwd = input.value;
-        return pwd === cPwd ? "" : "Passwords are not the same";
-      }
-    }
-  }
-  
-    </script>
-    <script>
-        const form = document.getElementById('form');
-        const error = document.getElementById("error");
-    
-        const errorMsg = validateForm(form);
-        if (errorMsg) return (error.innerHTML = errorMsg);
 
+    <script>
+        function validateForm() {
+            var subjectID = document.getElementById('subjectID').value;
+            var subjectName = document.getElementById('subjectName').value;
+            var teacherId = document.getElementById('teacherId').value;
+
+            if (subjectID.trim() === '') {
+                document.getElementById('subjectID-error').innerText = 'Subject ID is required.';
+                document.getElementById('subjectID-error').style.color = 'red';
+                return;
+            } else {
+                document.getElementById('subjectID-error').innerText = '';
+            }
+
+            if (subjectName.trim() === '') {
+                document.getElementById('subjectName-error').innerText = 'Subject Name is required.';
+                document.getElementById('subjectName-error').style.color = 'red';
+                return;
+            } else {
+                document.getElementById('subjectName-error').innerText = '';
+            }
+
+            if (teacherId.trim() === '') {
+                document.getElementById('teacherId-error').innerText = 'Teacher ID is required.';
+                document.getElementById('teacherId-error').style.color = 'red';
+                return;
+            } else {
+                document.getElementById('teacherId-error').innerText = '';
+            }
+
+            // Submit the form using JavaScript
+            document.getElementById('addSubjectForm').submit();
+        }
     </script>
 </body>
 

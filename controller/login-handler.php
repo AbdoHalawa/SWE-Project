@@ -110,7 +110,7 @@ class LoginController
             $_SESSION['teacher_experience'] = $userData['Experience'];
             $_SESSION['teacher_email'] = $userData['Email'];
             $_SESSION['teacher_password'] = $userData['Password'];
-            $_SESSION['teacher_teacher_type'] = $userData['TeacherType'];
+            $_SESSION['teacher_type'] = $userData['TeacherType'];
             // Add more fields as needed
         }
 
@@ -127,7 +127,7 @@ class LoginController
                 exit();
             case 'Teacher':
                 if ($userData['TeacherType'] == 'Head') {
-                    $_SESSION['user_type']="Head";
+                    $_SESSION['user_type']="Teacher";
                     header("Location: ../views/AdminView/adminindex.php");
                     exit();
                 } else {
